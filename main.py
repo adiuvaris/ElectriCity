@@ -8,7 +8,7 @@ class MainWindow(arcade.Window):
 
 def main():
     window = MainWindow()
-    # window.setup()
+    window.center_window()
     arcade.run()
 
 
