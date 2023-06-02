@@ -1,35 +1,34 @@
 # ElectriCity
 
-*Python Programm*
+*Python Programm - Lernspiel*
 
-* **category**    Game
-* **author**      Lea Hodel <info@adiuvaris.ch>
-* **copyright**   2022-2023 Lea Hodel - Adiuvaris
-* **license**     http://www.gnu.org/copyleft/lesser.html GNU-LGPL v3 (see LICENSE.TXT)
-* **link**        https://www.adiuvaris.ch/reportlib
-* **source**      https://github.com/adiuvaris/ReportLib
+* **Kategorie**    Lernspiel
+* **Autorin**      Lea Hodel <lea.hodel@kanti-baden.ch>
+* **Copyright**    2023 Lea Hodel
+* **Lizenz**       http://www.gnu.org/copyleft/lesser.html GNU-LGPL v3 (see LICENSE.TXT)
+* **Source**       https://github.com/adiuvaris/ElectriCity
 
 
 ## Beschreibung
 
-Python.
+Ein Lernspiel für das Physik-Thema Elektrizität.  
+
 
 ### Features:
-* nested structure of rectangles to create the report structure
+* Theorie
 
 
 ## Installation
 
-Via C
+Via 
 
-``` bash
-$ ...
-```
 
 ## Anwendung
- 
 
-## License
+Einfach starten und ausprobieren.
+
+
+## Lizenz
 
 GNU LESSER GENERAL PUBLIC LICENSE. Please see [License File](LICENSE.TXT) for more information.
 
