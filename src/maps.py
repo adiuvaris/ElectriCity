@@ -1,12 +1,12 @@
 
-import json
 import os
+import arcade
+
 from collections import OrderedDict
 from os.path import isfile, join
-
-import arcade
 from arcade.experimental.lights import Light, LightLayer
-from src.const import TILE_SCALING
+
+import src.const as const
 
 
 class GameMap:
@@ -20,11 +20,8 @@ class GameMap:
 
 
 def load_map(map_name):
-
     game_map = GameMap()
     game_map.map_layers = OrderedDict()
-
-    game_map.light_layer = LightLayer(100, 100)
 
     # Liste der blockierenden sprites
     layer_options = {
@@ -34,10 +31,11 @@ def load_map(map_name):
     }
 
     # Map einlesen
-    my_map = arcade.tilemap.load_tilemap(map_name, scaling=TILE_SCALING, layer_options=layer_options)
+    my_map = arcade.tilemap.load_tilemap(map_name, scaling=const.TILE_SCALING, layer_options=layer_options)
     game_map.scene = arcade.Scene.from_tilemap(my_map)
 
     # Licht init
+    game_map.light_layer = LightLayer(100, 100)
     x = 0
     y = 0
     radius = 1
@@ -55,6 +53,7 @@ def load_map(map_name):
     # Hintergrundfarbe setzen
     game_map.background_color = my_map.background_color
 
+    # Einstellungen der Map übernehmen
     game_map.properties = my_map.properties
 
     # Layer mit Name 'blocking' als Mauer betrachten
@@ -97,7 +96,7 @@ def load_maps():
     return done, progress, load_maps.map_list
 
 
-# Statische Daten der Maps
+# Statische Daten der Maps, damit sie im Speicher bleiben, und nicht immer neu geladen werden müssen
 load_maps.map_file_names = None
 load_maps.map_list = None
 load_maps.file_count = None

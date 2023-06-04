@@ -1,12 +1,12 @@
 
 import arcade
-from src.const import SCREEN_HEIGHT, SCREEN_TITLE, SCREEN_WIDTH
+import src.const as const
 from src.views.loading import Loading
 
 
 class MainWindow(arcade.Window):
     def __init__(self):
-        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE, resizable=True)
+        super().__init__(const.SCREEN_WIDTH, const.SCREEN_HEIGHT, const.SCREEN_TITLE, resizable=True)
         self.views = {}
 
         arcade.resources.add_resource_handle("maps", "res/maps")

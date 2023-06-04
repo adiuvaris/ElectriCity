@@ -2,7 +2,7 @@
 import arcade
 
 from enum import Enum
-from src.const import SPRITE_SIZE
+import src.const as const
 
 Direction = Enum("Direction", "DOWN LEFT RIGHT UP")
 
@@ -19,8 +19,8 @@ class Character(arcade.Sprite):
         super().__init__()
         self.textures = arcade.load_spritesheet(
             sheet_name,
-            sprite_width=SPRITE_SIZE,
-            sprite_height=SPRITE_SIZE,
+            sprite_width=const.SPRITE_SIZE,
+            sprite_height=const.SPRITE_SIZE,
             columns=3,
             count=12,
         )
@@ -32,9 +32,6 @@ class Character(arcade.Sprite):
     def on_update(self, delta_time: float = 1.0 / 60.0):
         if not self.change_x and not self.change_y:
             return
-
-        # self.center_x += self.change_x
-        # self.center_y += self.change_y
 
         if self.should_update <= 3:
             self.should_update += 1

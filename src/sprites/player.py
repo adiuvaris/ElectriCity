@@ -1,3 +1,4 @@
+
 import arcade
 
 from src.sprites.character import Character
@@ -9,7 +10,7 @@ class Player(Character):
         self.sound_update = 0
         self.footstep_sound = arcade.load_sound(":sounds:footstep00.wav")
 
-    def on_update(self, delta_time):
+    def on_update(self, delta_time: float = 1.0 / 60.0):
         super().on_update(delta_time)
 
         if not self.change_x and not self.change_y:

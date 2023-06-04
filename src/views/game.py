@@ -1,8 +1,4 @@
 
-# import json
-# from typing import Callable
-
-
 import arcade
 import arcade.gui
 from arcade.experimental.lights import Light
