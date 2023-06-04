@@ -1,25 +1,79 @@
-{ "compressionlevel":-1,
+{ "backgroundcolor":"#aaaa7f",
+ "compressionlevel":-1,
  "height":20,
  "infinite":false,
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJztwTEBAAAAwqD1T20JT6AAAHgaCWAAAQ==",
+         "data":"eJwzZ2dgMB\/FNMfpUAzjt7BCML3sBeE1rAh7aW03sp0wTE8\/I9u7hg52IuOBsJPablVgop6\/jqDpUWclH5NiJ8xeSuwjxV6Ynfj0L2fFj4mxB109PvvSsWB0c3DZQ0n44LOXEKY0PrDZTYr95GJCdhKKa3xxRIwecvyLrofYNInPXmLsJjduKIlXaqUJUvQCALNvr6M=",
          "encoding":"base64",
          "height":20,
          "id":1,
-         "name":"Kachelebene 1",
+         "name":"background",
          "opacity":1,
          "type":"tilelayer",
          "visible":true,
          "width":30,
          "x":0,
          "y":0
+        }, 
+        {
+         "compression":"zlib",
+         "data":"eJzFk0sOwiAQhqELE3zFV915CM\/hzqW3cukJjBdQj+cQ+SOdQopDA3\/yZRoI84UCRik1JWbEXMUTmzdu\/TORF\/Em1sSG2BI7rz+vmIcHFev\/yWLiKrF0Y+jPKwKPxIe0ztsSe2EPnrvuE\/IOnWuuM+S2Xv4fpXnoYXyvf7Y5uVLfc9Ot\/Nv3jnW2tu+l+VU+xr02eBM5uekusTHfm\/MmJLHeMfYq8ZbeK7xH9aWGt3Rqemvcq0Ohe2VWfXLvVagn5xQA3pT1qT1TgFe6XsoHn1U99g==",
+         "encoding":"base64",
+         "height":20,
+         "id":2,
+         "name":"blocking",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":30,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":3,
+         "name":"doors",
+         "objects":[
+                {
+                 "gid":5584,
+                 "height":32,
+                 "id":4,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"next_map",
+                         "type":"string",
+                         "value":"room_01"
+                        }, 
+                        {
+                         "name":"start_x",
+                         "type":"int",
+                         "value":4
+                        }, 
+                        {
+                         "name":"start_y",
+                         "type":"int",
+                         "value":12
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":704.070045724292,
+                 "y":254.155462593638
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":2,
- "nextobjectid":1,
+ "nextlayerid":5,
+ "nextobjectid":5,
  "orientation":"orthogonal",
- "renderorder":"right-down",
+ "renderorder":"left-up",
  "tiledversion":"1.10.1",
  "tileheight":32,
  "tilesets":[
@@ -100,6 +154,10 @@
          "tilecount":3072,
          "tileheight":32,
          "tilewidth":32
+        }, 
+        {
+         "firstgid":5193,
+         "source":"..\/tilesets\/base.json"
         }],
  "tilewidth":32,
  "type":"map",
