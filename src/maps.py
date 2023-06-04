@@ -26,20 +26,18 @@ def load_map(map_name):
 
     game_map.light_layer = LightLayer(100, 100)
 
-    # List of blocking sprites
+    # Liste der blockierenden sprites
     layer_options = {
         "blocking": {
             "use_spatial_hash": True,
         },
     }
 
-    # Read in the tiled map
-    print(f"Loading map: {map_name}")
-    my_map = arcade.tilemap.load_tilemap(
-        map_name, scaling=TILE_SCALING, layer_options=layer_options
-    )
+    # Map einlesen
+    my_map = arcade.tilemap.load_tilemap(map_name, scaling=TILE_SCALING, layer_options=layer_options)
     game_map.scene = arcade.Scene.from_tilemap(my_map)
 
+    # Licht init
     x = 0
     y = 0
     radius = 1
@@ -47,20 +45,19 @@ def load_map(map_name):
     color = arcade.csscolor.WHITE
     dummy_light = Light(x, y, radius, color, mode)
     game_map.light_layer.add(dummy_light)
-    print("Added default light")
 
-    # Get all the tiled sprite lists
+    # Spritelisten aus der Map übernehmen
     game_map.map_layers = my_map.sprite_lists
 
-    # Define the size of the map, in tiles
+    # Map Grösse bestimmen
     game_map.map_size = my_map.width, my_map.height
 
-    # Set the background color
+    # Hintergrundfarbe setzen
     game_map.background_color = my_map.background_color
 
     game_map.properties = my_map.properties
 
-    # Any layer with '_blocking' in it, will be a wall
+    # Layer mit Name 'blocking' als Mauer betrachten
     game_map.scene.add_sprite_list("wall_list", use_spatial_hash=True)
     for layer, sprite_list in game_map.map_layers.items():
         if "blocking" in layer:
@@ -72,15 +69,15 @@ def load_map(map_name):
 
 def load_maps():
 
-    # Directory to pull maps from
+    # Directory in dem die Maps liegen
     mypath = "res/maps"
 
     if load_maps.map_file_names is None:
 
-        # Dictionary to hold all our maps
+        # Dictionary für alle Maps
         load_maps.map_list = {}
 
-        # Pull names of all json files in that path
+        # Alle Dateien mit der Endung .json als Map laden
         load_maps.map_file_names = [
             f[:-5]
             for f in os.listdir(mypath)
@@ -89,7 +86,7 @@ def load_maps():
         load_maps.map_file_names.sort()
         load_maps.file_count = len(load_maps.map_file_names)
 
-    # Loop and load each file
+    # Loop über die Map-Liste und laden der Maps
     map_name = load_maps.map_file_names.pop(0)
     load_maps.map_list[map_name] = load_map(f"res/maps/{map_name}.json")
 
@@ -100,6 +97,7 @@ def load_maps():
     return done, progress, load_maps.map_list
 
 
+# Statische Daten der Maps
 load_maps.map_file_names = None
 load_maps.map_list = None
 load_maps.file_count = None

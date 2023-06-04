@@ -1,13 +1,14 @@
-
 import arcade
 
 from src.maps import load_maps
 from src.views.game import Game
+
 # from src.views.main_menu import MainMenu
 # from src.views.settings import Settings
 
 
 class Loading(arcade.View):
+
     def __init__(self):
         super().__init__()
         self.started = False
@@ -17,34 +18,16 @@ class Loading(arcade.View):
 
     def on_draw(self):
         arcade.start_render()
-        arcade.draw_text(
-            "Loading...",
-            self.window.width / 2,
-            self.window.height / 2,
-            arcade.color.ALLOY_ORANGE,
-            44,
-            anchor_x="center",
-            anchor_y="center",
-            align="center",
-            width=self.window.width,
-        )
+        arcade.draw_text("Loading...", self.window.width / 2, self.window.height / 2, arcade.color.GUPPIE_GREEN, 64,
+                         anchor_x="center", anchor_y="center", align="center", width=self.window.width)
+
         self.started = True
-        draw_bar(
-            current_amount=self.progress,
-            max_amount=100,
-            center_x=self.window.width / 2,
-            center_y=20,
-            width=self.window.width,
-            height=10,
-            color_a=arcade.color.BLACK,
-            color_b=arcade.color.WHITE,
-        )
+        self.draw_bar()
 
     def setup(self):
         pass
 
     def on_update(self, delta_time: float):
-
         if self.started:
             done, self.progress, self.map_list = load_maps()
             if done:
@@ -59,30 +42,15 @@ class Loading(arcade.View):
 
                 self.window.show_view(self.window.views["game"])
 
+    def draw_bar(self):
+        # Hintergrund zeichnen
+        if self.progress < 100:
+            arcade.draw_rectangle_filled(center_x=self.window.width / 2, center_y=20,
+                                         width=self.window.width, height=20, color=arcade.color.BLACK)
 
-def draw_bar(current_amount,
-             max_amount,
-             center_x,
-             center_y,
-             width,
-             height,
-             color_a,
-             color_b):
+        # Aktuelle Breite berechnen
+        bar_width = self.window.width * (self.progress / 100.0)
 
-    # Draw the background
-    if current_amount < max_amount:
-        arcade.draw_rectangle_filled(center_x=center_x,
-                                     center_y=center_y,
-                                     width=width,
-                                     height=height,
-                                     color=color_a)
-
-    # Calculate width
-    bar_width = width * (current_amount / max_amount)
-
-    # Draw filled part
-    arcade.draw_rectangle_filled(center_x=center_x - 0.5 * (width - bar_width),
-                                 center_y=center_y,
-                                 width=bar_width,
-                                 height=height,
-                                 color=color_b)
+        # Gefüllten Teil zeichnen
+        arcade.draw_rectangle_filled(center_x=self.window.width / 2 - 0.5 * (self.window.width - bar_width),
+                                     center_y=20, width=bar_width, height=20, color=arcade.color.WHITE)

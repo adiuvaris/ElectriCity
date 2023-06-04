@@ -17,11 +17,9 @@ class MainWindow(arcade.Window):
 def main():
     window = MainWindow()
     window.center_window()
-
     start_view = Loading()
     start_view.setup()
     window.show_view(start_view)
-
     arcade.run()
 
 
