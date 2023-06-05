@@ -1,15 +1,17 @@
 
 import os
 import arcade
-
 from collections import OrderedDict
 from os.path import isfile, join
 from arcade.experimental.lights import Light, LightLayer
-
 import src.const as const
 
 
 class GameMap:
+    """
+    Container für alle Map-relevanten Daten
+    """
+
     name = None
     scene = None
     map_layers = None
@@ -20,17 +22,24 @@ class GameMap:
 
 
 def load_map(map_name):
+    """
+    Eine einzelne Map mit dem Namen map_name in eine Instanz von GameMap laden
+    :param map_name: Name der map
+    :return: die neue Instanz von GameMap mit den geladenen Daten
+    """
+
+    # Ein neues Objekt für die Map anlegen und die Liste der Layer vorbereiten
     game_map = GameMap()
     game_map.map_layers = OrderedDict()
 
-    # Liste der blockierenden sprites
+    # Liste der blockierenden sprites init
     layer_options = {
         "blocking": {
             "use_spatial_hash": True,
         },
     }
 
-    # Map einlesen
+    # Map einlesen und Szene erzeugen
     my_map = arcade.tilemap.load_tilemap(map_name, scaling=const.TILE_SCALING, layer_options=layer_options)
     game_map.scene = arcade.Scene.from_tilemap(my_map)
 
@@ -67,10 +76,18 @@ def load_map(map_name):
 
 
 def load_maps():
+    """
+    Maps laden.
+    Die Funktion muss so lange aufgerufen werden, bis sie done=True zurückgibt
 
-    # Directory in dem die Maps liegen
+    :return: Gibt ein Tuple zurück, zuerst ein bool, ob alle Maps geladen sind
+             dann folgt der Progress-Wert von 0..100 und zuletzt die Liste der Maps
+    """
+
+    # Verzeichnis in dem die Maps liegen
     mypath = "res/maps"
 
+    # Einmal eine Liste von allem Map-Files erstellen
     if load_maps.map_file_names is None:
 
         # Dictionary für alle Maps
@@ -85,13 +102,15 @@ def load_maps():
         load_maps.map_file_names.sort()
         load_maps.file_count = len(load_maps.map_file_names)
 
-    # Loop über die Map-Liste und laden der Maps
+    # Loop über die Map-Liste und laden der Maps in die statischen Variablen
     map_name = load_maps.map_file_names.pop(0)
     load_maps.map_list[map_name] = load_map(f"res/maps/{map_name}.json")
 
+    # Progress berechnen für die Fortschrittsanzeige
     files_left = load_maps.file_count - len(load_maps.map_file_names)
     progress = 100 * files_left / load_maps.file_count
 
+    # Bestimmen, ob wir fertig sind.
     done = len(load_maps.map_file_names) == 0
     return done, progress, load_maps.map_list
 

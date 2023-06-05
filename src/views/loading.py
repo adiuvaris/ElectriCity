@@ -9,8 +9,15 @@ from src.views.game import Game
 
 
 class Loading(arcade.View):
+    """
+    Klasse für die View beim Laden der Daten (Maps und Views)
+    """
 
     def __init__(self):
+        """
+        Konstruktor
+        """
+
         super().__init__()
         self.started = False
         self.progress = 0
@@ -18,6 +25,10 @@ class Loading(arcade.View):
         arcade.set_background_color(arcade.color.ALMOND)
 
     def on_draw(self):
+        """
+        Zeichnet die View. Es wird ein Text "Loading" ausgegeben und ein
+        Fortschrittsbalken, der anzeigt, wie viel schon geladen ist.
+        """
         arcade.start_render()
         arcade.draw_text("Loading...", self.window.width / 2, self.window.height / 2, arcade.color.GUPPIE_GREEN, 64,
                          anchor_x="center", anchor_y="center", align="center", width=self.window.width)
@@ -29,6 +40,13 @@ class Loading(arcade.View):
         pass
 
     def on_update(self, delta_time: float):
+        """
+        Diese Funktion wird von arcade immer wieder aufgerufen. Sie ruft
+        die Funktion load_maps solange auf, bis diese angibt, dass alles
+        geladen ist. Danach wird zur GameView gewechselt.
+
+        :param delta_time: vergangene Zeit seit letztem Aufruf
+        """
         if self.started:
             done, self.progress, self.map_list = load_maps()
             if done:
@@ -44,6 +62,10 @@ class Loading(arcade.View):
                 self.window.show_view(self.window.views["game"])
 
     def draw_bar(self):
+        """
+        Zeichnet den Fortschrittsbalken. Es wird ein schwarzer Balken gezeichnet, der den Progress-Wert
+        im Verhältnis zur Fensterbreite darstellt.
+        """
         # Hintergrund zeichnen
         if self.progress < 100:
             arcade.draw_rectangle_filled(center_x=self.window.width / 2, center_y=20,

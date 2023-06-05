@@ -1,9 +1,11 @@
 
 import arcade
 
+# Fenstergrösse beim Start des Programms
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 SCREEN_TITLE = "ElectriCity"
+
 TILE_SCALING = 1.0
 SPRITE_SIZE = 32
 

@@ -22,8 +22,8 @@
          "data":"eJxjYBgF+MBnJlSaXuAHI4UG0Nm9owACOiiNNzoDADcwA28=",
          "encoding":"base64",
          "height":16,
-         "id":5,
-         "name":"funiture",
+         "id":12,
+         "name":"foreground",
          "opacity":1,
          "type":"tilelayer",
          "visible":true,
@@ -84,7 +84,7 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":12,
+ "nextlayerid":13,
  "nextobjectid":11,
  "orientation":"orthogonal",
  "properties":[
