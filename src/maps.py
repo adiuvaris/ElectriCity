@@ -24,6 +24,7 @@ class GameMap:
 def load_map(map_name):
     """
     Eine einzelne Map mit dem Namen map_name in eine Instanz von GameMap laden
+
     :param map_name: Name der map
     :return: die neue Instanz von GameMap mit den geladenen Daten
     """
@@ -65,7 +66,7 @@ def load_map(map_name):
     # Einstellungen der Map übernehmen
     game_map.properties = my_map.properties
 
-    # Layer mit Name 'blocking' als Mauer betrachten
+    # Layer mit Name 'blocking' als Mauer betrachten, welche das Player Sprite nicht passieren kann.
     game_map.scene.add_sprite_list("wall_list", use_spatial_hash=True)
     for layer, sprite_list in game_map.map_layers.items():
         if "blocking" in layer:
@@ -87,7 +88,7 @@ def load_maps():
     # Verzeichnis in dem die Maps liegen
     mypath = "res/maps"
 
-    # Einmal eine Liste von allem Map-Files erstellen
+    # Einmal eine Liste von allem Map-Files erstellen, die in der Folge geladen werden.
     if load_maps.map_file_names is None:
 
         # Dictionary für alle Maps
@@ -102,16 +103,19 @@ def load_maps():
         load_maps.map_file_names.sort()
         load_maps.file_count = len(load_maps.map_file_names)
 
-    # Loop über die Map-Liste und laden der Maps in die statischen Variablen
+    # Letzten Eintrag aus der File-Liste holen und laden. Der Filename
+    # wird dabei aus der Liste entfernt.
     map_name = load_maps.map_file_names.pop(0)
     load_maps.map_list[map_name] = load_map(f"res/maps/{map_name}.json")
 
-    # Progress berechnen für die Fortschrittsanzeige
+    # Progress berechnen für die Fortschrittsanzeige (in Prozent)
     files_left = load_maps.file_count - len(load_maps.map_file_names)
     progress = 100 * files_left / load_maps.file_count
 
     # Bestimmen, ob wir fertig sind.
+    # Das ist passiert, sobald die Liste der Map-Files leer ist.
     done = len(load_maps.map_file_names) == 0
+
     return done, progress, load_maps.map_list
 
 

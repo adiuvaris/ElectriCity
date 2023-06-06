@@ -12,7 +12,7 @@ class MainWindow(arcade.Window):
     def __init__(self):
         """
         Konstruktor.
-        Initialisiert das Fenster und definiert Pfade
+        Initialisiert das Fenster und definiert Pfade zu Ressourcen
         """
 
         super().__init__(const.SCREEN_WIDTH, const.SCREEN_HEIGHT, const.SCREEN_TITLE, resizable=True)
@@ -31,13 +31,21 @@ def main():
     Startet den Main-Loop von arcade.
     """
 
+    # Window Instanz erzeugen und zentrieren.
     window = MainWindow()
     window.center_window()
+
+    # Loading View erzeugen und starten
     start_view = Loading()
     start_view.setup()
     window.show_view(start_view)
+
+    # Arcade Endlos-Schleife starten.
     arcade.run()
 
 
 if __name__ == "__main__":
     main()
+
+# Bilden mit folgendem Kommando
+#   pyinstaller main.py --add-data "res;res"
