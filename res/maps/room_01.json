@@ -33,7 +33,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJwrZGRgKALiYiiNzsYnB2JXAnEVEFdDaXQ2PjkQm4WJgeElEL8CYmTAgsYHgT9AMUdmBgYnIHZmhqgB4Y9A\/IkI\/SDgCdTnBcTeSPqxAWTx13jUEKMfF8CnnxhAS\/2Uup8U\/ROYKdM\/gwL9PDjU4RJHV1OIli9AgJL8AwKk5B9KAQAZ+iZC",
+         "data":"eJwrZGRgKALiYiiNzsYnB2JXAnEVEFdDaXQ2PjkQm4WJgeElEL8CYmTAgsaHAUdmBgYnIHZmhqgB4Y9A\/IlI\/Z5AfV5A7I2kHxtAFn+NRw0x+nEBfPqJAbTUT6n7SdE\/gZky\/TMo0M+DQx0ucXQ1hWj5AgQoyT8gQEr+oRQAAMxoJUQ=",
          "encoding":"base64",
          "height":16,
          "id":2,
@@ -83,9 +83,48 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":14,
+         "name":"infos",
+         "objects":[
+                {
+                 "gid":977,
+                 "height":32,
+                 "id":12,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"info",
+                         "type":"string",
+                         "value":"info_01"
+                        }, 
+                        {
+                         "name":"next_x",
+                         "type":"int",
+                         "value":11
+                        }, 
+                        {
+                         "name":"next_y",
+                         "type":"int",
+                         "value":3
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":353,
+                 "y":101
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":13,
- "nextobjectid":11,
+ "nextlayerid":15,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "properties":[
         {

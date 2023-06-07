@@ -2,7 +2,6 @@
 import arcade
 import arcade.gui
 
-
 class Menu(arcade.View):
     """
     Klasse für die View mit dem Menü
@@ -22,22 +21,22 @@ class Menu(arcade.View):
         self.v_box = arcade.gui.UIBoxLayout()
 
         # Button
-        resume_button = arcade.gui.UIFlatButton(text="Zurück zum Spiel", width=200)
+        resume_button = arcade.gui.UIFlatButton(text="Zurück zum Spiel", width=250)
         self.v_box.add(resume_button.with_space_around(bottom=20))
         resume_button.on_click = self.on_click_resume
 
         # Button
-        settings_button = arcade.gui.UIFlatButton(text="Einstellungen", width=200)
+        settings_button = arcade.gui.UIFlatButton(text="Einstellungen", width=250)
         self.v_box.add(settings_button.with_space_around(bottom=20))
         settings_button.on_click = self.on_click_settings
 
         # Button
-        new_game_button = arcade.gui.UIFlatButton(text="Neues Spiel", width=200)
+        new_game_button = arcade.gui.UIFlatButton(text="Neues Spiel", width=250)
         self.v_box.add(new_game_button.with_space_around(bottom=20))
         new_game_button.on_click = self.on_click_new_game
 
         # Button
-        quit_button = arcade.gui.UIFlatButton(text="Programm beenden", width=200)
+        quit_button = arcade.gui.UIFlatButton(text="Programm beenden", width=250)
         self.v_box.add(quit_button.with_space_around(bottom=20))
         quit_button.on_click = self.on_click_quit
 
@@ -69,7 +68,7 @@ class Menu(arcade.View):
         Wird von arcade aufgerufen, wenn die View unsichtbar wird
         """
 
-        # Der UI-Manager muss deaktiviet werden
+        # Der UI-Manager muss deaktiviert werden
         self.manager.disable()
 
     def on_draw(self):

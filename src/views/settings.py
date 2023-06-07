@@ -59,5 +59,5 @@ class Settings(arcade.View):
         """
 
         # Escape geht zurück zum Menü
-        if symbol == arcade.key.ESCAPE:
+        if key == arcade.key.ESCAPE:
             self.window.show_view(self.window.views["menu"])

@@ -5,6 +5,7 @@ from src.maps import load_maps
 from src.views.game import Game
 from src.views.menu import Menu
 from src.views.settings import Settings
+from src.views.info import Info
 
 
 class Loading(arcade.View):
@@ -57,6 +58,9 @@ class Loading(arcade.View):
 
                 self.window.views["settings"] = Settings()
                 self.window.views["settings"].setup()
+
+                self.window.views["info"] = Info()
+                self.window.views["info"].setup("info_00")
 
                 self.window.show_view(self.window.views["game"])
 

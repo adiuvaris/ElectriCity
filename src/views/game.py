@@ -306,6 +306,47 @@ class Game(arcade.View):
             # Keine Türe, also normal scrollen
             self.scroll_to_player()
 
+        # Hat es Infos
+        if "infos" in map_layers:
+
+            # Wurde die Info getroffen
+            infos_hit = arcade.check_for_collision_with_list(
+                self.player_sprite, map_layers["infos"]
+            )
+
+            # Ja - es gibt eine Kollision
+            if len(infos_hit) > 0:
+
+                # Detail holen, damit die View angezeigt werden kann
+                info_name = infos_hit[0].properties["info"]
+                next_x = infos_hit[0].properties["next_x"]
+                next_y = infos_hit[0].properties["next_y"]
+
+                # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der Info-View
+                # nicht gleich wieder ein Hit erfolgt
+                map_height = self.my_map.map_size[1]
+                self.player_sprite.center_x = (next_x * const.SPRITE_SIZE + const.SPRITE_SIZE / 2)
+                self.player_sprite.center_y = (map_height - next_y) * const.SPRITE_SIZE - const.SPRITE_SIZE / 2
+                self.up_pressed = False
+                self.down_pressed = False
+                self.left_pressed = False
+                self.right_pressed = False
+
+                # Neue view anzeigen
+                self.window.views["info"].setup(info_name)
+                self.window.show_view(self.window.views["info"])
+
+            else:
+
+                # Keine Türe getroffen, also normal scrollen, damit das Player Sprite
+                # etwa in der Mitte des Fenster bleibt.
+                self.scroll_to_player()
+        else:
+
+            # Keine Türe, also normal scrollen
+            self.scroll_to_player()
+
+
     def on_key_press(self, key, modifiers):
         """
         Wird von arcade aufgerufen, wenn eine Taste gedrückt wurde.
