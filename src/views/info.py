@@ -1,6 +1,7 @@
 
 import arcade
 import arcade.gui
+import json
 
 from arcade import load_texture
 

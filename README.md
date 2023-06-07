@@ -3,7 +3,7 @@
 *Python Programm - Lernspiel*
 
 * **Kategorie**    Lernspiel
-* **Autorin**      Lea Hodel <lea.hodel@kanti-baden.ch>
+* **Autorin**      Lea Hodel <lea.hodel@students.ksba.ch>
 * **Copyright**    2023 Lea Hodel
 * **Lizenz**       http://www.gnu.org/copyleft/lesser.html GNU-LGPL v3 (see LICENSE.TXT)
 * **Source**       https://github.com/adiuvaris/ElectriCity

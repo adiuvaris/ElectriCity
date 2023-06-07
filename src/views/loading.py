@@ -60,7 +60,7 @@ class Loading(arcade.View):
                 self.window.views["settings"].setup()
 
                 self.window.views["info"] = Info()
-                self.window.views["info"].setup("info_00")
+                self.window.views["info"].setup("")
 
                 self.window.show_view(self.window.views["game"])
 

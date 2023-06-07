@@ -319,18 +319,24 @@ class Game(arcade.View):
 
                 # Detail holen, damit die View angezeigt werden kann
                 view_name = views_hit[0].properties["view"]
-                next_x = views_hit[0].properties["next_x"]
-                next_y = views_hit[0].properties["next_y"]
 
                 # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der Info-View
                 # nicht gleich wieder ein Hit erfolgt
-                map_height = self.my_map.map_size[1]
-                self.player_sprite.center_x = (next_x * const.SPRITE_SIZE + const.SPRITE_SIZE / 2)
-                self.player_sprite.center_y = (map_height - next_y) * const.SPRITE_SIZE - const.SPRITE_SIZE / 2
-                self.up_pressed = False
-                self.down_pressed = False
-                self.left_pressed = False
-                self.right_pressed = False
+                if self.up_pressed:
+                    self.up_pressed = False
+                    self.player_sprite.center_y = views_hit[0].center_y - const.SPRITE_SIZE - const.SPRITE_SIZE / 2
+
+                if self.down_pressed:
+                    self.down_pressed = False
+                    self.player_sprite.center_y = views_hit[0].center_y + const.SPRITE_SIZE + const.SPRITE_SIZE / 2
+
+                if self.left_pressed:
+                    self.left_pressed = False
+                    self.player_sprite.center_x = views_hit[0].center_x + const.SPRITE_SIZE + const.SPRITE_SIZE / 2
+
+                if self.right_pressed:
+                    self.right_pressed = False
+                    self.player_sprite.center_x = views_hit[0].center_x - const.SPRITE_SIZE - const.SPRITE_SIZE / 2
 
                 # Neue view anzeigen
                 self.window.views["info"].setup(view_name)

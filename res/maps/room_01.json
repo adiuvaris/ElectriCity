@@ -33,7 +33,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJwrZGRgKALiYiiNzsYnB2JXAnEVEFdDaXQ2PjkQm4WJgeElEL9CwyBxbMCRGUI7M0PUgPBHIP4ExSDwCY9+T6h+byT92ACy+Gs8aojRjwvg008MoKV+St1Piv4JzJTpn0GBfh4c6nCJo6spRMsXIEBJ\/gEBUvIPpQAAlF4pXg==",
+         "data":"eJwrZGRgKALiYiiNzsYnB2JXAnEVEFdDaXQ2PjkQm4WJgeElEL8CYmTAgsaHAUdmCO3MDFEDwh+B+BOR+j2h+r2R9GMDyOKv8aghRj8ugE8\/MYCW+il1Pyn6JzBTpn8GBfp5cKjDJY6uphAtX4AAJfkHBEjJP5QCAP44JLI=",
          "encoding":"base64",
          "height":16,
          "id":2,
@@ -96,16 +96,6 @@
                  "name":"",
                  "properties":[
                         {
-                         "name":"next_x",
-                         "type":"int",
-                         "value":4
-                        }, 
-                        {
-                         "name":"next_y",
-                         "type":"int",
-                         "value":4
-                        }, 
-                        {
                          "name":"view",
                          "type":"string",
                          "value":"info_01"
@@ -123,16 +113,6 @@
                  "id":13,
                  "name":"",
                  "properties":[
-                        {
-                         "name":"next_x",
-                         "type":"int",
-                         "value":13
-                        }, 
-                        {
-                         "name":"next_y",
-                         "type":"int",
-                         "value":3
-                        }, 
                         {
                          "name":"view",
                          "type":"string",
