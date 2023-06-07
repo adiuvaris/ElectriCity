@@ -327,7 +327,7 @@ class Game(arcade.View):
         elif key == arcade.key.ESCAPE:
 
             # Die Escape Taste startet das Hauptmenü
-            self.window.show_view(self.window.views["main_menu"])
+            self.window.show_view(self.window.views["menu"])
 
     def on_key_release(self, key, modifiers):
         """

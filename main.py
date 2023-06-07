@@ -7,7 +7,6 @@ from src.views.loading import Loading
 class MainWindow(arcade.Window):
     """
     Hauptfenster des Programms als Instanz eines arcade-windows
-    Test
     """
 
     def __init__(self):
