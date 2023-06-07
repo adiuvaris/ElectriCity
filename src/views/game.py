@@ -306,21 +306,21 @@ class Game(arcade.View):
             # Keine Türe, also normal scrollen
             self.scroll_to_player()
 
-        # Hat es Infos
-        if "infos" in map_layers:
+        # Hat es Views
+        if "views" in map_layers:
 
-            # Wurde die Info getroffen
-            infos_hit = arcade.check_for_collision_with_list(
-                self.player_sprite, map_layers["infos"]
+            # Wurde eine View getroffen
+            views_hit = arcade.check_for_collision_with_list(
+                self.player_sprite, map_layers["views"]
             )
 
             # Ja - es gibt eine Kollision
-            if len(infos_hit) > 0:
+            if len(views_hit) > 0:
 
                 # Detail holen, damit die View angezeigt werden kann
-                info_name = infos_hit[0].properties["info"]
-                next_x = infos_hit[0].properties["next_x"]
-                next_y = infos_hit[0].properties["next_y"]
+                view_name = views_hit[0].properties["view"]
+                next_x = views_hit[0].properties["next_x"]
+                next_y = views_hit[0].properties["next_y"]
 
                 # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der Info-View
                 # nicht gleich wieder ein Hit erfolgt
@@ -333,7 +333,7 @@ class Game(arcade.View):
                 self.right_pressed = False
 
                 # Neue view anzeigen
-                self.window.views["info"].setup(info_name)
+                self.window.views["info"].setup(view_name)
                 self.window.show_view(self.window.views["info"])
 
             else:

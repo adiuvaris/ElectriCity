@@ -42,5 +42,5 @@ class Player(Character):
             self.sound_update += 1
 
         if self.sound_update >= 3:
-            arcade.play_sound(self.footstep_sound, volume=0.2)
+            arcade.play_sound(self.footstep_sound, volume=0.1)
             self.sound_update = 0

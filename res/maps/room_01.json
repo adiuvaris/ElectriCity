@@ -19,7 +19,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJxjYBgF+MBnJlSaXuAHI4UG0Nm9owACOiiNNzoDADcwA28=",
+         "data":"eJxjYBhc4DYTYTVOzLjlHhOh3wuPfnTwmQmVphf4wUihAXR27yiAgA5K443OAADXRwXD",
          "encoding":"base64",
          "height":16,
          "id":12,
@@ -33,7 +33,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJwrZGRgKALiYiiNzsYnB2JXAnEVEFdDaXQ2PjkQm4WJgeElEL8CYmTAgsaHAUdmBgYnIHZmhqgB4Y9A\/IlI\/Z5AfV5A7I2kHxtAFn+NRw0x+nEBfPqJAbTUT6n7SdE\/gZky\/TMo0M+DQx0ucXQ1hWj5AgQoyT8gQEr+oRQAAMxoJUQ=",
+         "data":"eJwrZGRgKALiYiiNzsYnB2JXAnEVEFdDaXQ2PjkQm4WJgeElEL9CwyBxbMCRGUI7M0PUgPBHIP4ExSDwCY9+T6h+byT92ACy+Gs8aojRjwvg008MoKV+St1Piv4JzJTpn0GBfh4c6nCJo6spRMsXIEBJ\/gEBUvIPpQAAlF4pXg==",
          "encoding":"base64",
          "height":16,
          "id":2,
@@ -87,7 +87,7 @@
         {
          "draworder":"topdown",
          "id":14,
-         "name":"infos",
+         "name":"views",
          "objects":[
                 {
                  "gid":977,
@@ -96,26 +96,54 @@
                  "name":"",
                  "properties":[
                         {
-                         "name":"info",
-                         "type":"string",
-                         "value":"info_01"
-                        }, 
-                        {
                          "name":"next_x",
                          "type":"int",
-                         "value":11
+                         "value":4
                         }, 
                         {
                          "name":"next_y",
                          "type":"int",
-                         "value":3
+                         "value":4
+                        }, 
+                        {
+                         "name":"view",
+                         "type":"string",
+                         "value":"info_01"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":353,
-                 "y":101
+                 "x":130,
+                 "y":117
+                }, 
+                {
+                 "gid":953,
+                 "height":32,
+                 "id":13,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"next_x",
+                         "type":"int",
+                         "value":13
+                        }, 
+                        {
+                         "name":"next_y",
+                         "type":"int",
+                         "value":3
+                        }, 
+                        {
+                         "name":"view",
+                         "type":"string",
+                         "value":"quiz_01"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":415,
+                 "y":102
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -123,8 +151,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":15,
- "nextobjectid":13,
+ "nextlayerid":16,
+ "nextobjectid":14,
  "orientation":"orthogonal",
  "properties":[
         {
