@@ -32,9 +32,9 @@ LOREM_IPSUM = (
 )
 
 
-class Info(arcade.View):
+class View(arcade.View):
     """
-    Klasse für die View mit dem Menü
+    Klasse für die View mit Theorie oder Aufgabe
     """
 
     def __init__(self):
@@ -46,6 +46,13 @@ class Info(arcade.View):
 
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
+        self.v_box = None
+
+    def setup(self, view_name):
+        """
+        View initialisieren.
+        Es werden die Daten für view_name angezeigt.
+        """
 
         # Vertikales Layout für die Schalter erstellen
         self.v_box = arcade.gui.UIBoxLayout()
@@ -75,14 +82,6 @@ class Info(arcade.View):
                 anchor_x="center_x", anchor_y="center_y", child=self.v_box
             )
         )
-
-    def setup(self, info_name):
-        """
-        View initialisieren.
-        Macht zurzeit noch nichts
-        """
-
-        pass
 
     def on_show_view(self):
         """

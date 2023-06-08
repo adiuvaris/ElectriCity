@@ -9,7 +9,7 @@ from src.sprites.player import Player
 
 class Game(arcade.View):
     """
-    View des Spiels mit der Darstellung der Map (city, room, test)
+    View des Spiels mit der Darstellung der Map (city, room, view)
     """
 
     def __init__(self, map_list):
@@ -339,8 +339,8 @@ class Game(arcade.View):
                     self.player_sprite.center_x = views_hit[0].center_x - const.SPRITE_SIZE - const.SPRITE_SIZE / 2
 
                 # Neue view anzeigen
-                self.window.views["info"].setup(view_name)
-                self.window.show_view(self.window.views["info"])
+                self.window.views["view"].setup(view_name)
+                self.window.show_view(self.window.views["view"])
 
             else:
 
