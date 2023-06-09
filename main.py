@@ -1,4 +1,5 @@
 
+import os
 import arcade
 import src.const as const
 from src.views.loading import Loading
@@ -20,10 +21,12 @@ class MainWindow(arcade.Window):
 
         # Pfade zu einzelnen Ressourcen definieren, damit im Programm
         # leichter darauf zugegriffen werden kann.
-        arcade.resources.add_resource_handle("maps", "res/maps")
-        arcade.resources.add_resource_handle("characters", "res/characters")
-        arcade.resources.add_resource_handle("sounds", "res/sounds")
-        arcade.resources.add_resource_handle("textures", "res/textures")
+        cwd = os.getcwd() + "/"
+
+        arcade.resources.add_resource_handle("maps", cwd + "res/maps")
+        arcade.resources.add_resource_handle("characters", cwd + "res/characters")
+        arcade.resources.add_resource_handle("sounds", cwd + "res/sounds")
+        arcade.resources.add_resource_handle("textures", cwd + "res/textures")
 
 
 def main():
@@ -49,4 +52,5 @@ if __name__ == "__main__":
     main()
 
 # Bilden mit folgendem Kommando
-#   pyinstaller main.py --add-data "res;res"
+#   WINDOWS: pyinstaller main.py --add-data "res;res --windowed"
+#   MAC:     pyinstaller main.py --add-data "res:res --windowed"
