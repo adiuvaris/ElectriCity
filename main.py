@@ -21,12 +21,10 @@ class MainWindow(arcade.Window):
 
         # Pfade zu einzelnen Ressourcen definieren, damit im Programm
         # leichter darauf zugegriffen werden kann.
-        cwd = os.getcwd() + "/"
-
-        arcade.resources.add_resource_handle("maps", cwd + "res/maps")
-        arcade.resources.add_resource_handle("characters", cwd + "res/characters")
-        arcade.resources.add_resource_handle("sounds", cwd + "res/sounds")
-        arcade.resources.add_resource_handle("textures", cwd + "res/textures")
+        arcade.resources.add_resource_handle("maps", "res/maps")
+        arcade.resources.add_resource_handle("characters", "res/characters")
+        arcade.resources.add_resource_handle("sounds", "res/sounds")
+        arcade.resources.add_resource_handle("textures", "res/textures")
 
 
 def main():

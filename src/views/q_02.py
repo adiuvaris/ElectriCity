@@ -53,7 +53,6 @@ class Q_02(arcade.View):
 
         v_box.add(border)
 
-
         # Widget, das als Anker für die Buttons dient, damit diese zentriert angezeigt werden.
         self.manager.add(
             arcade.gui.UIAnchorWidget(
@@ -107,7 +106,9 @@ class Q_02(arcade.View):
             self.window.show_view(self.window.views["game"])
 
         if key == arcade.key.ENTER:
-            if self.input_text.text == "45":
+            eingabe = self.input_text.text.strip()
+
+            if eingabe == "45":
                 self.show_message_box("Das ist richtig.")
 
             else:
