@@ -6,6 +6,9 @@ from pyglet.math import Vec2
 import src.const as const
 from src.sprites.player import Player
 
+from src.views.v_01 import V_01
+from src.views.v_02 import V_02
+
 
 class Game(arcade.View):
     """
@@ -339,8 +342,18 @@ class Game(arcade.View):
                     self.player_sprite.center_x = views_hit[0].center_x - const.SPRITE_SIZE - const.SPRITE_SIZE / 2
 
                 # Neue view anzeigen
-                self.window.views["view"].setup(view_name)
-                self.window.show_view(self.window.views["view"])
+                if view_name == "info_01":
+                    v = V_01()
+                    v.setup()
+                    self.window.show_view(v)
+
+                if view_name == "info_02":
+                    v = V_02()
+                    v.setup()
+                    self.window.show_view(v)
+
+            #self.window.views["view"].setup(view_name)
+                #self.window.show_view(self.window.views["view"])
 
             else:
 

@@ -2,6 +2,7 @@
 import arcade
 import arcade.gui
 import json
+from src.views.v_01 import V_01
 
 from arcade import load_texture
 
@@ -46,7 +47,6 @@ class View(arcade.View):
 
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
-        self.v_box = None
 
     def setup(self, view_name):
         """
@@ -54,34 +54,11 @@ class View(arcade.View):
         Es werden die Daten für view_name angezeigt.
         """
 
-        # Vertikales Layout für die Schalter erstellen
-        self.v_box = arcade.gui.UIBoxLayout()
+        if view_name == "info_01":
+            v = V_01()
+            v.setup()
 
-        ui_text_label = arcade.gui.UITextArea(text=LOREM_IPSUM,
-                                              width=500,
-                                              height=300,
-                                              text_color=[0, 0, 0],
-                                              font_size=12,
-                                              font_name="Arial")
-
-        bg_tex = load_texture(":textures:grey_panel.png")
-
-        w = self.manager.add(
-            arcade.gui.UITexturePane(
-                ui_text_label.with_space_around(left=10, right=10),
-                tex=bg_tex,
-                padding=(10, 10, 10, 10)
-            )
-        )
-
-        self.v_box.add(w.with_space_around(bottom=0))
-
-        # Widget, das als Anker für die Buttons dient, damit diese zentriert angezeigt werden.
-        self.manager.add(
-            arcade.gui.UIAnchorWidget(
-                anchor_x="center_x", anchor_y="center_y", child=self.v_box
-            )
-        )
+            self.window.show_view(v)
 
     def on_show_view(self):
         """
@@ -118,3 +95,8 @@ class View(arcade.View):
         # Escape geht zurück zum Spiel
         if key == arcade.key.ESCAPE:
             self.window.show_view(self.window.views["game"])
+
+    def show_info_01(self):
+
+        self.setup()
+        pass
