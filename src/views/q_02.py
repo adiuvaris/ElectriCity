@@ -106,9 +106,11 @@ class Q_02(arcade.View):
             self.window.show_view(self.window.views["game"])
 
         if key == arcade.key.ENTER:
-            eingabe = self.input_text.text.strip()
 
-            if eingabe == "45":
+            # Eingabe in Zahl umwandeln
+            eingabe = float(self.input_text.text.strip())
+
+            if eingabe == 45.0:
                 self.show_message_box("Das ist richtig.")
 
             else:
