@@ -12,7 +12,7 @@ class Player(Character):
         """
         Konstruktor.
 
-        :param sheet_name: Dateiname mit den Texturen für das Sprite
+        :param sheet_name: Dateiname mit den Texturen für die Sprite
         """
 
         super().__init__(sheet_name)
@@ -37,7 +37,7 @@ class Player(Character):
             self.sound_update = 0
             return
 
-        # Ton abspielen nach drei Aufrufen der Funktion
+        # Töne abspielen nach drei Aufrufen der Funktion
         if self.should_update > 3:
             self.sound_update += 1
 

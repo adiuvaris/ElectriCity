@@ -83,7 +83,7 @@ class Game(arcade.View):
 
     def setup_physics(self):
         """
-        Physik der View initialieren
+        Physik der View initialisieren
         """
 
         # Einfache Physik mit der wall_list als blockierende Elemente
@@ -92,7 +92,7 @@ class Game(arcade.View):
     def setup(self):
         """
         View initialisieren.
-        Das Player Sprite anlegen und positionieren sowie die aktuelle Map anzeigen
+        Player Sprite anlegen und positionieren sowie die aktuelle Map anzeigen
         """
 
         # Player erzeugen
@@ -116,7 +116,6 @@ class Game(arcade.View):
 
         # Scrolling Camera
         self.camera_sprites.use()
-        map_layers = cur_map.map_layers
 
         # Szene zeichen
         cur_map.scene.draw()
@@ -133,7 +132,7 @@ class Game(arcade.View):
     def scroll_to_player(self, speed=const.CAMERA_SPEED):
         """
         Ansicht der Map mit dem Player abgleichen.
-        Damit wird erreicht, dass das Player Sprite immer im Bereich des Fensters bleibt,
+        Damit wird erreicht, dass Player Sprite immer im Bereich des Fensters bleibt,
         wenn es bewegt wird.
         Das meiste macht arcade. Wir müssen nur einen Vektor vom Player Sprite
         zum Zentrum des Fensters übergeben.
@@ -160,7 +159,7 @@ class Game(arcade.View):
     def on_update(self, delta_time):
         """
         Wird von arcade aufgerufen, damit wir auf Veränderungen in der View
-        reagieren können. Das Player Sprite bewegen und auf Kollisionen mit Türen
+        reagieren können. Player Sprite bewegen und auf Kollisionen mit Türen
         reagieren.
 
         :param delta_time: vergangene Zeit seit letztem Aufruf
@@ -276,7 +275,7 @@ class Game(arcade.View):
             # Ja - es gibt eine Kollision
             if len(doors_hit) > 0:
 
-                # Nötig Infos holen, damit die neue Map angezeigt werden kann
+                # Nötige Infos holen, damit die neue Map angezeigt werden kann
                 map_name = doors_hit[0].properties["next_map"]
                 start_x = doors_hit[0].properties["start_x"]
                 start_y = doors_hit[0].properties["start_y"]
@@ -285,8 +284,8 @@ class Game(arcade.View):
                 self.switch_map(map_name, start_x, start_y)
             else:
 
-                # Keine Türe getroffen, also normal scrollen, damit das Player Sprite
-                # etwa in der Mitte des Fenster bleibt.
+                # Keine Türe getroffen, also normal scrollen, damit Player Sprite
+                # etwa in der Mitte des Fensters bleibt.
                 self.scroll_to_player()
         else:
 
@@ -336,19 +335,15 @@ class Game(arcade.View):
                     v.setup()
                     self.window.show_view(v)
 
-            #self.window.views["view"].setup(view_name)
-                #self.window.show_view(self.window.views["view"])
-
             else:
 
-                # Keine Türe getroffen, also normal scrollen, damit das Player Sprite
-                # etwa in der Mitte des Fenster bleibt.
+                # Keine Türe getroffen, also normal scrollen, damit Player Sprite
+                # etwa in der Mitte des Fensters bleibt.
                 self.scroll_to_player()
         else:
 
             # Keine Türe, also normal scrollen
             self.scroll_to_player()
-
 
     def on_key_press(self, key, modifiers):
         """
@@ -370,7 +365,7 @@ class Game(arcade.View):
             self.right_pressed = True
         elif key == arcade.key.ESCAPE:
 
-            # Die Escape Taste startet das Hauptmenü
+            # Die Escape-Taste startet das Hauptmenü
             self.window.show_view(self.window.views["menu"])
 
     def on_key_release(self, key, modifiers):
@@ -397,11 +392,10 @@ class Game(arcade.View):
         """
         Wird von arcade aufgerufen, wenn die Fenstergrösse ändert.
 
-        :param width: Neue Breite
-        :param height: Neue Höhe
+        :param width: neue Breite
+        :param height: neue Höhe
         """
 
         # Die Grössenänderung an die "Kamera" weitergeben
         self.camera_sprites.resize(width, height)
         self.camera_gui.resize(width, height)
-        cur_map = self.map_list[self.cur_map_name]

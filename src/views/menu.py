@@ -2,6 +2,7 @@
 import arcade
 import arcade.gui
 
+
 class Menu(arcade.View):
     """
     Klasse für die View mit dem Menü
@@ -81,7 +82,7 @@ class Menu(arcade.View):
 
     def on_click_resume(self, event):
         """
-        Klick handler wenn "Zurück zum Spiel" angeklickt wurde
+        Klick-handler, wenn "Zurück zum Spiel" angeklickt wurde
         :param event:
         """
 
@@ -89,7 +90,7 @@ class Menu(arcade.View):
 
     def on_click_settings(self, event):
         """
-        Klick handler wenn "Einstellungen" angeklickt wurde
+        Klick-handler, wenn "Einstellungen" angeklickt wurde
         :param event:
         """
 
@@ -97,7 +98,7 @@ class Menu(arcade.View):
 
     def on_click_new_game(self, event):
         """
-        Klick handler wenn "Neues Spiel" angeklickt wurde
+        Klick-handler, wenn "Neues Spiel" angeklickt wurde
         :param event:
         """
 

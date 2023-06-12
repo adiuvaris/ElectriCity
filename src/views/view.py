@@ -1,10 +1,7 @@
 
 import arcade
 import arcade.gui
-import json
 from src.views.v_01 import V_01
-
-from arcade import load_texture
 
 LOREM_IPSUM = (
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget pellentesque velit. "
@@ -98,5 +95,5 @@ class View(arcade.View):
 
     def show_info_01(self):
 
-        self.setup()
+        self.setup("")
         pass

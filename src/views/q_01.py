@@ -3,7 +3,7 @@ import arcade
 import arcade.gui
 from arcade import load_texture
 
-INFO_TEXT = ("Was ist Strom?\n")
+INFO_TEXT = "Was ist Strom?\n"
 
 
 class Q_01(arcade.View):
@@ -131,4 +131,3 @@ class Q_01(arcade.View):
 
     def on_message_box_close(self, button_text):
         self.window.show_view(self.window.views["game"])
-

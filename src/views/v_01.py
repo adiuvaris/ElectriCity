@@ -115,4 +115,3 @@ class V_01(arcade.View):
         v = Q_01()
         v.setup()
         self.window.show_view(v)
-

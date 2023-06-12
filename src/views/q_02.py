@@ -129,4 +129,3 @@ class Q_02(arcade.View):
 
     def on_message_box_close(self, button_text):
         self.window.show_view(self.window.views["game"])
-

@@ -1,5 +1,4 @@
 
-import os
 import arcade
 import src.const as const
 from src.views.loading import Loading
