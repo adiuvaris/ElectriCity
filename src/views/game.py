@@ -1,7 +1,6 @@
 
 import arcade
 import arcade.gui
-from arcade.experimental.lights import Light
 from pyglet.math import Vec2
 import src.const as const
 from src.sprites.player import Player
@@ -48,18 +47,11 @@ class Game(arcade.View):
 
         # Aktuelle Map
         self.cur_map_name = None
+        self.my_map = None
 
         # Cameras
         self.camera_sprites = arcade.Camera(self.window.width, self.window.height)
         self.camera_gui = arcade.Camera(self.window.width, self.window.height)
-
-        # Licht initialisieren
-        x = 100
-        y = 200
-        radius = 150
-        mode = "soft"
-        color = arcade.csscolor.WHITE
-        self.player_light = Light(x, y, radius, color, mode)
 
     def switch_map(self, map_name, start_x, start_y):
         """
@@ -86,10 +78,8 @@ class Game(arcade.View):
         self.player_sprite_list = arcade.SpriteList()
         self.player_sprite_list.append(self.player_sprite)
 
-        # Physik und Licht in der View initialisieren
+        # Physik in der View initialisieren
         self.setup_physics()
-        if self.my_map.light_layer:
-            self.my_map.light_layer.resize(self.window.width, self.window.height)
 
     def setup_physics(self):
         """
@@ -122,22 +112,17 @@ class Game(arcade.View):
         arcade.start_render()
         cur_map = self.map_list[self.cur_map_name]
 
-        # Alles "belichten"
-        with cur_map.light_layer:
-            arcade.set_background_color(cur_map.background_color)
+        arcade.set_background_color(cur_map.background_color)
 
-            # Scrolling Camera
-            self.camera_sprites.use()
-            map_layers = cur_map.map_layers
+        # Scrolling Camera
+        self.camera_sprites.use()
+        map_layers = cur_map.map_layers
 
-            # Szene zeichen
-            cur_map.scene.draw()
+        # Szene zeichen
+        cur_map.scene.draw()
 
-            # Player zeichnen
-            self.player_sprite_list.draw()
-
-        if cur_map.light_layer:
-            cur_map.light_layer.draw(ambient_color=arcade.color.WHITE)
+        # Player zeichnen
+        self.player_sprite_list.draw()
 
         # Kameraposition anpassen
         self.camera_gui.use()
@@ -276,7 +261,6 @@ class Game(arcade.View):
 
         # Player animation
         self.player_sprite_list.on_update(delta_time)
-        self.player_light.position = self.player_sprite.position
 
         # Kollisionen mit Türen prüfen
         map_layers = self.map_list[self.cur_map_name].map_layers
@@ -421,6 +405,3 @@ class Game(arcade.View):
         self.camera_sprites.resize(width, height)
         self.camera_gui.resize(width, height)
         cur_map = self.map_list[self.cur_map_name]
-
-        if cur_map.light_layer:
-            cur_map.light_layer.resize(width, height)

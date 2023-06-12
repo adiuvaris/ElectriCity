@@ -3,7 +3,6 @@ import os
 import arcade
 from collections import OrderedDict
 from os.path import isfile, join
-from arcade.experimental.lights import Light, LightLayer
 import src.const as const
 
 
@@ -15,7 +14,6 @@ class GameMap:
     name = None
     scene = None
     map_layers = None
-    light_layer = None
     map_size = None
     properties = None
     background_color = arcade.color.AMAZON
@@ -43,16 +41,6 @@ def load_map(map_name):
     # Map einlesen und Szene erzeugen
     my_map = arcade.tilemap.load_tilemap(map_name, scaling=const.TILE_SCALING, layer_options=layer_options)
     game_map.scene = arcade.Scene.from_tilemap(my_map)
-
-    # Licht init
-    game_map.light_layer = LightLayer(100, 100)
-    x = 0
-    y = 0
-    radius = 1
-    mode = "soft"
-    color = arcade.csscolor.WHITE
-    dummy_light = Light(x, y, radius, color, mode)
-    game_map.light_layer.add(dummy_light)
 
     # Spritelisten aus der Map übernehmen
     game_map.map_layers = my_map.sprite_lists
