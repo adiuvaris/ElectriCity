@@ -96,9 +96,14 @@
                  "name":"",
                  "properties":[
                         {
-                         "name":"view",
+                         "name":"book",
                          "type":"string",
-                         "value":"info_01"
+                         "value":"01"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"01"
                         }],
                  "rotation":0,
                  "type":"",
@@ -114,9 +119,14 @@
                  "name":"",
                  "properties":[
                         {
-                         "name":"view",
+                         "name":"book",
                          "type":"string",
-                         "value":"info_02"
+                         "value":"02"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"01"
                         }],
                  "rotation":0,
                  "type":"",

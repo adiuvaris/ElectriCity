@@ -1,0 +1,12 @@
+{
+  "Titel" : "Strom 2",
+  "Text" : [
+    "In der Garage steht ein 12V-Akku. Er wird 9,0h lang mit der Ladestromstärke von 5.0A geladen.",
+    "",
+    "Welche Ladung (in Ah) hat der Akku beim Ladevorgang aufgenommen?",
+    "",
+    "Gib dein Resultat in das Eingabefeld ein (nur die Zahl)."
+  ],
+  "Typ" : "Zahl",
+  "Richtig" : 45.0
+}

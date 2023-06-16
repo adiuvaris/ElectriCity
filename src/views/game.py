@@ -5,8 +5,7 @@ from pyglet.math import Vec2
 import src.const as const
 from src.sprites.player import Player
 
-from src.views.v_01 import V_01
-from src.views.v_02 import V_02
+from src.views.theory import Theory
 
 
 class Game(arcade.View):
@@ -304,7 +303,8 @@ class Game(arcade.View):
             if len(views_hit) > 0:
 
                 # Detail holen, damit die View angezeigt werden kann
-                view_name = views_hit[0].properties["view"]
+                room = views_hit[0].properties["room"]
+                book = views_hit[0].properties["book"]
 
                 # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der Info-View
                 # nicht gleich wieder ein Hit erfolgt
@@ -325,15 +325,9 @@ class Game(arcade.View):
                     self.player_sprite.center_x = views_hit[0].center_x - const.SPRITE_SIZE - const.SPRITE_SIZE / 2
 
                 # Neue view anzeigen
-                if view_name == "info_01":
-                    v = V_01()
-                    v.setup()
-                    self.window.show_view(v)
-
-                if view_name == "info_02":
-                    v = V_02()
-                    v.setup()
-                    self.window.show_view(v)
+                v = Theory(room, book)
+                v.setup()
+                self.window.show_view(v)
 
             else:
 

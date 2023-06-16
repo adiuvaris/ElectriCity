@@ -54,7 +54,7 @@ def load_map(map_name):
     # Einstellungen der Map übernehmen
     game_map.properties = my_map.properties
 
-    # Layer mit Name 'blocking' als Mauer betrachten, welche das Player-Sprite nicht passieren kann.
+    # Layer mit Name 'blocking' als Mauer betrachten, welche Player-Sprite nicht passieren kann.
     game_map.scene.add_sprite_list("wall_list", use_spatial_hash=True)
     for layer, sprite_list in game_map.map_layers.items():
         if "blocking" in layer:
