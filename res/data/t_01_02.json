@@ -1,6 +1,6 @@
 {
   "Titel" : "Strom 2",
-  "Text" : [
+  "Theorie" : [
     "Super die Basics zum Strom kennst du nun schon, aber das ist lange noch nicht alles!",
     "",
     "Eine sehr wichtige Grösse, wenn man sich mit Strom beschäftigt, ist die Stromstärke I. Sie kann an einer bestimmten Stelle in z.B. Kabeln gemessen werden.",
@@ -9,10 +9,15 @@
     "",
     "Stromstärke = Ladung / Zeit",
     "",
-    "I = Q / t"
+    "I = Q / t",
+    "",
+    "Siehe auch Bild 1"
   ],
-  "Bilder" : {
-    "Bild 1" : ["Dateiname.png", "Titel für Bild", "Beschreibung von Bild"],
-    "Bild 2" : ["", "", ""]
-  }
+  "Bilder" : [
+      {
+        "Datei" :  "formel_01.png",
+        "Titel" : "Formel Stromstärke",
+        "Beschreibung" : "Das Bild zeigt die Formel für die Stromstärke"
+      }
+  ]
 }

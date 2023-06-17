@@ -1,7 +1,7 @@
 {
   "Titel" : "Strom 2",
-  "Text" : [
-    "In der Garage steht ein 12V-Akku. Er wird 9,0h lang mit der Ladestromstärke von 5.0A geladen.",
+  "Aufgabe" : [
+    "In der Garage steht ein 12V-Akku. Er wird 9.0 Stunden lang mit der Ladestromstärke von 5.0 Ampere geladen.",
     "",
     "Welche Ladung (in Ah) hat der Akku beim Ladevorgang aufgenommen?",
     "",

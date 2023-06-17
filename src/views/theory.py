@@ -2,8 +2,13 @@ import arcade
 import arcade.gui
 import json
 
-import src.const as const
 from src.views.question import Question
+
+from src.ui.labels import create_title_label
+from src.ui.texts import create_theory_text
+from src.ui.buttons import create_back_button
+from src.ui.buttons import create_next_button
+from src.ui.buttons import create_image_button
 
 
 class Theory(arcade.View):
@@ -30,51 +35,35 @@ class Theory(arcade.View):
         Es wird die Theorie für den Raum und das Buch angezeigt.
         """
 
+        # Alle UI Elemente löschen
         self.manager.clear()
 
-        fx = self.window.width / const.SCREEN_WIDTH
-        fy = self.window.height / const.SCREEN_HEIGHT
-
+        # JSON-File für Theorie einlesen
         with open(f"res/data/t_{self.room}_{self.book}.json", "r", encoding="'utf-8") as ifile:
-            d = json.load(ifile)
-            titel = d["Titel"]
-            text = "\n".join(d["Text"])
+            data = json.load(ifile)
 
-            x = 30 * fx
-            y = 740 * fy
-            w = 1140 * fx
-            h = 30 * fy
-            fs = 20 * fy
-            ui_titel_label = arcade.gui.UILabel(x=x,
-                                                y=y,
-                                                width=w,
-                                                height=h,
-                                                text=titel,
-                                                text_color=[0, 0, 0],
-                                                bold=True,
-                                                align="center",
-                                                font_size=fs,
-                                                multiline=False)
+            # Titel-Element erzeugen
+            if "Titel" in data:
+                title_label = create_title_label(data["Titel"])
+                self.manager.add(title_label)
 
-            self.manager.add(
-                ui_titel_label.with_space_around(top=5, left=5, bottom=5, right=5, bg_color=[220, 220, 220]))
+            # Theorie-Text Element erzeugen
+            if "Theorie" in data:
+                text = "\n".join(data["Theorie"])
+                theory_text = create_theory_text(text)
+                self.manager.add(theory_text)
 
-            x = 30 * fx
-            y = 110 * fy
-            w = 1140 * fx
-            h = 580 * fy
-            fs = 14 * fy
-            ui_text_label = arcade.gui.UITextArea(x=x,
-                                                  y=y,
-                                                  width=w,
-                                                  height=h,
-                                                  text=text,
-                                                  text_color=[0, 0, 0],
-                                                  font_size=fs,
-                                                  multiline=True)
+            if "Bilder" in data:
+                bilder = data["Bilder"]
+                for i, bild in enumerate(bilder):
+                    bild_button = create_image_button(i, self.on_click_bild)
+                    self.manager.add(bild_button)
 
-            self.manager.add(
-                ui_text_label.with_space_around(top=5, left=5, bottom=5, right=5, bg_color=[240, 240, 240]))
+            back_button = create_back_button("Zurück", self.on_click_back)
+            self.manager.add(back_button)
+
+            next_button = create_next_button("Weiter", self.on_click_next)
+            self.manager.add(next_button)
 
     def on_show_view(self):
         """
@@ -83,6 +72,8 @@ class Theory(arcade.View):
 
         self.manager.enable()
         arcade.set_background_color(arcade.color.ALMOND)
+
+        arcade.set_viewport(0, self.window.width, 0, self.window.height)
 
     def on_hide_view(self):
         """
@@ -112,7 +103,17 @@ class Theory(arcade.View):
         if key == arcade.key.ESCAPE:
             self.window.show_view(self.window.views["game"])
 
-    def on_click_quiz(self, event):
+    def on_click_bild(self, event):
+        if event.source is arcade.gui.UIFlatButton:
+            if event.source.text == "Bild 1":
+                pass
+            elif event.source.text == "Bild 2":
+                pass
+
+    def on_click_back(self, event):
+        self.window.show_view(self.window.views["game"])
+
+    def on_click_next(self, event):
         """
         Weiter
         :param event:

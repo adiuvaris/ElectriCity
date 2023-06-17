@@ -1,6 +1,6 @@
 {
   "Titel" : "Strom",
-  "Text" : [
+  "Theorie" : [
     "Hallo, der Laptop, mit dem du gerade dieses Spiel spielst, wird mit Strom betrieben, das ist quasi seine Lebensenergie. Aber was ist Strom?",
     "",
     "Wenn wir also unseren Laptop an die Steckdose hängen, dann fliessen Elektronen von der Ladestation in den Laptop, ins Handy usw.",
@@ -9,8 +9,16 @@
     "",
     "Siehe auch Bild 1 und Bild 2"
   ],
-  "Bilder" : {
-    "Bild 1" : ["Dateiname.png", "Titel für Bild", "Beschreibung von Bild"],
-    "Bild 2" : ["", "", ""]
-  }
+  "Bilder" : [
+      {
+        "Datei" :  "bild_01.png",
+        "Titel" : "Ladendes Handy",
+        "Beschreibung" : "Das Bild zeigt ein Handy am Netz"
+      },
+      {
+        "Datei" :  "bild_02.png",
+        "Titel" : "",
+        "Beschreibung" : ""
+      }
+  ]
 }
