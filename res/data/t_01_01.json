@@ -3,7 +3,7 @@
   "Theorie" : [
     "Hallo, der Laptop, mit dem du gerade dieses Spiel spielst, wird mit Strom betrieben, das ist quasi seine Lebensenergie. Aber was ist Strom?",
     "",
-    "Wenn wir also unseren Laptop an die Steckdose hängen, dann fliessen Elektronen von der Ladestation in den Laptop, ins Handy usw.",
+    "Wenn wir unseren Laptop an die Steckdose hängen, dann fliessen Elektronen von der Ladestation in den Laptop.",
     "",
     "Dabei ist ganz wichtig: Wir sprechen von den frei beweglichen Elektronen und nicht von denjenigen, die fest in der Atomhülle eingebaut sind. Sonst würden sich Kabel und Leiter, durch die Strom fliessen, mit der Zeit auflösen, weil ihre Elektronen aus den Hüllen weg wandern!",
     "",
@@ -12,8 +12,8 @@
   "Bilder" : [
       {
         "Datei" :  "bild_01.png",
-        "Titel" : "Ladendes Handy",
-        "Beschreibung" : "Das Bild zeigt ein Handy am Netz"
+        "Titel" : "Ladender Laptop",
+        "Beschreibung" : "Das Bild zeigt einen Laptop am Stromnetz"
       },
       {
         "Datei" :  "bild_02.png",

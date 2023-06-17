@@ -3,6 +3,7 @@ import arcade.gui
 import json
 
 from src.views.question import Question
+from src.views.image import Image
 
 from src.ui.labels import create_title_label
 from src.ui.texts import create_theory_text
@@ -25,6 +26,7 @@ class Theory(arcade.View):
 
         self.room = room
         self.book = book
+        self.data = None
 
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
@@ -40,21 +42,21 @@ class Theory(arcade.View):
 
         # JSON-File für Theorie einlesen
         with open(f"res/data/t_{self.room}_{self.book}.json", "r", encoding="'utf-8") as ifile:
-            data = json.load(ifile)
+            self.data = json.load(ifile)
 
             # Titel-Element erzeugen
-            if "Titel" in data:
-                title_label = create_title_label(data["Titel"])
+            if "Titel" in self.data:
+                title_label = create_title_label(self.data["Titel"])
                 self.manager.add(title_label)
 
             # Theorie-Text Element erzeugen
-            if "Theorie" in data:
-                text = "\n".join(data["Theorie"])
+            if "Theorie" in self.data:
+                text = "\n".join(self.data["Theorie"])
                 theory_text = create_theory_text(text)
                 self.manager.add(theory_text)
 
-            if "Bilder" in data:
-                bilder = data["Bilder"]
+            if "Bilder" in self.data:
+                bilder = self.data["Bilder"]
                 for i, bild in enumerate(bilder):
                     bild_button = create_image_button(i, self.on_click_bild)
                     self.manager.add(bild_button)
@@ -104,11 +106,15 @@ class Theory(arcade.View):
             self.window.show_view(self.window.views["game"])
 
     def on_click_bild(self, event):
-        if event.source is arcade.gui.UIFlatButton:
-            if event.source.text == "Bild 1":
-                pass
-            elif event.source.text == "Bild 2":
-                pass
+        if event.source.text == "Bild 1":
+            v = Image(self.data["Bilder"][0], self)
+            v.setup()
+            self.window.show_view(v)
+
+        elif event.source.text == "Bild 2":
+            v = Image(self.data["Bilder"][1], self)
+            v.setup()
+            self.window.show_view(v)
 
     def on_click_back(self, event):
         self.window.show_view(self.window.views["game"])
