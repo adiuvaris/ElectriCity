@@ -133,7 +133,7 @@ class Loading(arcade.View):
 
             if self.done:
                 eingabe = self.input_text.text.strip()
-                if len(eingabe) > 0:
+                if len(eingabe)>0:
                     dateiname = (f"res/data/{eingabe}.json")
                     player=self.window.views["game"].player_sprite
                     if os.path.exists(dateiname):
