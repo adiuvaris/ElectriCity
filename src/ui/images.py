@@ -5,13 +5,10 @@ import src.const as const
 
 
 def create_image_sprite(datei):
-    fx = arcade.get_window().width / const.SCREEN_WIDTH
-    fy = arcade.get_window().height / const.SCREEN_HEIGHT
-
-    x = 30 * fx
-    y = 220 * fy
-    w = 1140 * fx
-    h = 580 * fy
+    x = 30
+    y = 220
+    w = 1140
+    h = 580
 
     bs = arcade.Sprite(filename=f"res/data/{datei}")
 

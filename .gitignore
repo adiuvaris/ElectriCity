@@ -79,3 +79,6 @@ venv.bak/
 *.wpu
 /.vscode/
 .idea/
+
+# Game data
+*.player

@@ -19,5 +19,14 @@
         "Titel" : "Formel Stromstärke",
         "Beschreibung" : "Das Bild zeigt die Formel für die Stromstärke"
       }
-  ]
+  ],
+  "Aufgabe" : [
+    "In der Garage steht ein 12V-Akku. Er wird 9.0 Stunden lang mit der Ladestromstärke von 5.0 Ampere geladen.",
+    "",
+    "Welche Ladung (in Ah) hat der Akku beim Ladevorgang aufgenommen?",
+    "",
+    "Gib dein Resultat in das Eingabefeld ein (nur die Zahl)."
+  ],
+  "Typ" : "Zahl",
+  "Richtig" : 45.0
 }

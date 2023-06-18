@@ -4,55 +4,41 @@ import arcade.gui
 import src.const as const
 
 
-def create_back_button(label, callback):
-    fx = arcade.get_window().width / const.SCREEN_WIDTH
-    fy = arcade.get_window().height / const.SCREEN_HEIGHT
+def create_image_button(number, label, callback):
+    x = 30
+    y = 110
 
-    x = 30 * fx
-    y = 30 * fy
-    w = 200 * fx
-    h = 50 * fy
+    if number == 1:
+        x = 500
+    elif number == 2:
+        y = 30
+    elif number == 3:
+        x = 500
+        y = 30
 
-    back_button = arcade.gui.UIFlatButton(x=x, y=y, width=w, height=h, text=label)
-    back_button.on_click = callback
+    w = 430
+    h = 50
 
-    return back_button
+    image_button = arcade.gui.UIFlatButton(x=x, y=y, width=w, height=h, text=label)
+    image_button.on_click = callback
 
-
-def create_next_button(label, callback):
-    fx = arcade.get_window().width / const.SCREEN_WIDTH
-    fy = arcade.get_window().height / const.SCREEN_HEIGHT
-
-    x = 970 * fx
-    y = 30 * fy
-    w = 200 * fx
-    h = 50 * fy
-
-    next_button = arcade.gui.UIFlatButton(x=x, y=y, width=w, height=h, text=label)
-    next_button.on_click = callback
-
-    return next_button
+    return image_button
 
 
 def create_answer_button(number, label, callback):
-    fx = arcade.get_window().width / const.SCREEN_WIDTH
-    fy = arcade.get_window().height / const.SCREEN_HEIGHT
+    x = 990
+    y = 110
 
-    x = 30 * fx
-    y = 110 * fy
-
-    if number == 2:
-        x = 500 * fx
-        y = 110 * fy
+    if number == 1:
+        x = 1460
+    elif number == 2:
+        y = 30
     elif number == 3:
-        x = 30 * fx
-        y = 30 * fy
-    elif number == 4:
-        x = 500 * fx
-        y = 30 * fy
+        x = 1460
+        y = 30
 
-    w = 450 * fx
-    h = 50 * fy
+    w = 430
+    h = 50
 
     answer_button = arcade.gui.UIFlatButton(x=x, y=y, width=w, height=h, text=label)
     answer_button.on_click = callback
@@ -60,28 +46,3 @@ def create_answer_button(number, label, callback):
     return answer_button
 
 
-def create_image_button(number, callback):
-    fx = arcade.get_window().width / const.SCREEN_WIDTH
-    fy = arcade.get_window().height / const.SCREEN_HEIGHT
-
-    x = 970 * fx
-    y = 640 * fy
-
-    if number == 1:
-        y = 570 * fy
-    elif number == 2:
-        y = 500 * fy
-    elif number == 3:
-        y = 430 * fy
-    elif number == 4:
-        y = 360 * fy
-
-    w = 200 * fx
-    h = 50 * fy
-
-    label = f"Bild {number+1}"
-
-    image_button = arcade.gui.UIFlatButton(x=x, y=y, width=w, height=h, text=label)
-    image_button.on_click = callback
-
-    return image_button

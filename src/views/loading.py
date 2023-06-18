@@ -40,7 +40,7 @@ class Loading(arcade.View):
 
         self.manager.add(label)
 
-        self.input_text = arcade.gui.UIInputText(x=400, y=500, width=200, height=50, font_size=24, text="")
+        self.input_text = arcade.gui.UIInputText(x=800, y=500, width=200, height=50, font_size=24, text="")
         self.manager.add(self.input_text)
 
     def on_draw(self):
@@ -69,6 +69,12 @@ class Loading(arcade.View):
 
         self.manager.enable()
         arcade.set_background_color(arcade.color.ALMOND)
+
+        # Eingabefeld aktivieren - so tun, als ob in das Feld geklickt wurde
+        if self.input_text is not None:
+            event = arcade.gui.UIMousePressEvent(
+                x=self.input_text.x + 1, y=self.input_text.y + 1, button=0, modifiers=0, source=self)
+            self.input_text.on_event(event)
 
         arcade.set_viewport(0, self.window.width, 0, self.window.height)
 
@@ -102,8 +108,6 @@ class Loading(arcade.View):
                 self.window.views["settings"] = Settings()
                 self.window.views["settings"].setup()
 
-
-
     def draw_bar(self):
         """
         Zeichnet den Fortschrittsbalken. Es wird ein schwarzer Balken gezeichnet, der den Progress-Wert
@@ -133,14 +137,15 @@ class Loading(arcade.View):
 
             if self.done:
                 eingabe = self.input_text.text.strip()
-                if len(eingabe)>0:
-                    dateiname = (f"res/data/{eingabe}.json")
-                    player=self.window.views["game"].player_sprite
+                if len(eingabe) > 0:
+                    dateiname = f"res/data/{eingabe}.json"
+                    player = self.window.views["game"].player_sprite
                     if os.path.exists(dateiname):
-                        with open(f"res/data/{eingabe}.json", "r") as ifile:
-                            player.data= json.load(ifile)
+                        with open(f"res/data/{eingabe}.player", "r") as ifile:
+                            player.data = json.load(ifile)
                     else:
-                        with open(f"res/data/{eingabe}.json", "w") as ofile:
-                            pass
+                        with open(f"res/data/{eingabe}.player", "w") as ofile:
+                            json.dump(player.data, ofile)
+
                     self.window.show_view(self.window.views["game"])
 

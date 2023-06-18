@@ -2,27 +2,32 @@ import arcade
 import arcade.gui
 import json
 
+from src.views.image import Image
+
 from src.ui.labels import create_title_label
+from src.ui.texts import create_theory_text
+from src.ui.buttons import create_image_button
 from src.ui.labels import create_answer_label
 from src.ui.texts import create_question_text
 from src.ui.buttons import create_answer_button
 from src.ui.inputs import create_answer_input
 
 
-class Question(arcade.View):
+class Book(arcade.View):
     """
     Klasse für die View mit Theorie oder Aufgabe
     """
 
-    def __init__(self, room, book):
+    def __init__(self, room_nr, book_nr):
         """
         Konstruktor
         """
 
         super().__init__()
 
-        self.room = room
-        self.book = book
+        self.room_nr = room_nr
+        self.book_nr = book_nr
+        self.data = None
 
         self.input_text: arcade.gui.UIInputText = arcade.gui.UIInputText()
 
@@ -32,45 +37,57 @@ class Question(arcade.View):
     def setup(self):
         """
         View initialisieren.
-        Es wird die Aufgabe für den Raum und das Buch angezeigt.
+        Es wird die Theorie für den Raum und das Buch angezeigt.
         """
 
         # Alle UI Elemente löschen
         self.manager.clear()
 
-        # JSON-File für Aufgabe einlesen
-        with open(f"res/data/q_{self.room}_{self.book}.json", "r", encoding="'utf-8") as ifile:
-            data = json.load(ifile)
+        # JSON-File für Theorie einlesen
+        with open(f"res/data/book_{self.room_nr}_{self.book_nr}.json", "r", encoding="'utf-8") as ifile:
+            self.data = json.load(ifile)
 
             # Titel-Element erzeugen
-            if "Titel" in data:
-                title_label = create_title_label(data["Titel"])
+            if "Titel" in self.data:
+                title_label = create_title_label(self.data["Titel"])
                 self.manager.add(title_label)
 
+            # Theorie-Text Element erzeugen
+            if "Theorie" in self.data:
+                text = "\n".join(self.data["Theorie"])
+                theory_text = create_theory_text(text)
+                self.manager.add(theory_text)
+
+            if "Bilder" in self.data:
+                bilder = self.data["Bilder"]
+                for i, bild in enumerate(bilder):
+                    bild_button = create_image_button(i, bild["Titel"], self.on_click_bild)
+                    self.manager.add(bild_button)
+
             # Aufgaben-Text Element erzeugen
-            if "Aufgabe" in data:
-                text = "\n".join(data["Aufgabe"])
+            if "Aufgabe" in self.data:
+                text = "\n".join(self.data["Aufgabe"])
                 question_text = create_question_text(text)
                 self.manager.add(question_text)
 
-            if "Typ" in data:
-                if data["Typ"] == "Multi":
-                    if "Antworten" in data:
-                        antworten = data["Antworten"]
+            if "Typ" in self.data:
+                if self.data["Typ"] == "Multi":
+                    if "Antworten" in self.data:
+                        antworten = self.data["Antworten"]
                         if "A" in antworten:
-                            antwort_button = create_answer_button(1, antworten["A"], self.on_click_a)
+                            antwort_button = create_answer_button(0, antworten["A"], self.on_click_a)
                             self.manager.add(antwort_button)
                         if "B" in antworten:
-                            antwort_button = create_answer_button(2, antworten["B"], self.on_click_b)
+                            antwort_button = create_answer_button(1, antworten["B"], self.on_click_b)
                             self.manager.add(antwort_button)
                         if "C" in antworten:
-                            antwort_button = create_answer_button(3, antworten["C"], self.on_click_c)
+                            antwort_button = create_answer_button(2, antworten["C"], self.on_click_c)
                             self.manager.add(antwort_button)
                         if "D" in antworten:
-                            antwort_button = create_answer_button(4, antworten["D"], self.on_click_d)
+                            antwort_button = create_answer_button(3, antworten["D"], self.on_click_d)
                             self.manager.add(antwort_button)
 
-                elif data["Typ"] == "Zahl":
+                elif self.data["Typ"] == "Zahl":
 
                     label = create_answer_label("Antwort:")
                     self.manager.add(label)
@@ -79,7 +96,7 @@ class Question(arcade.View):
                     answer_input = arcade.gui.UIBorder(self.input_text)
                     self.manager.add(answer_input)
 
-                elif data["Typ"] == "Text":
+                elif self.data["Typ"] == "Text":
                     pass
 
     def on_show_view(self):
@@ -89,13 +106,14 @@ class Question(arcade.View):
 
         self.manager.enable()
         arcade.set_background_color(arcade.color.ALMOND)
-        arcade.set_viewport(0, self.window.width, 0, self.window.height)
 
         # Eingabefeld aktivieren - so tun, als ob in das Feld geklickt wurde
         if self.input_text is not None:
             event = arcade.gui.UIMousePressEvent(
                 x=self.input_text.x + 1, y=self.input_text.y + 1, button=0, modifiers=0, source=self)
             self.input_text.on_event(event)
+
+        arcade.set_viewport(0, self.window.width, 0, self.window.height)
 
     def on_hide_view(self):
         """
@@ -135,6 +153,17 @@ class Question(arcade.View):
             else:
                 self.show_message_box("Das ist leider falsch.")
 
+    def on_click_bild(self, event):
+        if event.source.text == "Bild 1":
+            v = Image(self.data["Bilder"][0], self)
+            v.setup()
+            self.window.show_view(v)
+
+        elif event.source.text == "Bild 2":
+            v = Image(self.data["Bilder"][1], self)
+            v.setup()
+            self.window.show_view(v)
+
     def on_click_a(self, event):
         """
         Antwort A
@@ -162,15 +191,6 @@ class Question(arcade.View):
         :param event:
         """
         pass
-
-    def on_resize(self, width, height):
-        """
-        Wird von arcade aufgerufen, wenn die Fenstergrösse ändert.
-
-        :param width: neue Breite
-        :param height: neue Höhe
-        """
-        self.setup()
 
     def show_message_box(self, text):
         message_box = arcade.gui.UIMessageBox(

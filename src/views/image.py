@@ -2,7 +2,6 @@ import arcade
 import arcade.gui
 
 from src.ui.labels import create_title_label
-from src.ui.buttons import create_back_button
 from src.ui.images import create_image_sprite
 
 
@@ -43,9 +42,6 @@ class Image(arcade.View):
             image = create_image_sprite(self.bild["Datei"])
             self.manager.add(image)
 
-        back_button = create_back_button("Zurück", self.on_click_back)
-        self.manager.add(back_button)
-
     def on_show_view(self):
         """
         Wird von arcade aufgerufen, wenn die View sichtbar wird
@@ -82,16 +78,5 @@ class Image(arcade.View):
 
         # Escape geht zurück zum Spiel
         if key == arcade.key.ESCAPE:
-            self.window.show_view(self.window.views["game"])
+            self.window.show_view(self.view)
 
-    def on_click_back(self, event):
-        self.window.show_view(self.view)
-
-    def on_resize(self, width, height):
-        """
-        Wird von arcade aufgerufen, wenn die Fenstergrösse ändert.
-
-        :param width: neue Breite
-        :param height: neue Höhe
-        """
-        self.setup()

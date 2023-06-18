@@ -20,5 +20,16 @@
         "Titel" : "",
         "Beschreibung" : ""
       }
-  ]
+  ],
+  "Aufgabe" : [
+    "Was ist Strom?"
+  ],
+  "Typ" : "Multi",
+  "Antworten" : {
+    "A": "Bewegte Elektronen",
+    "B": "Bewegte Protonen",
+    "C": "Bewegte Neutronen",
+    "D": "Bewegte Atome"
+  },
+  "Richtig" : "A"
 }

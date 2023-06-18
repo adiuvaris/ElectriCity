@@ -5,14 +5,11 @@ import src.const as const
 
 
 def create_theory_text(text):
-    fx = arcade.get_window().width / const.SCREEN_WIDTH
-    fy = arcade.get_window().height / const.SCREEN_HEIGHT
-
-    x = 30 * fx
-    y = 110 * fy
-    w = 910 * fx
-    h = 580 * fy
-    fs = 14 * fy
+    x = 30
+    y = 190
+    w = 900
+    h = 780
+    fs = 16
     text = arcade.gui.UITextArea(x=x,
                                  y=y,
                                  width=w,
@@ -28,14 +25,11 @@ def create_theory_text(text):
 
 
 def create_question_text(text):
-    fx = arcade.get_window().width / const.SCREEN_WIDTH
-    fy = arcade.get_window().height / const.SCREEN_HEIGHT
-
-    x = 30 * fx
-    y = 190 * fy
-    w = 1140 * fx
-    h = 500 * fy
-    fs = 14 * fy
+    x = 990
+    y = 190
+    w = 900
+    h = 780
+    fs = 16
     text = arcade.gui.UITextArea(x=x,
                                  y=y,
                                  width=w,

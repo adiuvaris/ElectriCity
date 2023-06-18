@@ -5,14 +5,12 @@ import src.const as const
 
 
 def create_title_label(text):
-    fx = arcade.get_window().width / const.SCREEN_WIDTH
-    fy = arcade.get_window().height / const.SCREEN_HEIGHT
 
-    x = 30 * fx
-    y = 740 * fy
-    w = 1140 * fx
-    h = 30 * fy
-    fs = 20 * fy
+    x = 30
+    y = 1000
+    w = 1860
+    h = 30
+    fs = 24
 
     label = arcade.gui.UILabel(x=x,
                                y=y,
@@ -31,14 +29,11 @@ def create_title_label(text):
 
 
 def create_answer_label(text):
-    fx = arcade.get_window().width / const.SCREEN_WIDTH
-    fy = arcade.get_window().height / const.SCREEN_HEIGHT
-
-    x = 30 * fx
-    y = 110 * fy
-    w = 300 * fx
-    h = 30 * fy
-    fs = 20 * fy
+    x = 990
+    y = 110
+    w = 430
+    h = 50
+    fs = 24
 
     label = arcade.gui.UILabel(x=x,
                                y=y,
@@ -47,7 +42,7 @@ def create_answer_label(text):
                                text=text,
                                text_color=[0, 0, 0],
                                bold=True,
-                               align="left",
+                               align="right",
                                font_size=fs,
                                multiline=False)
 
