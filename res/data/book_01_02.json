@@ -1,17 +1,11 @@
 {
   "Titel" : "Strom 2",
   "Theorie" : [
-    "Super die Basics zum Strom kennst du nun schon, aber das ist lange noch nicht alles!",
+    "Dabei muss man im Kopf behalten: Wir sprechen von freibeweglichen Elektronen und nicht von denjenigen, die fest in der Atomhülle eingebaut sind, sonst würden sich Kabel und Leiter, durch die Strom fliessen, mit der Zeit auflösen, weil ihre Elektronen aus den Hüllen wegwandern.",
     "",
-    "Eine sehr wichtige Grösse, wenn man sich mit Strom beschäftigt, ist die Stromstärke I. Sie kann an einer bestimmten Stelle in z.B. Kabeln gemessen werden.",
+    "Nun da du weisst, was Strom ist, dass Elektronen negativ geladen sind und gegensätzliche Ladungen sich anziehen, solltest du die zweite Frage beantworten können.",
     "",
-    "Die mittlere, d.h. die durchschnittliche Stromstärke gibt das Verhältnis der dort vorbeifliessenden Ladungsmenge Q an, die Anzahl der Elektronen, und der Zeitspanne t, in der gemessen wurde. Daraus ergibt sich die Formel:",
-    "",
-    "Stromstärke = Ladung / Zeit",
-    "",
-    "I = Q / t",
-    "",
-    "Siehe auch Bild 1"
+    "Demnach haben Elektronen immer eine Richtung in die sie fliessen. Da das aber für Physiker*innen noch nicht reichte, wurde eine weitere Stromrichtung definiert, und zwar die technische Stromrichtung."
   ],
   "Bilder" : [
       {
@@ -20,13 +14,34 @@
         "Beschreibung" : "Das Bild zeigt die Formel für die Stromstärke"
       }
   ],
-  "Aufgabe" : [
-    "In der Garage steht ein 12V-Akku. Er wird 9.0 Stunden lang mit der Ladestromstärke von 5.0 Ampere geladen.",
-    "",
-    "Welche Ladung (in Ah) hat der Akku beim Ladevorgang aufgenommen?",
-    "",
-    "Gib dein Resultat in das Eingabefeld ein (nur die Zahl)."
+  Aufgabe" : [
+    "Was sind die besten Stromleiter?"
   ],
-  "Typ" : "Zahl",
-  "Richtig" : 45.0
+  "Typ" : "Multi",
+  "Antworten" : {
+    "A": "Salze mit fixen Ionengittern",
+    "B": "Kovalenzbindungen mit teilenden Elektronenpaare",
+    "C": "Metalle mit freien Elektronen"
+  },
+  "Richtig" : "C",
+
+  Aufgabe" : [
+    "In welche Richtung wandern freibewegliche Elektronen?"
+  ],
+  "Typ" : "Multi",
+  "Antworten" : {
+    "A": "Vom Plus- zum Minuspol",
+    "B": "Vom Minus- zum Pluspol"
+  },
+  "Richtig" : "B",
+
+  Aufgabe" : [
+    "In welche Richtung zeigt die technische Stromrichtung?"
+  ],
+  "Typ" : "Multi",
+  "Antworten" : {
+    "A": "Vom Plus- zum Minuspol",
+    "B": "Vom Minus- zum Pluspol"
+  },
+  "Richtig" : "A"
 }
