@@ -1,13 +1,9 @@
 {
   "Titel" : "Strom",
   "Theorie" : [
-    "Hallo, der Laptop, mit dem du gerade dieses Spiel spielst, wird mit Strom betrieben, das ist quasi seine Lebensenergie. Aber was ist Strom?",
+    "Willkommen im ersten Haus. Hier wirst du lernen, was Strom und die dazugehörige physikalische Stromstärke sind. Wir reden oft davon, unsere Handys oder Laptops an den Strom zu hängen, weil sie sonst abstürzen würden. Aber was fliesst durch die Kabel in unsere elektrischen Geräte?",
     "",
-    "Wenn wir unseren Laptop an die Steckdose hängen, dann fliessen Elektronen von der Ladestation in den Laptop.",
-    "",
-    "Dabei ist ganz wichtig: Wir sprechen von den frei beweglichen Elektronen und nicht von denjenigen, die fest in der Atomhülle eingebaut sind. Sonst würden sich Kabel und Leiter, durch die Strom fliessen, mit der Zeit auflösen, weil ihre Elektronen aus den Hüllen weg wandern!",
-    "",
-    "Siehe auch Bild 1 und Bild 2"
+    "Richtig Strom, doch was ist das?"
   ],
   "Bilder" : [
       {
@@ -22,7 +18,7 @@
       }
   ],
   "Aufgabe" : [
-    "Was ist Strom?"
+    "Was, denkst du, ist Strom?"
   ],
   "Typ" : "Multi",
   "Antworten" : {
