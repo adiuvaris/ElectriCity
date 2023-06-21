@@ -23,26 +23,5 @@
     "B": "Kovalenzbindungen mit teilenden Elektronenpaaren",
     "C": "Metalle mit freien Elektronen"
   },
-    "Richtig": "C",
-
-
-  "Aufgabe" : [
-    "In welche Richtung wandern freibewegliche Elektronen?"
-  ],
-  "Typ" : "Multi",
-  "Antworten" : {
-    "A": "Vom Plus- zum Minuspol",
-    "B": "Vom Minus- zum Pluspol"
-  },
-  "Richtig" : "B",
-
-  "Aufgabe" : [
-    "In welche Richtung zeigt die technische Stromrichtung?"
-  ],
-  "Typ" : "Multi",
-  "Antworten" : {
-    "A": "Vom Plus- zum Minuspol",
-    "B": "Vom Minus- zum Pluspol"
-  },
-  "Richtig" : "A"
+  "Richtig": "C"
 }
