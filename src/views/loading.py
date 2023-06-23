@@ -1,13 +1,16 @@
 
 import arcade
 import arcade.gui
-import json
-from src.sprites.player import Player
+
+import src.const as const
+
+from src.data.player_data import PlayerData
+from src.data.game_data import GameData
+
 from src.maps import load_maps
 from src.views.game import Game
 from src.views.menu import Menu
 from src.views.settings import Settings
-import os
 
 
 class Loading(arcade.View):
@@ -21,27 +24,19 @@ class Loading(arcade.View):
         """
 
         super().__init__()
+
+        # Attribute definieren
         self.started = False
         self.done = False
         self.progress = 0
         self.map_list = None
-        arcade.set_background_color(arcade.color.ALMOND)
+
         self.manager = arcade.gui.UIManager()
-        label = arcade.gui.UILabel(x=0,
-                                   align="center",
-                                   y=600,
-                                   height=50,
-                                   width=self.window.width,
-                                   text="Gib deinen Namen ein",
-                                   text_color=[0, 0, 0],
-                                   bold=True,
-                                   font_size=24,
-                                   multiline=False)
+        self.input_text = None
+        self.titel = None
+        self.create_ui()
 
-        self.manager.add(label)
-
-        self.input_text = arcade.gui.UIInputText(x=800, y=500, width=200, height=50, font_size=24, text="")
-        self.manager.add(self.input_text)
+        arcade.set_background_color(arcade.color.ALMOND)
 
     def on_draw(self):
         """
@@ -50,23 +45,18 @@ class Loading(arcade.View):
         """
         arcade.start_render()
         if not self.done:
-            arcade.draw_text("Loading", self.window.width / 2, self.window.height / 2, arcade.color.GUPPIE_GREEN, 64,
-                         anchor_x="center", anchor_y="center", align="center", width=self.window.width)
+            self.draw_bar()
 
         self.started = True
-        self.draw_bar()
         self.manager.draw()
 
     def setup(self):
         pass
 
-
-
     def on_show_view(self):
         """
         Wird von arcade aufgerufen, wenn die View sichtbar wird
         """
-
         self.manager.enable()
         arcade.set_background_color(arcade.color.ALMOND)
 
@@ -136,16 +126,48 @@ class Loading(arcade.View):
         if key == arcade.key.ENTER:
 
             if self.done:
-                eingabe = self.input_text.text.strip()
-                if len(eingabe) > 0:
-                    dateiname = f"res/data/{eingabe}.json"
-                    player = self.window.views["game"].player_sprite
-                    if os.path.exists(dateiname):
-                        with open(f"res/data/{eingabe}.player", "r") as ifile:
-                            player.data = json.load(ifile)
-                    else:
-                        with open(f"res/data/{eingabe}.player", "w") as ofile:
-                            json.dump(player.data, ofile)
+                player_name = self.input_text.text.strip()
+                if len(player_name) > 0:
+
+                    player_data = PlayerData()
+                    player_data.init_player(player_name)
 
                     self.window.show_view(self.window.views["game"])
 
+    def create_ui(self):
+        game_data = GameData()
+        scale = game_data.get_scale()
+
+        self.manager.clear()
+
+        self.titel = arcade.gui.UILabel(x=0, y=game_data.do_scale(660),
+                                   width=self.window.width, height=game_data.do_scale(30),
+                                   text="Starte ElectriCity",
+                                   text_color=[0, 0, 0],
+                                   bold=True,
+                                   align="center",
+                                   font_size=game_data.do_scale(const.FONT_SIZE_H1),
+                                   multiline=False)
+        self.manager.add(self.titel.with_border())
+
+        label = arcade.gui.UILabel(x=game_data.do_scale(20),
+                                   y=game_data.do_scale(600),
+                                   width=game_data.do_scale(290),
+                                   height=game_data.do_scale(30),
+                                   text="Gib deinen Namen ein:",
+                                   text_color=[0, 0, 0],
+                                   bold=True,
+                                   font_size=game_data.do_scale(const.FONT_SIZE_H2),
+                                   multiline=False)
+
+        self.manager.add(label)
+
+        self.input_text = arcade.gui.UIInputText(x=game_data.do_scale(340), y=game_data.do_scale(600),
+                                                 width=game_data.do_scale(290), height=game_data.do_scale(30),
+                                                 font_size=game_data.do_scale(const.FONT_SIZE_H2), text="")
+        self.manager.add(self.input_text)
+
+#        arcade.draw_text("Loading", self.window.width / 2, self.window.height / 2, arcade.color.GUPPIE_GREEN, 64,
+#                         anchor_x="center", anchor_y="center", align="center", width=self.window.width)
+
+        self.manager.trigger_render()
