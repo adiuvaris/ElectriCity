@@ -5,7 +5,7 @@
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJzTZGRg0BzFo3gUD0lMKQAAArwnYQ==",
+         "data":"eJzTZGRg0BxgrIIF4xJHVzNc9RODaal\/oP0\/lPSjp2VK8gIIkKqeEgAA4ggkXQ==",
          "encoding":"base64",
          "height":16,
          "id":1,
@@ -19,7 +19,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJxjYBhc4DYTYTVOzLjlHhOh3wuPfnTwmQmVphf4wUihAXR27yiAgA5K443OAADXRwXD",
+         "data":"eJxjYBhc4DYTYTVOzLjlHhOh3wuPfnTwmQmVphdYwUiZ\/g0U6h8F5AFK443eAACmLwZC",
          "encoding":"base64",
          "height":16,
          "id":12,
@@ -33,7 +33,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJwrZGRgKALiYiiNzsYnB2JXAnEVEFdDaXQ2PjkQm4WJgeElEL8CYmTAgsaHAUdmCO3MDFEDwh+B+BOR+j2h+r2R9GMDyOKv8aghRj8ugE8\/MYCW+il1Pyn6JzBTpn8GBfp5cKjDJY6uphAtX4AAJfkHBEjJP5QCAP44JLI=",
+         "data":"eJxbxcjgsIoCvIhCLMjEgBXgEkdXM1z1EwNoqX+g\/U8v\/ZI41OESR1ezkBEVg8AiRkxxXHglGgaBVVjEcWFKAQBCLTK8",
          "encoding":"base64",
          "height":16,
          "id":2,
@@ -51,32 +51,16 @@
          "name":"doors",
          "objects":[
                 {
-                 "gid":400,
+                 "gid":432,
                  "height":32,
-                 "id":1,
+                 "id":17,
                  "name":"",
-                 "properties":[
-                        {
-                         "name":"next_map",
-                         "type":"string",
-                         "value":"city"
-                        }, 
-                        {
-                         "name":"start_x",
-                         "type":"int",
-                         "value":22
-                        }, 
-                        {
-                         "name":"start_y",
-                         "type":"int",
-                         "value":9
-                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":128,
-                 "y":480
+                 "x":127.5,
+                 "y":480.75
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -142,7 +126,7 @@
          "y":0
         }],
  "nextlayerid":16,
- "nextobjectid":14,
+ "nextobjectid":18,
  "orientation":"orthogonal",
  "properties":[
         {
