@@ -5,7 +5,7 @@
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJzN0sENgCAMBVBiQlzAAbw5goM4BIu4ixfGcDBDtJE00EKh0cM\/mFCe8FlHY1Ym28Sv0Uhwv7R77ueewPdu72jbLoq3rxvb4Gm4wYSkXI2OseuJe9Z4X5T5t+T+dR76netEM4uVp8YEt8WrccGk5g9Lp8TB6ynPJYL3yTkt90O5XFr7SNk1vjScyXVNdVQyIzkvnil9k5RbYku7aem115uomb0AQtyxjw==",
+         "data":"eJzN0sENgCAMBVBiQlzAAbw5giOxiCO4gxfGcDBDtJE00EKh0cM\/mFCepV1HY1Ym+8Sf0Uhwv7R73ueewPdm72j37KJ4+7qxDZ6GG0xIytWYMXZ94p0194sy\/5bcv85Dv75OVLNYeWpMcFu8GhdMqv6wdEocfJ7yXCL4npzT8j6Uy6V1Him7xpeGM7lZUzMqqZH0i2tKd5JyS2zpbFrm2msnamovlV21BQ==",
          "encoding":"base64",
          "height":20,
          "id":1,
@@ -73,6 +73,22 @@
  "nextlayerid":5,
  "nextobjectid":5,
  "orientation":"orthogonal",
+ "properties":[
+        {
+         "name":"next_map",
+         "type":"string",
+         "value":"city"
+        }, 
+        {
+         "name":"start_x",
+         "type":"string",
+         "value":"4"
+        }, 
+        {
+         "name":"start_y",
+         "type":"string",
+         "value":"12"
+        }],
  "renderorder":"left-up",
  "tiledversion":"1.10.1",
  "tileheight":32,
