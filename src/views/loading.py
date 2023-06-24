@@ -1,16 +1,12 @@
-
 import arcade
 import arcade.gui
 
 import src.const as const
 
-from src.data.player_data import PlayerData
-from src.data.game_data import GameData
+from src.data.game_data import gd
 
 from src.maps import load_maps
 from src.views.game import Game
-from src.views.menu import Menu
-from src.views.settings import Settings
 
 
 class Loading(arcade.View):
@@ -33,7 +29,6 @@ class Loading(arcade.View):
 
         self.manager = arcade.gui.UIManager()
         self.input_text = None
-        self.titel = None
         self.create_ui()
 
         arcade.set_background_color(arcade.color.ALMOND)
@@ -88,15 +83,8 @@ class Loading(arcade.View):
             if not self.done:
                 self.done, self.progress, self.map_list = load_maps()
             if self.done:
-
-                self.window.views["game"] = Game(self.map_list)
-                self.window.views["game"].setup()
-
-                self.window.views["menu"] = Menu()
-                self.window.views["menu"].setup()
-
-                self.window.views["settings"] = Settings()
-                self.window.views["settings"].setup()
+                self.window.game_view = Game(self.map_list)
+                self.window.game_view.setup()
 
     def draw_bar(self):
         """
@@ -128,46 +116,44 @@ class Loading(arcade.View):
             if self.done:
                 player_name = self.input_text.text.strip()
                 if len(player_name) > 0:
+                    gd.init_player(player_name)
 
-                    player_data = PlayerData()
-                    player_data.init_player(player_name)
+                    # Fenstergrösse für die gewünschte Skalierung anpassen
+                    w = gd.scale(const.SCREEN_WIDTH)
+                    h = gd.scale(const.SCREEN_HEIGHT)
+                    self.window.set_size(w, h)
+                    self.window.center_window()
 
-                    self.window.show_view(self.window.views["game"])
+                    # Game über die Anpassung informieren und anzeigen
+                    self.window.game_view.on_resize(w, h)
+                    self.window.show_view(self.window.game_view)
 
     def create_ui(self):
-        game_data = GameData()
-        scale = game_data.get_scale()
-
         self.manager.clear()
 
-        self.titel = arcade.gui.UILabel(x=0, y=game_data.do_scale(660),
-                                   width=self.window.width, height=game_data.do_scale(30),
-                                   text="Starte ElectriCity",
-                                   text_color=[0, 0, 0],
-                                   bold=True,
-                                   align="center",
-                                   font_size=game_data.do_scale(const.FONT_SIZE_H1),
-                                   multiline=False)
-        self.manager.add(self.titel.with_border())
+        titel = arcade.gui.UILabel(x=0, y=660,
+                                        width=self.window.width, height=30,
+                                        text="Starte ElectriCity",
+                                        text_color=[0, 0, 0],
+                                        bold=True,
+                                        align="center",
+                                        font_size=const.FONT_SIZE_H1,
+                                        multiline=False)
+        self.manager.add(titel.with_border())
 
-        label = arcade.gui.UILabel(x=game_data.do_scale(20),
-                                   y=game_data.do_scale(600),
-                                   width=game_data.do_scale(290),
-                                   height=game_data.do_scale(30),
+        label = arcade.gui.UILabel(x=20,
+                                   y=600,
+                                   width=290,
+                                   height=30,
                                    text="Gib deinen Namen ein:",
                                    text_color=[0, 0, 0],
                                    bold=True,
-                                   font_size=game_data.do_scale(const.FONT_SIZE_H2),
+                                   font_size=const.FONT_SIZE_H2,
                                    multiline=False)
 
         self.manager.add(label)
 
-        self.input_text = arcade.gui.UIInputText(x=game_data.do_scale(340), y=game_data.do_scale(600),
-                                                 width=game_data.do_scale(290), height=game_data.do_scale(30),
-                                                 font_size=game_data.do_scale(const.FONT_SIZE_H2), text="")
+        self.input_text = arcade.gui.UIInputText(x=340, y=600,
+                                                 width=290, height=30,
+                                                 font_size=const.FONT_SIZE_H2, text="")
         self.manager.add(self.input_text)
-
-#        arcade.draw_text("Loading", self.window.width / 2, self.window.height / 2, arcade.color.GUPPIE_GREEN, 64,
-#                         anchor_x="center", anchor_y="center", align="center", width=self.window.width)
-
-        self.manager.trigger_render()

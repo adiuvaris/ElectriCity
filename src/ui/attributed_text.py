@@ -7,7 +7,7 @@ from pyglet.event import EVENT_HANDLED, EVENT_UNHANDLED
 from typing import Optional
 
 import src.const as const
-from src.data.game_data import GameData
+from src.data.game_data import gd
 
 
 class AttributedText(arcade.gui.UIWidget):
@@ -47,11 +47,10 @@ class AttributedText(arcade.gui.UIWidget):
 
     def prepare_text(self):
 
-        game_data = GameData()
         fn = "{font_name 'Arial'}"
-        fs = "{font_size " + str(game_data.do_scale(const.FONT_SIZE)) + "}{bold False}"
-        h1 = "{font_size " + str(game_data.do_scale(const.FONT_SIZE_H1)) + "}{bold True}"
-        h2 = "{font_size " + str(game_data.do_scale(const.FONT_SIZE_H2)) + "}{bold True}"
+        fs = "{font_size " + str(gd.scale(const.FONT_SIZE)) + "}{bold False}"
+        h1 = "{font_size " + str(gd.scale(const.FONT_SIZE_H1)) + "}{bold True}"
+        h2 = "{font_size " + str(gd.scale(const.FONT_SIZE_H2)) + "}{bold True}"
 
         self.text = fn + self.text
         self.text = fs + self.text

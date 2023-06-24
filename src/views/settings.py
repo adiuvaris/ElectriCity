@@ -5,7 +5,7 @@ import arcade.gui
 import src.const as const
 
 from src.base.term import Term
-from src.data.game_data import GameData
+from src.data.game_data import gd
 from src.ui.attributed_text import AttributedText
 
 
@@ -14,18 +14,18 @@ class Settings(arcade.View):
     Klasse für die View mit den Einstellungen - macht zurzeit noch nichts
     """
 
-    def __init__(self):
+    def __init__(self, menu):
         """
         Konstruktor
         """
 
         super().__init__()
 
+        self.menu = menu
+
         # UIManager braucht es für arcade
-        self.manager = arcade.gui.UIManager()
-
         self.input_text = None
-
+        self.manager = None
         self.create_ui()
 
         arcade.set_background_color(arcade.color.ALMOND)
@@ -48,7 +48,6 @@ class Settings(arcade.View):
         """
         Wird von arcade aufgerufen, wenn die View sichtbar wird
         """
-
         self.manager.enable()
 
         # Eingabefeld aktivieren - so tun, als ob in das Feld geklickt wurde
@@ -79,30 +78,29 @@ class Settings(arcade.View):
             scale = self.input_text.text.strip()
             if scale.isnumeric():
 
-                game_data = GameData()
-                game_data.set_scale(int(scale))
+                gd.set_scale(int(scale))
 
-                w = game_data.do_scale(const.SCREEN_WIDTH)
-                h = game_data.do_scale(const.SCREEN_HEIGHT)
+                w = gd.scale(const.SCREEN_WIDTH)
+                h = gd.scale(const.SCREEN_HEIGHT)
 
                 self.window.set_size(w, h)
                 self.window.center_window()
 
-                self.window.views["game"].on_resize(w, h)
-                self.window.views["menu"].on_resize(w, h)
-                self.window.views["settings"].on_resize(w, h)
+                # Game über die Anpassung informieren
+                self.window.game_view.on_resize(w, h)
+                self.menu.on_resize(w, h)
+                self.on_show_view()
 
         # Escape geht zurück zum Menü
         if key == arcade.key.ESCAPE:
-            self.window.show_view(self.window.views["menu"])
+            self.window.show_view(self.menu)
 
     def on_click_back(self, event):
         """
         Klick-handler, wenn "Zurück zum Spiel" angeklickt wurde
         :param event:
         """
-
-        self.window.show_view(self.window.views["menu"])
+        self.window.show_view(self.menu)
 
     def on_resize(self, width, height):
         """
@@ -114,43 +112,40 @@ class Settings(arcade.View):
         self.create_ui()
 
     def create_ui(self):
-        game_data = GameData()
-        scale = game_data.get_scale()
+        scale = gd.get_scale()
 
-        self.manager.clear()
+        self.manager = arcade.gui.UIManager()
 
-        titel = arcade.gui.UILabel(x=0, y=game_data.do_scale(660),
-                                   width=self.window.width, height=game_data.do_scale(30),
+        titel = arcade.gui.UILabel(x=0, y=gd.scale(660),
+                                   width=self.window.width, height=gd.scale(30),
                                    text="Einstellungen",
                                    text_color=[0, 0, 0],
                                    bold=True,
                                    align="center",
-                                   font_size=game_data.do_scale(const.FONT_SIZE_H1),
+                                   font_size=gd.scale(const.FONT_SIZE_H1),
                                    multiline=False)
         self.manager.add(titel.with_border())
 
-        label = arcade.gui.UILabel(x=game_data.do_scale(20), y=game_data.do_scale(600),
-                                   width=self.window.width, height=game_data.do_scale(30),
+        label = arcade.gui.UILabel(x=gd.scale(20), y=gd.scale(600),
+                                   width=self.window.width, height=gd.scale(30),
                                    text="Fenstergrösse in Prozent:",
                                    text_color=[0, 0, 0],
                                    bold=True,
                                    align="left",
-                                   font_size=game_data.do_scale(const.FONT_SIZE_H2),
+                                   font_size=gd.scale(const.FONT_SIZE_H2),
                                    multiline=False)
 
         self.manager.add(label)
 
-        self.input_text = arcade.gui.UIInputText(x=game_data.do_scale(340), y=game_data.do_scale(600),
-                                                 width=game_data.do_scale(290), height=game_data.do_scale(30),
-                                                 font_size=game_data.do_scale(const.FONT_SIZE_H2), text=str(scale))
+        self.input_text = arcade.gui.UIInputText(x=gd.scale(340), y=gd.scale(600),
+                                                 width=gd.scale(290), height=gd.scale(30),
+                                                 font_size=gd.scale(const.FONT_SIZE_H2), text=str(scale))
 
         self.manager.add(self.input_text)
 
-        button = arcade.gui.UIFlatButton(x=game_data.do_scale(20), y=game_data.do_scale(20),
-                                         width=game_data.do_scale(290), text="Zurück")
+        button = arcade.gui.UIFlatButton(x=gd.scale(20), y=gd.scale(20),
+                                         width=gd.scale(290), text="Zurück")
 
         button.on_click = self.on_click_back
 
         self.manager.add(button)
-
-        self.manager.trigger_render()

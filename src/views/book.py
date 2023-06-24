@@ -141,7 +141,7 @@ class Book(arcade.View):
 
         # Escape geht zurück zum Spiel
         if key == arcade.key.ESCAPE:
-            self.window.show_view(self.window.views["game"])
+            self.window.show_view(self.window.game_view)
 
         if key == arcade.key.ENTER:
 
@@ -204,4 +204,4 @@ class Book(arcade.View):
         self.manager.add(message_box)
 
     def on_message_box_close(self, button_text):
-        self.window.show_view(self.window.views["game"])
+        self.window.show_view(self.window.game_view)

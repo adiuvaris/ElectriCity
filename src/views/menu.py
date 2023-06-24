@@ -4,7 +4,8 @@ import arcade.gui
 
 import src.const as const
 
-from src.data.game_data import GameData
+from src.data.game_data import gd
+from src.views.settings import Settings
 
 
 class Menu(arcade.View):
@@ -20,7 +21,8 @@ class Menu(arcade.View):
         super().__init__()
 
         # UIManager braucht es für arcade
-        self.manager = arcade.gui.UIManager()
+        self.manager = None
+        self.create_ui()
 
     def setup(self):
         """
@@ -34,51 +36,6 @@ class Menu(arcade.View):
         """
         Wird von arcade aufgerufen, wenn die View sichtbar wird
         """
-        game_data = GameData()
-        scale = game_data.get_scale()
-
-        self.manager.clear()
-
-        # Vertikales Layout für die Schalter erstellen
-        v_box = arcade.gui.UIBoxLayout()
-
-        # Button
-        resume_button = arcade.gui.UIFlatButton(text="Zurück zum Spiel", width=game_data.do_scale(290))
-        v_box.add(resume_button.with_space_around(bottom=game_data.do_scale(30)))
-        resume_button.on_click = self.on_click_resume
-
-        # Button
-        settings_button = arcade.gui.UIFlatButton(text="Einstellungen", width=game_data.do_scale(290))
-        v_box.add(settings_button.with_space_around(bottom=game_data.do_scale(30)))
-        settings_button.on_click = self.on_click_settings
-
-        # Button
-        new_game_button = arcade.gui.UIFlatButton(text="Neues Spiel", width=game_data.do_scale(290))
-        v_box.add(new_game_button.with_space_around(bottom=game_data.do_scale(30)))
-        new_game_button.on_click = self.on_click_new_game
-
-        # Button
-        quit_button = arcade.gui.UIFlatButton(text="Programm beenden", width=game_data.do_scale(290))
-        v_box.add(quit_button.with_space_around(bottom=game_data.do_scale(30)))
-        quit_button.on_click = self.on_click_quit
-
-        # Widget, das als Anker für die Buttons dient, damit diese zentriert angezeigt werden.
-        self.manager.add(
-            arcade.gui.UIAnchorWidget(
-                anchor_x="center_x", anchor_y="center_y", child=v_box
-            )
-        )
-
-        titel = arcade.gui.UILabel(x=0, y=game_data.do_scale(660),
-                                   width=self.window.width, height=game_data.do_scale(30),
-                                   text="Menü",
-                                   text_color=[0, 0, 0],
-                                   bold=True,
-                                   align="center",
-                                   font_size=game_data.do_scale(const.FONT_SIZE_H1),
-                                   multiline=False)
-
-        self.manager.add(titel.with_border())
 
         self.manager.enable()
         arcade.set_background_color(arcade.color.ALMOND)
@@ -105,7 +62,7 @@ class Menu(arcade.View):
         :param event:
         """
 
-        self.window.show_view(self.window.views["game"])
+        self.window.show_view(self.window.game_view)
 
     def on_click_settings(self, event):
         """
@@ -113,7 +70,8 @@ class Menu(arcade.View):
         :param event:
         """
 
-        self.window.show_view(self.window.views["settings"])
+        settings = Settings(self)
+        self.window.show_view(settings)
 
     def on_click_new_game(self, event):
         """
@@ -122,8 +80,8 @@ class Menu(arcade.View):
         """
 
         # Game View neu initialisieren und dann anzeigen
-        self.window.views["game"].setup()
-        self.window.show_view(self.window.views["game"])
+        self.window.game_view.setup()
+        self.window.show_view(self.window.game_view)
 
     def on_click_quit(self, event):
         """
@@ -143,7 +101,7 @@ class Menu(arcade.View):
 
         # Escape geht zurück zum Spiel
         if key == arcade.key.ESCAPE:
-            self.window.show_view(self.window.views["game"])
+            self.window.show_view(self.window.game_view)
 
     def on_resize(self, width, height):
         """
@@ -152,5 +110,54 @@ class Menu(arcade.View):
         :param width: neue Breite
         :param height: neue Höhe
         """
-        self.on_show_view()
+        self.create_ui()
+
+    def create_ui(self):
+        """
+        UI Elemente erzeugen
+        """
+        self.manager = arcade.gui.UIManager()
+
+        # Vertikales Layout für die Schalter erstellen
+        v_box = arcade.gui.UIBoxLayout()
+
+        # Button
+        resume_button = arcade.gui.UIFlatButton(text="Zurück zum Spiel", width=gd.scale(290))
+        v_box.add(resume_button.with_space_around(bottom=gd.scale(30)))
+        resume_button.on_click = self.on_click_resume
+
+        # Button
+        settings_button = arcade.gui.UIFlatButton(text="Einstellungen", width=gd.scale(290))
+        v_box.add(settings_button.with_space_around(bottom=gd.scale(30)))
+        settings_button.on_click = self.on_click_settings
+
+        # Button
+        new_game_button = arcade.gui.UIFlatButton(text="Neues Spiel", width=gd.scale(290))
+        v_box.add(new_game_button.with_space_around(bottom=gd.scale(30)))
+        new_game_button.on_click = self.on_click_new_game
+
+        # Button
+        quit_button = arcade.gui.UIFlatButton(text="Programm beenden", width=gd.scale(290))
+        v_box.add(quit_button.with_space_around(bottom=gd.scale(30)))
+        quit_button.on_click = self.on_click_quit
+
+        # Widget, das als Anker für die Buttons dient, damit diese zentriert angezeigt werden.
+        self.manager.add(
+            arcade.gui.UIAnchorWidget(
+                anchor_x="center_x", anchor_y="center_y", child=v_box
+            )
+        )
+
+        titel = arcade.gui.UILabel(x=0, y=gd.scale(660),
+                                   width=self.window.width, height=gd.scale(30),
+                                   text="Menü",
+                                   text_color=[0, 0, 0],
+                                   bold=True,
+                                   align="center",
+                                   font_size=gd.scale(const.FONT_SIZE_H1),
+                                   multiline=False)
+
+        self.manager.add(titel.with_border())
+
+        self.manager.trigger_render()
 

@@ -6,6 +6,7 @@ import src.const as const
 from src.sprites.player import Player
 
 from src.views.book import Book
+from src.views.menu import Menu
 
 
 class Game(arcade.View):
@@ -360,7 +361,8 @@ class Game(arcade.View):
         elif key == arcade.key.ESCAPE:
 
             # Die Escape-Taste startet das Hauptmenü
-            self.window.show_view(self.window.views["menu"])
+            menu = Menu()
+            self.window.show_view(menu)
 
     def on_key_release(self, key, modifiers):
         """

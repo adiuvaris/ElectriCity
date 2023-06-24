@@ -3,7 +3,6 @@ import arcade
 import pyglet.window
 import src.const as const
 from src.views.loading import Loading
-from src.data.game_data import GameData
 
 
 class MainWindow(arcade.Window):
@@ -16,16 +15,10 @@ class MainWindow(arcade.Window):
         Konstruktor.
         Initialisiert das Fenster und definiert Pfade zu Ressourcen
         """
+        super().__init__(const.SCREEN_WIDTH, const.SCREEN_HEIGHT, const.SCREEN_TITLE, style=pyglet.window.Window.WINDOW_STYLE_BORDERLESS)
 
-        # Default-Grösse gemäss Einstellungen skalieren
-        game_data = GameData()
-        w = game_data.do_scale(const.SCREEN_WIDTH)
-        h = game_data.do_scale(const.SCREEN_HEIGHT)
-
-        super().__init__(w, h, const.SCREEN_TITLE, style=pyglet.window.Window.WINDOW_STYLE_BORDERLESS)
-
-        # Dictionary für geladene Views
-        self.views = {}
+        # Game View
+        self.game_view = None
 
         # Pfade zu einzelnen Ressourcen definieren, damit im Programm
         # leichter darauf zugegriffen werden kann.
