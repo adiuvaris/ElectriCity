@@ -4,7 +4,7 @@ import arcade.gui
 import src.const as const
 from src.data.game import gd
 from src.data.image import Image
-from src.views.imag_eview import ImageView
+from src.views.image_view import ImageView
 from src.ui.attributed_text import AttributedText
 
 
