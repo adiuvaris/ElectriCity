@@ -151,7 +151,7 @@ class BookView(arcade.View):
         # Alle UI Elemente löschen
         self.manager = arcade.gui.UIManager()
 
-        titel = arcade.gui.UILabel(x=0, y=gd.scale(660),
+        titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
                                    text=self.title,
                                    text_color=[0, 0, 0],
@@ -165,4 +165,4 @@ class BookView(arcade.View):
         self.theory.create_ui(self, self.manager)
 
         if self.cur_task < len(self.tasks):
-            self.tasks[self.cur_task].create_ui(self.manager)
+            self.tasks[self.cur_task].create_ui(self, self.manager)

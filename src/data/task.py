@@ -1,10 +1,12 @@
 import random
+import arcade
 import arcade.gui
 
 import src.const as const
 from src.base.term import Term
 from src.data.game import gd
 from src.ui.attributed_text import AttributedText
+from src.views.message_view import MessageView
 
 
 class Task:
@@ -17,10 +19,13 @@ class Task:
         self.variables = {}
         self.cur_variables = {}
         self.input_answer = None
+        self.parent = None
+        self.manager = None
 
-    def create_ui(self, ui_manager: arcade.gui.UIManager):
+    def create_ui(self, parent: arcade.Window, ui_manager: arcade.gui.UIManager):
 
-        input_answer = None
+        self.parent = parent
+        self.manager = ui_manager
 
         # Aktuelle Variablen mit zufälligem Wert aus der Lite der möglichen Werte füllen
         self.cur_variables.clear()
@@ -115,13 +120,16 @@ class Task:
             pass
 
     def on_answer_click(self, event):
+        msg = "Das ist leider falsch"
         for k, v in self.answers.items():
-
             if event.source.text == v:
                 if k == self.correct_answer:
-                    pass
+                    msg = "Das ist korrekt"
+                    break
 
-                pass
+#        msg_view = MessageView(msg)
+        msg_view = arcade.gui.UIMessageBox(width=gd.scale(640), height=gd.scale(480), message_text=msg)
+        self.manager.add(msg_view)
 
     def on_key_press(self, key, modifiers):
         if key == arcade.key.ENTER:
@@ -130,10 +138,13 @@ class Task:
                 self.check_answer(float(eingabe))
 
     def check_answer(self, answer):
+        msg = "Das ist leider falsch"
         term = Term()
         term.variables = self.cur_variables
         val = term.calc(self.correct_answer)
         if val == answer:
-            return True
+            msg = "Das ist korrekt"
 
-        return False
+#        msg_view = MessageView(msg)
+        msg_view = arcade.gui.UIMessageBox(width=gd.scale(640), height=gd.scale(480), message_text=msg)
+        self.manager.add(msg_view)

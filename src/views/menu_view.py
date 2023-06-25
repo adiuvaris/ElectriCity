@@ -148,7 +148,7 @@ class MenuView(arcade.View):
             )
         )
 
-        titel = arcade.gui.UILabel(x=0, y=gd.scale(660),
+        titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
                                    text="Menü",
                                    text_color=[0, 0, 0],

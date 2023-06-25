@@ -113,7 +113,7 @@ class SettingView(arcade.View):
 
         self.manager = arcade.gui.UIManager()
 
-        titel = arcade.gui.UILabel(x=0, y=gd.scale(660),
+        titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
                                    text="Einstellungen",
                                    text_color=[0, 0, 0],

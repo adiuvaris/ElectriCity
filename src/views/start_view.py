@@ -131,7 +131,7 @@ class StartView(arcade.View):
     def create_ui(self):
         self.manager.clear()
 
-        titel = arcade.gui.UILabel(x=0, y=660,
+        titel = arcade.gui.UILabel(x=0, y=670,
                                         width=self.window.width, height=30,
                                         text="Starte ElectriCity",
                                         text_color=[0, 0, 0],
