@@ -6,7 +6,7 @@ ALLOWED_NAMES = {
 }
 
 
-class Term(object):
+class Term:
     """
     Klasse, die einen Term mit Variablen berechnen kann.
     Es dürfen mathematische Funktion von Python verwendet werden z.B. sqrt für Wurzel

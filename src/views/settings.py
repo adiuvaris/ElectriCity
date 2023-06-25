@@ -3,10 +3,7 @@ import arcade
 import arcade.gui
 
 import src.const as const
-
-from src.base.term import Term
 from src.data.game_data import gd
-from src.ui.attributed_text import AttributedText
 
 
 class Settings(arcade.View):

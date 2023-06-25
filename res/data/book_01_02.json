@@ -1,27 +1,31 @@
 {
-  "Titel" : "Strom 2",
-  "Theorie" : [
+  "Titel": "Strom 2",
+  "Theorie": [
     "Dabei muss man im Kopf behalten: Wir sprechen von freibeweglichen Elektronen und nicht von denjenigen, die fest in der Atomhülle eingebaut sind, sonst würden sich Kabel und Leiter, durch die Strom fliessen, mit der Zeit auflösen, weil ihre Elektronen aus den Hüllen wegwandern.",
     "",
     "Nun da du weisst, was Strom ist, dass Elektronen negativ geladen sind und gegensätzliche Ladungen sich anziehen, solltest du die zweite Frage beantworten können.",
     "",
     "Demnach haben Elektronen immer eine Richtung in die sie fliessen. Da das aber für Physiker*innen noch nicht reichte, wurde eine weitere Stromrichtung definiert, und zwar die technische Stromrichtung."
   ],
-  "Bilder" : [
-      {
-        "Datei" :  "formel_01.png",
-        "Titel" : "Formel Stromstärke",
-        "Beschreibung" : "Das Bild zeigt die Formel für die Stromstärke"
-      }
+  "Bilder": [
+    {
+      "Datei": "formel_01.png",
+      "Titel": "Formel Stromstärke",
+      "Beschreibung": "Das Bild zeigt die Formel für die Stromstärke"
+    }
   ],
-  "Aufgabe" : [
-    "Was sind die besten Stromleiter?"
-  ],
-  "Typ" : "Multi",
-  "Antworten" : {
-    "A": "Salze mit fixen Ionengittern",
-    "B": "Kovalenzbindungen mit teilenden Elektronenpaaren",
-    "C": "Metalle mit freien Elektronen"
-  },
-  "Richtig": "C"
+  "Aufgaben": [
+    {
+      "Aufgabe": [
+        "Was sind die besten Stromleiter?"
+      ],
+      "Typ": "Multi",
+      "Antworten": {
+        "A": "Salze mit fixen Ionengittern",
+        "B": "Kovalenzbindungen mit teilenden Elektronenpaaren",
+        "C": "Metalle mit freien Elektronen"
+      },
+      "Richtig": "C"
+    }
+  ]
 }
