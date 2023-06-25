@@ -9,15 +9,6 @@ from src.data.theory import Theory
 from src.data.image import Image
 from src.data.task import Task
 
-#from src.views.image import Image
-from src.ui.labels import create_title_label
-from src.ui.texts import create_theory_text
-from src.ui.buttons import create_image_button
-from src.ui.labels import create_answer_label
-from src.ui.texts import create_question_text
-from src.ui.buttons import create_answer_button
-from src.ui.inputs import create_answer_input
-
 
 class Book(arcade.View):
     """
@@ -45,7 +36,10 @@ class Book(arcade.View):
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
 
+        # Buch einlesen (json)
         self.read_book()
+
+        # Buch darstellen
         self.create_ui()
 
     def setup(self):
@@ -151,6 +145,8 @@ class Book(arcade.View):
                         task.type = aufgabe["Typ"]
                     if "Richtig" in aufgabe:
                         task.correct_answer = aufgabe["Richtig"]
+                    if "Nachkommastellen" in aufgabe:
+                        task.digits = aufgabe["Nachkommastellen"]
                     if "Antworten" in aufgabe:
                         task.answers = aufgabe["Antworten"]
                     if "Variablen" in aufgabe:
@@ -172,3 +168,8 @@ class Book(arcade.View):
                                    multiline=False)
 
         self.manager.add(titel.with_border())
+
+        self.theory.create_ui(self.manager)
+
+        if self.cur_task < len(self.tasks):
+            self.tasks[self.cur_task].create_ui(self.manager)

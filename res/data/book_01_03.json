@@ -2,7 +2,6 @@
   "Titel": "Strom 3",
   "Theorie": [
     "Super die Basics zum Strom kennst du nun schon, aber das ist lange noch nicht alles! Eine sehr wichtige Grösse, wenn man sich mit Strom beschäftigt, ist die Stromstärke I. Sie kann an einer bestimmten Stelle in z.B. Kabeln gemessen werden. Die mittlere, d.h. die durchschnittliche Stromstärke gibt das Verhältnis der dort vorbeifliessenden Ladungsmenge Q an, die Anzahl der Elektronen, und der Zeitspanne t, in der gemessen wurde. Daraus ergibt sich die Formel, die in Bild unterhalb zu sehen ist.",
-    "",
     "Nun da du weisst, was Strom ist, dass Elektronen negativ geladen sind und gegensätzliche Ladungen sich anziehen, solltest du die zweite Frage beantworten können."
   ],
   "Bilder": [
@@ -18,7 +17,8 @@
         "Was sind die besten Stromleiter?"
       ],
       "Typ": "Zahl",
-      "Richtig": 45.0
+      "Richtig": 45,
+      "Nachkommastellen": 0
     }
   ]
 }
