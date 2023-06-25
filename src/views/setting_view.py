@@ -3,10 +3,10 @@ import arcade
 import arcade.gui
 
 import src.const as const
-from src.data.game_data import gd
+from src.data.game import gd
 
 
-class Settings(arcade.View):
+class SettingView(arcade.View):
     """
     Klasse für die View mit den Einstellungen - macht zurzeit noch nichts
     """

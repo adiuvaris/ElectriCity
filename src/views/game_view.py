@@ -5,11 +5,11 @@ from pyglet.math import Vec2
 import src.const as const
 from src.sprites.player import Player
 
-from src.views.book import Book
-from src.views.menu import Menu
+from src.views.book_view import BookView
+from src.views.menu_view import MenuView
 
 
-class Game(arcade.View):
+class GameView(arcade.View):
     """
     View des Spiels mit der Darstellung der Map (city, room, view)
     """
@@ -326,7 +326,7 @@ class Game(arcade.View):
                     self.player_sprite.center_x = views_hit[0].center_x - const.SPRITE_SIZE - const.SPRITE_SIZE / 2
 
                 # Neue view anzeigen
-                v = Book(room_nr, book_nr)
+                v = BookView(room_nr, book_nr)
                 v.setup()
                 self.window.show_view(v)
 
@@ -361,7 +361,7 @@ class Game(arcade.View):
         elif key == arcade.key.ESCAPE:
 
             # Die Escape-Taste startet das Hauptmenü
-            menu = Menu()
+            menu = MenuView()
             self.window.show_view(menu)
 
     def on_key_release(self, key, modifiers):

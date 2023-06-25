@@ -4,11 +4,11 @@ import arcade.gui
 
 import src.const as const
 
-from src.data.game_data import gd
-from src.views.settings import Settings
+from src.data.game import gd
+from src.views.setting_view import SettingView
 
 
-class Menu(arcade.View):
+class MenuView(arcade.View):
     """
     Klasse für die View mit dem Menü
     """
@@ -70,7 +70,7 @@ class Menu(arcade.View):
         :param event:
         """
 
-        settings = Settings(self)
+        settings = SettingView(self)
         self.window.show_view(settings)
 
     def on_click_new_game(self, event):

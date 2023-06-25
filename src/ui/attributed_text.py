@@ -7,7 +7,7 @@ from pyglet.event import EVENT_HANDLED, EVENT_UNHANDLED
 from typing import Optional
 
 import src.const as const
-from src.data.game_data import gd
+from src.data.game import gd
 
 
 class AttributedText(arcade.gui.UIWidget):

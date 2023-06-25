@@ -3,14 +3,14 @@ import arcade.gui
 import json
 
 import src.const as const
-from src.data.game_data import gd
+from src.data.game import gd
 
 from src.data.theory import Theory
 from src.data.image import Image
 from src.data.task import Task
 
 
-class Book(arcade.View):
+class BookView(arcade.View):
     """
     Klasse für die View mit Theorie oder Aufgabe
     """
@@ -162,7 +162,7 @@ class Book(arcade.View):
 
         self.manager.add(titel.with_border())
 
-        self.theory.create_ui(self.manager)
+        self.theory.create_ui(self, self.manager)
 
         if self.cur_task < len(self.tasks):
             self.tasks[self.cur_task].create_ui(self.manager)

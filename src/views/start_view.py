@@ -3,13 +3,13 @@ import arcade.gui
 
 import src.const as const
 
-from src.data.game_data import gd
+from src.data.game import gd
 
 from src.maps import load_maps
-from src.views.game import Game
+from src.views.game_view import GameView
 
 
-class Loading(arcade.View):
+class StartView(arcade.View):
     """
     Klasse für die View beim Laden der Daten (Maps und Views)
     """
@@ -83,7 +83,7 @@ class Loading(arcade.View):
             if not self.done:
                 self.done, self.progress, self.map_list = load_maps()
             if self.done:
-                self.window.game_view = Game(self.map_list)
+                self.window.game_view = GameView(self.map_list)
                 self.window.game_view.setup()
 
     def draw_bar(self):
