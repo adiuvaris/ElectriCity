@@ -134,6 +134,29 @@
                  "width":32,
                  "x":415,
                  "y":102
+                }, 
+                {
+                 "gid":953,
+                 "height":32,
+                 "id":18,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"03"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"01"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":417,
+                 "y":411
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -142,7 +165,7 @@
          "y":0
         }],
  "nextlayerid":16,
- "nextobjectid":18,
+ "nextobjectid":19,
  "orientation":"orthogonal",
  "properties":[
         {

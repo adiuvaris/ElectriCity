@@ -14,10 +14,17 @@
   "Aufgaben": [
     {
       "Aufgabe": [
-        "Was sind die besten Stromleiter?"
+        "In der Garage steht ein <V1>V-Akku. Er wird <V2>h lang mit der Ladestromstärke von <V3>A geladen.",
+        "Welche Ladung (in Ah) hat der Akku beim Ladevorgang aufgenommen?",
+        "Gib dein Resultat in das Eingabefeld ein (nur die Zahl)."
       ],
+      "Variablen": {
+        "V1": [18, 24, 36],
+        "V2": [5, 12, 24, 48, 72],
+        "V3": [2, 5, 10]
+      },
       "Typ": "Zahl",
-      "Richtig": 45,
+      "Richtig": "V2 * V3",
       "Nachkommastellen": 0
     }
   ]

@@ -30,9 +30,6 @@ class Book(arcade.View):
         self.tasks = []
         self.cur_task = 0
 
-        self.input_text = None
-        # self.input_text: arcade.gui.UIInputText = arcade.gui.UIInputText()
-
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
 
@@ -56,12 +53,6 @@ class Book(arcade.View):
 
         self.manager.enable()
         arcade.set_background_color(arcade.color.ALMOND)
-
-        # Eingabefeld aktivieren - so tun, als ob in das Feld geklickt wurde
-        if self.input_text is not None:
-            event = arcade.gui.UIMousePressEvent(
-                x=self.input_text.x + 1, y=self.input_text.y + 1, button=0, modifiers=0, source=self)
-            self.input_text.on_event(event)
 
         arcade.set_viewport(0, self.window.width, 0, self.window.height)
 
@@ -92,6 +83,8 @@ class Book(arcade.View):
         # Escape geht zurück zum Spiel
         if key == arcade.key.ESCAPE:
             self.window.show_view(self.window.game_view)
+
+        self.tasks[self.cur_task].on_key_press(key, modifiers)
 
     def show_message_box(self, text):
         message_box = arcade.gui.UIMessageBox(

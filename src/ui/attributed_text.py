@@ -20,7 +20,8 @@ class AttributedText(arcade.gui.UIWidget):
                  y: float = 0,
                  width: float = 800,
                  height: float = 40,
-                 text=None):
+                 text=None,
+                 variables=None):
         """
         :param x: x-Koordinate links unten
         :param y: y-Koordinate links unten
@@ -31,8 +32,13 @@ class AttributedText(arcade.gui.UIWidget):
 
         super().__init__(x, y, width, height)
 
+        if variables is None:
+            variables = {}
+
         if text is None:
             text = []
+
+        self.variables = variables
 
         self.text = "\n\n\n".join(text)
         self.prepare_text()
@@ -65,6 +71,10 @@ class AttributedText(arcade.gui.UIWidget):
         self.text = self.text.replace("</i>", "{italic False}")
         self.text = self.text.replace("<np>", "{font_name 'Courier New'}")
         self.text = self.text.replace("</np>", "{font_name 'Arial'}")
+
+        for k, v in self.variables.items():
+            var_name = "<" + k + ">"
+            self.text = self.text.replace(var_name, str(v))
 
     def do_render(self, surface: Surface):
         self.prepare_render(surface)
