@@ -4,6 +4,7 @@ import json
 
 import src.const as const
 from src.data.game import gd
+from src.views.message_view import MessageView
 
 from src.data.theory import Theory
 from src.data.image import Image
@@ -82,23 +83,16 @@ class BookView(arcade.View):
 
         # Escape geht zurück zum Spiel
         if key == arcade.key.ESCAPE:
-            self.window.show_view(self.window.game_view)
+            exit_view = True
+            for w in self.manager.walk_widgets():
+                if isinstance(w, MessageView):
+                    exit_view = False
+                    break;
+
+            if exit_view:
+                self.window.show_view(self.window.game_view)
 
         self.tasks[self.cur_task].on_key_press(key, modifiers)
-
-    def show_message_box(self, text):
-        message_box = arcade.gui.UIMessageBox(
-            width=500,
-            height=300,
-            message_text=text,
-            callback=self.on_message_box_close,
-            buttons=["Ok"]
-        )
-
-        self.manager.add(message_box)
-
-    def on_message_box_close(self, button_text):
-        self.window.show_view(self.window.game_view)
 
     def read_book(self):
 

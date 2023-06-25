@@ -127,8 +127,7 @@ class Task:
                     msg = "Das ist korrekt"
                     break
 
-#        msg_view = MessageView(msg)
-        msg_view = arcade.gui.UIMessageBox(width=gd.scale(640), height=gd.scale(480), message_text=msg)
+        msg_view = MessageView(msg=msg)
         self.manager.add(msg_view)
 
     def on_key_press(self, key, modifiers):
@@ -145,6 +144,5 @@ class Task:
         if val == answer:
             msg = "Das ist korrekt"
 
-#        msg_view = MessageView(msg)
-        msg_view = arcade.gui.UIMessageBox(width=gd.scale(640), height=gd.scale(480), message_text=msg)
+        msg_view = MessageView(msg=msg)
         self.manager.add(msg_view)
