@@ -71,7 +71,7 @@ class SettingView(arcade.View):
         :param modifiers: Shift, Alt etc.
         """
 
-        if key == arcade.key.ENTER:
+        if key == arcade.key.ENTER or key == arcade.key.NUM_ENTER:
             scale = self.input_text.text.strip()
             if scale.isnumeric():
 

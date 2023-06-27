@@ -83,14 +83,7 @@ class BookView(arcade.View):
 
         # Escape geht zurück zum Spiel
         if key == arcade.key.ESCAPE:
-            exit_view = True
-            for w in self.manager.walk_widgets():
-                if isinstance(w, MessageView):
-                    exit_view = False
-                    break;
-
-            if exit_view:
-                self.window.show_view(self.window.game_view)
+            self.window.show_view(self.window.game_view)
 
         self.tasks[self.cur_task].on_key_press(key, modifiers)
 

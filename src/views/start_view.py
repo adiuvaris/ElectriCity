@@ -7,6 +7,7 @@ from src.data.game import gd
 
 from src.maps import load_maps
 from src.views.game_view import GameView
+from src.views.help_view import HelpView
 
 
 class StartView(arcade.View):
@@ -31,8 +32,6 @@ class StartView(arcade.View):
         self.input_text = None
         self.create_ui()
 
-        arcade.set_background_color(arcade.color.ALMOND)
-
     def on_draw(self):
         """
         Zeichnet die View. Es wird ein Text "Loading" ausgegeben und ein
@@ -52,6 +51,8 @@ class StartView(arcade.View):
         """
         Wird von arcade aufgerufen, wenn die View sichtbar wird
         """
+        self.create_ui()
+
         self.manager.enable()
         arcade.set_background_color(arcade.color.ALMOND)
 
@@ -111,7 +112,11 @@ class StartView(arcade.View):
         :param modifiers: Shift, Alt etc.
         """
 
-        if key == arcade.key.ENTER:
+        if key == arcade.key.F1 or key == arcade.key.NUM_F1:
+            hint = HelpView("anleitung.json", self)
+            self.window.show_view(hint)
+
+        if key == arcade.key.ENTER or key == arcade.key.NUM_ENTER:
 
             if self.done:
                 player_name = self.input_text.text.strip()
@@ -132,13 +137,13 @@ class StartView(arcade.View):
         self.manager.clear()
 
         titel = arcade.gui.UILabel(x=0, y=670,
-                                        width=self.window.width, height=30,
-                                        text="Starte ElectriCity",
-                                        text_color=[0, 0, 0],
-                                        bold=True,
-                                        align="center",
-                                        font_size=const.FONT_SIZE_H1,
-                                        multiline=False)
+                                   width=self.window.width, height=30,
+                                   text="Starte ElectriCity",
+                                   text_color=[0, 0, 0],
+                                   bold=True,
+                                   align="center",
+                                   font_size=const.FONT_SIZE_H1,
+                                   multiline=False)
         self.manager.add(titel.with_border())
 
         label = arcade.gui.UILabel(x=20,
@@ -156,4 +161,17 @@ class StartView(arcade.View):
         self.input_text = arcade.gui.UIInputText(x=340, y=600,
                                                  width=290, height=30,
                                                  font_size=const.FONT_SIZE_H2, text="")
-        self.manager.add(self.input_text)
+        self.manager.add(self.input_text.with_border())
+
+        hint = arcade.gui.UILabel(x=20,
+                                   y=200,
+                                   width=1280,
+                                   height=30,
+                                   text="Drücke die Taste 'F1' für eine kurze Anleitung.",
+                                   text_color=[0, 0, 0],
+                                   bold=True,
+                                   font_size=const.FONT_SIZE_H2,
+                                  align="center",
+                                   multiline=False)
+
+        self.manager.add(hint)

@@ -107,7 +107,7 @@ class Task:
             fs = gd.scale(const.FONT_SIZE_H2)
 
             self.input_answer = arcade.gui.UIInputText(x=x, y=y, width=w, height=h, font_size=fs, text="")
-            ui_manager.add(self.input_answer)
+            ui_manager.add(self.input_answer.with_border())
 
             # Eingabefeld aktivieren - so tun, als ob in das Feld geklickt wurde
             if self.input_answer is not None:
@@ -131,7 +131,7 @@ class Task:
         self.manager.add(msg_view)
 
     def on_key_press(self, key, modifiers):
-        if key == arcade.key.ENTER:
+        if key == arcade.key.ENTER or key == arcade.key.NUM_ENTER:
             if self.input_answer is not None:
                 eingabe = self.input_answer.text.strip()
                 self.check_answer(float(eingabe))
