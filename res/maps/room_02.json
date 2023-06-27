@@ -80,14 +80,14 @@
                  "value":""
                 }],
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
         {
          "draworder":"topdown",
          "id":5,
-         "name":"view",
+         "name":"views",
          "objects":[],
          "opacity":1,
          "type":"objectgroup",
