@@ -375,7 +375,7 @@ class GameView(arcade.View):
             hint = HelpView("anleitung.json", self)
             self.window.show_view(hint)
 
-        elif key == arcade.key.M or key == arcade.key.SPACE:
+        elif key == arcade.key.M or key == arcade.key.ESCAPE:
 
             # Hauptmenü
             menu = MenuView()
