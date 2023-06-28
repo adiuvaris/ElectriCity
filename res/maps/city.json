@@ -1,33 +1,61 @@
 { "backgroundcolor":"#efdecd",
  "compressionlevel":-1,
- "height":20,
+ "height":40,
  "infinite":false,
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJzN0sENgCAMBVBiQlzAAbw5giOxiCO4gxfGcDBDtJE00EKh0cM\/mFCepV1HY1Ym+8Sf0Uhwv7R73ueewPdm72j37KJ4+7qxDZ6GG0xIytWYMXZ94p0194sy\/5bcv85Dv75OVLNYeWpMcFu8GhdMqv6wdEocfJ7yXCL4npzT8j6Uy6V1Him7xpeGM7lZUzMqqZH0i2tKd5JyS2zpbFrm2msnamovlV21BQ==",
+         "data":"eJztnE1u2zAQhXWGogvb3XTXa3TdS9Rod\/UqDuAcJBfI0XqUyqmJEAw5v29IuSWBQaJYEmfefORQkqOH3bI8GO2cmea4spWf\/9wvn0\/75WW15fpz3X4p93lUmjVGpFE6Pe\/fbLSfVsvzFsGUtlm4krIVpaGmn3PFWkxFcMXpvSWucs2iuHr69OpjkyuOsSj9tLmjuELw5NUbzdU1bz007sFVb240MUmYmlz14yqzdzngbEsxSeuf1Xev3miuTkHzgDdOBFdozjwxcUxRnE2u8FxZ62AEX8jccf5o\/fb4hlyHjqiDPw7yHKDXVwjGPLlr+aP1G+1beY3jZWwEV78O7+Pi\/Eum5Yq6p2ZlC8WVpW\/OZwRXiGvo6DpIaaP1j+Oqdg0vuU87Yg3jqccUW1pfkkaP2U80V2UurPfQkXnU1MEWV2i2LByhmNKeh\/u8pRWyDlpyotW0pgm13rFwZfHTs97y1LL875ZcStf93HnQz+E4rrQNxVWy9PyGq4MoPz1rHi8H1vUNNSZGXfuW6ysEV5w2KVbJfefeXFnYslzT1T7nnmtyMdTOvxWuvOflxloeu+QZbOKKq4PW+BFsSfaLvEdA9dWbq5RH7j6DtnFjrhYrVdul6yttk2gqzY30cy6\/qBi4Neu9c+WZA0quRtVBpKFzKNVwJFfRddA6bnpzVfqZdIpm6n\/l6gPx7EUSq5erHnWQq9GWa\/HI+SqCbZSu0jp4aHCF1jaKK6uPXq408Wtb1LyJ0FX6fNDql3e8eJ4PonWPnre0zZqH6Hpe5i3SLwtTN\/+Op7929fG4bv+O0lN6zqh5C8nRaLbyvEX55dEi+Xerg2qutmYoXTx99\/A7z1ukX1bL\/Dv+C1xZcoTut8fxed7W3xfKbve+yX3QdqpYz\/6jYxrRb4\/ja3nbqB034MM0h61z16vN7bmN2J42LcLWuvh12jS09bw2qX3f4XKziPNbv1cruVeF\/P8oqQbR7wmI0C\/iO+0tn8vcINhCvPfDoodXP0nstZjQbCHenUL9r0EUW5zPl52dL9Q7ZXINvn20caXR7yyIt8f7ciL0G8lUzWfP3EWNa0qfWtzW+Up7nGW+iqqFZ4N+kTUObZedff6y1r8WK8iccbFqz+nliuJI2ldrTEr67rkOa7HF6Y8ew6gYKf3yeDx8IazGlyderSZp3dGbrRFaRzCV61eLSzOW7tWi12F5+\/7lzcqW\/320Jij9WrxouNJqd2\/61TiRMqNtZZ\/5uak+ND6U+0ZoVeNG6wuiRWln1cXLiiYWBI\/SfrUNwZWGk7TfCO24fqXHSvnUHi+dY7QNxbrn\/L21QzW0dn8AL08spA==",
          "encoding":"base64",
-         "height":20,
+         "height":40,
          "id":1,
          "name":"background",
          "opacity":1,
          "type":"tilelayer",
          "visible":true,
-         "width":30,
+         "width":150,
          "x":0,
          "y":0
         }, 
         {
          "compression":"zlib",
-         "data":"eJzFk0sOwiAQhqELE3zFV915CM\/hzqW3cukJjBdQj+cQ+SOdQopDA3\/yZRoI84UCRik1JWbEXMUTmzdu\/TORF\/Em1sSG2BI7rz+vmIcHFev\/yWLiKrF0Y+jPKwKPxIe0ztsSe2EPnrvuE\/IOnWuuM+S2Xv4fpXnoYXyvf7Y5uVLfc9Ot\/Nv3jnW2tu+l+VU+xr02eBM5uekusTHfm\/MmJLHeMfYq8ZbeK7xH9aWGt3Rqemvcq0Ohe2VWfXLvVagn5xQA3pT1qT1TgFe6XsoHn1U99g==",
+         "data":"eJztXM1uEzEQ3mdoE6kNagCBlCBE4UWoxM8FiggK4kAKQqqUE7SNBDd4C7jBDW7wRBx5Amw1VpyJ\/2bs8Xojf9KnVGW9Hn\/zebI7u6Vp8uC8t\/r562CdHHi\/1zQf9ujjb+w3zS0Eb+7j59A1qbiESxPoG8jvgBz4KDz1SfOVy2emtVxH+gR7fE58G6wzBWL3LUTIHoO+gfwJyB2PBPSZD1ifcOSOOjfkD0AqHgitHy71xuipxunjKYC+gfwNWCKgr3LljgI4N+QvQCqeCE88JfhCjnstOCOOV4C+gXwlOF3yZYu+ctU66CtK7nJdP8G5If8A5sa8t\/LkRYQmwiuLqeadKfBRKb5yAfoqNndnjB6Dc0P2BXc0hkLGzBk3dr42fZVKB+grrtylwM7AzZjYcvvKBZOvJJSP3grOljwptF7dBn0EztxJxNxfccdWCoRXFjPNO7PlWkr2kQ\/cucPer5pi+9s3x3YgONCYCjlqWc562QZy5I6qoZrzX389Bskrjli2PWddADV3pYPTW9hzt9UD7EqcGOTqRaScJ1RXmK9UPUBuzUrsVco1Y9dNGYMFZk9y6ZqrfxuLrsQZA86aa3u+wqVr6f3bNuLk6hG2WXNtz1e4dMX0AHdb9FVMr7KUe6E2aq6qT\/rzFR1cPWDhlYWtT7NbkK9ie0q5vOV6jp+yNoReo\/meH3P16nL4SvWX9T4z9tq1K31mVx5LfD7E7SvTHNJHeg+Q2rtR\/eUu9plTosS9waWr8MpCHR\/SA8TcJ6e8n96GXmWJvtoGXbGIeX+nRGxDzXVBXcNyX8vGvouaG6nf44YIrQ2l3L8q5OjlYmC7hi0pRh0x139tIHQfpNC71JxVpEfX9kFFRUVFRUVFRUVFRUVOXET+fWQFDb6+BLVv4eutcPT+bHMqX8G1nEbGsE3a2fBIzPW4t\/lpgk9PU9xwreoYeC6lZWxvBZ73rLf5ziPMm2lOWw6onsJop+KzaQfBqZ3C3LLHTJDjjgVPBN9on8\/AWNN3QmjPNnUPDruXz3rx\/6eEba3Y90NtfrHBpp3Lo3PHv1HrLvW5GvSWrV6dL98flKSsmXpsbP22vfMYMpdrrRjoOU1xvlzaSVC1k1BrPdbqFaxTap+59oQOuD9ca+R4jhRas31jTevFfh9in02Xpp1JgxDtTDgFvvosdPli+T7gwNGoaa4SeG3EE08McmsnMeyIfrH1+1DEexfBo3HTTMTnZHhJfe0TQP33L0b0Oam858lFiu8+rE+G4019fNpJHoxpfsSSAlM+D8crj0CurVv93qBBCO+P1+c0rSk4hoB43wneGds9l2r\/P7es1+WZFNzQLjIGdRxl\/8J8+vJkpMdrzvVS5jP4JvY8kqn2v15\/MH6geiXWh7EeDjkWWxs21h3oQ5+3Yr3uGxtyfkwM2bRDrD2Vdv8BuWTeFA==",
          "encoding":"base64",
-         "height":20,
+         "height":40,
          "id":2,
          "name":"blocking",
          "opacity":1,
          "type":"tilelayer",
          "visible":true,
-         "width":30,
+         "width":150,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "compression":"zlib",
+         "data":"eJzt2D0OgjAAhmFWfxaVQXDxVI6ewSN4IuPobJyMh7IJC5KghCAVfJ7k2zu8aZomCU3Ms9gnYCwmoaVp2CwsrXR1TF8HTS1CS8uwlbuKDmWhpzxsoyv4C7e82BCd1rFPQJ1HXqxqyL0Rz6dm6nqDd6rNHDQEAAB0bOePnS\/Y66p3V38GtFRup9rRXVe0VG6nriP3Fl1wb8V3HsG7b6ujn3MZQVcAAAAAAAAAAAAAANCXJzVOGcQ=",
+         "encoding":"base64",
+         "height":40,
+         "id":6,
+         "name":"foreground",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":150,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "compression":"zlib",
+         "data":"eJztxbEJACAMAMEsIFqa\/Re1sMgCwcY7eD4CeGllxMx76DKygi47KwAAAAAAAAAAAAAAAAAAAAAAAAAAgF8cugQBgA==",
+         "encoding":"base64",
+         "height":40,
+         "id":7,
+         "name":"fore-foreground",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":150,
          "x":0,
          "y":0
         }, 
@@ -37,32 +65,28 @@
          "name":"doors",
          "objects":[
                 {
-                 "gid":5584,
+                 "gid":6680,
                  "height":32,
-                 "id":4,
+                 "id":5,
                  "name":"",
-                 "properties":[
-                        {
-                         "name":"next_map",
-                         "type":"string",
-                         "value":"room_01"
-                        }, 
-                        {
-                         "name":"start_x",
-                         "type":"int",
-                         "value":4
-                        }, 
-                        {
-                         "name":"start_y",
-                         "type":"int",
-                         "value":12
-                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":704.070045724292,
-                 "y":254.155462593638
+                 "x":224,
+                 "y":608
+                }, 
+                {
+                 "gid":6760,
+                 "height":32,
+                 "id":8,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":832,
+                 "y":253.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -70,25 +94,9 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":5,
- "nextobjectid":5,
+ "nextlayerid":8,
+ "nextobjectid":9,
  "orientation":"orthogonal",
- "properties":[
-        {
-         "name":"next_map",
-         "type":"string",
-         "value":"room_01"
-        }, 
-        {
-         "name":"start_x",
-         "type":"int",
-         "value":4
-        }, 
-        {
-         "name":"start_y",
-         "type":"int",
-         "value":12
-        }],
  "renderorder":"left-up",
  "tiledversion":"1.10.1",
  "tileheight":32,
@@ -174,9 +182,17 @@
         {
          "firstgid":5193,
          "source":"..\/tilesets\/base.json"
+        }, 
+        {
+         "firstgid":6257,
+         "source":"..\/..\/..\/..\/OneDrive\/Desktop\/Kanti\/Maturaarbeit\/Tiled\/[Base]BaseChip_pipo.tsx"
+        }, 
+        {
+         "firstgid":7321,
+         "source":"..\/..\/..\/..\/OneDrive\/Desktop\/Kanti\/Maturaarbeit\/Tiled\/[A]Water_pipo.tsx"
         }],
  "tilewidth":32,
  "type":"map",
  "version":"1.10",
- "width":30
+ "width":150
 }
