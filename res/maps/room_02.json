@@ -64,7 +64,7 @@
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":22
+                         "value":26
                         }, 
                         {
                          "name":"start_y",

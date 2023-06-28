@@ -64,12 +64,12 @@
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":22
+                         "value":7
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":9
+                         "value":20
                         }],
                  "rotation":0,
                  "type":"",
