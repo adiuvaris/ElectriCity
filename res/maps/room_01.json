@@ -180,6 +180,14 @@
         {
          "firstgid":1,
          "source":"..\/tilesets\/base.json"
+        }, 
+        {
+         "firstgid":1065,
+         "source":"..\/tilesets\/grass.json"
+        }, 
+        {
+         "firstgid":1593,
+         "source":"..\/tilesets\/water.json"
         }],
  "tilewidth":32,
  "type":"map",
