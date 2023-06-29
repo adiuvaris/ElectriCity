@@ -2,7 +2,7 @@
 import arcade
 import pyglet.window
 import src.const as const
-from src.views.loading import Loading
+from src.views.start_view import StartView
 
 
 class MainWindow(arcade.Window):
@@ -15,19 +15,17 @@ class MainWindow(arcade.Window):
         Konstruktor.
         Initialisiert das Fenster und definiert Pfade zu Ressourcen
         """
-
         super().__init__(const.SCREEN_WIDTH, const.SCREEN_HEIGHT, const.SCREEN_TITLE,
                          style=pyglet.window.Window.WINDOW_STYLE_BORDERLESS)
 
-        # Dictionary für geladene Views
-        self.views = {}
+        # Game View
+        self.game_view = None
 
         # Pfade zu einzelnen Ressourcen definieren, damit im Programm
         # leichter darauf zugegriffen werden kann.
         arcade.resources.add_resource_handle("maps", "res/maps")
         arcade.resources.add_resource_handle("characters", "res/characters")
         arcade.resources.add_resource_handle("sounds", "res/sounds")
-        arcade.resources.add_resource_handle("textures", "res/textures")
 
 
 def main():
@@ -41,7 +39,7 @@ def main():
     window.center_window()
 
     # Loading View erzeugen und starten
-    start_view = Loading()
+    start_view = StartView()
     start_view.setup()
     window.show_view(start_view)
 

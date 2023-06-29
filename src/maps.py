@@ -16,7 +16,7 @@ class GameMap:
     map_layers = None
     map_size = None
     properties = None
-    background_color = arcade.color.AMAZON
+    background_color = arcade.color.ALMOND
 
 
 def load_map(map_name):

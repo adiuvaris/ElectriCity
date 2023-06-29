@@ -1,46 +1,39 @@
+import os
 import arcade
 import arcade.gui
 
-from src.ui.labels import create_title_label
-from src.ui.images import create_image_sprite
+import src.const as const
+from src.data.game import gd
+
+from src.data.image import Image
 
 
-class Image(arcade.View):
+class ImageView(arcade.View):
     """
     Klasse für die View mit einem Bild
     """
 
-    def __init__(self, bild, view):
+    def __init__(self, figure: Image, view):
         """
         Konstruktor
         """
 
         super().__init__()
 
-        self.bild = bild
+        self.figure = figure
         self.view = view
 
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
+
+        self.create_ui()
 
     def setup(self):
         """
         View initialisieren.
         Es wird ein Bild angezeigt.
         """
-
-        # Alle UI Elemente löschen
-        self.manager.clear()
-
-        # Titel-Element erzeugen
-        if "Titel" in self.bild:
-            title_label = create_title_label(self.bild["Titel"])
-            self.manager.add(title_label)
-
-        # Bild Element erzeugen
-        if "Datei" in self.bild:
-            image = create_image_sprite(self.bild["Datei"])
-            self.manager.add(image)
+        pass
 
     def on_show_view(self):
         """
@@ -80,3 +73,34 @@ class Image(arcade.View):
         if key == arcade.key.ESCAPE:
             self.window.show_view(self.view)
 
+    def create_ui(self):
+
+        self.manager = arcade.gui.UIManager()
+
+        titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
+                                   width=self.window.width, height=gd.scale(30),
+                                   text=self.figure.title,
+                                   text_color=[0, 0, 0],
+                                   bold=True,
+                                   align="center",
+                                   font_size=gd.scale(const.FONT_SIZE_H1),
+                                   multiline=False)
+
+        self.manager.add(titel.with_border())
+
+        # Bild Element erzeugen - falls Datei existiert
+        filename = f"res/data/{self.figure.image_file}"
+        if os.path.exists(filename):
+
+            bs = arcade.Sprite(filename=filename)
+
+            h = bs.height
+            w = bs.width
+
+            x = gd.scale(20)
+            y = gd.scale(120)
+            w = gd.scale(1240)
+            h = gd.scale(520)
+
+            image_sprite = arcade.gui.UISpriteWidget(x=x, y=y, width=w, height=h, sprite=bs)
+            self.manager.add(image_sprite)

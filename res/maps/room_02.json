@@ -1,4 +1,4 @@
-{ "backgroundcolor":"#aaaa7f",
+{ "backgroundcolor":"#efdecd",
  "compressionlevel":-1,
  "height":16,
  "infinite":false,
@@ -55,6 +55,22 @@
                  "height":32,
                  "id":5,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"next_map",
+                         "type":"string",
+                         "value":"city"
+                        }, 
+                        {
+                         "name":"start_x",
+                         "type":"int",
+                         "value":26
+                        }, 
+                        {
+                         "name":"start_y",
+                         "type":"int",
+                         "value":9
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,

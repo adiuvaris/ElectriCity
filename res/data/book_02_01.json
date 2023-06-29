@@ -1,31 +1,34 @@
 {
-  "Titel" : "Strom",
-  "Theorie" : [
+  "Titel": "Strom",
+  "Theorie": [
     "Willkommen im ersten Haus. Hier wirst du lernen, was Strom und die dazugehörige physikalische Stromstärke sind. Wir reden oft davon, unsere Handys oder Laptops an den Strom zu hängen, weil sie sonst abstürzen würden. Aber was fliesst durch die Kabel in unsere elektrischen Geräte?",
-    "",
     "Richtig Strom, doch was ist das?"
   ],
-  "Bilder" : [
-      {
-        "Datei" :  "bild_01.png",
-        "Titel" : "Ladender Laptop",
-        "Beschreibung" : "Das Bild zeigt einen Laptop am Stromnetz"
+  "Bilder": [
+    {
+      "Datei": "bild_01.png",
+      "Titel": "Ladender Laptop",
+      "Beschreibung": "Das Bild zeigt einen Laptop am Stromnetz"
+    },
+    {
+      "Datei": "bild_02.png",
+      "Titel": "",
+      "Beschreibung": ""
+    }
+  ],
+  "Aufgaben": [
+    {
+      "Aufgabe": [
+        "Was, denkst du, ist Strom?"
+      ],
+      "Typ": "Multi",
+      "Antworten": {
+        "A": "Bewegte Elektronen",
+        "B": "Bewegte Protonen",
+        "C": "Bewegte Neutronen",
+        "D": "Bewegte Atome"
       },
-      {
-        "Datei" :  "bild_02.png",
-        "Titel" : "",
-        "Beschreibung" : ""
-      }
-  ],
-  "Aufgabe" : [
-    "Was, denkst du, ist Strom?"
-  ],
-  "Typ" : "Multi",
-  "Antworten" : {
-    "A": "Bewegte Elektronen",
-    "B": "Bewegte Protonen",
-    "C": "Bewegte Neutronen",
-    "D": "Bewegte Atome"
-  },
-  "Richtig" : "A"
+      "Richtig": "A"
+    }
+  ]
 }

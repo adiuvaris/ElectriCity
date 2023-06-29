@@ -20,7 +20,6 @@ class Player(Character):
         # Ton für Schritte laden
         self.sound_update = 0
         self.footstep_sound = arcade.load_sound(":sounds:footstep00.wav")
-        self.data = {}
 
     def on_update(self, delta_time: float = 1.0 / 60.0):
         """

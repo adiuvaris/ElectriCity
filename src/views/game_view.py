@@ -5,10 +5,12 @@ from pyglet.math import Vec2
 import src.const as const
 from src.sprites.player import Player
 
-from src.views.book import Book
+from src.views.book_view import BookView
+from src.views.menu_view import MenuView
+from src.views.help_view import HelpView
 
 
-class Game(arcade.View):
+class GameView(arcade.View):
     """
     View des Spiels mit der Darstellung der Map (city, room, view)
     """
@@ -22,7 +24,7 @@ class Game(arcade.View):
 
         super().__init__()
 
-        arcade.set_background_color(arcade.color.AMAZON)
+        arcade.set_background_color(arcade.color.ALMOND)
 
         # Manager für das User Interface aktivieren
         self.ui_manager = arcade.gui.UIManager()
@@ -150,10 +152,21 @@ class Game(arcade.View):
         Wird von arcade aufgerufen, wenn die View sichtbar wird
         """
 
+        # In dieser Ansicht braucht es keinen Mauszeiger
+        self.window.set_mouse_visible(False)
+
         # Wenn in der Map eine Hintergrundfarbe definiert ist, diese übernehmen
         my_map = self.map_list[self.cur_map_name]
         if my_map.background_color:
             arcade.set_background_color(my_map.background_color)
+
+    def on_hide_view(self):
+        """
+        Wird von arcade aufgerufen, wenn eine andere View sichtbar wird
+        """
+
+        # In allen anderen Ansichten braucht es einen  Mauszeiger
+        self.window.set_mouse_visible(True)
 
     def on_update(self, delta_time):
         """
@@ -325,7 +338,7 @@ class Game(arcade.View):
                     self.player_sprite.center_x = views_hit[0].center_x - const.SPRITE_SIZE - const.SPRITE_SIZE / 2
 
                 # Neue view anzeigen
-                v = Book(room_nr, book_nr)
+                v = BookView(room_nr, book_nr)
                 v.setup()
                 self.window.show_view(v)
 
@@ -357,10 +370,16 @@ class Game(arcade.View):
             self.left_pressed = True
         elif key in const.KEY_RIGHT:
             self.right_pressed = True
-        elif key == arcade.key.ESCAPE:
+        elif key == arcade.key.F1:
+            # Anleitung
+            hint = HelpView("anleitung.json", self)
+            self.window.show_view(hint)
 
-            # Die Escape-Taste startet das Hauptmenü
-            self.window.show_view(self.window.views["menu"])
+        elif key == arcade.key.M or key == arcade.key.ESCAPE:
+
+            # Hauptmenü
+            menu = MenuView()
+            self.window.show_view(menu)
 
     def on_key_release(self, key, modifiers):
         """

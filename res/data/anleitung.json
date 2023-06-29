@@ -1,0 +1,11 @@
+{
+  "text" : [
+    "<h1>ElectriCity</h1>",
+    "ElectriCity ist ein Lernspiel....",
+    "",
+    "Während du dich durch die Welt bewegst, kannst du dir mit der Taste <b><i>F1</i></b> diesen Text anzeigen lassen.",
+    "Die Tasten <b><i>Esc</i></b> und  <b><i>M</i></b> starten das <i>Menü</i> des Spiels. Im Menü kann man die relative Grösse des Fensters ändern und seinen Avatar auswählen.",
+    "",
+    "Die Taste <b><i>Esc</i></b> springt jeweils einen Schritt zurück. Mit der <b><i>Esc</i></b> Taste kannst du also diese Anleitung wieder verlassen."
+  ]
+}
