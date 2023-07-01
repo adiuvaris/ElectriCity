@@ -47,6 +47,15 @@ class GameData(object):
         self.game_data["books"] = books
         self.save_game_data()
 
+    def get_avatar(self):
+        if "avatar" not in self.game_data:
+            self.game_data["avatar"] = "res/avatars/dog.png"
+        return self.game_data["avatar"]
+
+    def set_avatar(self, avatar):
+        self.game_data["avatar"] = avatar
+        self.save_game_data()
+
 
 # Einzige Instanz von GameData
 gd = GameData()

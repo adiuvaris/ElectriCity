@@ -8,18 +8,21 @@ class Player(Character):
     Player Sprite, basierend auf der Klasse Character
     """
 
-    def __init__(self, sheet_name):
+    def __init__(self, avatar):
         """
         Konstruktor.
 
         :param sheet_name: Dateiname mit den Texturen für die Sprite
         """
 
-        super().__init__(sheet_name)
+        super().__init__(avatar)
 
         # Ton für Schritte laden
         self.sound_update = 0
         self.footstep_sound = arcade.load_sound(":sounds:footstep00.wav")
+
+    def set_avatar(self, avatar):
+        super().set_avatar(avatar)
 
     def on_update(self, delta_time: float = 1.0 / 60.0):
         """

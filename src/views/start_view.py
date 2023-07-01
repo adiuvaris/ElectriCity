@@ -1,3 +1,5 @@
+import os
+from os.path import isfile, join
 import arcade
 import arcade.gui
 
@@ -21,6 +23,16 @@ class StartView(arcade.View):
         """
 
         super().__init__()
+
+        # Verzeichnis in dem die Player-Daten liegen
+        mypath = "res/data"
+
+        # Alle Dateien mit der Endung player laden
+        self.players = [
+            f[:-7]
+            for f in os.listdir(mypath)
+            if isfile(join(mypath, f)) and f.endswith(".player")
+        ]
 
         # Attribute definieren
         self.started = False
@@ -85,7 +97,6 @@ class StartView(arcade.View):
                 self.done, self.progress, self.map_list = load_maps()
             if self.done:
                 self.window.game_view = GameView(self.map_list)
-                self.window.game_view.setup()
 
     def draw_bar(self):
         """
@@ -121,17 +132,7 @@ class StartView(arcade.View):
             if self.done:
                 player_name = self.input_text.text.strip()
                 if len(player_name) > 0:
-                    gd.init_player(player_name)
-
-                    # Fenstergrösse für die gewünschte Skalierung anpassen
-                    w = gd.scale(const.SCREEN_WIDTH)
-                    h = gd.scale(const.SCREEN_HEIGHT)
-                    self.window.set_size(w, h)
-                    self.window.center_window()
-
-                    # Game über die Anpassung informieren und anzeigen
-                    self.window.game_view.on_resize(w, h)
-                    self.window.show_view(self.window.game_view)
+                    self.start_game(player_name)
 
     def create_ui(self):
 
@@ -168,14 +169,63 @@ class StartView(arcade.View):
         self.manager.add(self.input_text.with_border())
 
         hint = arcade.gui.UILabel(x=20,
-                                   y=200,
-                                   width=1280,
-                                   height=30,
-                                   text="Drücke die Taste 'F1' für eine kurze Anleitung.",
-                                   text_color=[0, 0, 0],
-                                   bold=True,
-                                   font_size=const.FONT_SIZE_H2,
+                                  y=200,
+                                  width=1280,
+                                  height=30,
+                                  text="Drücke die Taste 'F1' für eine kurze Anleitung.",
+                                  text_color=[0, 0, 0],
+                                  bold=True,
+                                  font_size=const.FONT_SIZE_H2,
                                   align="center",
-                                   multiline=False)
+                                  multiline=False)
 
         self.manager.add(hint)
+
+        if len(self.players) > 0:
+            label = arcade.gui.UILabel(x=20,
+                                       y=500,
+                                       width=290,
+                                       height=30,
+                                       text="Oder klicke auf ihn:",
+                                       text_color=[0, 0, 0],
+                                       bold=True,
+                                       font_size=const.FONT_SIZE_H2,
+                                       multiline=False)
+
+            self.manager.add(label)
+
+            x = 340
+            y = 500
+            i = 0
+            for p in self.players:
+                style = {"font_size": gd.scale(const.FONT_SIZE), "bg_color": (100, 100, 100)}
+                ib = arcade.gui.UIFlatButton(x=x, y=y, width=160, height=40, text=p, style=style)
+                ib.on_click = self.on_click
+                self.manager.add(ib)
+
+                x = x + 180
+                i = i + 1
+                if i > 4:
+                    i = 0
+                    x = 340
+                    y = y - 50
+
+    def on_click(self, event):
+        if self.done:
+            self.start_game(event.source.text)
+
+    def start_game(self, player_name):
+        gd.init_player(player_name)
+
+        self.window.game_view.setup()
+
+        # Fenstergrösse für die gewünschte Skalierung anpassen
+        w = gd.scale(const.SCREEN_WIDTH)
+        h = gd.scale(const.SCREEN_HEIGHT)
+        self.window.set_size(w, h)
+        self.window.center_window()
+
+        # Game über die Anpassung informieren und anzeigen
+        self.window.game_view.on_resize(w, h)
+        self.window.show_view(self.window.game_view)
+

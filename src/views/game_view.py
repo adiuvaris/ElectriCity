@@ -5,6 +5,8 @@ from pyglet.math import Vec2
 import src.const as const
 from src.sprites.player import Player
 
+from src.data.game import gd
+
 from src.views.book_view import BookView
 from src.views.menu_view import MenuView
 from src.views.help_view import HelpView
@@ -97,7 +99,7 @@ class GameView(arcade.View):
         """
 
         # Player erzeugen
-        self.player_sprite = Player(":characters:Female/Female 18-4.png")
+        self.player_sprite = Player(gd.get_avatar())
 
         # Aktuelle Map anzeigen
         start_x = const.STARTING_X
@@ -159,6 +161,17 @@ class GameView(arcade.View):
         my_map = self.map_list[self.cur_map_name]
         if my_map.background_color:
             arcade.set_background_color(my_map.background_color)
+
+        # Player Avatar setzen
+        self.player_sprite.set_avatar(gd.get_avatar())
+
+        self.player_sprite.change_y = const.MOVEMENT_SPEED / 1.5
+        self.physics_engine.update()
+        self.player_sprite_list.on_update(1)
+
+        self.player_sprite.change_y = -const.MOVEMENT_SPEED / 1.5
+        self.physics_engine.update()
+        self.player_sprite_list.on_update(1)
 
     def on_hide_view(self):
         """

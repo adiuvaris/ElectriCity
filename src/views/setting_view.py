@@ -1,3 +1,5 @@
+import os
+from os.path import isfile, join
 
 import arcade
 import arcade.gui
@@ -17,6 +19,16 @@ class SettingView(arcade.View):
         """
 
         super().__init__()
+
+        # Verzeichnis in dem die Player-Daten liegen
+        mypath = "res/avatars"
+
+        # Alle Dateien mit der Endung .png laden
+        self.avatars = [
+            f"res/avatars/{f}"
+            for f in os.listdir(mypath)
+            if isfile(join(mypath, f)) and f.endswith(".png")
+        ]
 
         self.menu = menu
 
@@ -120,11 +132,10 @@ class SettingView(arcade.View):
         self.manager.add(titel.with_border())
 
         label = arcade.gui.UILabel(x=gd.scale(20), y=gd.scale(600),
-                                   width=self.window.width, height=gd.scale(30),
+                                   width=gd.scale(290), height=gd.scale(30),
                                    text="Fenstergrösse in Prozent:",
                                    text_color=[0, 0, 0],
                                    bold=True,
-                                   align="left",
                                    font_size=gd.scale(const.FONT_SIZE_H2),
                                    multiline=False)
 
@@ -135,3 +146,38 @@ class SettingView(arcade.View):
                                                  font_size=gd.scale(const.FONT_SIZE_H2), text=str(scale))
 
         self.manager.add(self.input_text)
+
+        label = arcade.gui.UILabel(x=gd.scale(20), y=gd.scale(500),
+                                   width=gd.scale(290),
+                                   height=30,
+                                   text="Wähle einen Avatar:",
+                                   text_color=[0, 0, 0],
+                                   bold=True,
+                                   font_size=gd.scale(const.FONT_SIZE_H2),
+                                   multiline=False)
+
+        self.manager.add(label)
+
+        mypath = "res/avatars"
+
+        x = gd.scale(340)
+        y = gd.scale(480)
+        for avatar in self.avatars:
+            te = arcade.load_texture(avatar, x=0, y=0, width=const.SPRITE_SIZE, height=const.SPRITE_SIZE)
+            if avatar == gd.get_avatar():
+                ib = arcade.gui.UITextureButton(x=x, y=y, width=gd.scale(40), height=gd.scale(40), texture=te).with_border()
+            else:
+                ib = arcade.gui.UITextureButton(x=x, y=y, width=gd.scale(40), height=gd.scale(40), texture=te)
+
+            ib.on_click = self.on_click
+            self.manager.add(ib)
+
+
+            x = x + gd.scale(50)
+
+    def on_click(self, event):
+        x = event.x - gd.scale(340)
+        idx = int(x / gd.scale(50))
+        if 0 <= idx < len(self.avatars):
+            gd.set_avatar(self.avatars[idx])
+            self.create_ui()
