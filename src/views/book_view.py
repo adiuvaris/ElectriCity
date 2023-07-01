@@ -4,11 +4,16 @@ import json
 
 import src.const as const
 from src.data.game import gd
-from src.views.message_view import MessageView
+
+from src.base.term import Term
+
+from src.ui.message_box import MessageBox
 
 from src.data.theory import Theory
 from src.data.image import Image
 from src.data.task import Task
+
+from src.views.image_view import ImageView
 
 
 class BookView(arcade.View):
@@ -30,6 +35,7 @@ class BookView(arcade.View):
         self.theory = None
         self.tasks = []
         self.cur_task = 0
+        self.correct = False
 
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
@@ -73,6 +79,30 @@ class BookView(arcade.View):
         self.clear()
         self.manager.draw()
 
+    def on_image_click(self, event):
+        for img in self.theory.images:
+            img: Image = img
+
+            if event.source.text == img.title:
+                image_view = ImageView(img, self)
+                self.window.show_view(image_view)
+
+    def on_answer_click(self, event):
+
+        task = self.tasks[self.cur_task]
+
+        msg = "Das ist leider falsch"
+        for k, v in task.answers.items():
+            if event.source.text == v:
+                if k == task.correct_answer:
+                    msg = "Das ist korrekt"
+                    self.cur_task = self.cur_task + 1
+                    self.correct = True
+                    break
+
+        msg_box = MessageBox(msg=msg, callback=self.on_ok)
+        self.manager.add(msg_box)
+
     def on_key_press(self, key, modifiers):
         """
         Wird von arcade aufgerufen, wenn eine Taste gedrückt wurde.
@@ -85,7 +115,45 @@ class BookView(arcade.View):
         if key == arcade.key.ESCAPE:
             self.window.show_view(self.window.game_view)
 
-        self.tasks[self.cur_task].on_key_press(key, modifiers)
+        # Prüfen, ob eine Antwort eingetippt wurde
+        if key == arcade.key.ENTER or key == arcade.key.NUM_ENTER:
+            task = self.tasks[self.cur_task]
+            if task.input_answer is not None:
+
+                # Antwort prüfen
+                eingabe = task.input_answer.text.strip()
+                self.check_answer(float(eingabe))
+
+    def check_answer(self, answer):
+        msg = "Das ist leider falsch"
+        task = self.tasks[self.cur_task]
+
+        if task.type == "Zahl":
+            # Bei einer Zahl muss die Antwort anhand der Formel berechnet werden
+            term = Term()
+            term.variables = task.cur_variables
+            val = term.calc(task.correct_answer)
+
+            # Stimmt die Antwort?
+            if val == answer:
+                msg = "Das ist korrekt"
+                self.correct = True
+                self.cur_task = self.cur_task + 1
+
+        if task.type == "Text":
+
+            # Stimmt die Antwort?
+            if answer == task.correct_answer:
+                msg = "Das ist korrekt"
+                self.correct = True
+                self.cur_task = self.cur_task + 1
+
+        msg_box = MessageBox(msg=msg, callback=self.on_ok)
+        self.manager.add(msg_box)
+
+    def on_ok(self):
+        if self.correct:
+            self.create_ui()
 
     def read_book(self):
 
@@ -135,8 +203,12 @@ class BookView(arcade.View):
 
     def create_ui(self):
 
-        # Alle UI Elemente löschen
-        self.manager = arcade.gui.UIManager()
+        self.correct = False
+
+        for widget in self.manager.walk_widgets():
+            self.manager.remove(widget)
+
+        self.manager.clear()
 
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
@@ -149,7 +221,12 @@ class BookView(arcade.View):
 
         self.manager.add(titel.with_border())
 
-        self.theory.create_ui(self, self.manager)
+        self.theory.create_ui(self.manager, callback=self.on_image_click)
 
         if self.cur_task < len(self.tasks):
-            self.tasks[self.cur_task].create_ui(self, self.manager)
+            self.tasks[self.cur_task].create_ui(self.manager, self.on_answer_click)
+        else:
+            self.window.show_view(self.window.game_view)
+
+        self.manager.trigger_render()
+

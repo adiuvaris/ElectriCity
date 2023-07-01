@@ -22,7 +22,7 @@ class SettingView(arcade.View):
 
         # UIManager braucht es für arcade
         self.input_text = None
-        self.manager = None
+        self.manager = arcade.gui.UIManager()
         self.create_ui()
 
         arcade.set_background_color(arcade.color.ALMOND)
@@ -92,13 +92,6 @@ class SettingView(arcade.View):
         if key == arcade.key.ESCAPE:
             self.window.show_view(self.menu)
 
-    def on_click_back(self, event):
-        """
-        Klick-handler, wenn "Zurück zum Spiel" angeklickt wurde
-        :param event:
-        """
-        self.window.show_view(self.menu)
-
     def on_resize(self, width, height):
         """
         Wird von arcade aufgerufen, wenn die Fenstergrösse ändert.
@@ -111,7 +104,10 @@ class SettingView(arcade.View):
     def create_ui(self):
         scale = gd.get_scale()
 
-        self.manager = arcade.gui.UIManager()
+        for widget in self.manager.walk_widgets():
+            self.manager.remove(widget)
+
+        self.manager.clear()
 
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
@@ -139,10 +135,3 @@ class SettingView(arcade.View):
                                                  font_size=gd.scale(const.FONT_SIZE_H2), text=str(scale))
 
         self.manager.add(self.input_text)
-
-        button = arcade.gui.UIFlatButton(x=gd.scale(20), y=gd.scale(20),
-                                         width=gd.scale(290), text="Zurück")
-
-        button.on_click = self.on_click_back
-
-        self.manager.add(button)

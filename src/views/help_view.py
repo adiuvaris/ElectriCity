@@ -84,7 +84,10 @@ class HelpView(arcade.View):
 
     def create_ui(self):
 
-        self.manager = arcade.gui.UIManager()
+        for widget in self.manager.walk_widgets():
+            self.manager.remove(widget)
+
+        self.manager.clear()
 
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),

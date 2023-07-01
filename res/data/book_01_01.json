@@ -31,6 +31,18 @@
         "D": "Bewegte Atome"
       },
       "Richtig": "A"
+    },
+    {
+      "Aufgabe": [
+        "Was sind die besten Stromleiter?"
+      ],
+      "Typ": "Multi",
+      "Antworten": {
+        "A": "Salze mit fixen Ionengittern",
+        "B": "Kovalenzbindungen mit teilenden Elektronenpaaren",
+        "C": "Metalle mit freien Elektronen"
+      },
+      "Richtig": "C"
     }
   ]
 }

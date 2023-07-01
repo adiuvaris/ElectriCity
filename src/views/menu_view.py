@@ -21,7 +21,7 @@ class MenuView(arcade.View):
         super().__init__()
 
         # UIManager braucht es für arcade
-        self.manager = None
+        self.manager = arcade.gui.UIManager()
         self.create_ui()
 
     def setup(self):
@@ -116,7 +116,10 @@ class MenuView(arcade.View):
         """
         UI Elemente erzeugen
         """
-        self.manager = arcade.gui.UIManager()
+        for widget in self.manager.walk_widgets():
+            self.manager.remove(widget)
+
+        self.manager.clear()
 
         # Vertikales Layout für die Schalter erstellen
         v_box = arcade.gui.UIBoxLayout()

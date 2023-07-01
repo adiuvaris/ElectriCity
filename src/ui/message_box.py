@@ -9,7 +9,7 @@ import src.const as const
 from src.data.game import gd
 
 
-class MessageView(UIMouseFilterMixin, UIAnchorWidget):
+class MessageBox(UIMouseFilterMixin, UIAnchorWidget):
 
     def __init__(self, msg: str, buttons=("Ok",), callback=None):
 
@@ -61,4 +61,4 @@ class MessageView(UIMouseFilterMixin, UIAnchorWidget):
     def on_ok(self, event):
         self.parent.remove(self)
         if self._callback is not None:
-            self._callback(event.source.text)
+            self._callback()

@@ -3,10 +3,8 @@ import arcade
 import arcade.gui
 
 import src.const as const
-from src.base.term import Term
 from src.data.game import gd
 from src.ui.attributed_text import AttributedText
-from src.views.message_view import MessageView
 
 
 class Task:
@@ -19,12 +17,11 @@ class Task:
         self.variables = {}
         self.cur_variables = {}
         self.input_answer = None
-        self.parent = None
         self.manager = None
+        self.correct = False
 
-    def create_ui(self, parent: arcade.Window, ui_manager: arcade.gui.UIManager):
+    def create_ui(self, ui_manager: arcade.gui.UIManager, callback):
 
-        self.parent = parent
         self.manager = ui_manager
 
         # Aktuelle Variablen mit zufälligem Wert aus der Lite der möglichen Werte füllen
@@ -73,7 +70,7 @@ class Task:
 
                 style = {"font_size": gd.scale(const.FONT_SIZE), "bg_color": (100, 100, 100)}
                 ib = arcade.gui.UIFlatButton(x=x, y=y, width=w, height=h, text=v, style=style)
-                ib.on_click = self.on_answer_click
+                ib.on_click = callback
 
                 ui_manager.add(ib)
 
@@ -119,30 +116,3 @@ class Task:
         elif self.type == "Text":
             pass
 
-    def on_answer_click(self, event):
-        msg = "Das ist leider falsch"
-        for k, v in self.answers.items():
-            if event.source.text == v:
-                if k == self.correct_answer:
-                    msg = "Das ist korrekt"
-                    break
-
-        msg_view = MessageView(msg=msg)
-        self.manager.add(msg_view)
-
-    def on_key_press(self, key, modifiers):
-        if key == arcade.key.ENTER or key == arcade.key.NUM_ENTER:
-            if self.input_answer is not None:
-                eingabe = self.input_answer.text.strip()
-                self.check_answer(float(eingabe))
-
-    def check_answer(self, answer):
-        msg = "Das ist leider falsch"
-        term = Term()
-        term.variables = self.cur_variables
-        val = term.calc(self.correct_answer)
-        if val == answer:
-            msg = "Das ist korrekt"
-
-        msg_view = MessageView(msg=msg)
-        self.manager.add(msg_view)

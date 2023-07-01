@@ -134,6 +134,10 @@ class StartView(arcade.View):
                     self.window.show_view(self.window.game_view)
 
     def create_ui(self):
+
+        for widget in self.manager.walk_widgets():
+            self.manager.remove(widget)
+
         self.manager.clear()
 
         titel = arcade.gui.UILabel(x=0, y=670,
