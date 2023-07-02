@@ -10,6 +10,7 @@ from src.data.game import gd
 from src.views.book_view import BookView
 from src.views.menu_view import MenuView
 from src.views.help_view import HelpView
+from src.views.quiz_view import QuizView
 
 
 class GameView(arcade.View):
@@ -33,7 +34,7 @@ class GameView(arcade.View):
         self.ui_manager.enable()
 
         # Player Sprite
-        self.player_sprite = None
+        self.player_sprite = Player(gd.get_avatar())
         self.player_sprite_list = None
 
         # Zuletzt gedrückte Taste
@@ -307,6 +308,49 @@ class GameView(arcade.View):
 
                 # Neue Map anzeigen
                 self.switch_map(map_name, start_x, start_y)
+            else:
+
+                # Keine Türe getroffen, also normal scrollen, damit Player Sprite
+                # etwa in der Mitte des Fensters bleibt.
+                self.scroll_to_player()
+        else:
+
+            # Keine Türe, also normal scrollen
+            self.scroll_to_player()
+
+        if "quiz" in map_layers:
+
+            # Wurde die Türe getroffen
+            quiz_hit = arcade.check_for_collision_with_list(
+                self.player_sprite, map_layers["quiz"]
+            )
+
+            # Ja - es gibt eine Kollision
+            if len(quiz_hit) > 0:
+
+                # Nötige Infos holen
+
+                room = quiz_hit[0].properties["room"]
+                # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der Info-View
+                # nicht gleich wieder ein Hit erfolgt
+                if self.up_pressed:
+                    self.up_pressed = False
+                    self.player_sprite.center_y = quiz_hit[0].center_y - const.SPRITE_SIZE - const.SPRITE_SIZE / 2
+
+                if self.down_pressed:
+                    self.down_pressed = False
+                    self.player_sprite.center_y = quiz_hit[0].center_y + const.SPRITE_SIZE + const.SPRITE_SIZE / 2
+
+                if self.left_pressed:
+                    self.left_pressed = False
+                    self.player_sprite.center_x = quiz_hit[0].center_x + const.SPRITE_SIZE + const.SPRITE_SIZE / 2
+
+                if self.right_pressed:
+                    self.right_pressed = False
+                    self.player_sprite.center_x = quiz_hit[0].center_x - const.SPRITE_SIZE - const.SPRITE_SIZE / 2
+
+                quiz = QuizView(room)
+                self.window.show_view(quiz)
             else:
 
                 # Keine Türe getroffen, also normal scrollen, damit Player Sprite
