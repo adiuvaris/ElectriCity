@@ -20,6 +20,15 @@ class GameData(object):
     def scale(self, val):
         return int(val * self.get_scale() / 100.0)
 
+    def get_volume(self):
+        if "volume" not in self.game_data:
+            self.game_data["volume"] = 10
+        return self.game_data["volume"]
+
+    def set_volume(self, volume):
+        self.game_data["volume"] = volume
+        self.save_game_data()
+
     def init_player(self, player_name):
         self.player_name = player_name
         self.load_game_data()

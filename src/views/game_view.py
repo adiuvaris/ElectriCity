@@ -33,6 +33,11 @@ class GameView(arcade.View):
         self.ui_manager = arcade.gui.UIManager()
         self.ui_manager.enable()
 
+        self.laser_sound = arcade.load_sound(":sounds:laser.wav")
+        self.door_open_sound = arcade.load_sound(":sounds:door_open.wav")
+        self.door_close_sound = arcade.load_sound(":sounds:door_close.wav")
+        self.book_sound = arcade.load_sound(":sounds:book.wav")
+
         # Player Sprite
         self.player_sprite = Player(gd.get_avatar())
         self.player_sprite_list = None
@@ -306,6 +311,11 @@ class GameView(arcade.View):
                 start_x = doors_hit[0].properties["start_x"]
                 start_y = doors_hit[0].properties["start_y"]
 
+                if map_name == "city":
+                    arcade.play_sound(self.door_close_sound, volume=gd.get_volume() / 100.0)
+                else:
+                    arcade.play_sound(self.door_open_sound, volume=gd.get_volume() / 100.0)
+
                 # Neue Map anzeigen
                 self.switch_map(map_name, start_x, start_y)
             else:
@@ -328,26 +338,28 @@ class GameView(arcade.View):
             # Ja - es gibt eine Kollision
             if len(quiz_hit) > 0:
 
-                # Nötige Infos holen
+                arcade.play_sound(self.laser_sound, volume=gd.get_volume() / 100.0)
 
+                # Nötige Infos holen
                 room = quiz_hit[0].properties["room"]
+
                 # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der Info-View
                 # nicht gleich wieder ein Hit erfolgt
                 if self.up_pressed:
                     self.up_pressed = False
-                    self.player_sprite.center_y = quiz_hit[0].center_y - const.SPRITE_SIZE - const.SPRITE_SIZE / 2
+                    self.player_sprite.center_y = quiz_hit[0].center_y - const.SPRITE_SIZE
 
                 if self.down_pressed:
                     self.down_pressed = False
-                    self.player_sprite.center_y = quiz_hit[0].center_y + const.SPRITE_SIZE + const.SPRITE_SIZE / 2
+                    self.player_sprite.center_y = quiz_hit[0].center_y + const.SPRITE_SIZE
 
                 if self.left_pressed:
                     self.left_pressed = False
-                    self.player_sprite.center_x = quiz_hit[0].center_x + const.SPRITE_SIZE + const.SPRITE_SIZE / 2
+                    self.player_sprite.center_x = quiz_hit[0].center_x + const.SPRITE_SIZE
 
                 if self.right_pressed:
                     self.right_pressed = False
-                    self.player_sprite.center_x = quiz_hit[0].center_x - const.SPRITE_SIZE - const.SPRITE_SIZE / 2
+                    self.player_sprite.center_x = quiz_hit[0].center_x - const.SPRITE_SIZE
 
                 quiz = QuizView(room)
                 self.window.show_view(quiz)
@@ -371,6 +383,8 @@ class GameView(arcade.View):
 
             # Ja - es gibt eine Kollision
             if len(views_hit) > 0:
+
+                arcade.play_sound(self.book_sound, volume=gd.get_volume() / 100.0)
 
                 # Detail holen, damit die View angezeigt werden kann
                 room_nr = views_hit[0].properties["room"]

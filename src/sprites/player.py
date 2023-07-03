@@ -2,6 +2,8 @@
 import arcade
 from src.sprites.character import Character
 
+from src.data.game import gd
+
 
 class Player(Character):
     """
@@ -12,14 +14,14 @@ class Player(Character):
         """
         Konstruktor.
 
-        :param sheet_name: Dateiname mit den Texturen für die Sprite
+        :param avatar: Dateiname mit den Texturen für die Sprite
         """
 
         super().__init__(avatar)
 
         # Ton für Schritte laden
         self.sound_update = 0
-        self.footstep_sound = arcade.load_sound(":sounds:footstep00.wav")
+        self.footstep_sound = arcade.load_sound(":sounds:footstep.wav")
 
     def set_avatar(self, avatar):
         super().set_avatar(avatar)
@@ -45,5 +47,5 @@ class Player(Character):
             self.sound_update += 1
 
         if self.sound_update >= 3:
-            arcade.play_sound(self.footstep_sound, volume=0.1)
+            arcade.play_sound(self.footstep_sound, volume=gd.get_volume() / 100.0)
             self.sound_update = 0

@@ -28,6 +28,9 @@ class BookView(arcade.View):
 
         super().__init__()
 
+        self.lose_sound = arcade.load_sound(":sounds:lose.wav")
+        self.ok_sound = arcade.load_sound(":sounds:ok.wav")
+
         self.room_nr = room_nr
         self.book_nr = book_nr
 
@@ -92,13 +95,18 @@ class BookView(arcade.View):
         task = self.tasks[self.cur_task]
 
         msg = "Das ist leider falsch"
+        sound = self.lose_sound
+
         for k, v in task.answers.items():
             if event.source.text == v:
                 if k == task.correct_answer:
                     msg = "Das ist korrekt"
+                    sound = self.ok_sound
                     self.cur_task = self.cur_task + 1
                     self.correct = True
                     break
+
+        arcade.play_sound(sound, volume=gd.get_volume() / 100.0)
 
         msg_box = MessageBox(msg=msg, callback=self.on_ok)
         self.manager.add(msg_box)
@@ -126,6 +134,7 @@ class BookView(arcade.View):
 
     def check_answer(self, answer):
         msg = "Das ist leider falsch"
+        sound = self.lose_sound
         task = self.tasks[self.cur_task]
 
         if task.type == "Zahl":
@@ -137,6 +146,7 @@ class BookView(arcade.View):
             # Stimmt die Antwort?
             if val == answer:
                 msg = "Das ist korrekt"
+                sound = self.ok_sound
                 self.correct = True
                 self.cur_task = self.cur_task + 1
 
@@ -145,8 +155,11 @@ class BookView(arcade.View):
             # Stimmt die Antwort?
             if answer == task.correct_answer:
                 msg = "Das ist korrekt"
+                sound = self.ok_sound
                 self.correct = True
                 self.cur_task = self.cur_task + 1
+
+        arcade.play_sound(sound, volume=gd.get_volume() / 100.0)
 
         msg_box = MessageBox(msg=msg, callback=self.on_ok)
         self.manager.add(msg_box)

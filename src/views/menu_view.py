@@ -160,8 +160,6 @@ class MenuView(arcade.View):
         v_box.add(quit_button.with_space_around(bottom=gd.scale(30)))
         quit_button.on_click = self.on_click_quit
 
-
-
         # Widget, das als Anker für die Buttons dient, damit diese zentriert angezeigt werden.
         self.manager.add(
             arcade.gui.UIAnchorWidget(
@@ -181,4 +179,3 @@ class MenuView(arcade.View):
         self.manager.add(titel.with_border())
 
         self.manager.trigger_render()
-
