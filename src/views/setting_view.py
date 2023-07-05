@@ -189,6 +189,16 @@ class SettingView(arcade.View):
 
         self.manager.add(label)
 
+        label = arcade.gui.UILabel(x=gd.scale(500), y=gd.scale(600),
+                                   width=gd.scale(290), height=gd.scale(30),
+                                   text="(Werte von 50 bis 200)",
+                                   text_color=[0, 0, 0],
+                                   bold=True,
+                                   font_size=gd.scale(const.FONT_SIZE_H2),
+                                   multiline=False)
+
+        self.manager.add(label)
+
         self.input_scale = arcade.gui.UIInputText(x=gd.scale(340), y=gd.scale(600),
                                                   width=gd.scale(90), height=gd.scale(30),
                                                   font_size=gd.scale(const.FONT_SIZE_H2), text=str(scale))
@@ -198,6 +208,16 @@ class SettingView(arcade.View):
         label = arcade.gui.UILabel(x=gd.scale(20), y=gd.scale(550),
                                    width=gd.scale(290), height=gd.scale(30),
                                    text="Lautstärke in Prozent:",
+                                   text_color=[0, 0, 0],
+                                   bold=True,
+                                   font_size=gd.scale(const.FONT_SIZE_H2),
+                                   multiline=False)
+
+        self.manager.add(label)
+
+        label = arcade.gui.UILabel(x=gd.scale(500), y=gd.scale(550),
+                                   width=gd.scale(290), height=gd.scale(30),
+                                   text="(Werte von 0 bis 100)",
                                    text_color=[0, 0, 0],
                                    bold=True,
                                    font_size=gd.scale(const.FONT_SIZE_H2),
@@ -238,7 +258,6 @@ class SettingView(arcade.View):
             self.manager.add(ib)
 
             x = x + gd.scale(50)
-
 
         # Eingabefeld aktivieren - so tun, als ob in das Feld geklickt wurde
         self.active_input = self.input_scale
