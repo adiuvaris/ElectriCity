@@ -37,6 +37,7 @@ class GameView(arcade.View):
         self.door_open_sound = arcade.load_sound(":sounds:door_open.wav")
         self.door_close_sound = arcade.load_sound(":sounds:door_close.wav")
         self.book_sound = arcade.load_sound(":sounds:book.wav")
+        self.lose_sound = arcade.load_sound(":sounds:lose.wav")
 
         # Player Sprite
         self.player_sprite = Player(gd.get_avatar())
@@ -57,6 +58,10 @@ class GameView(arcade.View):
         # Aktuelle Map
         self.cur_map_name = None
         self.my_map = None
+
+        # Meldungstext init
+        self.message = ""
+        self.title = arcade.Text("", 0, 0, arcade.color.BLACK, gd.scale(const.FONT_SIZE_H1), bold=True)
 
         # Cameras
         self.camera_sprites = arcade.Camera(self.window.width, self.window.height)
@@ -117,6 +122,7 @@ class GameView(arcade.View):
         """
         Zeichnet die View. Wird von arcade aufgerufen.
         """
+        self.clear()
 
         arcade.start_render()
         cur_map = self.map_list[self.cur_map_name]
@@ -131,6 +137,19 @@ class GameView(arcade.View):
 
         # Player zeichnen
         self.player_sprite_list.draw()
+
+        if len(self.message) > 0:
+            self.title.text = self.message
+            self.title.x = self.player_sprite.center_x
+            self.title.y = self.player_sprite.center_y
+
+            w = self.title.content_width
+            h = self.title.content_height
+
+            arcade.draw_rectangle_filled(
+                self.player_sprite.center_x + w / 2, self.player_sprite.center_y + h / 2, w, h, arcade.color.WHITE)
+
+            self.title.draw()
 
         # Kameraposition anpassen
         self.camera_gui.use()
@@ -201,6 +220,8 @@ class GameView(arcade.View):
         # X- und Y-Änderungen definiert.
         self.player_sprite.change_x = 0
         self.player_sprite.change_y = 0
+
+        self.message = ""
 
         is_moving_up = (
             self.up_pressed
@@ -311,13 +332,18 @@ class GameView(arcade.View):
                 start_x = doors_hit[0].properties["start_x"]
                 start_y = doors_hit[0].properties["start_y"]
 
-                if map_name == "city":
-                    arcade.play_sound(self.door_close_sound, volume=gd.get_volume() / 100.0)
-                else:
-                    arcade.play_sound(self.door_open_sound, volume=gd.get_volume() / 100.0)
+                if map_name == "city" or gd.has_room_key(map_name[5:]):
+                    if map_name == "city":
+                        arcade.play_sound(self.door_close_sound, volume=gd.get_volume() / 100.0)
+                    else:
+                        arcade.play_sound(self.door_open_sound, volume=gd.get_volume() / 100.0)
 
-                # Neue Map anzeigen
-                self.switch_map(map_name, start_x, start_y)
+                    # Neue Map anzeigen
+                    self.switch_map(map_name, start_x, start_y)
+                else:
+                    # Fehlermeldung ausgeben
+                    self.message = "Du hast keinen Schlüssel!"
+
             else:
 
                 # Keine Türe getroffen, also normal scrollen, damit Player Sprite

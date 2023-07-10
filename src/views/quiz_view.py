@@ -1,3 +1,5 @@
+import random
+
 import arcade
 import arcade.gui
 import json
@@ -18,7 +20,7 @@ from src.views.image_view import ImageView
 
 class QuizView(arcade.View):
     """
-    Klasse für die View mit Theorie oder Aufgabe
+    Klasse für die View mit Quiz-Aufgaben für den Zutritt zu einem Raum
     """
 
     def __init__(self, room_nr):
@@ -28,12 +30,24 @@ class QuizView(arcade.View):
 
         super().__init__()
 
+        self.lose_sound = arcade.load_sound(":sounds:lose.wav")
+        self.ok_sound = arcade.load_sound(":sounds:ok.wav")
+
         self.room_nr = room_nr
 
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
 
-        # Buch darstellen
+        self.title = ""
+        self.theory = None
+        self.tasks = []
+        self.correct = False
+
+        # Fragen einlesen (json) und zufällig eine auswählen
+        self.read_quiz()
+        self.cur_task = random.randint(0, len(self.tasks) - 1)
+
+        # Die Frage darstellen
         self.create_ui()
 
     def setup(self):
@@ -69,6 +83,35 @@ class QuizView(arcade.View):
         self.clear()
         self.manager.draw()
 
+    def on_image_click(self, event):
+        for img in self.theory.images:
+            img: Image = img
+
+            if event.source.text == img.title:
+                image_view = ImageView(img, self)
+                self.window.show_view(image_view)
+
+    def on_answer_click(self, event):
+
+        task = self.tasks[self.cur_task]
+
+        msg = "Das ist leider falsch"
+        sound = self.lose_sound
+
+        for k, v in task.answers.items():
+            if event.source.text == v:
+                if k == task.correct_answer:
+                    msg = "Das ist korrekt"
+                    sound = self.ok_sound
+                    gd.set_room_key(self.room_nr)
+                    self.correct = True
+                    break
+
+        arcade.play_sound(sound, volume=gd.get_volume() / 100.0)
+
+        msg_box = MessageBox(msg=msg, callback=self.on_ok)
+        self.manager.add(msg_box)
+
     def on_key_press(self, key, modifiers):
         """
         Wird von arcade aufgerufen, wenn eine Taste gedrückt wurde.
@@ -80,6 +123,97 @@ class QuizView(arcade.View):
         # Escape geht zurück zum Spiel
         if key == arcade.key.ESCAPE:
             self.window.show_view(self.window.game_view)
+
+        # Prüfen, ob eine Antwort eingetippt wurde
+        if key == arcade.key.ENTER or key == arcade.key.NUM_ENTER:
+            task = self.tasks[self.cur_task]
+            if task.input_answer is not None:
+
+                # Antwort prüfen
+                eingabe = task.input_answer.text.strip()
+                self.check_answer(eingabe)
+
+    def check_answer(self, answer):
+        msg = "Das ist leider falsch"
+        sound = self.lose_sound
+        task = self.tasks[self.cur_task]
+
+        if task.type == "Zahl":
+
+            # Bei einer Zahl muss die Antwort anhand der Formel berechnet werden
+            answer = float(answer)
+            term = Term()
+            term.variables = task.cur_variables
+            val = term.calc(task.correct_answer)
+
+            # Stimmt die Antwort?
+            if val == answer:
+                msg = "Das ist korrekt"
+                gd.set_room_key(self.room_nr)
+                sound = self.ok_sound
+                self.correct = True
+
+        if task.type == "Text":
+
+            # Stimmt die Antwort (gross/klein ignorieren)?
+            if answer.lower() == task.correct_answer.lower():
+                msg = "Das ist korrekt"
+                gd.set_room_key(self.room_nr)
+                sound = self.ok_sound
+                self.correct = True
+
+        arcade.play_sound(sound, volume=gd.get_volume() / 100.0)
+
+        msg_box = MessageBox(msg=msg, callback=self.on_ok)
+        self.manager.add(msg_box)
+
+    def on_ok(self):
+        if self.correct:
+            self.create_ui()
+
+        self.window.show_view(self.window.game_view)
+
+    def read_quiz(self):
+
+        # JSON-File mit Quiz-Fragen einlesen
+        with open(f"res/data/quiz_{self.room_nr}.json", "r", encoding="'utf-8") as ifile:
+            data = json.load(ifile)
+
+            # Theorie-Text Element einlesen
+            self.theory = Theory()
+            if "Beschreibung" in data:
+                self.theory.text = data["Beschreibung"]
+
+            if "Bilder" in data:
+                bilder = data["Bilder"]
+                for bild in bilder:
+                    image = Image()
+                    if "Datei" in bild:
+                        image.image_file = bild["Datei"]
+                        if "Titel" in bild:
+                            image.title = bild["Titel"]
+                    if "Beschreibung" in bild:
+                        image.description = bild["Beschreibung"]
+                    self.theory.images.append(image)
+
+            # Aufgaben Element einlesen
+            if "Aufgaben" in data:
+                aufgaben = data["Aufgaben"]
+                for aufgabe in aufgaben:
+                    task = Task()
+                    if "Aufgabe" in aufgabe:
+                        task.question = aufgabe["Aufgabe"]
+                    if "Typ" in aufgabe:
+                        task.type = aufgabe["Typ"]
+                    if "Richtig" in aufgabe:
+                        task.correct_answer = aufgabe["Richtig"]
+                    if "Nachkommastellen" in aufgabe:
+                        task.digits = aufgabe["Nachkommastellen"]
+                    if "Antworten" in aufgabe:
+                        task.answers = aufgabe["Antworten"]
+                    if "Variablen" in aufgabe:
+                        task.variables = aufgabe["Variablen"]
+                    self.tasks.append(task)
 
     def create_ui(self):
 
@@ -100,4 +234,13 @@ class QuizView(arcade.View):
                                    multiline=False)
 
         self.manager.add(titel.with_border())
+
+        self.theory.create_ui(self.manager, callback=self.on_image_click)
+
+        if self.cur_task < len(self.tasks):
+            self.tasks[self.cur_task].create_ui(self.manager, self.on_answer_click)
+        else:
+            self.window.show_view(self.window.game_view)
+
+        self.manager.trigger_render()
 

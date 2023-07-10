@@ -102,6 +102,7 @@ class BookView(arcade.View):
                 if k == task.correct_answer:
                     msg = "Das ist korrekt"
                     sound = self.ok_sound
+                    gd.set_task(self.room_nr, self.book_nr, self.cur_task)
                     self.cur_task = self.cur_task + 1
                     self.correct = True
                     break
@@ -130,7 +131,7 @@ class BookView(arcade.View):
 
                 # Antwort prüfen
                 eingabe = task.input_answer.text.strip()
-                self.check_answer(float(eingabe))
+                self.check_answer(eingabe)
 
     def check_answer(self, answer):
         msg = "Das ist leider falsch"
@@ -138,7 +139,9 @@ class BookView(arcade.View):
         task = self.tasks[self.cur_task]
 
         if task.type == "Zahl":
+
             # Bei einer Zahl muss die Antwort anhand der Formel berechnet werden
+            answer = float(answer)
             term = Term()
             term.variables = task.cur_variables
             val = term.calc(task.correct_answer)
@@ -148,15 +151,17 @@ class BookView(arcade.View):
                 msg = "Das ist korrekt"
                 sound = self.ok_sound
                 self.correct = True
+                gd.set_task(self.room_nr, self.book_nr, self.cur_task)
                 self.cur_task = self.cur_task + 1
 
         if task.type == "Text":
 
-            # Stimmt die Antwort?
-            if answer == task.correct_answer:
+            # Stimmt die Antwort (gross/klein ignorieren)?
+            if answer.lower() == task.correct_answer.lower():
                 msg = "Das ist korrekt"
                 sound = self.ok_sound
                 self.correct = True
+                gd.set_task(self.room_nr, self.book_nr, self.cur_task)
                 self.cur_task = self.cur_task + 1
 
         arcade.play_sound(sound, volume=gd.get_volume() / 100.0)
@@ -213,6 +218,8 @@ class BookView(arcade.View):
                     if "Variablen" in aufgabe:
                         task.variables = aufgabe["Variablen"]
                     self.tasks.append(task)
+
+            gd.init_book(self.room_nr, self.book_nr, len(self.tasks))
 
     def create_ui(self):
 

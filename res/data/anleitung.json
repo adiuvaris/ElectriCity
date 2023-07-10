@@ -4,8 +4,9 @@
     "ElectriCity ist ein Lernspiel....",
     "",
     "Während du dich durch die Welt bewegst, kannst du dir mit der Taste <b><i>F1</i></b> diesen Text anzeigen lassen.",
-    "Die Tasten <b><i>Esc</i></b> und  <b><i>M</i></b> starten das <i>Menü</i> des Spiels. Im Menü kann man die relative Grösse des Fensters ändern und seinen Avatar auswählen.",
-    "",
-    "Die Taste <b><i>Esc</i></b> springt jeweils einen Schritt zurück. Mit der <b><i>Esc</i></b> Taste kannst du also diese Anleitung wieder verlassen."
+    "Die Tasten <b><i>Esc</i></b> und <b><i>M</i></b> starten das <i>Menü</i> des Spiels. Im Menü kann man die relative Grösse des Fensters ändern, die Lautstärke anpassen und einen Avatar auswählen.",
+    "Die Taste <b><i>Esc</i></b> springt jeweils einen Schritt zurück. Mit der <b><i>Esc</i></b> Taste kannst du also diese Anleitung wieder verlassen.",
+    "Die Türen der Häuser sind verschlossen. Damit du hinein kommst, brauchst du den Schlüssel. Die Schlüssel sind in der Nähe der Häuser versteckt. Um einen Schlüssel zu bekommen, musst du ihn nicht nur finden, sondern auch eine kleine Aufgabe lösen.",
+    "In den Häusern findest du Bücher, welche die Theorie zu einem Thema enthalten. Zur Theorie gibt es dann eine oder mehrere Aufgaben, die du lösen musst. Erst nachdem du alle Bücher eines Hauses gelesen und die Fragen dazu richtig beantwortet hast, kannst du zu nächsten Haus gehen."
   ]
 }

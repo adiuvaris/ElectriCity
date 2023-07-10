@@ -114,5 +114,38 @@ class Task:
                 self.input_answer.on_event(event)
 
         elif self.type == "Text":
-            pass
+            x = gd.scale(660)
+            y = gd.scale(70)
+            w = gd.scale(290)
+            h = gd.scale(30)
+            fs = gd.scale(const.FONT_SIZE_H2)
+
+            label = arcade.gui.UILabel(x=x,
+                                       y=y,
+                                       width=w,
+                                       height=h,
+                                       text="Antwort:",
+                                       text_color=[0, 0, 0],
+                                       bold=True,
+                                       align="right",
+                                       font_size=fs,
+                                       multiline=False)
+
+            ui_manager.add(label)
+
+            x = gd.scale(970)
+            y = gd.scale(70)
+            w = gd.scale(290)
+            h = gd.scale(30)
+            fs = gd.scale(const.FONT_SIZE_H2)
+
+            self.input_answer = arcade.gui.UIInputText(x=x, y=y, width=w, height=h, font_size=fs, text="")
+            ui_manager.add(self.input_answer.with_border())
+
+            # Eingabefeld aktivieren - so tun, als ob in das Feld geklickt wurde
+            if self.input_answer is not None:
+                event = arcade.gui.UIMousePressEvent(
+                    x=self.input_answer.x + 1, y=self.input_answer.y + 1, button=0, modifiers=0, source=self)
+
+                self.input_answer.on_event(event)
 
