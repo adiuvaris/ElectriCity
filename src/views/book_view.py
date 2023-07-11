@@ -39,6 +39,7 @@ class BookView(arcade.View):
         self.tasks = []
         self.cur_task = 0
         self.correct = False
+        self.msg_active = False
 
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
@@ -92,6 +93,9 @@ class BookView(arcade.View):
 
     def on_answer_click(self, event):
 
+        if self.msg_active:
+            return
+
         task = self.tasks[self.cur_task]
 
         msg = "Das ist leider falsch"
@@ -109,6 +113,7 @@ class BookView(arcade.View):
 
         arcade.play_sound(sound, volume=gd.get_volume() / 100.0)
 
+        self.msg_active = True
         msg_box = MessageBox(msg=msg, callback=self.on_ok)
         self.manager.add(msg_box)
 
@@ -120,6 +125,9 @@ class BookView(arcade.View):
         :param modifiers: Shift, Alt etc.
         """
 
+        if self.msg_active:
+            return
+
         # Escape geht zurück zum Spiel
         if key == arcade.key.ESCAPE:
             self.window.show_view(self.window.game_view)
@@ -128,12 +136,15 @@ class BookView(arcade.View):
         if key == arcade.key.ENTER or key == arcade.key.NUM_ENTER:
             task = self.tasks[self.cur_task]
             if task.input_answer is not None:
-
                 # Antwort prüfen
                 eingabe = task.input_answer.text.strip()
                 self.check_answer(eingabe)
 
     def check_answer(self, answer):
+
+        if self.msg_active:
+            return
+
         msg = "Das ist leider falsch"
         sound = self.lose_sound
         task = self.tasks[self.cur_task]
@@ -166,10 +177,18 @@ class BookView(arcade.View):
 
         arcade.play_sound(sound, volume=gd.get_volume() / 100.0)
 
+        if task.input_answer is not None:
+            event = arcade.gui.UIMousePressEvent(
+                x=task.input_answer.x - 1, y=task.input_answer.y - 1, button=0, modifiers=0, source=self)
+
+            task.input_answer.on_event(event)
+
+        self.msg_active = True
         msg_box = MessageBox(msg=msg, callback=self.on_ok)
         self.manager.add(msg_box)
 
     def on_ok(self):
+        self.msg_active = False
         if self.correct:
             self.create_ui()
 
@@ -249,4 +268,3 @@ class BookView(arcade.View):
             self.window.show_view(self.window.game_view)
 
         self.manager.trigger_render()
-
