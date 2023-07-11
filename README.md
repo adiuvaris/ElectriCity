@@ -20,7 +20,12 @@ Ein Lernspiel für das Physik-Thema Elektrizität.
 
 ## Installation
 
-Via 
+Es gibt (noch) keine Installation für dieses Programm. 
+Mit folgenden Schritten kann das Spiel ausgeführt werden:
+1. Python installieren. (eine Version >=3.11)
+2. Source herunter laden und in das Verzeichnis wechseln
+3. pip install --user -r requirements.txt && python main.py
+
 
 
 ## Anwendung
