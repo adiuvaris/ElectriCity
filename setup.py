@@ -13,7 +13,10 @@ setuptools.setup(
     packages=setuptools.find_packages(where="src"),
     package_dir={"": "src"},
     package_data={
-        "res": ["res/*"],
+        "ElectriCity": ["res/*"],
+    },
+    entry_points={
+        'console_scripts': ['ElectriCity=ElectriCity:main']
     },
     classifiers=[
         "Programming Language :: Python :: 3",
