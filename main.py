@@ -49,6 +49,7 @@ def main():
 if __name__ == "__main__":
     main()
 
-# Bilden mit folgendem Kommando
-#   WINDOWS: pyinstaller main.py --add-data "res;res --windowed"
-#   MAC:     pyinstaller main.py --add-data "res:res --windowed"
+# Bilden mit folgendem Kommando Python Package PyInstaller muss installiert sein.
+# Die *.player Files in res/data vorher löschen.
+#   WINDOWS: pyinstaller main.py  --add-data "res;res" --windowed --name ElectriCity
+#   MAC:     pyinstaller main.py  --add-data "res:res" --windowed --name ElectriCity
