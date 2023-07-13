@@ -21,11 +21,11 @@ class SettingView(arcade.View):
         super().__init__()
 
         # Verzeichnis in dem die Player-Daten liegen
-        mypath = "res/avatars"
+        mypath = gd.get_abs_path("res/avatars")
 
         # Alle Dateien mit der Endung .png laden
         self.avatars = [
-            f"res/avatars/{f}"
+            f"{f}"
             for f in os.listdir(mypath)
             if isfile(join(mypath, f)) and f.endswith(".png")
         ]
@@ -242,12 +242,13 @@ class SettingView(arcade.View):
 
         self.manager.add(label)
 
-        mypath = "res/avatars"
+        mypath = gd.get_abs_path("res/avatars")
 
         x = gd.scale(340)
         y = gd.scale(480)
         for avatar in self.avatars:
-            te = arcade.load_texture(avatar, x=0, y=0, width=const.SPRITE_SIZE, height=const.SPRITE_SIZE)
+            avatar_path = mypath + "/" + avatar
+            te = arcade.load_texture(avatar_path, x=0, y=0, width=const.SPRITE_SIZE, height=const.SPRITE_SIZE)
             if avatar == gd.get_avatar():
                 ib = arcade.gui.UITextureButton(x=x, y=y, width=gd.scale(40), height=gd.scale(40),
                                                 texture=te).with_border()
@@ -266,8 +267,6 @@ class SettingView(arcade.View):
             x=self.active_input.x + 1, y=self.active_input.y + 1, button=0, modifiers=0, source=self)
         self.input_scale.on_event(event)
         self.input_volume.on_event(event)
-        # self.active_input.caret.position = len(self.active_input.text)
-
 
     def on_click(self, event):
         x = event.x - gd.scale(340)

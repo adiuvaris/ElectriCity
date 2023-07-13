@@ -25,7 +25,8 @@ class HelpView(arcade.View):
         self.text = []
 
         # JSON-File für Buch einlesen
-        filename = f"res/data/{filename}"
+        mypath = gd.get_abs_path("res/data")
+        filename = f"{mypath}/{filename}"
         if os.path.exists(filename):
             with open(filename, "r", encoding="'utf-8") as ifile:
                 data = json.load(ifile)

@@ -2,6 +2,7 @@
 import arcade
 import pyglet.window
 import src.const as const
+from src.data.game import gd
 from src.views.start_view import StartView
 
 
@@ -23,8 +24,8 @@ class MainWindow(arcade.Window):
 
         # Pfade zu einzelnen Ressourcen definieren, damit im Programm
         # leichter darauf zugegriffen werden kann.
-        arcade.resources.add_resource_handle("maps", "res/maps")
-        arcade.resources.add_resource_handle("sounds", "res/sounds")
+        arcade.resources.add_resource_handle("maps", gd.get_abs_path("res/maps"))
+        arcade.resources.add_resource_handle("sounds", gd.get_abs_path("res/sounds"))
 
 
 def main():

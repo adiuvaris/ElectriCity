@@ -194,7 +194,8 @@ class QuizView(arcade.View):
     def read_quiz(self):
 
         # JSON-File mit Quiz-Fragen einlesen
-        with open(f"res/data/quiz_{self.room_nr}.json", "r", encoding="'utf-8") as ifile:
+        mypath = gd.get_abs_path("res/data")
+        with open(f"{mypath}/quiz_{self.room_nr}.json", "r", encoding="'utf-8") as ifile:
             data = json.load(ifile)
 
             # Theorie-Text Element einlesen

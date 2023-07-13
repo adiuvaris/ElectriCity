@@ -1,4 +1,5 @@
 import os
+from os import path
 import json
 
 
@@ -34,7 +35,8 @@ class GameData(object):
         self.load_game_data()
 
     def load_game_data(self):
-        dateiname = f"res/data/{self.player_name}.player"
+        mypath = self.get_abs_path("res/data")
+        dateiname = f"{mypath}/{self.player_name}.player"
         if os.path.exists(dateiname):
             with open(dateiname, "r") as ifile:
                 self.game_data = json.load(ifile)
@@ -43,7 +45,8 @@ class GameData(object):
             self.save_game_data()
 
     def save_game_data(self):
-        dateiname = f"res/data/{self.player_name}.player"
+        mypath = self.get_abs_path("res/data")
+        dateiname = f"{mypath}/{self.player_name}.player"
         with open(dateiname, "w") as ofile:
             json.dump(self.game_data, ofile, indent=2)
 
@@ -69,8 +72,11 @@ class GameData(object):
 
     def get_avatar(self):
         if "avatar" not in self.game_data:
-            self.game_data["avatar"] = "res/avatars/dog.png"
-        return self.game_data["avatar"]
+            self.game_data["avatar"] = "dog.png"
+        avatar = self.game_data["avatar"]
+        if avatar.find("res/avatars/") != -1:
+            avatar = avatar.replace("res/avatars/", "")
+        return avatar
 
     def set_avatar(self, avatar):
         self.game_data["avatar"] = avatar
@@ -91,6 +97,12 @@ class GameData(object):
         keys = self.get_room_keys()
         keys[room_nr] = True
         self.save_game_data()
+
+    @staticmethod
+    def get_abs_path(rel_path):
+        abs_path = path.abspath(path.join(path.dirname(__file__), "../.."))
+        abs_path = path.abspath(path.join(abs_path, rel_path))
+        return abs_path
 
 
 # Einzige Instanz von GameData

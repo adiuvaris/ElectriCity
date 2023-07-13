@@ -195,7 +195,8 @@ class BookView(arcade.View):
     def read_book(self):
 
         # JSON-File für Buch einlesen
-        with open(f"res/data/book_{self.room_nr}_{self.book_nr}.json", "r", encoding="'utf-8") as ifile:
+        mypath = gd.get_abs_path("res/data")
+        with open(f"{mypath}/book_{self.room_nr}_{self.book_nr}.json", "r", encoding="'utf-8") as ifile:
             data = json.load(ifile)
 
             # Titel-Element einlesen

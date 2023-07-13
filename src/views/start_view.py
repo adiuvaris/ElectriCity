@@ -25,7 +25,7 @@ class StartView(arcade.View):
         super().__init__()
 
         # Verzeichnis in dem die Player-Daten liegen
-        mypath = "res/data"
+        mypath = gd.get_abs_path("res/data")
 
         # Alle Dateien mit der Endung player laden
         self.players = [

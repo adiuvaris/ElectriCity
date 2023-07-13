@@ -2,6 +2,7 @@
 import arcade
 from enum import Enum
 import src.const as const
+from src.data.game import gd
 
 
 class Direction(Enum):
@@ -42,6 +43,9 @@ class Character(arcade.Sprite):
             Direction.Up: [9, 10, 11],
         }
 
+        mypath = gd.get_abs_path("res/avatars")
+        avatar = mypath + "/" + avatar
+
         # Texturen für Charakter Sprite laden
         self.textures = arcade.load_spritesheet(
             avatar,
@@ -57,6 +61,8 @@ class Character(arcade.Sprite):
         self.texture = self.textures[self.cur_texture_index]
 
     def set_avatar(self, avatar):
+        mypath = gd.get_abs_path("res/avatars")
+        avatar = mypath + "/" + avatar
         self.textures = arcade.load_spritesheet(
             avatar,
             sprite_width=const.SPRITE_SIZE,
