@@ -1,3 +1,5 @@
+import random
+
 import arcade
 import arcade.gui
 import json
@@ -16,12 +18,12 @@ from src.data.task import Task
 from src.views.image_view import ImageView
 
 
-class BookView(arcade.View):
+class QuizView(arcade.View):
     """
-    Klasse für die View mit Theorie oder Aufgabe
+    Klasse für die View mit Quiz-Aufgaben für den Zutritt zu einem Raum
     """
 
-    def __init__(self, room_nr, book_nr):
+    def __init__(self, room_nr):
         """
         Konstruktor
         """
@@ -32,22 +34,21 @@ class BookView(arcade.View):
         self.ok_sound = arcade.load_sound(":sounds:ok.wav")
 
         self.room_nr = room_nr
-        self.book_nr = book_nr
-
-        self.title = ""
-        self.theory = None
-        self.tasks = []
-        self.cur_task = 0
-        self.correct = False
-        self.msg_active = False
 
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
 
-        # Buch einlesen (json)
-        self.read_book()
+        self.title = ""
+        self.theory = None
+        self.tasks = []
+        self.correct = False
+        self.msg_active = False
 
-        # Buch darstellen
+        # Fragen einlesen (json) und zufällig eine auswählen
+        self.read_quiz()
+        self.cur_task = random.randint(0, len(self.tasks) - 1)
+
+        # Die Frage darstellen
         self.create_ui()
 
     def setup(self):
@@ -106,8 +107,7 @@ class BookView(arcade.View):
                 if k == task.correct_answer:
                     msg = "Das ist korrekt"
                     sound = self.ok_sound
-                    gd.set_task(self.room_nr, self.book_nr, self.cur_task)
-                    self.cur_task = self.cur_task + 1
+                    gd.set_room_key(self.room_nr)
                     self.correct = True
                     break
 
@@ -138,10 +138,12 @@ class BookView(arcade.View):
             if task.input_answer is not None:
                 # Antwort prüfen
                 eingabe = task.input_answer.text.strip()
-                self.check_answer(eingabe)
+                if len(eingabe) > 0:
+                    self.check_answer(eingabe)
+                else:
+                    task.input_answer.text = eingabe
 
     def check_answer(self, answer):
-
         if self.msg_active:
             return
 
@@ -160,20 +162,18 @@ class BookView(arcade.View):
             # Stimmt die Antwort?
             if val == answer:
                 msg = "Das ist korrekt"
+                gd.set_room_key(self.room_nr)
                 sound = self.ok_sound
                 self.correct = True
-                gd.set_task(self.room_nr, self.book_nr, self.cur_task)
-                self.cur_task = self.cur_task + 1
 
         if task.type == "Text":
 
             # Stimmt die Antwort (gross/klein ignorieren)?
             if answer.lower() == task.correct_answer.lower():
                 msg = "Das ist korrekt"
+                gd.set_room_key(self.room_nr)
                 sound = self.ok_sound
                 self.correct = True
-                gd.set_task(self.room_nr, self.book_nr, self.cur_task)
-                self.cur_task = self.cur_task + 1
 
         arcade.play_sound(sound, volume=gd.get_volume() / 100.0)
 
@@ -189,24 +189,19 @@ class BookView(arcade.View):
 
     def on_ok(self):
         self.msg_active = False
-        if self.correct:
-            self.create_ui()
+        self.window.show_view(self.window.game_view)
 
-    def read_book(self):
+    def read_quiz(self):
 
-        # JSON-File für Buch einlesen
+        # JSON-File mit Quiz-Fragen einlesen
         mypath = gd.get_abs_path("res/data")
-        with open(f"{mypath}/book_{self.room_nr}_{self.book_nr}.json", "r", encoding="'utf-8") as ifile:
+        with open(f"{mypath}/quiz_{self.room_nr}.json", "r", encoding="'utf-8") as ifile:
             data = json.load(ifile)
-
-            # Titel-Element einlesen
-            if "Titel" in data:
-                self.title = data["Titel"]
 
             # Theorie-Text Element einlesen
             self.theory = Theory()
-            if "Theorie" in data:
-                self.theory.text = data["Theorie"]
+            if "Beschreibung" in data:
+                self.theory.text = data["Beschreibung"]
 
             if "Bilder" in data:
                 bilder = data["Bilder"]
@@ -239,8 +234,6 @@ class BookView(arcade.View):
                         task.variables = aufgabe["Variablen"]
                     self.tasks.append(task)
 
-            gd.init_book(self.room_nr, self.book_nr, len(self.tasks))
-
     def create_ui(self):
 
         self.correct = False
@@ -252,7 +245,7 @@ class BookView(arcade.View):
 
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
-                                   text=self.title,
+                                   text="Quiz",
                                    text_color=[0, 0, 0],
                                    bold=True,
                                    align="center",

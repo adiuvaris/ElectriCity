@@ -75,7 +75,10 @@ class ImageView(arcade.View):
 
     def create_ui(self):
 
-        self.manager = arcade.gui.UIManager()
+        for widget in self.manager.walk_widgets():
+            self.manager.remove(widget)
+
+        self.manager.clear()
 
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
@@ -89,7 +92,8 @@ class ImageView(arcade.View):
         self.manager.add(titel.with_border())
 
         # Bild Element erzeugen - falls Datei existiert
-        filename = f"res/data/{self.figure.image_file}"
+        mypath = gd.get_abs_path("res/data")
+        filename = f"{mypath}/{self.figure.image_file}"
         if os.path.exists(filename):
 
             bs = arcade.Sprite(filename=filename)

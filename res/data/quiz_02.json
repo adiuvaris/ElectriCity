@@ -1,0 +1,45 @@
+{
+  "Beschreibung": [
+    "<h1>Hier kannst du den Schlüssel für das zweite Haus bekommen.<h1>",
+    "<h2>Beantworte die Frage auf der rechten Seite.<h2>"
+  ],
+  "Bilder": [
+  ],
+  "Aufgaben": [
+    {
+      "Aufgabe": [
+        "Ein Einbrecher möchte seine Verlobte mit passenden Ohrringen beschenken. Es liegen in der Schublade eines Juweliers allerdings 18 gleichartige silberne und 18 gleichartige goldene Ohrringe. Wie oft muss er hineingreifen, um im Dunkeln ein sicher passendes Paar zu erwischen?",
+        "Gib dein Resultat in das Eingabefeld ein."
+      ],
+      "Typ": "Zahl",
+      "Richtig": "3"
+    },
+    {
+      "Aufgabe": [
+        "Bei einem Spiel verstecken Lea, Sarah und Gülbahar in ihrer Tasche je einen Gegenstand und zwar einen Ball, einen Bleistift und eine Schere. Wer hat den Bleistift, wenn von folgenden Aussagen eine wahr und die anderen beiden falsch sind?",
+        "1) Lea hat den Ball.",
+        "2) Sarah hat den Ball nicht.",
+        "3) Gülbahar hat die Schere nicht.",
+        "Gib deine Antwort in das Eingabefeld ein."
+      ],
+      "Typ": "Text",
+      "Richtig": "Gülbahar"
+    },
+    {
+      "Aufgabe": [
+        "Ein Holzwürfel von 3cm Kantenlänge wird blau angestrichen und dann in ein Kubikzentimeter grosse Würfel zersägt. Wie viele von diesen kleinen Würfeln haben genau zwei blaue Seiten?",
+        "Gib dein Resultat in das Eingabefeld ein."
+      ],
+      "Typ": "Zahl",
+      "Richtig": "12"
+    },
+    {
+      "Aufgabe": [
+        "Ein Würfel rutscht auf einem schräg liegenden Brett herunter. Wie viele seiner Kanten können höchstens waagerecht sein?",
+        "Gib dein Resultat in das Eingabefeld ein."
+      ],
+      "Typ": "Zahl",
+      "Richtig": "4"
+    }
+  ]
+}

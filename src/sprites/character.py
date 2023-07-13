@@ -2,6 +2,7 @@
 import arcade
 from enum import Enum
 import src.const as const
+from src.data.game import gd
 
 
 class Direction(Enum):
@@ -22,13 +23,13 @@ class Character(arcade.Sprite):
     Für jede Bewegungsrichtung muss es drei Texturen (Einzelbilder) geben.
     """
 
-    def __init__(self, sheet_name):
+    def __init__(self, avatar):
         """
         Konstruktor.
         Die Texturen des Sprites laden und die Attribute für die erste Textur
         initialisieren.
 
-        :param sheet_name: Name des Files mit den unterschiedlichen Ansichten
+        :param avatar: Name des Files mit den unterschiedlichen Ansichten
         """
 
         super().__init__()
@@ -42,9 +43,12 @@ class Character(arcade.Sprite):
             Direction.Up: [9, 10, 11],
         }
 
+        mypath = gd.get_abs_path("res/avatars")
+        avatar = mypath + "/" + avatar
+
         # Texturen für Charakter Sprite laden
         self.textures = arcade.load_spritesheet(
-            sheet_name,
+            avatar,
             sprite_width=const.SPRITE_SIZE,
             sprite_height=const.SPRITE_SIZE,
             columns=3,
@@ -55,6 +59,17 @@ class Character(arcade.Sprite):
         self.should_update = 0
         self.cur_texture_index = 0
         self.texture = self.textures[self.cur_texture_index]
+
+    def set_avatar(self, avatar):
+        mypath = gd.get_abs_path("res/avatars")
+        avatar = mypath + "/" + avatar
+        self.textures = arcade.load_spritesheet(
+            avatar,
+            sprite_width=const.SPRITE_SIZE,
+            sprite_height=const.SPRITE_SIZE,
+            columns=3,
+            count=12,
+        )
 
     def on_update(self, delta_time: float = 1.0 / 60.0):
         """

@@ -4,6 +4,7 @@ import arcade
 from collections import OrderedDict
 from os.path import isfile, join
 import src.const as const
+from src.data.game import gd
 
 
 class GameMap:
@@ -74,7 +75,7 @@ def load_maps():
     """
 
     # Verzeichnis in dem die Maps liegen
-    mypath = "res/maps"
+    mypath = gd.get_abs_path("res/maps")
 
     # Einmal eine Liste von allem Map-Files erstellen, die in der Folge geladen werden.
     if load_maps.map_file_names is None:
@@ -94,7 +95,7 @@ def load_maps():
     # Letzten Eintrag aus der File-Liste holen und laden. Der Filename
     # wird dabei aus der Liste entfernt.
     map_name = load_maps.map_file_names.pop(0)
-    load_maps.map_list[map_name] = load_map(f"res/maps/{map_name}.json")
+    load_maps.map_list[map_name] = load_map(f"{mypath}/{map_name}.json")
 
     # Progress berechnen für die Fortschrittsanzeige (in Prozent)
     files_left = load_maps.file_count - len(load_maps.map_file_names)

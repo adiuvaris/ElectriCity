@@ -1,48 +1,27 @@
-import os
-import json
 import arcade
 import arcade.gui
-
-import src.const as const
 from src.data.game import gd
+import src.const as const
 
-from src.ui.attributed_text import AttributedText
-
-
-class HelpView(arcade.View):
+class InventarView(arcade.View):
     """
-    Klasse für die View mit einem Bild
+    Klasse für die Inventar View
     """
-
-    def __init__(self, filename, parent):
-        """
-        Konstruktor
-        """
-
+    def __init__(self, menu):
         super().__init__()
 
-        self.parent = parent
-        self.text = []
-
-        # JSON-File für Buch einlesen
-        mypath = gd.get_abs_path("res/data")
-        filename = f"{mypath}/{filename}"
-        if os.path.exists(filename):
-            with open(filename, "r", encoding="'utf-8") as ifile:
-                data = json.load(ifile)
-                if "text" in data:
-                    self.text = data["text"]
+        self.menu = menu
 
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
-
         self.create_ui()
 
     def setup(self):
         """
         View initialisieren.
-        Es wird ein Bild angezeigt.
+        Macht zurzeit noch nichts
         """
+
         pass
 
     def on_show_view(self):
@@ -52,8 +31,6 @@ class HelpView(arcade.View):
 
         self.manager.enable()
         arcade.set_background_color(arcade.color.ALMOND)
-
-        arcade.set_viewport(0, self.window.width, 0, self.window.height)
 
     def on_hide_view(self):
         """
@@ -79,12 +56,23 @@ class HelpView(arcade.View):
         :param modifiers: Shift, Alt etc.
         """
 
-        # Escape geht zurück zum Aufrufer
+        # Escape geht zurück zum Spiel
         if key == arcade.key.ESCAPE:
-            self.window.show_view(self.parent)
+            self.window.show_view(self.menu)
+
+    def on_resize(self, width, height):
+        """
+        Wird von arcade aufgerufen, wenn die Fenstergrösse ändert.
+
+        :param width: neue Breite
+        :param height: neue Höhe
+        """
+        self.create_ui()
 
     def create_ui(self):
-
+        """
+        UI Elemente erzeugen
+        """
         for widget in self.manager.walk_widgets():
             self.manager.remove(widget)
 
@@ -92,7 +80,7 @@ class HelpView(arcade.View):
 
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
-                                   text="Anleitung",
+                                   text="Inventar",
                                    text_color=[0, 0, 0],
                                    bold=True,
                                    align="center",
@@ -101,8 +89,4 @@ class HelpView(arcade.View):
 
         self.manager.add(titel.with_border())
 
-        text = AttributedText(x=gd.scale(20), y=gd.scale(120),
-                              width=gd.scale(1240), height=gd.scale(520), text=self.text)
-
-        self.manager.add(text)
-
+        self.manager.trigger_render()

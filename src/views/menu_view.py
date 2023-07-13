@@ -6,6 +6,7 @@ import src.const as const
 
 from src.data.game import gd
 from src.views.setting_view import SettingView
+from src.views.inventar_view import InventarView
 
 
 class MenuView(arcade.View):
@@ -21,7 +22,7 @@ class MenuView(arcade.View):
         super().__init__()
 
         # UIManager braucht es für arcade
-        self.manager = None
+        self.manager = arcade.gui.UIManager()
         self.create_ui()
 
     def setup(self):
@@ -91,6 +92,16 @@ class MenuView(arcade.View):
 
         self.window.close()
 
+    def on_click_inventar(self, event):
+        """
+        Klick-handler, wenn "Inventar" angeklickt wurde
+        :param event:
+        """
+
+        # Inventar View neu initialisieren und dann anzeigen
+        inventar = InventarView(self)
+        self.window.show_view(inventar)
+
     def on_key_press(self, key, modifiers):
         """
         Wird von arcade aufgerufen, wenn eine Taste gedrückt wurde.
@@ -116,7 +127,10 @@ class MenuView(arcade.View):
         """
         UI Elemente erzeugen
         """
-        self.manager = arcade.gui.UIManager()
+        for widget in self.manager.walk_widgets():
+            self.manager.remove(widget)
+
+        self.manager.clear()
 
         # Vertikales Layout für die Schalter erstellen
         v_box = arcade.gui.UIBoxLayout()
@@ -125,6 +139,11 @@ class MenuView(arcade.View):
         resume_button = arcade.gui.UIFlatButton(text="Zurück zum Spiel", width=gd.scale(290))
         v_box.add(resume_button.with_space_around(bottom=gd.scale(30)))
         resume_button.on_click = self.on_click_resume
+
+        # Button
+        inventar_button = arcade.gui.UIFlatButton(text="Inventar", width=gd.scale(290))
+        v_box.add(inventar_button.with_space_around(bottom=gd.scale(30)))
+        inventar_button.on_click = self.on_click_inventar
 
         # Button
         settings_button = arcade.gui.UIFlatButton(text="Einstellungen", width=gd.scale(290))
@@ -160,4 +179,3 @@ class MenuView(arcade.View):
         self.manager.add(titel.with_border())
 
         self.manager.trigger_render()
-
