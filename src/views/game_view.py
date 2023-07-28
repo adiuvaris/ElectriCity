@@ -182,11 +182,6 @@ class GameView(arcade.View):
         # In dieser Ansicht braucht es keinen Mauszeiger
         self.window.set_mouse_visible(False)
 
-        # Wenn in der Map eine Hintergrundfarbe definiert ist, diese übernehmen
-        my_map = self.map_list[self.cur_map_name]
-        if my_map.background_color:
-            arcade.set_background_color(my_map.background_color)
-
         # Player Avatar setzen
         self.player_sprite.set_avatar(gd.get_avatar())
 
