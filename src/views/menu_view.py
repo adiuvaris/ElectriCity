@@ -80,15 +80,9 @@ class MenuView(arcade.View):
         :param event:
         """
 
-        # Loading View erzeugen und starten
+        # Start View erzeugen und starten
         self.window.start_view.setup()
         self.window.show_view(self.window.start_view)
-
-        # Game View neu initialisieren und dann anzeigen
-
-
-        # self.window.game_view.setup()
-        # self.window.show_view(self.window.game_view)
 
     def on_click_quit(self, event):
         """

@@ -25,17 +25,6 @@ class StartView(arcade.View):
 
         super().__init__()
 
-        # Verzeichnis in dem die Player-Daten liegen
-        appname = "ElectriCity"
-        mypath = user_data_dir(appname, False, ensure_exists=True)
-
-        # Alle Dateien mit der Endung player laden
-        self.players = [
-            f[:-7]
-            for f in os.listdir(mypath)
-            if isfile(join(mypath, f)) and f.endswith(".player")
-        ]
-
         # Attribute definieren
         self.started = False
         self.done = False
@@ -44,7 +33,8 @@ class StartView(arcade.View):
 
         self.manager = arcade.gui.UIManager()
         self.input_text = None
-        self.create_ui()
+        self.players = None
+        self.setup()
 
     def on_draw(self):
         """
@@ -59,7 +49,18 @@ class StartView(arcade.View):
         self.manager.draw()
 
     def setup(self):
-        pass
+        # Verzeichnis in dem die Player-Daten liegen
+        appname = "ElectriCity"
+        mypath = user_data_dir(appname, False, ensure_exists=True)
+
+        # Alle Dateien mit der Endung player laden
+        self.players = [
+            f[:-7]
+            for f in os.listdir(mypath)
+            if isfile(join(mypath, f)) and f.endswith(".player")
+        ]
+
+        self.create_ui()
 
     def on_show_view(self):
         """

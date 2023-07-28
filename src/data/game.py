@@ -43,6 +43,7 @@ class GameData(object):
                 self.game_data = json.load(ifile)
         else:
             self.game_data["books"] = {}
+            self.game_data["room_keys"] = {}
             self.save_game_data()
 
     def save_game_data(self):
