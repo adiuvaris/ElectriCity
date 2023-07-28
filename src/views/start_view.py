@@ -1,5 +1,6 @@
 import os
 from os.path import isfile, join
+from platformdirs import *
 import arcade
 import arcade.gui
 
@@ -25,7 +26,9 @@ class StartView(arcade.View):
         super().__init__()
 
         # Verzeichnis in dem die Player-Daten liegen
-        mypath = gd.get_abs_path("res/data")
+        appname = "ElectriCity"
+        mypath = user_data_dir(appname, False, ensure_exists=True)
+        # mypath = gd.get_abs_path("res/data")
 
         # Alle Dateien mit der Endung player laden
         self.players = [

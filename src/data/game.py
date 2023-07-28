@@ -1,7 +1,7 @@
 import os
 from os import path
 import json
-
+from platformdirs import *
 
 class GameData(object):
 
@@ -35,7 +35,9 @@ class GameData(object):
         self.load_game_data()
 
     def load_game_data(self):
-        mypath = self.get_abs_path("res/data")
+        appname = "ElectriCity"
+        mypath = user_data_dir(appname, False, ensure_exists=True)
+        # mypath = self.get_abs_path("res/data")
         dateiname = f"{mypath}/{self.player_name}.player"
         if os.path.exists(dateiname):
             with open(dateiname, "r") as ifile:
@@ -45,7 +47,9 @@ class GameData(object):
             self.save_game_data()
 
     def save_game_data(self):
-        mypath = self.get_abs_path("res/data")
+        appname = "ElectriCity"
+        mypath = user_data_dir(appname, False, ensure_exists=True)
+        # mypath = self.get_abs_path("res/data")
         dateiname = f"{mypath}/{self.player_name}.player"
         with open(dateiname, "w") as ofile:
             json.dump(self.game_data, ofile, indent=2)
