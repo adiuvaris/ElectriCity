@@ -37,7 +37,6 @@ class GameData(object):
     def load_game_data(self):
         appname = "ElectriCity"
         mypath = user_data_dir(appname, False, ensure_exists=True)
-        # mypath = self.get_abs_path("res/data")
         dateiname = f"{mypath}/{self.player_name}.player"
         if os.path.exists(dateiname):
             with open(dateiname, "r") as ifile:
@@ -49,7 +48,6 @@ class GameData(object):
     def save_game_data(self):
         appname = "ElectriCity"
         mypath = user_data_dir(appname, False, ensure_exists=True)
-        # mypath = self.get_abs_path("res/data")
         dateiname = f"{mypath}/{self.player_name}.player"
         with open(dateiname, "w") as ofile:
             json.dump(self.game_data, ofile, indent=2)
