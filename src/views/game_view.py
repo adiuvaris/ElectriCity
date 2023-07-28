@@ -185,14 +185,6 @@ class GameView(arcade.View):
         # Player Avatar setzen
         self.player_sprite.set_avatar(gd.get_avatar())
 
-        self.player_sprite.change_y = const.MOVEMENT_SPEED / 1.5
-        self.physics_engine.update()
-        self.player_sprite_list.on_update(1)
-
-        self.player_sprite.change_y = -const.MOVEMENT_SPEED / 1.5
-        self.physics_engine.update()
-        self.player_sprite_list.on_update(1)
-
     def on_hide_view(self):
         """
         Wird von arcade aufgerufen, wenn eine andere View sichtbar wird
