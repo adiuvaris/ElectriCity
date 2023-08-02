@@ -50,8 +50,7 @@ class StartView(arcade.View):
 
     def setup(self):
         # Verzeichnis in dem die Player-Daten liegen
-        appname = "ElectriCity"
-        mypath = user_data_dir(appname, False, ensure_exists=True)
+        mypath = user_data_dir(const.APP_NAME, False, ensure_exists=True)
 
         # Alle Dateien mit der Endung player laden
         self.players = [
