@@ -11,6 +11,7 @@ from src.data.game import gd
 from src.maps import load_maps
 from src.views.game_view import GameView
 from src.views.help_view import HelpView
+from src.views.delete_view import DeleteView
 
 
 class StartView(arcade.View):
@@ -171,8 +172,47 @@ class StartView(arcade.View):
                                                  font_size=gd.scale(const.FONT_SIZE_H2), text="")
         self.manager.add(self.input_text.with_border())
 
+        if len(self.players) > 0:
+            label = arcade.gui.UILabel(x=gd.scale(20),
+                                       y=gd.scale(550),
+                                       width=gd.scale(1240),
+                                       height=gd.scale(30),
+                                       text="Oder klicke auf einen vorhandenen Spieler, um das Spiel zu starten.",
+                                       text_color=[0, 0, 0],
+                                       bold=True,
+                                       font_size=gd.scale(const.FONT_SIZE_H2),
+                                       multiline=False)
+
+            self.manager.add(label)
+
+            style = {"font_size": gd.scale(const.FONT_SIZE), "bg_color": (100, 100, 100)}
+            x = gd.scale(20)
+            y = gd.scale(500)
+            i = 0
+            for p in self.players:
+                ib = arcade.gui.UIFlatButton(x=x, y=y, width=gd.scale(200), height=gd.scale(40), text=p, style=style)
+                ib.on_click = self.on_click
+                self.manager.add(ib)
+
+                x = x + gd.scale(210)
+                i = i + 1
+                if i > 5:
+                    i = 0
+                    x = gd.scale(20)
+                    y = y - gd.scale(50)
+
+            del_button = arcade.gui.UIFlatButton(x=gd.scale(500),
+                                                 y=gd.scale(200),
+                                                 width=gd.scale(280),
+                                                 height=gd.scale(40),
+                                                 text="Einen Spieler löschen...",
+                                                 style=style)
+
+            del_button.on_click = self.on_click_del_game
+            self.manager.add(del_button)
+
         hint = arcade.gui.UILabel(x=gd.scale(20),
-                                  y=gd.scale(200),
+                                  y=gd.scale(100),
                                   width=gd.scale(1280),
                                   height=gd.scale(30),
                                   text="Drücke die Taste 'F1' für eine kurze Anleitung.",
@@ -184,34 +224,9 @@ class StartView(arcade.View):
 
         self.manager.add(hint)
 
-        if len(self.players) > 0:
-            label = arcade.gui.UILabel(x=gd.scale(20),
-                                       y=gd.scale(500),
-                                       width=gd.scale(1240),
-                                       height=gd.scale(30),
-                                       text="Oder klicke auf einen vorhandenen Spieler",
-                                       text_color=[0, 0, 0],
-                                       bold=True,
-                                       font_size=gd.scale(const.FONT_SIZE_H2),
-                                       multiline=False)
-
-            self.manager.add(label)
-
-            x = gd.scale(20)
-            y = gd.scale(450)
-            i = 0
-            for p in self.players:
-                style = {"font_size": gd.scale(const.FONT_SIZE), "bg_color": (100, 100, 100)}
-                ib = arcade.gui.UIFlatButton(x=x, y=y, width=gd.scale(270), height=gd.scale(40), text=p, style=style)
-                ib.on_click = self.on_click
-                self.manager.add(ib)
-
-                x = x + gd.scale(310)
-                i = i + 1
-                if i > 3:
-                    i = 0
-                    x = gd.scale(20)
-                    y = y - gd.scale(50)
+    def on_click_del_game(self, event):
+        delete_view = DeleteView()
+        self.window.show_view(delete_view)
 
     def on_click(self, event):
         if self.done:

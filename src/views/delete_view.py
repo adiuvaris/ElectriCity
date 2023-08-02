@@ -10,27 +10,21 @@ from src.data.game import gd
 
 class DeleteView(arcade.View):
     """
-    Klasse für die View beim Löschen eines Spiels
+    Klasse für die View beim Löschen eines Spielers
     """
 
-    def __init__(self, menu):
+    def __init__(self):
         """
         Konstruktor
         """
 
         super().__init__()
 
-        self.menu = menu
-
         self.manager = arcade.gui.UIManager()
         self.players = None
         self.setup()
 
     def on_draw(self):
-        """
-        Zeichnet die View. Es wird ein Text "Loading" ausgegeben und ein
-        Fortschrittsbalken, der anzeigt, wie viel schon geladen ist.
-        """
         arcade.start_render()
         self.manager.draw()
 
@@ -72,10 +66,10 @@ class DeleteView(arcade.View):
 
         # Escape geht zurück zum Menü
         if key == arcade.key.ESCAPE:
-            self.window.show_view(self.menu)
+            self.window.start_view.setup()
+            self.window.show_view(self.window.start_view)
 
     def create_ui(self):
-
         for widget in self.manager.walk_widgets():
             self.manager.remove(widget)
 
@@ -109,13 +103,13 @@ class DeleteView(arcade.View):
             i = 0
             for p in self.players:
                 style = {"font_size": gd.scale(const.FONT_SIZE), "bg_color": (100, 100, 100)}
-                ib = arcade.gui.UIFlatButton(x=x, y=y, width=gd.scale(270), height=gd.scale(40), text=p, style=style)
+                ib = arcade.gui.UIFlatButton(x=x, y=y, width=gd.scale(200), height=gd.scale(40), text=p, style=style)
                 ib.on_click = self.on_click
                 self.manager.add(ib)
 
-                x = x + gd.scale(310)
+                x = x + gd.scale(210)
                 i = i + 1
-                if i > 3:
+                if i > 5:
                     i = 0
                     x = gd.scale(20)
                     y = y - gd.scale(50)
@@ -125,4 +119,3 @@ class DeleteView(arcade.View):
 
         self.window.start_view.setup()
         self.window.show_view(self.window.start_view)
-
