@@ -2,6 +2,8 @@ import os
 from os import path
 import json
 from platformdirs import *
+import src.const as const
+
 
 class GameData(object):
 
@@ -35,8 +37,7 @@ class GameData(object):
         self.load_game_data()
 
     def load_game_data(self):
-        appname = "ElectriCity"
-        mypath = user_data_dir(appname, False, ensure_exists=True)
+        mypath = user_data_dir(const.APP_NAME, False, ensure_exists=True)
         dateiname = f"{mypath}/{self.player_name}.player"
         if os.path.exists(dateiname):
             with open(dateiname, "r") as ifile:
@@ -47,11 +48,17 @@ class GameData(object):
             self.save_game_data()
 
     def save_game_data(self):
-        appname = "ElectriCity"
-        mypath = user_data_dir(appname, False, ensure_exists=True)
+        mypath = user_data_dir(const.APP_NAME, False, ensure_exists=True)
         dateiname = f"{mypath}/{self.player_name}.player"
         with open(dateiname, "w") as ofile:
             json.dump(self.game_data, ofile, indent=2)
+
+    @staticmethod
+    def delete_game_data(player_name):
+        mypath = user_data_dir(const.APP_NAME, False, ensure_exists=True)
+        dateiname = f"{mypath}/{player_name}.player"
+        if os.path.exists(dateiname):
+            os.remove(dateiname)
 
     def get_books(self):
         if "books" not in self.game_data:

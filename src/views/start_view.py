@@ -134,6 +134,7 @@ class StartView(arcade.View):
 
             if self.done:
                 player_name = self.input_text.text.strip()
+                player_name.replace('\n', '')
                 if len(player_name) > 0:
                     self.start_game(player_name)
 
@@ -187,9 +188,9 @@ class StartView(arcade.View):
         if len(self.players) > 0:
             label = arcade.gui.UILabel(x=gd.scale(20),
                                        y=gd.scale(500),
-                                       width=gd.scale(290),
+                                       width=gd.scale(1240),
                                        height=gd.scale(30),
-                                       text="Oder klicke auf ihn:",
+                                       text="Oder klicke auf einen vorhandenen Spieler",
                                        text_color=[0, 0, 0],
                                        bold=True,
                                        font_size=gd.scale(const.FONT_SIZE_H2),
@@ -197,20 +198,20 @@ class StartView(arcade.View):
 
             self.manager.add(label)
 
-            x = gd.scale(340)
-            y = gd.scale(500)
+            x = gd.scale(20)
+            y = gd.scale(450)
             i = 0
             for p in self.players:
                 style = {"font_size": gd.scale(const.FONT_SIZE), "bg_color": (100, 100, 100)}
-                ib = arcade.gui.UIFlatButton(x=x, y=y, width=gd.scale(160), height=gd.scale(40), text=p, style=style)
+                ib = arcade.gui.UIFlatButton(x=x, y=y, width=gd.scale(270), height=gd.scale(40), text=p, style=style)
                 ib.on_click = self.on_click
                 self.manager.add(ib)
 
-                x = x + gd.scale(180)
+                x = x + gd.scale(310)
                 i = i + 1
-                if i > 4:
+                if i > 3:
                     i = 0
-                    x = gd.scale(340)
+                    x = gd.scale(20)
                     y = y - gd.scale(50)
 
     def on_click(self, event):

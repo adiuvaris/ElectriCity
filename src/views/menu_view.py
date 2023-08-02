@@ -7,6 +7,7 @@ import src.const as const
 from src.data.game import gd
 from src.views.setting_view import SettingView
 from src.views.inventar_view import InventarView
+from src.views.delete_view import DeleteView
 
 
 class MenuView(arcade.View):
@@ -84,6 +85,15 @@ class MenuView(arcade.View):
         self.window.start_view.setup()
         self.window.show_view(self.window.start_view)
 
+    def on_click_del_game(self, event):
+        """
+        Klick-handler, wenn "Spiel löschen" angeklickt wurde
+        :param event:
+        """
+        # View initialisieren und dann anzeigen, um Spiel zu löschen
+        delete_view = DeleteView(self)
+        self.window.show_view(delete_view)
+
     def on_click_quit(self, event):
         """
         Klick handler wenn "Programm beenden" angeklickt wurde
@@ -154,6 +164,11 @@ class MenuView(arcade.View):
         new_game_button = arcade.gui.UIFlatButton(text="Neues Spiel", width=gd.scale(290))
         v_box.add(new_game_button.with_space_around(bottom=gd.scale(30)))
         new_game_button.on_click = self.on_click_new_game
+
+        # Button
+        del_game_button = arcade.gui.UIFlatButton(text="Spieler löschen", width=gd.scale(290))
+        v_box.add(del_game_button.with_space_around(bottom=gd.scale(30)))
+        del_game_button.on_click = self.on_click_del_game
 
         # Button
         quit_button = arcade.gui.UIFlatButton(text="Programm beenden", width=gd.scale(290))

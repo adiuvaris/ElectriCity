@@ -61,4 +61,4 @@ class MessageBox(UIMouseFilterMixin, UIAnchorWidget):
     def on_ok(self, event):
         self.parent.remove(self)
         if self._callback is not None:
-            self._callback()
+            self._callback(event)

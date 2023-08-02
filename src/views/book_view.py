@@ -138,6 +138,7 @@ class BookView(arcade.View):
             if task.input_answer is not None:
                 # Antwort prüfen
                 eingabe = task.input_answer.text.strip()
+                eingabe.replace('\n', '')
                 self.check_answer(eingabe)
 
     def check_answer(self, answer):

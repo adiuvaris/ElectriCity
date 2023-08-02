@@ -3,6 +3,7 @@ import arcade.gui
 from src.data.game import gd
 import src.const as const
 
+
 class InventarView(arcade.View):
     """
     Klasse für die Inventar View

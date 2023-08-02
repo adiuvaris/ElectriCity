@@ -138,6 +138,7 @@ class QuizView(arcade.View):
             if task.input_answer is not None:
                 # Antwort prüfen
                 eingabe = task.input_answer.text.strip()
+                eingabe.replace('\n', '')
                 if len(eingabe) > 0:
                     self.check_answer(eingabe)
                 else:
