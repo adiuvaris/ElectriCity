@@ -83,7 +83,7 @@ class DeleteView(arcade.View):
 
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
-                                   text="Spieler löschen",
+                                   text="Einen Spieler löschen",
                                    text_color=[0, 0, 0],
                                    bold=True,
                                    align="center",

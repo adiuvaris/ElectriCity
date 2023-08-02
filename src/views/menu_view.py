@@ -166,7 +166,7 @@ class MenuView(arcade.View):
         new_game_button.on_click = self.on_click_new_game
 
         # Button
-        del_game_button = arcade.gui.UIFlatButton(text="Spieler löschen", width=gd.scale(290))
+        del_game_button = arcade.gui.UIFlatButton(text="Einen Spieler löschen", width=gd.scale(290))
         v_box.add(del_game_button.with_space_around(bottom=gd.scale(30)))
         del_game_button.on_click = self.on_click_del_game
 
