@@ -5,7 +5,7 @@
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJxjYBh44MKIiUFAlRE\/Hkr6YeLE6icG01I\/MeaO6scEuMQHKwAAu6YjuQ==",
+         "data":"eJxjYBh4UM+IiUHgPCN+PNj1IwN0PYT8T8huQvZTqn8whN9Q0Y8MXHCID1YAABNrYAY=",
          "encoding":"base64",
          "height":16,
          "id":1,
@@ -19,7 +19,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJxjYBh84CYTpthvLGK4wEMsaj+ToJ8WoIKRIaEBiIlV\/4ORQgtp7N\/XTAwLcMktYKbM7BUE9AszMzzgBmLKbKENoDje6AwAsb4MHg==",
+         "data":"eJxjYBh4cJqJgeEkE4LfwwyhuYB0LDN2PWeQ1F8Gsi8i8adA9Qjh0AsCV5hwy9ECVDAyJDQAMbHqfzBSaCGa\/84B+RfI9PNVoL5rQHyDCcImB9wD6nuARe8pJoaES0zEhwu1wAQ8aYMYMAOHforjjc4AAAivFI0=",
          "encoding":"base64",
          "height":16,
          "id":2,
@@ -33,7 +33,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJz7ychw4CcF+COFuISRASvAJY6uZrDqr4HIJcAwkh4wvwZCE2UPOfZTqp8a\/qeHflzq6KEfpOYjGgYBdDF8+CcaBgF0MXyYUgAAkh5nBg==",
+         "data":"eJz7ychw4CcF+COFuIaRwYEBC8Aljq6mhBG7HC5xdDW01A\/ECTCMJA7m10Boouwhx35K9Q+G8KOH\/hoc6nCJo6v5iIZBAF0MH\/6JhkEAXQwfphQAACtrZ7Y=",
          "encoding":"base64",
          "height":16,
          "id":3,
@@ -96,7 +96,7 @@
                  "value":""
                 }],
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -104,15 +104,110 @@
          "draworder":"topdown",
          "id":5,
          "name":"views",
-         "objects":[],
+         "objects":[
+                {
+                 "gid":936,
+                 "height":32,
+                 "id":6,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":162,
+                 "y":354
+                }, 
+                {
+                 "gid":928,
+                 "height":32,
+                 "id":7,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":162.333333333333,
+                 "y":323
+                }, 
+                {
+                 "gid":857,
+                 "height":32,
+                 "id":12,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":447.333333333333,
+                 "y":223.333333333333
+                }, 
+                {
+                 "gid":863,
+                 "height":32,
+                 "id":13,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":351.333333333333,
+                 "y":96.6666666666667
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":6,
+         "name":"kaffee, teekanne",
+         "objects":[
+                {
+                 "gid":976,
+                 "height":32,
+                 "id":9,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":318.666666666667,
+                 "y":291.333333333333
+                }, 
+                {
+                 "gid":976,
+                 "height":32,
+                 "id":10,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":351.333333333333,
+                 "y":290
+                }, 
+                {
+                 "gid":975,
+                 "height":32,
+                 "id":11,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":335.333333333333,
+                 "y":266
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
          "x":0,
          "y":0
         }],
- "nextlayerid":6,
- "nextobjectid":6,
+ "nextlayerid":7,
+ "nextobjectid":14,
  "orientation":"orthogonal",
  "properties":[
         {

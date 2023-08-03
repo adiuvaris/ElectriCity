@@ -5,7 +5,7 @@
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJzTZGRg0BxgrIIF4xJHVzNc9RODaal\/oP0\/lPSjp2VK8gIIkKqeEgAA4ggkXQ==",
+         "data":"eJzTZGRg0IRiSyjWJANbUqD\/NwMmxiWOrmaw6nehUP\/5AdZPqf+9hnj8kaIfPS2Tk39gmIFE\/ZQCAPysnp8=",
          "encoding":"base64",
          "height":16,
          "id":1,
@@ -19,7 +19,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJxjYBhc4DYTYTVOzLjlHhOh3wuPfnTwmQmVphdYwUiZ\/g0U6h8F5AFK443eAACmLwZC",
+         "data":"eJxjYBh4MIcZQnOyQOi5zJhqtLCIwcASqJwgVP9SNLWGQL4REBsDsRQLaW6LA+qxBGIrILYGYiUS9RMDDJgZEuyYGRSQxVYwEq9fH6jfHk3\/BhL06wH1O6DpxweAah8A3fyAeBtQAdCtD\/Qp0A8Mqwd6ePSzI8WRCAuDA4g2ZYbQ2EAv0P9TgRjG50fSzwPVr4tHPzIgJd4GAwAA3eMT6g==",
          "encoding":"base64",
          "height":16,
          "id":12,
@@ -33,7 +33,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJxbxcjgsIoCvIhCLMjEgBXgEkdXM1z1EwNoqX+g\/U8v\/ZI41OESR1ezkBEVg8AiRkxxXHglGgaBVVjEcWFKAQBCLTK8",
+         "data":"eJxbxcjgsIoCvIhCfIaR4QADFoBLHF3NEUbscrjE0dUMVv3EAFrqH2j\/00v\/GRzqcImjq1mIhkFgERZxXHglGgaBVVjEcWFKAQAi\/kqi",
          "encoding":"base64",
          "height":16,
          "id":2,
@@ -90,29 +90,6 @@
          "name":"views",
          "objects":[
                 {
-                 "gid":977,
-                 "height":32,
-                 "id":12,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"book",
-                         "type":"string",
-                         "value":"01"
-                        }, 
-                        {
-                         "name":"room",
-                         "type":"string",
-                         "value":"01"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":130,
-                 "y":117
-                }, 
-                {
                  "gid":953,
                  "height":32,
                  "id":13,
@@ -132,31 +109,102 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":415,
-                 "y":102
+                 "x":301,
+                 "y":135.333333333333
                 }, 
                 {
-                 "gid":953,
+                 "gid":635,
                  "height":32,
-                 "id":18,
+                 "id":37,
                  "name":"",
-                 "properties":[
-                        {
-                         "name":"book",
-                         "type":"string",
-                         "value":"03"
-                        }, 
-                        {
-                         "name":"room",
-                         "type":"string",
-                         "value":"01"
-                        }],
-                 "rotation":0,
+                 "rotation":-90,
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":417,
-                 "y":411
+                 "x":88,
+                 "y":228
+                }, 
+                {
+                 "gid":3221226099,
+                 "height":32,
+                 "id":38,
+                 "name":"",
+                 "rotation":90,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":23.7272727272727,
+                 "y":196.181818181818
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":16,
+         "name":"kerze",
+         "objects":[
+                {
+                 "gid":1004,
+                 "height":32,
+                 "id":33,
+                 "name":"",
+                 "rotation":-90,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":82,
+                 "y":257.333333333333
+                }, 
+                {
+                 "gid":996,
+                 "height":32,
+                 "id":34,
+                 "name":"",
+                 "rotation":-90,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":52,
+                 "y":257.333333333333
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":17,
+         "name":"schwert",
+         "objects":[
+                {
+                 "gid":1015,
+                 "height":32,
+                 "id":35,
+                 "name":"",
+                 "rotation":90,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":440.666666666667,
+                 "y":268.666666666667
+                }, 
+                {
+                 "gid":1016,
+                 "height":32,
+                 "id":36,
+                 "name":"",
+                 "rotation":90,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":440.666666666667,
+                 "y":301.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -164,8 +212,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":16,
- "nextobjectid":19,
+ "nextlayerid":18,
+ "nextobjectid":39,
  "orientation":"orthogonal",
  "properties":[
         {
