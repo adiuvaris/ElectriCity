@@ -1,54 +1,17 @@
 {
   "Beschreibung": [
-    "<h1>Hier kannst du den Schlüssel für das erste Haus bekommen.<h1>",
-    "<h2>Beantworte die Frage auf der rechten Seite.<h2>"
+    "<h2>Hier kannst du den Schlüssel für das erste Haus bekommen.<h2>"
   ],
   "Bilder": [
   ],
   "Aufgaben": [
     {
-      "Art": "Frage",
+      "Art": "Wortsuche",
+      "Worte": ["STROMSTÄRKE", "ELEKTRISCH", "LADUNG"],
       "Aufgabe": [
-        "In einem afrikanischen Dorf leben 800 Frauen. Drei Prozent von ihnen tragen einen Ohrring. Von den anderen 97 Prozent trägt die eine Hälfte zwei Ohrringe, die andere Hälfte keine.",
-        "Wie gross ist die Gesamtzahl der von den Frauen getragenen Ohrringe?",
-        "Gib dein Resultat in das Eingabefeld ein."
-      ],
-      "Typ": "Zahl",
-      "Richtig": "800"
-    },
-    {
-      "Art": "Frage",
-      "Aufgabe": [
-        "Eine Sekretärin schreibt vier Briefe an vier Personen und adressiert die vier Umschläge. Wenn sie die Briefe nun aufs Geratewohl einsteckt, jeden in einen anderen Umschlag, wie gross ist dann die Wahrscheinlichkeit, dass genau drei Briefe in den richtigen Umschlag kommen?",
-        "Gib dein Resultat in Prozent in das Eingabefeld ein."
-      ],
-      "Typ": "Zahl",
-      "Richtig": "0"
-    },
-    {
-      "Art": "Frage",
-      "Aufgabe": [
-        "Welcher der folgenden Begriffe passt nicht in die Reihe?",
-        " - Helium",
-        " - Neon",
-        " - Kalium",
-        " - Xenon",
-        " - Argon",
-        "Gib den unpassenden Begriff in das Eingabefeld ein."
-      ],
-      "Typ": "Text",
-      "Richtig": "Kalium"
-    },
-    {
-      "Art": "Frage",
-      "Aufgabe": [
-        "Ein gleichseitiges Dreieck und ein regelmässiges Sechseck haben den gleichen Umfang.",
-        "Wenn das Dreieck eine Fläche von 2 Quadrateinheiten hat, wie gross ist dann die Fläche des Sechsecks?",
-        "Gib dein Resultat in Quadrateinheiten in das Eingabefeld ein."
-      ],
-      "Typ": "Zahl",
-      "Richtig": "3"
+        "Suche im Buchstabengitter nach den unten stehenden Worten.",
+        "Klicke jeweils auf den ersten und den letzten Buchstaben des Wortes."
+      ]
     }
-
   ]
 }
