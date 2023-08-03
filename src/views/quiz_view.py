@@ -188,7 +188,7 @@ class QuizView(arcade.View):
         msg_box = MessageBox(msg=msg, callback=self.on_ok)
         self.manager.add(msg_box)
 
-    def on_ok(self):
+    def on_ok(self, event):
         self.msg_active = False
         self.window.show_view(self.window.game_view)
 
@@ -221,6 +221,8 @@ class QuizView(arcade.View):
                 aufgaben = data["Aufgaben"]
                 for aufgabe in aufgaben:
                     task = Task()
+                    if "Art" in aufgabe:
+                        task.art = aufgabe["Art"]
                     if "Aufgabe" in aufgabe:
                         task.question = aufgabe["Aufgabe"]
                     if "Typ" in aufgabe:

@@ -9,6 +9,7 @@ from src.ui.attributed_text import AttributedText
 
 class Task:
     def __init__(self):
+        self.art = ""
         self.question = ""
         self.answers = {}
         self.correct_answer = 0
@@ -24,7 +25,7 @@ class Task:
 
         self.manager = ui_manager
 
-        # Aktuelle Variablen mit zufälligem Wert aus der Lite der möglichen Werte füllen
+        # Aktuelle Variablen mit zufälligem Wert aus der Liste der möglichen Werte füllen
         self.cur_variables.clear()
         for k, werte in self.variables.items():
             random.shuffle(werte)
@@ -33,17 +34,21 @@ class Task:
             # es wird ein zufälliger Wert aus den gegebenen Werten sein
             self.cur_variables[k] = werte[0]
 
+        if self.art == "Frage":
+            self.create_frage_ui(callback)
+
+    def create_frage_ui(self, callback):
         # Rahmen für den Aufgabenblock
         widget = arcade.gui.UIWidget(x=gd.scale(650), y=gd.scale(10), width=gd.scale(620), height=gd.scale(640))
         border = arcade.gui.UIBorder(child=widget)
-        ui_manager.add(border)
+        self.manager.add(border)
 
         # Aufgaben-Text
         text = AttributedText(x=gd.scale(660), y=gd.scale(120),
                               width=gd.scale(600), height=gd.scale(520),
                               text=self.question, variables=self.cur_variables)
 
-        ui_manager.add(text)
+        self.manager.add(text)
 
         if self.type == "Multi":
 
@@ -72,7 +77,7 @@ class Task:
                 ib = arcade.gui.UIFlatButton(x=x, y=y, width=w, height=h, text=v, style=style)
                 ib.on_click = callback
 
-                ui_manager.add(ib)
+                self.manager.add(ib)
 
                 i = i + 1
 
@@ -95,7 +100,7 @@ class Task:
                                        font_size=fs,
                                        multiline=False)
 
-            ui_manager.add(label)
+            self.manager.add(label)
 
             x = gd.scale(970)
             y = gd.scale(70)
@@ -104,7 +109,7 @@ class Task:
             fs = gd.scale(const.FONT_SIZE_H2)
 
             self.input_answer = arcade.gui.UIInputText(x=x, y=y, width=w, height=h, font_size=fs, text="")
-            ui_manager.add(self.input_answer.with_border())
+            self.manager.add(self.input_answer.with_border())
 
             # Eingabefeld aktivieren - so tun, als ob in das Feld geklickt wurde
             if self.input_answer is not None:
@@ -131,7 +136,7 @@ class Task:
                                        font_size=fs,
                                        multiline=False)
 
-            ui_manager.add(label)
+            self.manager.add(label)
 
             x = gd.scale(970)
             y = gd.scale(70)
@@ -140,7 +145,7 @@ class Task:
             fs = gd.scale(const.FONT_SIZE_H2)
 
             self.input_answer = arcade.gui.UIInputText(x=x, y=y, width=w, height=h, font_size=fs, text="")
-            ui_manager.add(self.input_answer.with_border())
+            self.manager.add(self.input_answer.with_border())
 
             # Eingabefeld aktivieren - so tun, als ob in das Feld geklickt wurde
             if self.input_answer is not None:
@@ -148,4 +153,3 @@ class Task:
                     x=self.input_answer.x + 1, y=self.input_answer.y + 1, button=0, modifiers=0, source=self)
 
                 self.input_answer.on_event(event)
-

@@ -140,7 +140,7 @@ class MenuView(arcade.View):
         new_game_button.on_click = self.on_click_new_game
 
         # Button
-        quit_button = arcade.gui.UIFlatButton(text="Programm beenden", width=gd.scale(290))
+        quit_button = arcade.gui.UIFlatButton(text="Spiel beenden", width=gd.scale(290))
         v_box.add(quit_button.with_space_around(bottom=gd.scale(30)))
         quit_button.on_click = self.on_click_quit
 

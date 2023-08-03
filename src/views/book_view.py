@@ -188,7 +188,7 @@ class BookView(arcade.View):
         msg_box = MessageBox(msg=msg, callback=self.on_ok)
         self.manager.add(msg_box)
 
-    def on_ok(self):
+    def on_ok(self, event):
         self.msg_active = False
         if self.correct:
             self.create_ui()
@@ -226,6 +226,8 @@ class BookView(arcade.View):
                 aufgaben = data["Aufgaben"]
                 for aufgabe in aufgaben:
                     task = Task()
+                    if "Art" in aufgabe:
+                        task.art = aufgabe["Art"]
                     if "Aufgabe" in aufgabe:
                         task.question = aufgabe["Aufgabe"]
                     if "Typ" in aufgabe:

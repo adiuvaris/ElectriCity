@@ -13,6 +13,7 @@
   ],
   "Aufgaben": [
     {
+      "Art": "Frage",
       "Aufgabe": [
         "In der Garage steht ein <V1>V-Akku. Er wird <V2>h lang mit der Ladestromstärke von <V3>A geladen.",
         "Welche Ladung (in Ah) hat der Akku beim Ladevorgang aufgenommen?",
