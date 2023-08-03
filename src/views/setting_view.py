@@ -49,10 +49,6 @@ class SettingView(arcade.View):
         self.manager.draw()
 
     def setup(self):
-        """
-        View initialisieren.
-        Macht zurzeit noch nichts
-        """
         pass
 
     def on_show_view(self):

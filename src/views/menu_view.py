@@ -6,7 +6,6 @@ import src.const as const
 
 from src.data.game import gd
 from src.views.setting_view import SettingView
-from src.views.inventar_view import InventarView
 
 
 class MenuView(arcade.View):
@@ -80,9 +79,9 @@ class MenuView(arcade.View):
         :param event:
         """
 
-        # Game View neu initialisieren und dann anzeigen
-        self.window.game_view.setup()
-        self.window.show_view(self.window.game_view)
+        # Start View erzeugen und starten
+        self.window.start_view.setup()
+        self.window.show_view(self.window.start_view)
 
     def on_click_quit(self, event):
         """
@@ -91,16 +90,6 @@ class MenuView(arcade.View):
         """
 
         self.window.close()
-
-    def on_click_inventar(self, event):
-        """
-        Klick-handler, wenn "Inventar" angeklickt wurde
-        :param event:
-        """
-
-        # Inventar View neu initialisieren und dann anzeigen
-        inventar = InventarView(self)
-        self.window.show_view(inventar)
 
     def on_key_press(self, key, modifiers):
         """
@@ -141,11 +130,6 @@ class MenuView(arcade.View):
         resume_button.on_click = self.on_click_resume
 
         # Button
-        inventar_button = arcade.gui.UIFlatButton(text="Inventar", width=gd.scale(290))
-        v_box.add(inventar_button.with_space_around(bottom=gd.scale(30)))
-        inventar_button.on_click = self.on_click_inventar
-
-        # Button
         settings_button = arcade.gui.UIFlatButton(text="Einstellungen", width=gd.scale(290))
         v_box.add(settings_button.with_space_around(bottom=gd.scale(30)))
         settings_button.on_click = self.on_click_settings
@@ -156,7 +140,7 @@ class MenuView(arcade.View):
         new_game_button.on_click = self.on_click_new_game
 
         # Button
-        quit_button = arcade.gui.UIFlatButton(text="Programm beenden", width=gd.scale(290))
+        quit_button = arcade.gui.UIFlatButton(text="Spiel beenden", width=gd.scale(290))
         v_box.add(quit_button.with_space_around(bottom=gd.scale(30)))
         quit_button.on_click = self.on_click_quit
 

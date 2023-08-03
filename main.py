@@ -21,6 +21,7 @@ class MainWindow(arcade.Window):
 
         # Game View
         self.game_view = None
+        self.start_view = None
 
         # Pfade zu einzelnen Ressourcen definieren, damit im Programm
         # leichter darauf zugegriffen werden kann.
@@ -38,10 +39,10 @@ def main():
     window = MainWindow()
     window.center_window()
 
-    # Loading View erzeugen und starten
-    start_view = StartView()
-    start_view.setup()
-    window.show_view(start_view)
+    # Start View erzeugen und starten
+    window.start_view = StartView()
+    window.start_view.setup()
+    window.show_view(window.start_view)
 
     # Arcade Endlos-Schleife starten.
     arcade.run()
@@ -52,5 +53,5 @@ if __name__ == "__main__":
 
 # Bilden mit folgendem Kommando Python Package PyInstaller muss installiert sein.
 # Die *.player Files in res/data vorher löschen.
-#   WINDOWS: pyinstaller main.py  --add-data "res;res" --windowed --name ElectriCity
-#   MAC:     pyinstaller main.py  --add-data "res:res" --windowed --name ElectriCity
+#   WINDOWS: pyinstaller main.py --onefile --add-data "res;res" --windowed --name ElectriCity
+#   MAC:     pyinstaller main.py --onefile --add-data "res:res" --windowed --name ElectriCity

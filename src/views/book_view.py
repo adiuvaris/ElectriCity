@@ -91,106 +91,14 @@ class BookView(arcade.View):
                 image_view = ImageView(img, self)
                 self.window.show_view(image_view)
 
-    def on_answer_click(self, event):
-
-        if self.msg_active:
-            return
-
-        task = self.tasks[self.cur_task]
-
-        msg = "Das ist leider falsch"
-        sound = self.lose_sound
-
-        for k, v in task.answers.items():
-            if event.source.text == v:
-                if k == task.correct_answer:
-                    msg = "Das ist korrekt"
-                    sound = self.ok_sound
-                    gd.set_task(self.room_nr, self.book_nr, self.cur_task)
-                    self.cur_task = self.cur_task + 1
-                    self.correct = True
-                    break
-
-        arcade.play_sound(sound, volume=gd.get_volume() / 100.0)
-
-        self.msg_active = True
-        msg_box = MessageBox(msg=msg, callback=self.on_ok)
-        self.manager.add(msg_box)
-
     def on_key_press(self, key, modifiers):
-        """
-        Wird von arcade aufgerufen, wenn eine Taste gedrückt wurde.
-
-        :param key: Taste
-        :param modifiers: Shift, Alt etc.
-        """
-
-        if self.msg_active:
-            return
 
         # Escape geht zurück zum Spiel
         if key == arcade.key.ESCAPE:
             self.window.show_view(self.window.game_view)
 
-        # Prüfen, ob eine Antwort eingetippt wurde
-        if key == arcade.key.ENTER or key == arcade.key.NUM_ENTER:
-            task = self.tasks[self.cur_task]
-            if task.input_answer is not None:
-                # Antwort prüfen
-                eingabe = task.input_answer.text.strip()
-                self.check_answer(eingabe)
-
-    def check_answer(self, answer):
-
-        if self.msg_active:
-            return
-
-        msg = "Das ist leider falsch"
-        sound = self.lose_sound
         task = self.tasks[self.cur_task]
-
-        if task.type == "Zahl":
-
-            # Bei einer Zahl muss die Antwort anhand der Formel berechnet werden
-            answer = float(answer)
-            term = Term()
-            term.variables = task.cur_variables
-            val = term.calc(task.correct_answer)
-
-            # Stimmt die Antwort?
-            if val == answer:
-                msg = "Das ist korrekt"
-                sound = self.ok_sound
-                self.correct = True
-                gd.set_task(self.room_nr, self.book_nr, self.cur_task)
-                self.cur_task = self.cur_task + 1
-
-        if task.type == "Text":
-
-            # Stimmt die Antwort (gross/klein ignorieren)?
-            if answer.lower() == task.correct_answer.lower():
-                msg = "Das ist korrekt"
-                sound = self.ok_sound
-                self.correct = True
-                gd.set_task(self.room_nr, self.book_nr, self.cur_task)
-                self.cur_task = self.cur_task + 1
-
-        arcade.play_sound(sound, volume=gd.get_volume() / 100.0)
-
-        if task.input_answer is not None:
-            event = arcade.gui.UIMousePressEvent(
-                x=task.input_answer.x - 1, y=task.input_answer.y - 1, button=0, modifiers=0, source=self)
-
-            task.input_answer.on_event(event)
-
-        self.msg_active = True
-        msg_box = MessageBox(msg=msg, callback=self.on_ok)
-        self.manager.add(msg_box)
-
-    def on_ok(self):
-        self.msg_active = False
-        if self.correct:
-            self.create_ui()
+        task.on_key_press(key, modifiers)
 
     def read_book(self):
 
@@ -225,8 +133,10 @@ class BookView(arcade.View):
                 aufgaben = data["Aufgaben"]
                 for aufgabe in aufgaben:
                     task = Task()
+                    if "Art" in aufgabe:
+                        task.art = aufgabe["Art"]
                     if "Aufgabe" in aufgabe:
-                        task.question = aufgabe["Aufgabe"]
+                        task.aufgabe = aufgabe["Aufgabe"]
                     if "Typ" in aufgabe:
                         task.type = aufgabe["Typ"]
                     if "Richtig" in aufgabe:
@@ -264,8 +174,15 @@ class BookView(arcade.View):
         self.theory.create_ui(self.manager, callback=self.on_image_click)
 
         if self.cur_task < len(self.tasks):
-            self.tasks[self.cur_task].create_ui(self.manager, self.on_answer_click)
+            self.tasks[self.cur_task].create_ui(self.manager, self.on_end_task)
         else:
             self.window.show_view(self.window.game_view)
 
         self.manager.trigger_render()
+
+    def on_end_task(self):
+        if self.tasks[self.cur_task].correct:
+            gd.set_task(self.room_nr, self.book_nr, self.cur_task)
+            self.cur_task = self.cur_task + 1
+            self.create_ui()
+

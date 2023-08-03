@@ -20,6 +20,7 @@
   ],
   "Aufgaben" : [
     {
+      "Art": "Frage",
       "Aufgabe": [
         "Was ist Strom?"
       ],
@@ -33,6 +34,7 @@
       "Richtig": "A"
     },
     {
+      "Art": "Frage",
       "Aufgabe": [
         "Was sind die besten Stromleiter?"
       ],

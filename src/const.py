@@ -1,10 +1,12 @@
 
 import arcade
 
+APP_NAME = "ElectriCity"
+
 # Fenstergrösse beim Start des Programms
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
-SCREEN_TITLE = "ElectriCity"
+SCREEN_TITLE = APP_NAME
 
 FONT_SIZE = 12
 FONT_SIZE_H1 = 20

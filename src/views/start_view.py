@@ -1,5 +1,6 @@
 import os
 from os.path import isfile, join
+from platformdirs import *
 import arcade
 import arcade.gui
 
@@ -10,6 +11,7 @@ from src.data.game import gd
 from src.maps import load_maps
 from src.views.game_view import GameView
 from src.views.help_view import HelpView
+from src.views.delete_view import DeleteView
 
 
 class StartView(arcade.View):
@@ -24,16 +26,6 @@ class StartView(arcade.View):
 
         super().__init__()
 
-        # Verzeichnis in dem die Player-Daten liegen
-        mypath = gd.get_abs_path("res/data")
-
-        # Alle Dateien mit der Endung player laden
-        self.players = [
-            f[:-7]
-            for f in os.listdir(mypath)
-            if isfile(join(mypath, f)) and f.endswith(".player")
-        ]
-
         # Attribute definieren
         self.started = False
         self.done = False
@@ -42,7 +34,8 @@ class StartView(arcade.View):
 
         self.manager = arcade.gui.UIManager()
         self.input_text = None
-        self.create_ui()
+        self.players = None
+        self.setup()
 
     def on_draw(self):
         """
@@ -57,7 +50,17 @@ class StartView(arcade.View):
         self.manager.draw()
 
     def setup(self):
-        pass
+        # Verzeichnis in dem die Player-Daten liegen
+        mypath = user_data_dir(const.APP_NAME, False, ensure_exists=True)
+
+        # Alle Dateien mit der Endung player laden
+        self.players = [
+            f[:-7]
+            for f in os.listdir(mypath)
+            if isfile(join(mypath, f)) and f.endswith(".player")
+        ]
+
+        self.create_ui()
 
     def on_show_view(self):
         """
@@ -131,6 +134,7 @@ class StartView(arcade.View):
 
             if self.done:
                 player_name = self.input_text.text.strip()
+                player_name.replace('\n', '')
                 if len(player_name) > 0:
                     self.start_game(player_name)
 
@@ -141,74 +145,88 @@ class StartView(arcade.View):
 
         self.manager.clear()
 
-        titel = arcade.gui.UILabel(x=0, y=670,
-                                   width=self.window.width, height=30,
+        titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
+                                   width=self.window.width, height=gd.scale(30),
                                    text="Starte ElectriCity",
                                    text_color=[0, 0, 0],
                                    bold=True,
                                    align="center",
-                                   font_size=const.FONT_SIZE_H1,
+                                   font_size=gd.scale(const.FONT_SIZE_H1),
                                    multiline=False)
         self.manager.add(titel.with_border())
 
-        label = arcade.gui.UILabel(x=20,
-                                   y=600,
-                                   width=290,
-                                   height=30,
+        label = arcade.gui.UILabel(x=gd.scale(20),
+                                   y=gd.scale(600),
+                                   width=gd.scale(290),
+                                   height=gd.scale(30),
                                    text="Gib deinen Namen ein:",
                                    text_color=[0, 0, 0],
                                    bold=True,
-                                   font_size=const.FONT_SIZE_H2,
+                                   font_size=gd.scale(const.FONT_SIZE_H2),
                                    multiline=False)
 
         self.manager.add(label)
 
-        self.input_text = arcade.gui.UIInputText(x=340, y=600,
-                                                 width=290, height=30,
-                                                 font_size=const.FONT_SIZE_H2, text="")
+        self.input_text = arcade.gui.UIInputText(x=gd.scale(340), y=gd.scale(600),
+                                                 width=gd.scale(290), height=gd.scale(30),
+                                                 font_size=gd.scale(const.FONT_SIZE_H2), text="")
         self.manager.add(self.input_text.with_border())
 
-        hint = arcade.gui.UILabel(x=20,
-                                  y=200,
-                                  width=1280,
-                                  height=30,
+        if len(self.players) > 0:
+            label = arcade.gui.UILabel(x=gd.scale(20),
+                                       y=gd.scale(550),
+                                       width=gd.scale(1240),
+                                       height=gd.scale(30),
+                                       text="Oder klicke auf einen vorhandenen Spieler, um das Spiel zu starten.",
+                                       text_color=[0, 0, 0],
+                                       bold=True,
+                                       font_size=gd.scale(const.FONT_SIZE_H2),
+                                       multiline=False)
+
+            self.manager.add(label)
+
+            style = {"font_size": gd.scale(const.FONT_SIZE), "bg_color": (100, 100, 100)}
+            x = gd.scale(20)
+            y = gd.scale(500)
+            i = 0
+            for p in self.players:
+                ib = arcade.gui.UIFlatButton(x=x, y=y, width=gd.scale(200), height=gd.scale(40), text=p, style=style)
+                ib.on_click = self.on_click
+                self.manager.add(ib)
+
+                x = x + gd.scale(210)
+                i = i + 1
+                if i > 5:
+                    i = 0
+                    x = gd.scale(20)
+                    y = y - gd.scale(50)
+
+            del_button = arcade.gui.UIFlatButton(x=gd.scale(500),
+                                                 y=gd.scale(200),
+                                                 width=gd.scale(280),
+                                                 height=gd.scale(40),
+                                                 text="Einen Spieler löschen...",
+                                                 style=style)
+
+            del_button.on_click = self.on_click_del_game
+            self.manager.add(del_button)
+
+        hint = arcade.gui.UILabel(x=gd.scale(20),
+                                  y=gd.scale(100),
+                                  width=gd.scale(1280),
+                                  height=gd.scale(30),
                                   text="Drücke die Taste 'F1' für eine kurze Anleitung.",
                                   text_color=[0, 0, 0],
                                   bold=True,
-                                  font_size=const.FONT_SIZE_H2,
+                                  font_size=gd.scale(const.FONT_SIZE_H2),
                                   align="center",
                                   multiline=False)
 
         self.manager.add(hint)
 
-        if len(self.players) > 0:
-            label = arcade.gui.UILabel(x=20,
-                                       y=500,
-                                       width=290,
-                                       height=30,
-                                       text="Oder klicke auf ihn:",
-                                       text_color=[0, 0, 0],
-                                       bold=True,
-                                       font_size=const.FONT_SIZE_H2,
-                                       multiline=False)
-
-            self.manager.add(label)
-
-            x = 340
-            y = 500
-            i = 0
-            for p in self.players:
-                style = {"font_size": gd.scale(const.FONT_SIZE), "bg_color": (100, 100, 100)}
-                ib = arcade.gui.UIFlatButton(x=x, y=y, width=160, height=40, text=p, style=style)
-                ib.on_click = self.on_click
-                self.manager.add(ib)
-
-                x = x + 180
-                i = i + 1
-                if i > 4:
-                    i = 0
-                    x = 340
-                    y = y - 50
+    def on_click_del_game(self, event):
+        delete_view = DeleteView()
+        self.window.show_view(delete_view)
 
     def on_click(self, event):
         if self.done:

@@ -23,15 +23,18 @@ class HelpView(arcade.View):
 
         self.parent = parent
         self.text = []
+        self.titel = ""
 
-        # JSON-File für Buch einlesen
+        # JSON-File für Text einlesen
         mypath = gd.get_abs_path("res/data")
         filename = f"{mypath}/{filename}"
         if os.path.exists(filename):
             with open(filename, "r", encoding="'utf-8") as ifile:
                 data = json.load(ifile)
-                if "text" in data:
-                    self.text = data["text"]
+                if "Titel" in data:
+                    self.titel = data["Titel"]
+                if "Text" in data:
+                    self.text = data["Text"]
 
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
@@ -92,7 +95,7 @@ class HelpView(arcade.View):
 
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
-                                   text="Anleitung",
+                                   text=self.titel,
                                    text_color=[0, 0, 0],
                                    bold=True,
                                    align="center",
