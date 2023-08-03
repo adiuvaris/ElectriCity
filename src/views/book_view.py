@@ -92,6 +92,11 @@ class BookView(arcade.View):
                 self.window.show_view(image_view)
 
     def on_key_press(self, key, modifiers):
+
+        # Escape geht zurück zum Spiel
+        if key == arcade.key.ESCAPE:
+            self.window.show_view(self.window.game_view)
+
         task = self.tasks[self.cur_task]
         task.on_key_press(key, modifiers)
 
