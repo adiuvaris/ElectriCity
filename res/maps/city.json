@@ -154,6 +154,12 @@
                  "height":26,
                  "id":10,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"02"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -166,6 +172,12 @@
                  "height":32,
                  "id":11,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"03"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -178,6 +190,12 @@
                  "height":32,
                  "id":12,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -190,6 +208,12 @@
                  "height":32,
                  "id":14,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"05"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
