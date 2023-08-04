@@ -110,6 +110,17 @@
                  "height":32,
                  "id":6,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"01"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"02"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -122,6 +133,17 @@
                  "height":32,
                  "id":7,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"01"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"02"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -134,6 +156,17 @@
                  "height":32,
                  "id":12,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"03"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"02"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -146,6 +179,17 @@
                  "height":32,
                  "id":13,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"04"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"02"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -154,6 +198,17 @@
                  "y":96.6666666666667
                 }],
          "opacity":1,
+         "properties":[
+                {
+                 "name":"book",
+                 "type":"string",
+                 "value":"02"
+                }, 
+                {
+                 "name":"room",
+                 "type":"string",
+                 "value":"02"
+                }],
          "type":"objectgroup",
          "visible":true,
          "x":0,
