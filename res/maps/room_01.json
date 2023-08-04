@@ -117,6 +117,17 @@
                  "height":32,
                  "id":37,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"01"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"01"
+                        }],
                  "rotation":-90,
                  "type":"",
                  "visible":true,
@@ -129,6 +140,17 @@
                  "height":32,
                  "id":38,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"01"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"01"
+                        }],
                  "rotation":90,
                  "type":"",
                  "visible":true,
