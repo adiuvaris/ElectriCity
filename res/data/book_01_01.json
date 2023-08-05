@@ -1,108 +1,80 @@
 {
   "Titel" : "Elektrischer Strom",
   "Theorie" : [
-    "Hallo, ...?"
+    "Beachte genau was die passenden Memory-Bilder aussagen."
   ],
   "Aufgaben" : [
         {
       "Art": "Memory",
       "Karten": [
         {
-          "Key" : "k1",
-          "Bild": "mem_k1_b1.png"
+          "Key" : "k01",
+          "Bild": "mem_k01_b1.png"
         },
         {
-          "Key" : "k1",
-          "Bild": "mem_k1_b2.png"
+          "Key" : "k01",
+          "Bild": "mem_k01_b2.png"
         },
         {
-          "Key" : "k2",
-          "Bild": "mem_k2_b1.png"
+          "Key" : "k02",
+          "Bild": "mem_k02_b1.png"
         },
         {
-          "Key" : "k2",
-          "Bild": "mem_k2_b2.png"
+          "Key" : "k02",
+          "Bild": "mem_k02_b2.png"
         },
         {
-          "Key" : "k3",
-          "Bild": "mem_k3_b1.png"
+          "Key" : "k03",
+          "Bild": "mem_k03_b1.png"
         },
         {
-          "Key" : "k3",
-          "Bild": "mem_k3_b2.png"
+          "Key" : "k03",
+          "Bild": "mem_k03_b2.png"
         },
         {
-          "Key" : "k4",
-          "Bild": "mem_k4_b1.png"
+          "Key" : "k04",
+          "Bild": "mem_k04_b1.png"
         },
         {
-          "Key" : "k4",
-          "Bild": "mem_k4_b2.png"
+          "Key" : "k04",
+          "Bild": "mem_k04_b2.png"
         },
         {
-          "Key" : "k5",
-          "Bild": "mem_k5_b1.png"
+          "Key" : "k05",
+          "Bild": "mem_k05_b1.png"
         },
         {
-          "Key" : "k5",
-          "Bild": "mem_k5_b2.png"
+          "Key" : "k05",
+          "Bild": "mem_k05_b2.png"
         },
         {
-          "Key" : "k6",
-          "Bild": "mem_k6_b1.png"
+          "Key" : "k06",
+          "Bild": "mem_k06_b1.png"
         },
         {
-          "Key" : "k6",
-          "Bild": "mem_k6_b2.png"
+          "Key" : "k06",
+          "Bild": "mem_k06_b2.png"
         },
         {
-          "Key" : "k7",
-          "Bild": "mem_k7_b1.png"
+          "Key" : "k07",
+          "Bild": "mem_k07_b1.png"
         },
         {
-          "Key" : "k7",
-          "Bild": "mem_k7_b2.png"
+          "Key" : "k07",
+          "Bild": "mem_k07_b2.png"
         },
         {
-          "Key" : "k8",
-          "Bild": "mem_k8_b1.png"
+          "Key" : "k08",
+          "Bild": "mem_k08_b1.png"
         },
         {
-          "Key" : "k8",
-          "Bild": "mem_k8_b2.png"
+          "Key" : "k08",
+          "Bild": "mem_k08_b2.png"
         }
       ],
       "Aufgabe": [
         "Löse das Memory auf der rechten Seite."
       ]
-    },
-
-    {
-      "Art": "Frage",
-      "Aufgabe": [
-        "Was ist Strom?"
-      ],
-      "Typ": "Multi",
-      "Antworten": {
-        "A": "Bewegte Elektronen",
-        "B": "Bewegte Protonen",
-        "C": "Bewegte Neutronen",
-        "D": "Bewegte Atome"
-      },
-      "Richtig": "A"
-    },
-    {
-      "Art": "Frage",
-      "Aufgabe": [
-        "Was sind die besten Stromleiter?"
-      ],
-      "Typ": "Multi",
-      "Antworten": {
-        "A": "Salze mit fixen Ionengittern",
-        "B": "Kovalenzbindungen mit teilenden Elektronenpaaren",
-        "C": "Metalle mit freien Elektronen"
-      },
-      "Richtig": "C"
     }
   ]
 }

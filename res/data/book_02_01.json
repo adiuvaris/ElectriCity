@@ -1,35 +1,87 @@
 {
   "Titel": "Leistung",
   "Theorie": [
-    "Willkommen im ersten Haus. Hier wirst du lernen, was Strom und die dazugehörige physikalische Stromstärke sind. Wir reden oft davon, unsere Handys oder Laptops an den Strom zu hängen, weil sie sonst abstürzen würden. Aber was fliesst durch die Kabel in unsere elektrischen Geräte?",
-    "Richtig Strom, doch was ist das?"
+    "Die Spannung ist nicht nur das, was einen guten Krimi ausmacht, sondern auch die <i>Stärke</i> einer elektrischen Quelle (z.B. einer Batterie). Somit ist die Spannung, die mit dem Buchstaben <i>U</i> abgekürzt wird, die Fähigkeit, den Strom in einem Stromkreis aufrechtzuerhalten. Aber um am besten zu verstehen, was Spannung ist, solltest du dir den Vergleich auf dem Bild genau anschauen."
   ],
   "Bilder": [
     {
-      "Datei": "bild_01.png",
-      "Titel": "Ladender Laptop",
-      "Beschreibung": "Das Bild zeigt einen Laptop am Stromnetz"
-    },
-    {
-      "Datei": "bild_02.png",
-      "Titel": "",
-      "Beschreibung": ""
+      "Datei": "pic_02_01_1.png",
+      "Titel": "Vergleich",
+      "Beschreibung": "Vergleich Wasserkreislauf / Strom"
     }
   ],
   "Aufgaben": [
-    {
-      "Art": "Frage",
-      "Aufgabe": [
-        "Was, denkst du, ist Strom?"
+        {
+      "Art": "Memory",
+      "Karten": [
+        {
+          "Key" : "k1",
+          "Bild": "mem_k1_b1.png"
+        },
+        {
+          "Key" : "k1",
+          "Bild": "mem_k1_b2.png"
+        },
+        {
+          "Key" : "k2",
+          "Bild": "mem_k2_b1.png"
+        },
+        {
+          "Key" : "k2",
+          "Bild": "mem_k2_b2.png"
+        },
+        {
+          "Key" : "k3",
+          "Bild": "mem_k3_b1.png"
+        },
+        {
+          "Key" : "k3",
+          "Bild": "mem_k3_b2.png"
+        },
+        {
+          "Key" : "k4",
+          "Bild": "mem_k4_b1.png"
+        },
+        {
+          "Key" : "k4",
+          "Bild": "mem_k4_b2.png"
+        },
+        {
+          "Key" : "k5",
+          "Bild": "mem_k5_b1.png"
+        },
+        {
+          "Key" : "k5",
+          "Bild": "mem_k5_b2.png"
+        },
+        {
+          "Key" : "k6",
+          "Bild": "mem_k6_b1.png"
+        },
+        {
+          "Key" : "k6",
+          "Bild": "mem_k6_b2.png"
+        },
+        {
+          "Key" : "k7",
+          "Bild": "mem_k7_b1.png"
+        },
+        {
+          "Key" : "k7",
+          "Bild": "mem_k7_b2.png"
+        },
+        {
+          "Key" : "k8",
+          "Bild": "mem_k8_b1.png"
+        },
+        {
+          "Key" : "k8",
+          "Bild": "mem_k8_b2.png"
+        }
       ],
-      "Typ": "Multi",
-      "Antworten": {
-        "A": "Bewegte Elektronen",
-        "B": "Bewegte Protonen",
-        "C": "Bewegte Neutronen",
-        "D": "Bewegte Atome"
-      },
-      "Richtig": "A"
+      "Aufgabe": [
+        "Löse das Memory auf der rechten Seite."
+      ]
     }
   ]
 }

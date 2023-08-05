@@ -7,7 +7,7 @@
   "Aufgaben": [
     {
       "Art": "Wortsuche",
-      "Worte": ["SPANNUNG", "LEISTUNG", "POTENTIAL"],
+      "Worte": ["SPANNUNG", "LEISTUNG", "VOLTMETER"],
       "Aufgabe": [
         "Suche im Buchstabengitter nach den unten stehenden Wörtern.",
         "Klicke jeweils auf den ersten und den letzten Buchstaben des Wortes."
