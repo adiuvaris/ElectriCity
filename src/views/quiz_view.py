@@ -14,6 +14,7 @@ from src.ui.message_box import MessageBox
 from src.data.quiz import Quiz
 from src.data.image import Image
 from src.data.task import Task
+from src.data.task_createor import create_task
 
 from src.views.image_view import ImageView
 
@@ -102,25 +103,7 @@ class QuizView(arcade.View):
             if "Aufgaben" in data:
                 aufgaben = data["Aufgaben"]
                 for aufgabe in aufgaben:
-                    task = Task()
-                    if "Art" in aufgabe:
-                        task.art = aufgabe["Art"]
-                    if "Aufgabe" in aufgabe:
-                        task.aufgabe = aufgabe["Aufgabe"]
-                    if "Typ" in aufgabe:
-                        task.type = aufgabe["Typ"]
-                    if "Richtig" in aufgabe:
-                        task.correct_answer = aufgabe["Richtig"]
-                    if "Nachkommastellen" in aufgabe:
-                        task.digits = aufgabe["Nachkommastellen"]
-                    if "Antworten" in aufgabe:
-                        task.answers = aufgabe["Antworten"]
-                    if "Variablen" in aufgabe:
-                        task.variables = aufgabe["Variablen"]
-                    if "Worte" in aufgabe:
-                        task.worte = aufgabe["Worte"]
-                    if "Paare" in aufgabe:
-                        task.paare = aufgabe["Paare"]
+                    task = create_task(aufgabe)
                     self.tasks.append(task)
 
     def create_ui(self):

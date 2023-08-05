@@ -1,24 +1,82 @@
 {
-  "Titel" : "Strom",
+  "Titel" : "Elektrischer Strom",
   "Theorie" : [
-    "Hallo, der Laptop, mit dem du gerade dieses Spiel spielst, wird mit <b>Strom</b> betrieben, das ist quasi seine Lebensenergie. Aber was ist Strom?",
-    "Wenn wir unseren Laptop an die Steckdose hängen, dann fliessen <i>Elektronen</i> von der Ladestation in den Laptop.",
-    "Dabei ist ganz wichtig: Wir sprechen von den frei beweglichen Elektronen und nicht von denjenigen, die fest in der Atomhülle eingebaut sind. Sonst würden sich Kabel und Leiter, durch die Strom fliessen, mit der Zeit auflösen, weil ihre Elektronen aus den Hüllen weg wandern!",
-    "Siehe auch Bild <i>Ladender Laptop</i> und Bild <i>Noch ein Bild</i>"
-  ],
-  "Bilder" : [
-      {
-        "Datei" :  "bild_01.png",
-        "Titel" : "Ladender Laptop",
-        "Beschreibung" : "Das Bild zeigt einen Laptop am Stromnetz"
-      },
-      {
-        "Datei" :  "bild_02.png",
-        "Titel" : "Noch ein Bild",
-        "Beschreibung" : "Das Bild zeigt..."
-      }
+    "Hallo, ...?"
   ],
   "Aufgaben" : [
+        {
+      "Art": "Memory",
+      "Karten": [
+        {
+          "Key" : "k1",
+          "Bild": "mem_k1_b1.png"
+        },
+        {
+          "Key" : "k1",
+          "Bild": "mem_k1_b2.png"
+        },
+        {
+          "Key" : "k2",
+          "Bild": "mem_k2_b1.png"
+        },
+        {
+          "Key" : "k2",
+          "Bild": "mem_k2_b2.png"
+        },
+        {
+          "Key" : "k3",
+          "Bild": "mem_k3_b1.png"
+        },
+        {
+          "Key" : "k3",
+          "Bild": "mem_k3_b2.png"
+        },
+        {
+          "Key" : "k4",
+          "Bild": "mem_k4_b1.png"
+        },
+        {
+          "Key" : "k4",
+          "Bild": "mem_k4_b2.png"
+        },
+        {
+          "Key" : "k5",
+          "Bild": "mem_k5_b1.png"
+        },
+        {
+          "Key" : "k5",
+          "Bild": "mem_k5_b2.png"
+        },
+        {
+          "Key" : "k6",
+          "Bild": "mem_k6_b1.png"
+        },
+        {
+          "Key" : "k6",
+          "Bild": "mem_k6_b2.png"
+        },
+        {
+          "Key" : "k7",
+          "Bild": "mem_k7_b1.png"
+        },
+        {
+          "Key" : "k7",
+          "Bild": "mem_k7_b2.png"
+        },
+        {
+          "Key" : "k8",
+          "Bild": "mem_k8_b1.png"
+        },
+        {
+          "Key" : "k8",
+          "Bild": "mem_k8_b2.png"
+        }
+      ],
+      "Aufgabe": [
+        "Löse das Memory auf der rechten Seite."
+      ]
+    },
+
     {
       "Art": "Frage",
       "Aufgabe": [

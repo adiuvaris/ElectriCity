@@ -1,30 +1,61 @@
 {
-  "Titel": "Strom 2",
+  "Titel": "Strom und Ladung",
   "Theorie": [
-    "Dabei muss man im Kopf behalten: Wir sprechen von frei beweglichen Elektronen und nicht von denjenigen, die fest in der Atomhülle eingebaut sind, sonst würden sich Kabel und Leiter, durch die Strom fliessen, mit der Zeit auflösen, weil ihre Elektronen aus den Hüllen wegwandern.",
-    "Nun da du weisst, was Strom ist, dass Elektronen negativ geladen sind und gegensätzliche Ladungen sich anziehen, solltest du die zweite Frage beantworten können.",
-    "Demnach haben Elektronen immer eine Richtung in die sie fliessen. Da das aber für Physiker*innen noch nicht reichte, wurde eine weitere Stromrichtung definiert, und zwar die technische Stromrichtung."
+    "Strom ist bewegte Ladung pro Zeit (<i>I = Q / t</i>)."
   ],
   "Bilder": [
     {
-      "Datei": "formel_01.png",
-      "Titel": "Formel Stromstärke",
-      "Beschreibung": "Das Bild zeigt die Formel für die Stromstärke"
+      "Datei": "bild_01_02.png",
+      "Titel": "Stromkreis",
+      "Beschreibung": "Das Bild zeigt einen einfachen Stromkreis."
     }
   ],
   "Aufgaben": [
     {
       "Art": "Frage",
       "Aufgabe": [
-        "Was sind die besten Stromleiter?"
+        "Das Bild <i><b>Stromkreis</b></i> zeigt ein Modell eines elektrischen Stromkreises. Die Lampe hat eine Leistung <V1> Watt und wird <V2>h lang mit einer Stromstärke von <V3>A beliefert.",
+        "Welche Ladung (in Coulomb) fliesst durch die Lampe?",
+        "Gib dein Resultat in das Eingabefeld ein (nur die Zahl)."
       ],
-      "Typ": "Multi",
-      "Antworten": {
-        "A": "Salze mit fixen Ionengittern",
-        "B": "Kovalenzbindungen mit teilenden Elektronenpaaren",
-        "C": "Metalle mit freien Elektronen"
+      "Variablen": {
+        "V1": [25, 30, 40, 60, 70],
+        "V2": [5, 12, 24, 48, 72],
+        "V3": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
       },
-      "Richtig": "C"
+      "Typ": "Zahl",
+      "Richtig": "V2 * V3 * 3600.0",
+      "Nachkommastellen": 0
+    },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "In der Garage steht ein <V1>V-Akku. Er wird <V2>h lang mit der Ladestromstärke von <V3>A geladen.",
+        "Welche Ladung (in Ah) hat der Akku beim Ladevorgang aufgenommen?",
+        "Gib dein Resultat in das Eingabefeld ein (nur die Zahl)."
+      ],
+      "Variablen": {
+        "V1": [18, 24, 36],
+        "V2": [5, 12, 24, 48, 72],
+        "V3": [2, 5, 10]
+      },
+      "Typ": "Zahl",
+      "Richtig": "V2 * V3",
+      "Nachkommastellen": 0
+    },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Wie viele Stunden muss ein Akku mit einer Stromstärke von <V1>A geladen werden, bis er eine Ladung von <V2>Ah erreicht hat?",
+        "Gib dein Resultat in das Eingabefeld ein (nur die Anzahl Stunden)."
+      ],
+      "Variablen": {
+        "V1": [5, 10, 20],
+        "V2": [100, 120, 140, 160, 180, 200]
+      },
+      "Typ": "Zahl",
+      "Richtig": "V2 / V1",
+      "Nachkommastellen": 0
     }
   ]
 }

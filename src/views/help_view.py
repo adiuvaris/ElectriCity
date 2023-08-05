@@ -104,8 +104,8 @@ class HelpView(arcade.View):
 
         self.manager.add(titel.with_border())
 
-        text = AttributedText(x=gd.scale(20), y=gd.scale(120),
-                              width=gd.scale(1240), height=gd.scale(520), text=self.text)
+        text = AttributedText(x=gd.scale(240), y=gd.scale(120),
+                              width=gd.scale(800), height=gd.scale(520), text=self.text)
 
         self.manager.add(text)
 

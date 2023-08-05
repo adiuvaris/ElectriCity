@@ -1,13 +1,11 @@
 {
   "Beschreibung": [
-    "<h2>Hier kannst du den Schlüssel für das erste Haus bekommen.<h2>"
-  ],
-  "Bilder": [
+    "<h2>Hier kannst du den Schlüssel für das vierte Haus bekommen.<h2>"
   ],
   "Aufgaben": [
     {
       "Art": "Wortsuche",
-      "Worte": ["STROMSTÄRKE", "ELEKTRISCH", "LADUNG"],
+      "Worte": ["KIRCHHOFF", "PARALLEL", "SCHALTUNG"],
       "Aufgabe": [
         "Suche im Buchstabengitter nach den unten stehenden Wörtern.",
         "Klicke jeweils auf den ersten und den letzten Buchstaben des Wortes."

@@ -1,4 +1,5 @@
 
+import os
 import arcade
 import arcade.gui
 from pyglet.math import Vec2
@@ -94,6 +95,18 @@ class GameView(arcade.View):
 
         # Physik in der View initialisieren
         self.setup_physics()
+
+        self.up_pressed = False
+        self.down_pressed = False
+        self.left_pressed = False
+        self.right_pressed = False
+
+        mypath = gd.get_abs_path("res/data")
+        filename = f"{mypath}/{map_name}.json"
+        if os.path.exists(filename):
+            hint_file = f"{map_name}.json"
+            hint = HelpView(hint_file, self)
+            self.window.show_view(hint)
 
     def setup_physics(self):
         """

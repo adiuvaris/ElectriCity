@@ -12,6 +12,7 @@ from src.ui.message_box import MessageBox
 from src.data.theory import Theory
 from src.data.image import Image
 from src.data.task import Task
+from src.data.task_createor import create_task
 
 from src.views.image_view import ImageView
 
@@ -132,21 +133,7 @@ class BookView(arcade.View):
             if "Aufgaben" in data:
                 aufgaben = data["Aufgaben"]
                 for aufgabe in aufgaben:
-                    task = Task()
-                    if "Art" in aufgabe:
-                        task.art = aufgabe["Art"]
-                    if "Aufgabe" in aufgabe:
-                        task.aufgabe = aufgabe["Aufgabe"]
-                    if "Typ" in aufgabe:
-                        task.type = aufgabe["Typ"]
-                    if "Richtig" in aufgabe:
-                        task.correct_answer = aufgabe["Richtig"]
-                    if "Nachkommastellen" in aufgabe:
-                        task.digits = aufgabe["Nachkommastellen"]
-                    if "Antworten" in aufgabe:
-                        task.answers = aufgabe["Antworten"]
-                    if "Variablen" in aufgabe:
-                        task.variables = aufgabe["Variablen"]
+                    task = create_task(aufgabe)
                     self.tasks.append(task)
 
             gd.init_book(self.room_nr, self.book_nr, len(self.tasks))

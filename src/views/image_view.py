@@ -92,7 +92,7 @@ class ImageView(arcade.View):
         self.manager.add(titel.with_border())
 
         # Bild Element erzeugen - falls Datei existiert
-        mypath = gd.get_abs_path("res/data")
+        mypath = gd.get_abs_path("res/images")
         filename = f"{mypath}/{self.figure.image_file}"
         if os.path.exists(filename):
 
