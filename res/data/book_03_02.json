@@ -1,0 +1,29 @@
+{
+  "Titel": "Ohmsches Gesetz",
+  "Theorie": [
+    "Das Ohm’sche Gesetz besagt, dass die Spannung proportional zur Stromstärke zunimmt. Die Proportionalitätskonstante ist der elektrische Widerstand <i>R</i>. Dabei ist wichtig: Das Ohm’sche Gesetz gilt NUR für ohmsche Widerstände. Alle anderen Bauteile/elektrischen Geräte müssen keine ohmschen Widerstände sein."
+  ],
+  "Bilder": [
+    {
+      "Datei": "pic_03_02_1.png",
+      "Titel": "Kennlinien",
+      "Beschreibung": "Kennlinien"
+    }
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Welche Abbildung im Bild <i><b>Kennlinien</b></i> stellt ein Ohmsches Gesetz dar?"
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Diagramm a",
+        "B" : "Diagramm b",
+        "C" : "Diagramm c",
+        "D" : "Diagramm d"
+      },
+      "Richtig" : "B"
+    }
+  ]
+}

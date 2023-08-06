@@ -1,67 +1,79 @@
 {
   "Titel": "Spannung",
   "Theorie": [
-    "Stefanie und Jan Luca haben ihr Gespräch über die Spannung aufgenommen. Anschliessend haben sie es in kleinere Abschnitte geschnitten. In diesen kurzen Wortwechseln sagt immer nur einer der beiden die Wahrheit. Wer hat jeweils recht, Stefanie oder Jan Luca?"
+    "Fällt dir etwas auf, wenn du das Bild <i><b>Lampen</b></i> betrachtest?",
+    "Die linke Glühbirne leuchtet heller als die rechte. Aber wieso sind sie nicht gleich hell, denn sie sind an der gleichen Stromquelle angeschlossen? Dieser Unterschied kommt daher, dass die beiden Glühbirnen unterschiedliche elektrische Leistungen <i>P</i> besitzen. Da die gleiche Spannung über den Glühbirnen angelegt wurde, diese aber unterschiedlichen Leistungen besitzen, muss sich die Stromstärke ändern (das Bild <i><b>Schema</b></i> zeigt den Zusammenhang). Und somit leuchten die Glühbirnen auch unterschiedlich hell.",
+    "Es gilt: Leistung = Spannung mal Stromstärke oder mit Symbolen <np>P = U * I</np>"
   ],
-  "Audios": [
+  "Bilder": [
     {
-      "Datei": "aud_02_02_1.wav",
-      "Titel": "Stromkreis",
-      "Beschreibung": "Stromkreis"
+      "Datei": "pic_02_04_1.png",
+      "Titel": "Das Bild zeigt zwei Lampen",
+      "Beschreibung": "Lampen"
     },
     {
-      "Datei": "aud_02_02_2.wav",
-      "Titel": "Stromkreis 2",
-      "Beschreibung": "Stromkreis 2"
-    },
-    {
-      "Datei": "aud_02_02_3.wav",
-      "Titel": "Stromkreis 3",
-      "Beschreibung": "Stromkreis 3"
+      "Datei": "pic_02_04_2.png",
+      "Titel": "Das Bild zeigt zwei Verbraucher bei gleicher Spannung",
+      "Beschreibung": "Schema"
     }
   ],
   "Aufgaben": [
     {
       "Art": "Frage",
       "Aufgabe": [
-        "Hör dir das Gespräch <i><b>1</b></i> an.",
-        "Wer hat recht, Jan Luca oder Stefanie?",
-        "Klicke auf den Namen der Person, die deiner Meinung nach das Richtige gesagt hat."
+        "Eine der Lampen hat die Leistung <V1> Watt und die Spannung ist <V2> Volt.",
+        "Wie gross ist der Strom, der durch die Lampe fliesst?",
+        "Gib dein Resultat in das Eingabefeld ein (nur die Zahl gerundet auf zwei Nachkommastellen)."
       ],
-      "Typ": "Multi",
-      "Antworten" :{
-        "A" : "Jan Luca",
-        "B" : "Stefanie"
+      "Variablen": {
+        "V1": [25, 30, 40, 60, 70],
+        "V2": [120, 230, 240, 380]
       },
-      "Richtig" : "A"
+      "Typ": "Zahl",
+      "Richtig": "V2 / V1",
+      "Nachkommastellen": 2
     },
     {
       "Art": "Frage",
       "Aufgabe": [
-        "Hör dir das Gespräch <i><b>2</b></i> an.",
-        "Wer hat recht, Jan Luca oder Stefanie?",
-        "Klicke auf den Namen der Person, die deiner Meinung nach das Richtige gesagt hat."
+        "Eine Autobatterie mit einer Leistung von 36 W liefert I = 3 A zum Betrieb eines Scheinwerfers. Berechne die Spannung der Autobatterie.",
+        "Gib die Antwort in das Feld ohne Einheit (in Volt) ein."
       ],
-      "Typ": "Multi",
-      "Antworten" :{
-        "A" : "Jan Luca",
-        "B" : "Stefanie"
+      "Variablen": {
+        "V1": [25, 30, 40, 60, 70],
+        "V2": [120, 230, 240, 380]
       },
-      "Richtig" : "A"
+      "Typ": "Zahl",
+      "Richtig": "V2 / V1",
+      "Nachkommastellen": 2
     },
     {
       "Art": "Frage",
       "Aufgabe": [
-        "Hör dir das Gespräch <i><b>3</b></i> an.",
-        "Wer hat recht, Jan Luca oder Stefanie?",
-        "Klicke auf den Namen der Person, die deiner Meinung nach das Richtige gesagt hat."
+        "Eine Taschenlampenbatterie versorgt eine Lampe mit der Spannung U = 3 V, wobei die Stromstärke I = 0.2 A beträgt. Welche Leistung hat sie?",
+        "Gib die Antwort in das Feld ohne Einheit (Watt) ein."
       ],
-      "Typ": "Multi",
-      "Antworten" :{
-        "A" : "Jan Luca",
-        "B" : "Stefanie"
+      "Variablen": {
+        "V1": [25, 30, 40, 60, 70],
+        "V2": [120, 230, 240, 380]
       },
-      "Richtig" : "B"
+      "Typ": "Zahl",
+      "Richtig": "V2 / V1",
+      "Nachkommastellen": 2
+    },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Der ICN der SBB hat eine elektrische Leistung von 5’200 kW. Die Spannung zwischen Gleis und Fahrleitung beträgt 15 kV. Berechne die Stromstärke im Stromabnehmer bei dieser Leistung.",
+        "Gib die Antwort ohne Einheit (Ampere) in das Feld ein, runde auf ganze Zahlen"
+      ],
+      "Variablen": {
+        "V1": [25, 30, 40, 60, 70],
+        "V2": [120, 230, 240, 380]
+      },
+      "Typ": "Zahl",
+      "Richtig": "V2 / V1",
+      "Nachkommastellen": 2
     }
   ]
 }

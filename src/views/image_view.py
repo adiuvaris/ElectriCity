@@ -78,7 +78,7 @@ class ImageView(arcade.View):
 
     def on_update(self, delta_time: float):
 
-        if self.figure.animation > 0:
+        if self.figure.frames > 0:
             self.sprite.on_update(delta_time)
 
     def create_ui(self):
@@ -104,8 +104,8 @@ class ImageView(arcade.View):
         filename = f"{mypath}/{self.figure.filename}"
         if os.path.exists(filename):
 
-            if self.figure.animation > 0:
-                self.sprite = Animation(filename=filename, frames=self.figure.animation)
+            if self.figure.frames > 0:
+                self.sprite = Animation(filename=filename, frames=self.figure.frames)
             else:
                 self.sprite = arcade.Sprite(filename=filename)
 

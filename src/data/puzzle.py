@@ -89,13 +89,13 @@ class Puzzle(Task):
 
         random.shuffle(self.grid)
 
-        w = 200
+        w = 265
         h = 200
 
         mypath = gd.get_abs_path("res/images")
         avatar_path = mypath + "/"
 
-        for i in range(4):
+        for i in range(3):
             for j in range(3):
 
                 karte = self.grid.pop(0)
@@ -137,7 +137,7 @@ class Puzzle(Task):
                     mypath = gd.get_abs_path("res/images")
                     filename = f"{mypath}/{self.bild}"
                     if os.path.exists(filename):
-                        te = arcade.load_texture(filename, x=i*200, y=(2-j)*200, width=200, height=200)
+                        te = arcade.load_texture(filename, x=i*265, y=(2-j)*200, width=265, height=200)
                         b.texture = te
 
                     self.manager.remove(self.aufgabe_text)

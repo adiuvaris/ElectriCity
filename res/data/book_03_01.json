@@ -1,0 +1,99 @@
+{
+  "Titel": "Spannung",
+  "Theorie": [
+    "Hier sollst du ein Gefühl für unterschiedliche Spannungen bekommen."
+  ],
+    "Bilder": [
+    {
+      "Datei": "pic_03_01_1.png",
+      "Titel": "Das Bild zeigt zwei Vögel auf einer Stromleitung",
+      "Beschreibung": "Vögel"
+    },
+  ],
+
+  "Aufgaben": [
+        {
+      "Art": "Puzzle",
+      "Bild": "puz_01_bg.png",
+      "Fragen": [
+        {
+          "Key" : "k1",
+          "Text": "Vögel auf der Leitung (Bild <i><b>Vögel</b></i>: Durch beide Leitungen fliesst der gleiche Strom. Ist der linke Vogel empfindlicher?"
+        },
+        {
+          "Key" : "k2",
+          "Text": "Der Widerstand nimmt mit wachsender Stromstärke unter der Voraussetzung, dass sich die Spannung nicht ändert …?"
+        },
+        {
+          "Key" : "k3",
+          "Text": "Der Widerstand nimmt mit abnehmender Spannung unter der Voraussetzung, dass sich die Stromstärke nicht ändert …?"
+        },
+        {
+          "Key" : "k4",
+          "Text": "Wenn R gleich bleibt und U halbiert wird, dann … sich I."
+        },
+        {
+          "Key" : "k5",
+          "Text": "Wenn I gleich bleibt und R verdoppelt wird, dann … sich die Spannung, die über dem Widerstand abfällt."
+        },
+        {
+          "Key" : "k6",
+          "Text": "Formel für die Leistung aus Strom und Widerstand"
+        },
+        {
+          "Key" : "k7",
+          "Text": "Formel für die Leistung aus Spannung und Widerstand"
+        },
+        {
+          "Key" : "k8",
+          "Text": "Wenn R gleich bleibt und I halbiert wird, dann … sich P."
+        },
+        {
+          "Key" : "k9",
+          "Text": "Wenn R gleich bleibt und I verdoppelt wird, dann … sich P."
+        }
+      ],
+      "Karten": [
+        {
+          "Key" : "k1",
+          "Bild": "puz_k1.png"
+        },
+        {
+          "Key" : "k2",
+          "Bild": "puz_k2.png"
+        },
+        {
+          "Key" : "k3",
+          "Bild": "puz_k3.png"
+        },
+        {
+          "Key" : "k4",
+          "Bild": "puz_k4.png"
+        },
+        {
+          "Key" : "k5",
+          "Bild": "puz_k5.png"
+        },
+        {
+          "Key" : "k6",
+          "Bild": "puz_k6.png"
+        },
+        {
+          "Key" : "k7",
+          "Bild": "puz_k7.png"
+        },
+        {
+          "Key" : "k8",
+          "Bild": "puz_k8.png"
+        },
+        {
+          "Key" : "k9",
+          "Bild": "puz_k9.png"
+        }
+      ],
+      "Aufgabe": [
+        "Löse das Memory auf der rechten Seite."
+      ]
+    }
+  ]
+}

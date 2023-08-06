@@ -1,0 +1,47 @@
+{
+  "Titel": "Widerstand - Mensch",
+  "Theorie": [
+    "Der Widerstand des menschlichen Körpers liegt je nach Zustand (Dicke) der Haut bei ca. 3kΩ."
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Welche Stromstärke kriegt man ab, wenn man einen Zaun, der unter Strom (<V1>V) steht, berührt?",
+        "Rechne mit einem Widerstand von 1kΩ (nasse Haut).",
+        "Gib die Antwort in das Feld ohne Einheit (Ampere) ein, auf zwei Kommastellen gerundet ein."
+      ],
+      "Variablen": {
+        "V1": [24, 36, 120, 230, 380]
+      },
+      "Typ": "Zahl",
+      "Richtig": "V1 / 1000.0",
+      "Nachkommastellen": 2
+    },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Welche Stromstärke kriegt man ab, wenn man einen Zaun, der unter Strom (<V1>V) steht, berührt?",
+        "Rechne mit einem Widerstand von 3kΩ (trockene Haut).",
+        "Gib die Antwort in das Feld ohne Einheit (Ampere) ein, auf zwei Kommastellen gerundet ein"
+      ],
+      "Variablen": {
+        "V1": [24, 36, 120, 230, 380]
+      },
+      "Typ": "Zahl",
+      "Richtig": "V1 / 3000.0",
+      "Nachkommastellen": 2
+    },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Ströme ab einer Stärke von 50mA (0.05A) sind lebensgefährlich. Sicherheitshalber berührt man keine Leitungen mit Strömen von mehr als 30mA, um sich nicht zu verletzen.",
+        "Ab welcher Spannung kann es demnach gefährlich werden?",
+        "Gib die Antwort in das Feld ohne Einheit (Volt) ein."
+      ],
+      "Typ": "Zahl",
+      "Richtig": "3000.0 * 0.03",
+      "Nachkommastellen": 0
+    }
+  ]
+}

@@ -1,67 +1,80 @@
 {
   "Titel": "Spannung",
   "Theorie": [
-    "Stefanie und Jan Luca haben ihr Gespräch über die Spannung aufgenommen. Anschliessend haben sie es in kleinere Abschnitte geschnitten. In diesen kurzen Wortwechseln sagt immer nur einer der beiden die Wahrheit. Wer hat jeweils recht, Stefanie oder Jan Luca?"
-  ],
-  "Audios": [
-    {
-      "Datei": "aud_02_02_1.wav",
-      "Titel": "Stromkreis",
-      "Beschreibung": "Stromkreis"
-    },
-    {
-      "Datei": "aud_02_02_2.wav",
-      "Titel": "Stromkreis 2",
-      "Beschreibung": "Stromkreis 2"
-    },
-    {
-      "Datei": "aud_02_02_3.wav",
-      "Titel": "Stromkreis 3",
-      "Beschreibung": "Stromkreis 3"
-    }
+    "Hier sollst du ein Gefühl für unterschiedliche Spannungen bekommen."
   ],
   "Aufgaben": [
-    {
-      "Art": "Frage",
-      "Aufgabe": [
-        "Hör dir das Gespräch <i><b>1</b></i> an.",
-        "Wer hat recht, Jan Luca oder Stefanie?",
-        "Klicke auf den Namen der Person, die deiner Meinung nach das Richtige gesagt hat."
+        {
+      "Art": "Memory",
+      "Karten": [
+        {
+          "Key" : "k1",
+          "Bild": "mem_k21_b1.png"
+        },
+        {
+          "Key" : "k1",
+          "Bild": "mem_k21_b2.png"
+        },
+        {
+          "Key" : "k2",
+          "Bild": "mem_k22_b1.png"
+        },
+        {
+          "Key" : "k2",
+          "Bild": "mem_k22_b2.png"
+        },
+        {
+          "Key" : "k3",
+          "Bild": "mem_k23_b1.png"
+        },
+        {
+          "Key" : "k3",
+          "Bild": "mem_k23_b2.png"
+        },
+        {
+          "Key" : "k4",
+          "Bild": "mem_k24_b1.png"
+        },
+        {
+          "Key" : "k4",
+          "Bild": "mem_k24_b2.png"
+        },
+        {
+          "Key" : "k5",
+          "Bild": "mem_k25_b1.png"
+        },
+        {
+          "Key" : "k5",
+          "Bild": "mem_k25_b2.png"
+        },
+        {
+          "Key" : "k6",
+          "Bild": "mem_k26_b1.png"
+        },
+        {
+          "Key" : "k6",
+          "Bild": "mem_k26_b2.png"
+        },
+        {
+          "Key" : "k7",
+          "Bild": "mem_k27_b1.png"
+        },
+        {
+          "Key" : "k7",
+          "Bild": "mem_k27_b2.png"
+        },
+        {
+          "Key" : "k8",
+          "Bild": "mem_k28_b1.png"
+        },
+        {
+          "Key" : "k8",
+          "Bild": "mem_k28_b2.png"
+        }
       ],
-      "Typ": "Multi",
-      "Antworten" :{
-        "A" : "Jan Luca",
-        "B" : "Stefanie"
-      },
-      "Richtig" : "A"
-    },
-    {
-      "Art": "Frage",
       "Aufgabe": [
-        "Hör dir das Gespräch <i><b>2</b></i> an.",
-        "Wer hat recht, Jan Luca oder Stefanie?",
-        "Klicke auf den Namen der Person, die deiner Meinung nach das Richtige gesagt hat."
-      ],
-      "Typ": "Multi",
-      "Antworten" :{
-        "A" : "Jan Luca",
-        "B" : "Stefanie"
-      },
-      "Richtig" : "A"
-    },
-    {
-      "Art": "Frage",
-      "Aufgabe": [
-        "Hör dir das Gespräch <i><b>3</b></i> an.",
-        "Wer hat recht, Jan Luca oder Stefanie?",
-        "Klicke auf den Namen der Person, die deiner Meinung nach das Richtige gesagt hat."
-      ],
-      "Typ": "Multi",
-      "Antworten" :{
-        "A" : "Jan Luca",
-        "B" : "Stefanie"
-      },
-      "Richtig" : "B"
+        "Löse das Memory auf der rechten Seite."
+      ]
     }
   ]
 }

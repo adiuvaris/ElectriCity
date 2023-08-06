@@ -130,8 +130,8 @@ class BookView(arcade.View):
                         image.title = bild["Titel"]
                     if "Beschreibung" in bild:
                         image.description = bild["Beschreibung"]
-                    if "Animation" in bild:
-                        image.animation = bild["Animation"]
+                    if "Frames" in bild:
+                        image.frames = bild["Frames"]
                     self.theory.medias.append(image)
 
             if "Audios" in data:
