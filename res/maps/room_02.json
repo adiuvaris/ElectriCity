@@ -196,19 +196,31 @@
                  "width":32,
                  "x":351.333333333333,
                  "y":96.6666666666667
-                }],
-         "opacity":1,
-         "properties":[
-                {
-                 "name":"book",
-                 "type":"string",
-                 "value":"02"
                 }, 
                 {
-                 "name":"room",
-                 "type":"string",
-                 "value":"02"
+                 "gid":809,
+                 "height":32,
+                 "id":14,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"02"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"02"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":257.356712525852,
+                 "y":82.5407787069508
                 }],
+         "opacity":1,
          "type":"objectgroup",
          "visible":true,
          "x":0,
@@ -262,7 +274,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":14,
+ "nextobjectid":15,
  "orientation":"orthogonal",
  "properties":[
         {
