@@ -3,7 +3,7 @@ import arcade.gui
 
 import src.const as const
 from src.data.game import gd
-from src.data.image import Image
+from src.data.media import Media
 from src.ui.attributed_text import AttributedText
 
 

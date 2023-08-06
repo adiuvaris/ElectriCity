@@ -5,7 +5,8 @@ import arcade.gui
 import src.const as const
 from src.data.game import gd
 
-from src.data.image import Image
+from src.sprites.animation import Animation
+from src.data.media import Media
 
 
 class ImageView(arcade.View):
@@ -13,7 +14,7 @@ class ImageView(arcade.View):
     Klasse für die View mit einem Bild
     """
 
-    def __init__(self, figure: Image, view):
+    def __init__(self, figure: Media, view):
         """
         Konstruktor
         """
@@ -22,6 +23,8 @@ class ImageView(arcade.View):
 
         self.figure = figure
         self.view = view
+
+        self.sprite = None
 
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
@@ -73,6 +76,11 @@ class ImageView(arcade.View):
         if key == arcade.key.ESCAPE:
             self.window.show_view(self.view)
 
+    def on_update(self, delta_time: float):
+
+        if self.figure.animation > 0:
+            self.sprite.on_update(delta_time)
+
     def create_ui(self):
 
         for widget in self.manager.walk_widgets():
@@ -93,18 +101,18 @@ class ImageView(arcade.View):
 
         # Bild Element erzeugen - falls Datei existiert
         mypath = gd.get_abs_path("res/images")
-        filename = f"{mypath}/{self.figure.image_file}"
+        filename = f"{mypath}/{self.figure.filename}"
         if os.path.exists(filename):
 
-            bs = arcade.Sprite(filename=filename)
-
-            h = bs.height
-            w = bs.width
+            if self.figure.animation > 0:
+                self.sprite = Animation(filename=filename, frames=self.figure.animation)
+            else:
+                self.sprite = arcade.Sprite(filename=filename)
 
             x = gd.scale(20)
             y = gd.scale(120)
             w = gd.scale(1240)
             h = gd.scale(520)
 
-            image_sprite = arcade.gui.UISpriteWidget(x=x, y=y, width=w, height=h, sprite=bs)
-            self.manager.add(image_sprite)
+            widget = arcade.gui.UISpriteWidget(x=x, y=y, width=w, height=h, sprite=self.sprite)
+            self.manager.add(widget)

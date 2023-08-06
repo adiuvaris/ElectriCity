@@ -10,7 +10,7 @@ from src.base.term import Term
 from src.ui.message_box import MessageBox
 
 from src.data.theory import Theory
-from src.data.image import Image
+from src.data.media import Media
 from src.data.task import Task
 from src.data.task_createor import create_task
 
@@ -84,13 +84,16 @@ class BookView(arcade.View):
         self.clear()
         self.manager.draw()
 
-    def on_image_click(self, event):
-        for img in self.theory.images:
-            img: Image = img
+    def on_media_click(self, event):
+        for media in self.theory.medias:
+            medium: Media = media
 
-            if event.source.text == img.title:
-                image_view = ImageView(img, self)
-                self.window.show_view(image_view)
+            if event.source.text == medium.description:
+                if medium.typ == "image":
+                    image_view = ImageView(medium, self)
+                    self.window.show_view(image_view)
+                elif media.typ == "audio":
+                    pass
 
     def on_key_press(self, key, modifiers):
 
@@ -120,14 +123,28 @@ class BookView(arcade.View):
             if "Bilder" in data:
                 bilder = data["Bilder"]
                 for bild in bilder:
-                    image = Image()
+                    image = Media("image")
                     if "Datei" in bild:
-                        image.image_file = bild["Datei"]
-                        if "Titel" in bild:
-                            image.title = bild["Titel"]
+                        image.filename = bild["Datei"]
+                    if "Titel" in bild:
+                        image.title = bild["Titel"]
                     if "Beschreibung" in bild:
                         image.description = bild["Beschreibung"]
-                    self.theory.images.append(image)
+                    if "Animation" in bild:
+                        image.animation = bild["Animation"]
+                    self.theory.medias.append(image)
+
+            if "Audios" in data:
+                audios = data["Audios"]
+                for audio in audios:
+                    media = Media("audio")
+                    if "Datei" in audio:
+                        media.filename = audio["Datei"]
+                    if "Titel" in audio:
+                        media.title = audio["Titel"]
+                    if "Beschreibung" in audio:
+                        media.description = audio["Beschreibung"]
+                    self.theory.medias.append(media)
 
             # Aufgaben Element einlesen
             if "Aufgaben" in data:
@@ -158,7 +175,7 @@ class BookView(arcade.View):
 
         self.manager.add(titel.with_border())
 
-        self.theory.create_ui(self.manager, callback=self.on_image_click)
+        self.theory.create_ui(self.manager, callback=self.on_media_click)
 
         if self.cur_task < len(self.tasks):
             self.tasks[self.cur_task].create_ui(self.manager, self.on_end_task)
