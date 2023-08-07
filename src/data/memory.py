@@ -102,6 +102,9 @@ class Memory(Task):
                 if self.first_karte is None:
                     self.first_karte = karte
                 else:
+                    if karte == self.first_karte:
+                        return
+
                     self.second_karte = karte
 
                     self.manager.remove(self.aufgabe_text)
