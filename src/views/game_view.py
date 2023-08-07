@@ -367,34 +367,62 @@ class GameView(arcade.View):
             # Ja - es gibt eine Kollision
             if len(quiz_hit) > 0:
 
-                arcade.play_sound(self.laser_sound, volume=gd.get_volume() / 100.0)
 
                 # Nötige Infos holen
                 room = quiz_hit[0].properties["room"]
 
-                if not gd.has_all_tasks(room):
-                    pass
+                if room =="01":
+                    arcade.play_sound(self.laser_sound, volume=gd.get_volume() / 100.0)
 
-                # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der Info-View
-                # nicht gleich wieder ein Hit erfolgt
-                if self.up_pressed:
-                    self.up_pressed = False
-                    self.player_sprite.center_y = quiz_hit[0].center_y - const.SPRITE_SIZE
+                    # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der Info-View
+                    # nicht gleich wieder ein Hit erfolgt
+                    if self.up_pressed:
+                        self.up_pressed = False
+                        self.player_sprite.center_y = quiz_hit[0].center_y - const.SPRITE_SIZE
 
-                if self.down_pressed:
-                    self.down_pressed = False
-                    self.player_sprite.center_y = quiz_hit[0].center_y + const.SPRITE_SIZE
+                    if self.down_pressed:
+                        self.down_pressed = False
+                        self.player_sprite.center_y = quiz_hit[0].center_y + const.SPRITE_SIZE
 
-                if self.left_pressed:
-                    self.left_pressed = False
-                    self.player_sprite.center_x = quiz_hit[0].center_x + const.SPRITE_SIZE
+                    if self.left_pressed:
+                        self.left_pressed = False
+                        self.player_sprite.center_x = quiz_hit[0].center_x + const.SPRITE_SIZE
 
-                if self.right_pressed:
-                    self.right_pressed = False
-                    self.player_sprite.center_x = quiz_hit[0].center_x - const.SPRITE_SIZE
+                    if self.right_pressed:
+                        self.right_pressed = False
+                        self.player_sprite.center_x = quiz_hit[0].center_x - const.SPRITE_SIZE
 
-                quiz = QuizView(room)
-                self.window.show_view(quiz)
+                    quiz = QuizView(room)
+                    self.window.show_view(quiz)
+
+                if int(room) > 1:
+                    check_room = str(int(room)-1).zfill(2)
+                    if not gd.has_all_tasks(check_room):
+                        self.message = "Du hast den letzten Raum noch nicht vollständig gelöst!"
+                    else:
+                        arcade.play_sound(self.laser_sound, volume=gd.get_volume() / 100.0)
+
+                        # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der Info-View
+                        # nicht gleich wieder ein Hit erfolgt
+                        if self.up_pressed:
+                            self.up_pressed = False
+                            self.player_sprite.center_y = quiz_hit[0].center_y - const.SPRITE_SIZE
+
+                        if self.down_pressed:
+                            self.down_pressed = False
+                            self.player_sprite.center_y = quiz_hit[0].center_y + const.SPRITE_SIZE
+
+                        if self.left_pressed:
+                            self.left_pressed = False
+                            self.player_sprite.center_x = quiz_hit[0].center_x + const.SPRITE_SIZE
+
+                        if self.right_pressed:
+                            self.right_pressed = False
+                            self.player_sprite.center_x = quiz_hit[0].center_x - const.SPRITE_SIZE
+
+                        quiz = QuizView(room)
+                        self.window.show_view(quiz)
+
             else:
 
                 # Keine Türe getroffen, also normal scrollen, damit Player Sprite
