@@ -1,4 +1,5 @@
 
+import os
 import arcade
 from src.sprites.character import Character
 
@@ -21,7 +22,11 @@ class Player(Character):
 
         # Ton für Schritte laden
         self.sound_update = 0
-        self.footstep_sound = arcade.load_sound(":sounds:footstep.wav")
+        self.footstep_sound = None
+        mypath = gd.get_abs_path("res/sounds")
+        filename = f"{mypath}/footstep.wav"
+        if os.path.exists(filename):
+            self.footstep_sound = arcade.load_sound(filename)
 
     def set_avatar(self, avatar):
         super().set_avatar(avatar)
@@ -47,5 +52,6 @@ class Player(Character):
             self.sound_update += 1
 
         if self.sound_update >= 3:
-            arcade.play_sound(self.footstep_sound, volume=gd.get_volume() / 100.0)
             self.sound_update = 0
+            if self.footstep_sound is not None:
+                arcade.play_sound(self.footstep_sound, volume=gd.get_volume() / 100.0)

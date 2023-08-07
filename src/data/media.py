@@ -6,3 +6,4 @@ class Media:
         self.title = ""
         self.description = ""
         self.typ = typ
+        self.illustration = ""

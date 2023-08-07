@@ -1,3 +1,4 @@
+import os
 import arcade
 import arcade.gui
 import json
@@ -5,16 +6,12 @@ import json
 import src.const as const
 from src.data.game import gd
 
-from src.base.term import Term
-
-from src.ui.message_box import MessageBox
-
 from src.data.theory import Theory
 from src.data.media import Media
-from src.data.task import Task
 from src.data.task_createor import create_task
 
 from src.views.image_view import ImageView
+from src.views.audio_view import AudioView
 
 
 class BookView(arcade.View):
@@ -93,10 +90,10 @@ class BookView(arcade.View):
                     image_view = ImageView(medium, self)
                     self.window.show_view(image_view)
                 elif media.typ == "audio":
-                    pass
+                    audio_view = AudioView(medium, self)
+                    self.window.show_view(audio_view)
 
     def on_key_press(self, key, modifiers):
-
         # Escape geht zurück zum Spiel
         if key == arcade.key.ESCAPE:
             self.window.show_view(self.window.game_view)
@@ -120,6 +117,20 @@ class BookView(arcade.View):
             if "Theorie" in data:
                 self.theory.text = data["Theorie"]
 
+            if "Audios" in data:
+                audios = data["Audios"]
+                for audio in audios:
+                    media = Media("audio")
+                    if "Datei" in audio:
+                        media.filename = audio["Datei"]
+                    if "Titel" in audio:
+                        media.title = audio["Titel"]
+                    if "Beschreibung" in audio:
+                        media.description = audio["Beschreibung"]
+                    if "Illustration" in audio:
+                        media.illustration = audio["Illustration"]
+                    self.theory.medias.append(media)
+
             if "Bilder" in data:
                 bilder = data["Bilder"]
                 for bild in bilder:
@@ -133,18 +144,6 @@ class BookView(arcade.View):
                     if "Frames" in bild:
                         image.frames = bild["Frames"]
                     self.theory.medias.append(image)
-
-            if "Audios" in data:
-                audios = data["Audios"]
-                for audio in audios:
-                    media = Media("audio")
-                    if "Datei" in audio:
-                        media.filename = audio["Datei"]
-                    if "Titel" in audio:
-                        media.title = audio["Titel"]
-                    if "Beschreibung" in audio:
-                        media.description = audio["Beschreibung"]
-                    self.theory.medias.append(media)
 
             # Aufgaben Element einlesen
             if "Aufgaben" in data:
