@@ -215,6 +215,9 @@ class GameView(arcade.View):
         :param delta_time: vergangene Zeit seit letztem Aufruf
         """
 
+        if self.physics_engine is None:
+            return
+
         # Richtung des Player Sprites berechnen, wenn entsprechende Tasten gedrückt sind.
         # Dazu werden alle aktuellen Tastendrücke beachtet und dann die
         # X- und Y-Änderungen definiert.

@@ -1,9 +1,8 @@
 {
-  "Titel" : "Haus 3 - Widerstand / Kennlinien",
+  "Titel" : "Haus 3 - Widerstand",
   "Text" : [
     "<h1>Widerstand</h1>",
-    "Wenn man ein Handy und ein Laptop an der gleichen Steckdose auflädt und dann jeweils die Stromstärke misst, wird man auf unterschiedliche Grössen kommen. Denn unterschiedliche elektrische Geräte oder Bauteile beeinflussen die Stromstärke unterschiedlich. Diese Wirkung nennt man den elektrischen Widerstand R eines Geräts. Der Widerstand beschreibt, wie stark der Stromfluss in einem Gerät behindert wird. Der Widerstand wird durch folgende Formel beschrieben: <i>R = U / I</i> (oder einfach zu merken: <i>U = R * I</i>). Der Widerstand <i>R</i> eines ohmschen Widerstands ist das Verhältnis aus Spannung <i>U</i> und Stromstärke <i>I</i>. Der Widerstand wird in Ohm angegeben: <i>1Ω = 1V / 1A<i>.",
-    "<h1>Kennlinien</h1>",
+    "Wenn man ein Handy und ein Laptop an der gleichen Steckdose auflädt und dann jeweils die Stromstärke misst, wird man auf unterschiedliche Grössen kommen. Denn unterschiedliche elektrische Geräte oder Bauteile beeinflussen die Stromstärke unterschiedlich. Diese Wirkung nennt man den elektrischen Widerstand <i>R</i> eines Geräts. Der Widerstand beschreibt, wie stark der Stromfluss in einem Gerät behindert wird. Der Widerstand wird durch folgende Formel beschrieben: <i>R = U / I</i> (oder einfach zu merken: <i>U = R · I</i>). Der Widerstand <i>R</i> eines ohmschen Widerstands ist das Verhältnis aus Spannung <i>U</i> und Stromstärke <i>I</i>. Der Widerstand wird in Ohm angegeben: <i>1Ω = 1V / 1A<i>.",
     "",
     "Mit der <b><i>Esc</i></b>-Taste kommst du zum Haus zurück."
   ]

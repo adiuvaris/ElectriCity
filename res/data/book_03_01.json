@@ -1,14 +1,14 @@
 {
   "Titel": "Spannung",
   "Theorie": [
-    "Hier sollst du ein Gefühl für unterschiedliche Spannungen bekommen."
+    "Hier sollst du die Zusammenhänge von Strom, Widerstand, Spannung und Leistung besser kennen lernen. Du brauchst dazu die beiden Formeln <i>U = R · I</i> und <i>P = U · I</i>."
   ],
     "Bilder": [
     {
       "Datei": "pic_03_01_1.png",
       "Titel": "Das Bild zeigt zwei Vögel auf einer Stromleitung",
       "Beschreibung": "Vögel"
-    },
+    }
   ],
 
   "Aufgaben": [

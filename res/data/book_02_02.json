@@ -3,28 +3,35 @@
   "Theorie": [
     "Stefanie und Jan Luca haben ihr Gespräch über die Spannung aufgenommen. Anschliessend haben sie es in kleinere Abschnitte geschnitten. In diesen kurzen Wortwechseln sagt immer nur einer der beiden die Wahrheit. Wer hat jeweils recht, Stefanie oder Jan Luca?"
   ],
+  "Bilder": [
+    {
+      "Datei": "pic_01_02_1.png",
+      "Titel": "Bild eines einfachen Stromkreises mit einem Voltmeter",
+      "Beschreibung": "Stromkreis"
+    }
+  ],
   "Audios": [
     {
       "Datei": "aud_02_02_1.wav",
-      "Titel": "Stromkreis",
-      "Beschreibung": "Stromkreis"
+      "Titel": "Gespräch 2",
+      "Beschreibung": "Gespräch 1"
     },
     {
       "Datei": "aud_02_02_2.wav",
-      "Titel": "Stromkreis 2",
-      "Beschreibung": "Stromkreis 2"
+      "Titel": "Gespräch 2",
+      "Beschreibung": "Gespräch 2"
     },
     {
       "Datei": "aud_02_02_3.wav",
-      "Titel": "Stromkreis 3",
-      "Beschreibung": "Stromkreis 3"
+      "Titel": "Gespräch 3",
+      "Beschreibung": "Gespräch 3"
     }
   ],
   "Aufgaben": [
     {
       "Art": "Frage",
       "Aufgabe": [
-        "Hör dir das Gespräch <i><b>1</b></i> an.",
+        "Hör dir das Gespräch <i><b>Gespräch 1</b></i> an.",
         "Wer hat recht, Jan Luca oder Stefanie?",
         "Klicke auf den Namen der Person, die deiner Meinung nach das Richtige gesagt hat."
       ],
@@ -38,7 +45,7 @@
     {
       "Art": "Frage",
       "Aufgabe": [
-        "Hör dir das Gespräch <i><b>2</b></i> an.",
+        "Hör dir das Gespräch <i><b>Gespräch 2</b></i> an.",
         "Wer hat recht, Jan Luca oder Stefanie?",
         "Klicke auf den Namen der Person, die deiner Meinung nach das Richtige gesagt hat."
       ],
@@ -52,7 +59,7 @@
     {
       "Art": "Frage",
       "Aufgabe": [
-        "Hör dir das Gespräch <i><b>3</b></i> an.",
+        "Hör dir das Gespräch <i><b>Gespräch 3</b></i> an. Das Bild dazu <i><b>Stromkreis</b></i>.",
         "Wer hat recht, Jan Luca oder Stefanie?",
         "Klicke auf den Namen der Person, die deiner Meinung nach das Richtige gesagt hat."
       ],

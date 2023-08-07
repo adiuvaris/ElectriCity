@@ -89,7 +89,7 @@ class Puzzle(Task):
 
         random.shuffle(self.grid)
 
-        w = 265
+        w = 266
         h = 200
 
         mypath = gd.get_abs_path("res/images")
