@@ -99,7 +99,7 @@ class AudioView(arcade.View):
         self.manager.add(titel.with_border())
 
         # Bild Element erzeugen - falls Datei existiert
-        if self.figure.illustration is not "":
+        if self.figure.illustration != "":
             mypath = gd.get_abs_path("res/images")
             filename = f"{mypath}/{self.figure.illustration}"
             if os.path.exists(filename):
