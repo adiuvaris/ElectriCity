@@ -75,10 +75,32 @@ class GameData(object):
             books[room_nr][book_nr].append(False)
         self.save_game_data()
 
-    def set_task(self, room_nr: str, book_nr: str, task_nr: int = 0):
+    def set_task(self, room_nr: str, book_nr: str, task_nr: int):
+        self.init_book(room_nr, book_nr, task_nr)
         books = self.get_books()
         books[room_nr][book_nr][task_nr] = True
         self.save_game_data()
+
+    def get_task(self, room_nr: str, book_nr: str, task_nr: int):
+        self.init_book(room_nr, book_nr, task_nr)
+        books = self.get_books()
+        return books[room_nr][book_nr][task_nr]
+
+    def has_all_tasks(self, room_nr: str):
+        rooms = self.get_books()
+        if room_nr in rooms:
+            books = rooms[room_nr]
+            for book_nr in books:
+                tasks = books[book_nr]
+                anz_tasks = gd.get_anz_tasks(room_nr, book_nr)
+                self.init_book(room_nr, book_nr, anz_tasks)
+                for task_nr in range(anz_tasks):
+                    if not self.get_task(room_nr, book_nr, task_nr):
+                        return False
+        else:
+            return False
+
+        return True
 
     def get_avatar(self):
         if "avatar" not in self.game_data:
@@ -107,6 +129,18 @@ class GameData(object):
         keys = self.get_room_keys()
         keys[room_nr] = True
         self.save_game_data()
+
+    @staticmethod
+    def get_anz_tasks(room_nr: str, book_nr: str):
+        mypath = gd.get_abs_path("res/data")
+        dateiname = f"{mypath}/book_{room_nr}_{book_nr}.json"
+        if os.path.exists(dateiname):
+            with open(dateiname, "r", encoding="'utf-8") as ifile:
+                data = json.load(ifile)
+                if "Aufgaben" in data:
+                    aufgaben = data["Aufgaben"]
+                    return len(aufgaben)
+        return 0
 
     @staticmethod
     def get_abs_path(rel_path):

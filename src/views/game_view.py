@@ -372,6 +372,9 @@ class GameView(arcade.View):
                 # Nötige Infos holen
                 room = quiz_hit[0].properties["room"]
 
+                if not gd.has_all_tasks(room):
+                    pass
+
                 # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der Info-View
                 # nicht gleich wieder ein Hit erfolgt
                 if self.up_pressed:
