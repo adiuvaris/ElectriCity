@@ -213,7 +213,7 @@ class Frage(Task):
             val = term.calc(self.correct_answer)
 
             # Stimmt die Antwort?
-            if val == answer:
+            if round(val, self.digits) == round(answer, self.digits):
                 msg = "Das ist korrekt"
                 sound = self.ok_sound
                 self.correct = True
