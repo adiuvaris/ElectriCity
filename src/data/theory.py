@@ -8,6 +8,10 @@ from src.ui.attributed_text import AttributedText
 
 
 class Theory:
+    """
+    Klasse für den Theorie-Teil eines Buches
+    """
+
     def __init__(self):
         self.text = ""
         self.medias = []
@@ -45,5 +49,3 @@ class Theory:
             ib.on_click = callback
 
             ui_manager.add(ib)
-
-

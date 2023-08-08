@@ -1,13 +1,15 @@
 import arcade
 import arcade.gui
 
-import src.const as const
 from src.data.game import gd
-from src.data.media import Media
 from src.ui.attributed_text import AttributedText
 
 
 class Quiz:
+    """
+    Klasse für eine Quiz-Aufgabe
+    """
+
     def __init__(self):
         self.text = ""
 
@@ -21,5 +23,3 @@ class Quiz:
                               width=gd.scale(400), height=gd.scale(300), text=self.text)
 
         ui_manager.add(text)
-
-

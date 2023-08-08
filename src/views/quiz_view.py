@@ -7,16 +7,8 @@ import json
 import src.const as const
 from src.data.game import gd
 
-from src.base.term import Term
-
-from src.ui.message_box import MessageBox
-
 from src.data.quiz import Quiz
-from src.data.media import Media
-from src.data.task import Task
 from src.data.task_createor import create_task
-
-from src.views.image_view import ImageView
 
 
 class QuizView(arcade.View):

@@ -120,7 +120,6 @@ class SettingView(arcade.View):
                     self.active_input = self.input_volume
 
                 elif self.active_input == self.input_volume:
-                    volume = int(input_text)
 
                     # Nur Werte zwischen 0 und 100 erlauben
                     volume = int(input_text)

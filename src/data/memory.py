@@ -10,15 +10,21 @@ from src.ui.attributed_text import AttributedText
 
 
 class Karte:
+    """
+    Klasse für eine Karte im Memory-Spiel
+    """
+
     def __init__(self):
-        self.x = 0
-        self.y = 0
         self.bild = ""
         self.key = ""
         self.button = None
 
 
 class Memory(Task):
+    """
+    Klasse für eine Aufgabe, die als Memory angezeigt wird
+    """
+
     def __init__(self, aufgabe: dict):
         super().__init__(aufgabe)
         self.karten = []
@@ -89,9 +95,6 @@ class Memory(Task):
             karte = self.buttons[k]
             b = karte.button
             if b == event.source:
-                i = k[0]
-                j = k[1]
-
                 mypath = gd.get_abs_path("res/images")
                 avatar_path = mypath + "/" + karte.bild
                 te = arcade.load_texture(avatar_path, x=0, y=0, width=400, height=400)
@@ -185,4 +188,3 @@ class Memory(Task):
                     self.second_karte.button.texture = te
                     self.first_karte = None
                     self.second_karte = None
-

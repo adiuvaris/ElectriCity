@@ -203,7 +203,7 @@ class GameView(arcade.View):
         Wird von arcade aufgerufen, wenn eine andere View sichtbar wird
         """
 
-        # In allen anderen Ansichten braucht es einen  Mauszeiger
+        # In allen anderen Ansichten braucht es einen Mauszeiger
         self.window.set_mouse_visible(True)
 
     def on_update(self, delta_time):
@@ -367,11 +367,22 @@ class GameView(arcade.View):
             # Ja - es gibt eine Kollision
             if len(quiz_hit) > 0:
 
-
                 # Nötige Infos holen
                 room = quiz_hit[0].properties["room"]
+                start_quiz = True
 
-                if room =="01":
+                # Ab Raum zwei prüfen, ob der vorherige Raum fertig gelöst wurde
+                if int(room) > 1:
+
+                    # String mit vorherigem Raum basteln und prüfen
+                    check_room = str(int(room)-1).zfill(2)
+                    if not gd.has_all_tasks(check_room):
+                        # Es wurde noch nicht alle Aufgaben gelöst, also Meldung anzeigen
+                        # und Quiz nicht starten
+                        start_quiz = False
+                        self.message = f"Haus {check_room} ist noch nicht gelöst!"
+
+                if start_quiz:
                     arcade.play_sound(self.laser_sound, volume=gd.get_volume() / 100.0)
 
                     # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der Info-View
@@ -394,34 +405,6 @@ class GameView(arcade.View):
 
                     quiz = QuizView(room)
                     self.window.show_view(quiz)
-
-                if int(room) > 1:
-                    check_room = str(int(room)-1).zfill(2)
-                    if not gd.has_all_tasks(check_room):
-                        self.message = "Du hast den letzten Raum noch nicht vollständig gelöst!"
-                    else:
-                        arcade.play_sound(self.laser_sound, volume=gd.get_volume() / 100.0)
-
-                        # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der Info-View
-                        # nicht gleich wieder ein Hit erfolgt
-                        if self.up_pressed:
-                            self.up_pressed = False
-                            self.player_sprite.center_y = quiz_hit[0].center_y - const.SPRITE_SIZE
-
-                        if self.down_pressed:
-                            self.down_pressed = False
-                            self.player_sprite.center_y = quiz_hit[0].center_y + const.SPRITE_SIZE
-
-                        if self.left_pressed:
-                            self.left_pressed = False
-                            self.player_sprite.center_x = quiz_hit[0].center_x + const.SPRITE_SIZE
-
-                        if self.right_pressed:
-                            self.right_pressed = False
-                            self.player_sprite.center_x = quiz_hit[0].center_x - const.SPRITE_SIZE
-
-                        quiz = QuizView(room)
-                        self.window.show_view(quiz)
 
             else:
 

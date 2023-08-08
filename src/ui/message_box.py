@@ -10,6 +10,9 @@ from src.data.game import gd
 
 
 class MessageBox(UIMouseFilterMixin, UIAnchorWidget):
+    """
+    Meldungen anzeigen in einer View
+    """
 
     def __init__(self, msg: str, buttons=("Ok",), callback=None):
 

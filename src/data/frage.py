@@ -1,6 +1,4 @@
 import random
-import os
-import string
 import arcade
 import arcade.gui
 
@@ -13,6 +11,10 @@ from src.ui.message_box import MessageBox
 
 
 class Frage(Task):
+    """
+    Klasse für die Anzeige einer Frage/Antwort Aufgabe
+    """
+
     def __init__(self, aufgabe: dict):
         super().__init__(aufgabe)
 
@@ -164,6 +166,9 @@ class Frage(Task):
             return
 
         msg = "Das ist leider falsch"
+        if self.tipp != "":
+            msg = msg + "\n\n" + self.tipp
+
         sound = self.lose_sound
 
         for k, v in self.answers.items():
@@ -202,6 +207,9 @@ class Frage(Task):
             return
 
         msg = "Das ist leider falsch"
+        if self.tipp != "":
+            msg = msg + "\n\n" + self.tipp
+
         sound = self.lose_sound
 
         if self.type == "Zahl":

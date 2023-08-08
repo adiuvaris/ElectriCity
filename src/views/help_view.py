@@ -11,7 +11,7 @@ from src.ui.attributed_text import AttributedText
 
 class HelpView(arcade.View):
     """
-    Klasse für die View mit einem Bild
+    Klasse für die View mit einem Text
     """
 
     def __init__(self, filename, parent):
@@ -108,4 +108,3 @@ class HelpView(arcade.View):
                               width=gd.scale(800), height=gd.scale(520), text=self.text)
 
         self.manager.add(text)
-

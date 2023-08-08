@@ -5,26 +5,26 @@ import arcade.gui
 import src.const as const
 from src.data.game import gd
 
-from src.sprites.animation import Animation
 from src.data.media import Media
 
 
 class AudioView(arcade.View):
     """
-    Klasse für die View mit einem Bild
+    Klasse für das Abspielen einer Audio-Datei.
+    Es kann eine Illustration angezeigt werden.
     """
 
-    def __init__(self, figure: Media, view):
+    def __init__(self, media: Media, view):
         """
         Konstruktor
         """
 
         super().__init__()
 
-        self.figure = figure
+        self.media = media
         self.view = view
 
-        self.media = None
+        self.sound = None
         self.media_player = None
 
         self.sprite = None
@@ -69,8 +69,8 @@ class AudioView(arcade.View):
 
     def on_key_press(self, key, modifiers):
 
-        if self.media is not None:
-            if self.media.is_playing(self.media_player):
+        if self.sound is not None:
+            if self.sound.is_playing(self.media_player):
                 return
 
         # Escape geht zurück zum Spiel
@@ -89,7 +89,7 @@ class AudioView(arcade.View):
 
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
-                                   text=self.figure.title,
+                                   text=self.media.title,
                                    text_color=[0, 0, 0],
                                    bold=True,
                                    align="center",
@@ -99,9 +99,9 @@ class AudioView(arcade.View):
         self.manager.add(titel.with_border())
 
         # Bild Element erzeugen - falls Datei existiert
-        if self.figure.illustration != "":
+        if self.media.illustration != "":
             mypath = gd.get_abs_path("res/images")
-            filename = f"{mypath}/{self.figure.illustration}"
+            filename = f"{mypath}/{self.media.illustration}"
             if os.path.exists(filename):
                 self.sprite = arcade.Sprite(filename=filename)
 
@@ -115,8 +115,7 @@ class AudioView(arcade.View):
 
         # Audio abspielen- falls Datei existiert
         mypath = gd.get_abs_path("res/sounds")
-        filename = f"{mypath}/{self.figure.filename}"
+        filename = f"{mypath}/{self.media.filename}"
         if os.path.exists(filename):
-            self.media = arcade.load_sound(filename)
-            self.media_player = arcade.play_sound(self.media, volume=gd.get_volume() / 100.0)
-
+            self.sound = arcade.load_sound(filename)
+            self.media_player = arcade.play_sound(self.sound, volume=gd.get_volume() / 100.0)

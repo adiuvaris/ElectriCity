@@ -14,14 +14,14 @@ class ImageView(arcade.View):
     Klasse für die View mit einem Bild
     """
 
-    def __init__(self, figure: Media, view):
+    def __init__(self, media: Media, view):
         """
         Konstruktor
         """
 
         super().__init__()
 
-        self.figure = figure
+        self.media = media
         self.view = view
 
         self.sprite = None
@@ -78,7 +78,7 @@ class ImageView(arcade.View):
 
     def on_update(self, delta_time: float):
 
-        if self.figure.frames > 0:
+        if self.media.frames > 0:
             self.sprite.on_update(delta_time)
 
     def create_ui(self):
@@ -90,7 +90,7 @@ class ImageView(arcade.View):
 
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
-                                   text=self.figure.title,
+                                   text=self.media.title,
                                    text_color=[0, 0, 0],
                                    bold=True,
                                    align="center",
@@ -101,11 +101,11 @@ class ImageView(arcade.View):
 
         # Bild Element erzeugen - falls Datei existiert
         mypath = gd.get_abs_path("res/images")
-        filename = f"{mypath}/{self.figure.filename}"
+        filename = f"{mypath}/{self.media.filename}"
         if os.path.exists(filename):
 
-            if self.figure.frames > 0:
-                self.sprite = Animation(filename=filename, frames=self.figure.frames)
+            if self.media.frames > 0:
+                self.sprite = Animation(filename=filename, frames=self.media.frames)
             else:
                 self.sprite = arcade.Sprite(filename=filename)
 

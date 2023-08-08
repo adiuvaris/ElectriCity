@@ -1,4 +1,3 @@
-import os
 import arcade
 import arcade.gui
 import json
@@ -188,4 +187,3 @@ class BookView(arcade.View):
             gd.set_task(self.room_nr, self.book_nr, self.cur_task)
             self.cur_task = self.cur_task + 1
             self.create_ui()
-

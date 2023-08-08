@@ -1,35 +1,39 @@
 import random
 import os
-import string
 import arcade
 import arcade.gui
 
 import src.const as const
 from src.data.game import gd
-from src.base.term import Term
 from src.data.task import Task
 from src.ui.attributed_text import AttributedText
-from src.ui.message_box import MessageBox
 
 
 class Karte:
+    """
+    Klasse für eine Antwort-Karte
+    """
+
     def __init__(self):
-        self.x = 0
-        self.y = 0
         self.bild = ""
         self.key = ""
         self.button = None
 
 
 class Frage:
+    """
+    Klasse für eine Frage
+    """
     def __init__(self):
-        self.x = 0
-        self.y = 0
         self.text = ""
         self.key = ""
 
 
 class Puzzle(Task):
+    """
+    Klasse für eine Aufgabe, die als Frage-Memory angezeigt wird
+    """
+
     def __init__(self, aufgabe: dict):
         super().__init__(aufgabe)
 
@@ -173,4 +177,3 @@ class Puzzle(Task):
                     arcade.play_sound(self.lose_sound, volume=gd.get_volume() / 100.0)
 
                 break
-

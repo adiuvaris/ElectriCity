@@ -6,6 +6,9 @@ import src.const as const
 
 
 class GameData(object):
+    """
+    Klasse für die Speicherung der Spieler-Daten
+    """
 
     def __init__(self):
         self.player_name = ""
@@ -91,7 +94,6 @@ class GameData(object):
         if room_nr in rooms:
             books = rooms[room_nr]
             for book_nr in books:
-                tasks = books[book_nr]
                 anz_tasks = gd.get_anz_tasks(room_nr, book_nr)
                 self.init_book(room_nr, book_nr, anz_tasks)
                 for task_nr in range(anz_tasks):

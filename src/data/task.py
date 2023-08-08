@@ -1,19 +1,17 @@
-import random
-import os
-import string
 import arcade
 import arcade.gui
 
-import src.const as const
 from src.data.game import gd
-from src.base.term import Term
-from src.ui.attributed_text import AttributedText
-from src.ui.message_box import MessageBox
 
 
 class Task:
+    """
+    Basis-Klasse für eine Aufgabe
+    """
+
     def __init__(self, aufgabe: dict):
         self.aufgabe = []
+        self.tipp = ""
 
         self.input_answer = None
         self.manager = None
@@ -28,6 +26,9 @@ class Task:
 
         if "Aufgabe" in aufgabe:
             self.aufgabe = aufgabe["Aufgabe"]
+
+        if "Tipp" in aufgabe:
+            self.tipp = aufgabe["Tipp"]
 
     def create_ui(self, ui_manager: arcade.gui.UIManager, callback):
 
@@ -49,4 +50,3 @@ class Task:
         # Escape geht zurück zum Spiel
         if key == arcade.key.ESCAPE:
             self.callback()
-

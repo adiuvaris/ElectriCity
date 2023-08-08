@@ -1,19 +1,17 @@
 {
   "Titel": "Spannung",
   "Theorie": [
-    "Fällt dir etwas auf, wenn du das Bild <i><b>Lampen</b></i> betrachtest?",
-    "Die linke Glühbirne leuchtet heller als die rechte. Aber wieso sind sie nicht gleich hell, denn sie sind an der gleichen Spannungsquelle angeschlossen? Dieser Unterschied kommt daher, dass die beiden Glühbirnen unterschiedliche elektrische Leistungen <i>P</i> besitzen. Da die gleiche Spannung über den Glühbirnen angelegt wurde, diese aber unterschiedlichen Leistungen besitzen, muss sich die Stromstärke ändern (das Bild <i><b>Schema</b></i> zeigt den Zusammenhang). Und somit leuchten die Glühbirnen auch unterschiedlich hell.",
     "Es gilt: Leistung = Spannung mal Stromstärke oder mit Symbolen <i>P = U · I</i>"
   ],
   "Bilder": [
     {
       "Datei": "pic_02_04_1.png",
-      "Titel": "Das Bild zeigt zwei Lampen",
+      "Titel": "Zwei Lampen mit unterschiedlicher Leistung",
       "Beschreibung": "Lampen"
     },
     {
       "Datei": "pic_02_04_2.png",
-      "Titel": "Das Bild zeigt zwei Verbraucher bei gleicher Spannung",
+      "Titel": "Zwei Verbraucher bei gleicher Spannung",
       "Beschreibung": "Schema"
     }
   ],
@@ -21,59 +19,65 @@
     {
       "Art": "Frage",
       "Aufgabe": [
+        "Fällt dir etwas auf, wenn du das Bild <i><b>Lampen</b></i> betrachtest?",
+        "Die linke Glühbirne leuchtet heller als die rechte. Aber wieso sind sie nicht gleich hell, denn sie sind an der gleichen Spannungsquelle angeschlossen? Dieser Unterschied kommt daher, dass die beiden Glühbirnen unterschiedliche elektrische Leistungen <i>P</i> besitzen. Da die gleiche Spannung über den Glühbirnen angelegt wurde, diese aber unterschiedlichen Leistungen besitzen, muss sich die Stromstärke ändern (das Bild <i><b>Schema</b></i> zeigt den Zusammenhang). Und somit leuchten die Glühbirnen auch unterschiedlich hell.",
         "Eine der Lampen hat die Leistung <V1> Watt und die Spannung ist <V2> Volt.",
         "Wie gross ist der Strom, der durch die Lampe fliesst?",
         "Gib dein Resultat in das Eingabefeld ein (nur die Zahl gerundet auf zwei Nachkommastellen)."
       ],
       "Variablen": {
-        "V1": [25, 30, 40, 60, 70],
+        "V1": [25, 35, 40, 60, 70],
         "V2": [120, 230, 240, 380]
       },
       "Typ": "Zahl",
-      "Richtig": "V2 / V1",
-      "Nachkommastellen": 2
+      "Richtig": "V1 / V2",
+      "Nachkommastellen": 2,
+      "Tipp" : "Du musst die Formel P=U·I nach I auflösen und dann die Werte einsetzen."
     },
     {
       "Art": "Frage",
       "Aufgabe": [
-        "Eine Autobatterie mit einer Leistung von 36 W liefert I = 3 A zum Betrieb eines Scheinwerfers. Berechne die Spannung der Autobatterie.",
-        "Gib die Antwort in das Feld ohne Einheit (in Volt) ein."
+        "Eine Autobatterie mit einer Leistung von <V1>W liefert I = <V2>A zum Betrieb eines Scheinwerfers. Berechne die Spannung der Autobatterie.",
+        "Gib die Antwort gerundet auf zwei Stellen in das Feld ohne Einheit (in Volt) ein."
       ],
       "Variablen": {
-        "V1": [25, 30, 40, 60, 70],
-        "V2": [120, 230, 240, 380]
+        "V1": [36, 35, 30],
+        "V2": [3, 2.6, 2.4]
       },
       "Typ": "Zahl",
-      "Richtig": "V2 / V1",
-      "Nachkommastellen": 2
+      "Richtig": "V1 / V2",
+      "Nachkommastellen": 2,
+      "Tipp" : "Du musst die Formel P=U·I nach U auflösen und dann die Werte einsetzen."
     },
     {
       "Art": "Frage",
       "Aufgabe": [
-        "Eine Taschenlampenbatterie versorgt eine Lampe mit der Spannung U = 3 V, wobei die Stromstärke I = 0.2 A beträgt. Welche Leistung hat sie?",
-        "Gib die Antwort in das Feld ohne Einheit (Watt) ein."
+        "Eine Taschenlampenbatterie versorgt eine Lampe mit der Spannung U = <V1>V, wobei die Stromstärke I = <V2>A beträgt. Welche Leistung hat sie?",
+        "Gib die Antwort gerundet auf zwei Stellen in das Feld ohne Einheit (Watt) ein."
       ],
       "Variablen": {
-        "V1": [25, 30, 40, 60, 70],
-        "V2": [120, 230, 240, 380]
+        "V1": [1.5, 3.0, 4.5, 9],
+        "V2": [0.1, 0.2, 0.3, 0.4]
       },
       "Typ": "Zahl",
-      "Richtig": "V2 / V1",
-      "Nachkommastellen": 2
+      "Richtig": "V1 * V2",
+      "Nachkommastellen": 2,
+      "Tipp" : "Du musst die Formel P=U·I verwenden."
     },
     {
       "Art": "Frage",
       "Aufgabe": [
-        "Der ICN der SBB hat eine elektrische Leistung von 5’200 kW. Die Spannung zwischen Gleis und Fahrleitung beträgt 15 kV. Berechne die Stromstärke im Stromabnehmer bei dieser Leistung.",
+        "Der ICN der SBB hat eine elektrische Leistung von <V1>kW. Die Spannung zwischen Gleis und Fahrleitung beträgt <V2>V. Berechne die Stromstärke im Stromabnehmer bei dieser Leistung.",
         "Gib die Antwort ohne Einheit (Ampere) in das Feld ein, runde auf ganze Zahlen"
       ],
       "Variablen": {
-        "V1": [25, 30, 40, 60, 70],
-        "V2": [120, 230, 240, 380]
+        "V1": [5200, 6100, 8000, 7500, 5800],
+        "V2": [15000]
       },
       "Typ": "Zahl",
-      "Richtig": "V2 / V1",
-      "Nachkommastellen": 2
+      "Richtig": "V1 * 1000.0 / V2",
+      "Nachkommastellen": 0,
+      "Tipp" : "Du musst die Formel P=U·I nach I auflösen und dann die Werte einsetzen. Achte auf die Einheiten."
     }
   ]
 }

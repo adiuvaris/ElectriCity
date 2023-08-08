@@ -6,6 +6,10 @@ from src.data.wortsuche import Wortsuche
 
 
 def create_task(aufgabe: dict):
+    """
+    Eine Aufgabe erstellen je nach Art der Aufgabe
+    """
+
     if "Art" in aufgabe:
         art = aufgabe["Art"]
 

@@ -1,5 +1,10 @@
 
 class Media:
+    """
+    Klasse für die Anzeige eines Bildes oder der Ausgabe einer Tondatei
+    Typ kann "image" oder "audio" sein
+    """
+
     def __init__(self, typ):
         self.filename = ""
         self.frames = 0

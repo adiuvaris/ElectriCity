@@ -1,18 +1,19 @@
 import random
-import os
 import string
 import arcade
 import arcade.gui
 
 import src.const as const
 from src.data.game import gd
-from src.base.term import Term
 from src.data.task import Task
 from src.ui.attributed_text import AttributedText
-from src.ui.message_box import MessageBox
 
 
 class Wort:
+    """
+    Klasse für ein Wort in der Wortsuche
+    """
+
     def __init__(self, wort):
         self.wort = wort
         self.start_x = 0
@@ -27,6 +28,10 @@ class Wort:
 
 
 class Wortsuche(Task):
+    """
+    Klasse für eine Wortsuche-Aufgabe
+    """
+
     def __init__(self, aufgabe: dict):
         super().__init__(aufgabe)
 
@@ -84,7 +89,9 @@ class Wortsuche(Task):
             for j in range(20):
                 x = 560 + i * w
                 y = 30 + j * h
-                ib = arcade.gui.UIFlatButton(x=gd.scale(x), y=gd.scale(y), width=gd.scale(w), height=gd.scale(h), text=self.grid[i][j], style=style)
+                ib = arcade.gui.UIFlatButton(x=gd.scale(x), y=gd.scale(y), width=gd.scale(w), height=gd.scale(h),
+                                             text=self.grid[i][j], style=style)
+
                 ib.on_click = self.on_wortsuche_click
                 self.manager.add(ib)
 
@@ -212,7 +219,6 @@ class Wortsuche(Task):
                 such_wort.end_y = y_pos
 
             self.such_worte[word] = such_wort
-            print(word, " inserted at ", [such_wort.start_x, such_wort.start_y], [such_wort.end_x, such_wort.end_y])
             return True
 
         return False

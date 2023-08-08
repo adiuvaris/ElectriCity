@@ -246,4 +246,3 @@ class StartView(arcade.View):
         # Game über die Anpassung informieren und anzeigen
         self.window.game_view.on_resize(w, h)
         self.window.show_view(self.window.game_view)
-
