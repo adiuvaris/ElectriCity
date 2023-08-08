@@ -7,12 +7,14 @@
     {
       "Datei": "aud_02_02_1.mp3",
       "Titel": "Gespräch 1",
-      "Beschreibung": "Gespräch 1"
+      "Beschreibung": "Gespräch 1",
+      "Illustration": "pic_01_02_2.png"
     },
     {
       "Datei": "aud_02_02_2.mp3",
       "Titel": "Gespräch 2",
-      "Beschreibung": "Gespräch 2"
+      "Beschreibung": "Gespräch 2",
+      "Illustration": "pic_01_02_3.png"
     },
     {
       "Datei": "aud_02_02_3.mp3",
