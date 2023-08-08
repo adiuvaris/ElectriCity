@@ -50,11 +50,53 @@ class GameData(object):
             self.game_data["room_keys"] = {}
             self.save_game_data()
 
+        self.adjust_game_data()
+
     def save_game_data(self):
         mypath = user_data_dir(const.APP_NAME, False, ensure_exists=True)
         dateiname = f"{mypath}/{self.player_name}.player"
         with open(dateiname, "w") as ofile:
             json.dump(self.game_data, ofile, indent=2)
+
+    def adjust_game_data(self):
+
+        # Gelöschte Räume, Bücher und Aufgaben aus den game-daten entfernen
+        book_to_del = []
+        mypath = gd.get_abs_path("res/data")
+        books = self.get_books()
+        for room_nr in books:
+            for book_nr in books[room_nr]:
+                dateiname = f"{mypath}/book_{room_nr}_{book_nr}.json"
+                if os.path.exists(dateiname):
+                    with open(dateiname, "r", encoding="'utf-8") as ifile:
+                        data = json.load(ifile)
+                        anz_aufgaben = 0
+                        if "Aufgaben" in data:
+                            aufgaben = data["Aufgaben"]
+                            anz_aufgaben = len(aufgaben)
+                    while len(books[room_nr][book_nr]) > anz_aufgaben:
+                        books[room_nr][book_nr].pop()
+
+                else:
+                    book_to_del.append((room_nr, book_nr))
+
+        for room_nr, book_nr in book_to_del:
+            books[room_nr].pop(book_nr)
+        self.save_game_data()
+
+        # Hinzugefügte Räume, Bücher und Aufgaben in die game-daten einfügen
+        for r in range(9):
+            for b in range(9):
+                room_nr = str(r+1).zfill(2)
+                book_nr = str(b+1).zfill(2)
+
+                dateiname = f"{mypath}/book_{room_nr}_{book_nr}.json"
+                if os.path.exists(dateiname):
+                    with open(dateiname, "r", encoding="'utf-8") as ifile:
+                        data = json.load(ifile)
+                        if "Aufgaben" in data:
+                            aufgaben = data["Aufgaben"]
+                            self.init_book(room_nr, book_nr, len(aufgaben))
 
     @staticmethod
     def delete_game_data(player_name):
@@ -90,14 +132,11 @@ class GameData(object):
         return books[room_nr][book_nr][task_nr]
 
     def has_all_tasks(self, room_nr: str):
-        rooms = self.get_books()
-        if room_nr in rooms:
-            books = rooms[room_nr]
-            for book_nr in books:
-                anz_tasks = gd.get_anz_tasks(room_nr, book_nr)
-                self.init_book(room_nr, book_nr, anz_tasks)
-                for task_nr in range(anz_tasks):
-                    if not self.get_task(room_nr, book_nr, task_nr):
+        books = self.get_books()
+        if room_nr in books:
+            for book_nr in books[room_nr]:
+                for task in books[room_nr][book_nr]:
+                    if not task:
                         return False
         else:
             return False
@@ -131,18 +170,6 @@ class GameData(object):
         keys = self.get_room_keys()
         keys[room_nr] = True
         self.save_game_data()
-
-    @staticmethod
-    def get_anz_tasks(room_nr: str, book_nr: str):
-        mypath = gd.get_abs_path("res/data")
-        dateiname = f"{mypath}/book_{room_nr}_{book_nr}.json"
-        if os.path.exists(dateiname):
-            with open(dateiname, "r", encoding="'utf-8") as ifile:
-                data = json.load(ifile)
-                if "Aufgaben" in data:
-                    aufgaben = data["Aufgaben"]
-                    return len(aufgaben)
-        return 0
 
     @staticmethod
     def get_abs_path(rel_path):
