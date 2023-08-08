@@ -25,7 +25,8 @@
       },
       "Typ": "Zahl",
       "Richtig": "V2 * V3 * 3600.0",
-      "Nachkommastellen": 0
+      "Nachkommastellen": 0,
+      "Tipp" : "Du musst die Formel I=Q/t nach Q auflösen und dann die Werte einsetzen. Beachte, die Einheit der Zeit sind Sekunden."
     },
     {
       "Art": "Frage",
@@ -41,7 +42,8 @@
       },
       "Typ": "Zahl",
       "Richtig": "V2 * V3",
-      "Nachkommastellen": 0
+      "Nachkommastellen": 0,
+      "Tipp" : "Du musst die Formel I=Q/t nach Q auflösen und dann die Werte einsetzen."
     },
     {
       "Art": "Frage",
@@ -55,7 +57,8 @@
       },
       "Typ": "Zahl",
       "Richtig": "V2 / V1",
-      "Nachkommastellen": 0
+      "Nachkommastellen": 0,
+      "Tipp" : "Du musst die Formel I=Q/t nach t auflösen und dann die Werte einsetzen."
     }
   ]
 }
