@@ -1,10 +1,10 @@
 import os
+
 import arcade
 import arcade.gui
 
 import src.const as const
 from src.data.game import gd
-
 from src.data.media import Media
 
 
@@ -12,26 +12,29 @@ class AudioView(arcade.View):
     """
     Klasse für das Abspielen einer Audio-Datei.
     Es kann eine Illustration angezeigt werden.
+    Die Ausgabe kann nicht gestoppt werden.
     """
 
-    def __init__(self, media: Media, view):
+    def __init__(self, media: Media, parent):
         """
         Konstruktor
         """
 
+        # Konstruktor der Basisklasse aufrufen
         super().__init__()
 
+        # Member definieren
         self.media = media
-        self.view = view
+        self.parent = parent
 
         self.sound = None
         self.media_player = None
-
         self.sprite = None
 
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
 
+        # Anzeigeelemente erstellen
         self.create_ui()
 
     def setup(self):
@@ -68,25 +71,33 @@ class AudioView(arcade.View):
         self.manager.draw()
 
     def on_key_press(self, key, modifiers):
+        """
+        Callback, wenn eine Taste gedrückt wurde
+        :param key: Taste
+        :param modifiers: Shift, Alt etc.
+        """
 
+        # Solange die Ausgabe läuft, keine Tasten akzeptieren
         if self.sound is not None:
             if self.sound.is_playing(self.media_player):
                 return
 
-        # Escape geht zurück zum Spiel
+        # Escape geht zurück zur aufrufenden View
         if key == arcade.key.ESCAPE:
-            self.window.show_view(self.view)
-
-    def on_update(self, delta_time: float):
-        pass
+            self.window.show_view(self.parent)
 
     def create_ui(self):
+        """
+        User-Interface erstellen - ein Button pro Memory-Karte
+        :param ui_manager: Arcade UIManager
+        """
 
+        # Zuerst mal Elemente löschen
         for widget in self.manager.walk_widgets():
             self.manager.remove(widget)
-
         self.manager.clear()
 
+        # Titeltext oben in der Mitte
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
                                    text=self.media.title,
@@ -95,7 +106,6 @@ class AudioView(arcade.View):
                                    align="center",
                                    font_size=gd.scale(const.FONT_SIZE_H1),
                                    multiline=False)
-
         self.manager.add(titel.with_border())
 
         # Bild Element erzeugen - falls Datei existiert
@@ -104,12 +114,10 @@ class AudioView(arcade.View):
             filename = f"{mypath}/{self.media.illustration}"
             if os.path.exists(filename):
                 self.sprite = arcade.Sprite(filename=filename)
-
                 x = gd.scale(20)
                 y = gd.scale(120)
                 w = gd.scale(1240)
                 h = gd.scale(520)
-
                 widget = arcade.gui.UISpriteWidget(x=x, y=y, width=w, height=h, sprite=self.sprite)
                 self.manager.add(widget)
 

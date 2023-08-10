@@ -1,9 +1,9 @@
-
 import os
+
 import arcade
-from src.sprites.character import Character
 
 from src.data.game import gd
+from src.sprites.character import Character
 
 
 class Player(Character):
@@ -14,10 +14,10 @@ class Player(Character):
     def __init__(self, avatar):
         """
         Konstruktor.
-
         :param avatar: Dateiname mit den Texturen für die Sprite
         """
 
+        # Basiskonstruktor aufrufen
         super().__init__(avatar)
 
         # Ton für Schritte laden
@@ -29,12 +29,15 @@ class Player(Character):
             self.footstep_sound = arcade.load_sound(filename)
 
     def set_avatar(self, avatar):
+        """
+        Avatar neu setzen
+        :param avatar: Name des Files mit den unterschiedlichen Ansichten
+        """
         super().set_avatar(avatar)
 
     def on_update(self, delta_time: float = 1.0 / 60.0):
         """
         Sprite in der Bewegung aktualisieren.
-
         :param delta_time: Verstrichene Zeit seit dem letzten Aufruf
         """
 
@@ -47,7 +50,7 @@ class Player(Character):
             self.sound_update = 0
             return
 
-        # Töne abspielen nach drei Aufrufen der Funktion
+        # Ton abspielen nach drei Aufrufen der Funktion
         if self.should_update > 3:
             self.sound_update += 1
 

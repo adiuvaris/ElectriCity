@@ -1,16 +1,15 @@
-
 import os
+
 import arcade
 import arcade.gui
 from pyglet.math import Vec2
+
 import src.const as const
-from src.sprites.player import Player
-
 from src.data.game import gd
-
+from src.sprites.player import Player
 from src.views.book_view import BookView
-from src.views.menu_view import MenuView
 from src.views.help_view import HelpView
+from src.views.menu_view import MenuView
 from src.views.quiz_view import QuizView
 
 
@@ -26,6 +25,7 @@ class GameView(arcade.View):
         :param map_list: Die globale Liste der geladenen Maps
         """
 
+        # Konstruktor der Basisklasse aufrufen
         super().__init__()
 
         arcade.set_background_color(arcade.color.ALMOND)
@@ -34,6 +34,7 @@ class GameView(arcade.View):
         self.ui_manager = arcade.gui.UIManager()
         self.ui_manager.enable()
 
+        # Member definieren
         self.laser_sound = arcade.load_sound(":sounds:laser.wav")
         self.door_open_sound = arcade.load_sound(":sounds:door_open.wav")
         self.door_close_sound = arcade.load_sound(":sounds:door_close.wav")
@@ -227,59 +228,59 @@ class GameView(arcade.View):
         self.message = ""
 
         is_moving_up = (
-            self.up_pressed
-            and not self.down_pressed
-            and not self.right_pressed
-            and not self.left_pressed
+                self.up_pressed
+                and not self.down_pressed
+                and not self.right_pressed
+                and not self.left_pressed
         )
 
         is_moving_down = (
-            self.down_pressed
-            and not self.up_pressed
-            and not self.right_pressed
-            and not self.left_pressed
+                self.down_pressed
+                and not self.up_pressed
+                and not self.right_pressed
+                and not self.left_pressed
         )
 
         is_moving_right = (
-            self.right_pressed
-            and not self.left_pressed
-            and not self.up_pressed
-            and not self.down_pressed
+                self.right_pressed
+                and not self.left_pressed
+                and not self.up_pressed
+                and not self.down_pressed
         )
 
         is_moving_left = (
-            self.left_pressed
-            and not self.right_pressed
-            and not self.up_pressed
-            and not self.down_pressed
+                self.left_pressed
+                and not self.right_pressed
+                and not self.up_pressed
+                and not self.down_pressed
         )
 
         is_moving_up_left = (
-            self.up_pressed
-            and self.left_pressed
-            and not self.down_pressed
-            and not self.right_pressed
+                self.up_pressed
+                and self.left_pressed
+                and not self.down_pressed
+                and not self.right_pressed
         )
 
         is_moving_down_left = (
-            self.down_pressed
-            and self.left_pressed
-            and not self.up_pressed
-            and not self.right_pressed
+                self.down_pressed
+                and self.left_pressed
+                and not self.up_pressed
+                and not self.right_pressed
         )
 
         is_moving_up_right = (
-            self.up_pressed
-            and self.right_pressed
-            and not self.down_pressed
-            and not self.left_pressed
+                self.up_pressed
+                and self.right_pressed
+                and not self.down_pressed
+                and not self.left_pressed
         )
 
         is_moving_down_right = (
-            self.down_pressed
-            and self.right_pressed
-            and not self.up_pressed
-            and not self.left_pressed
+                self.down_pressed
+                and self.right_pressed
+                and not self.up_pressed
+                and not self.left_pressed
         )
 
         if is_moving_up:
@@ -375,7 +376,7 @@ class GameView(arcade.View):
                 if int(room) > 1:
 
                     # String mit vorherigem Raum basteln und prüfen
-                    check_room = str(int(room)-1).zfill(2)
+                    check_room = str(int(room) - 1).zfill(2)
                     if not gd.has_all_tasks(check_room):
                         # Es wurde noch nicht alle Aufgaben gelöst, also Meldung anzeigen
                         # und Quiz nicht starten

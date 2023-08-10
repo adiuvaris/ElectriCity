@@ -1,14 +1,16 @@
+import json
 import random
 
 import arcade
 import arcade.gui
-import json
 
 import src.const as const
 from src.data.game import gd
-
-from src.data.quiz import Quiz
-from src.data.task_createor import create_task
+from src.ui.quiz import Quiz
+from src.ui.frage import Frage
+from src.ui.memory import Memory
+from src.ui.puzzle import Puzzle
+from src.ui.wortsuche import Wortsuche
 
 
 class QuizView(arcade.View):
@@ -21,21 +23,16 @@ class QuizView(arcade.View):
         Konstruktor
         """
 
+        # Konstruktor der Basisklasse aufrufen
         super().__init__()
 
-        self.lose_sound = arcade.load_sound(":sounds:lose.wav")
-        self.ok_sound = arcade.load_sound(":sounds:ok.wav")
-
+        # Member definieren
         self.room_nr = room_nr
+        self.quiz = None
+        self.tasks = []
 
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
-
-        self.title = ""
-        self.quiz = None
-        self.tasks = []
-        self.correct = False
-        self.msg_active = False
 
         # Fragen einlesen (json) und zufällig eine auswählen
         self.read_quiz()
@@ -99,14 +96,16 @@ class QuizView(arcade.View):
                     self.tasks.append(task)
 
     def create_ui(self):
+        """
+        User-Interface erstellen - ein Button pro Memory-Karte
+        """
 
-        self.correct = False
-
+        # Zuerst mal Elemente löschen
         for widget in self.manager.walk_widgets():
             self.manager.remove(widget)
-
         self.manager.clear()
 
+        # Titeltext oben in der Mitte
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
                                    text="Quiz",
@@ -115,7 +114,6 @@ class QuizView(arcade.View):
                                    align="center",
                                    font_size=gd.scale(const.FONT_SIZE_H1),
                                    multiline=False)
-
         self.manager.add(titel.with_border())
 
         self.quiz.create_ui(self.manager)
@@ -131,3 +129,28 @@ class QuizView(arcade.View):
         if self.tasks[self.cur_task].correct:
             gd.set_room_key(self.room_nr)
         self.window.show_view(self.window.game_view)
+
+
+def create_task(aufgabe: dict):
+    """
+    Aufgab erstellen je nach Art der Aufgabe
+    """
+
+    if "Art" in aufgabe:
+        art = aufgabe["Art"]
+
+        if art == "Frage":
+            frage = Frage(aufgabe)
+            return frage
+
+        if art == "Memory":
+            memory = Memory(aufgabe)
+            return memory
+
+        if art == "Puzzle":
+            puzzle = Puzzle(aufgabe)
+            return puzzle
+
+        if art == "Wortsuche":
+            wortsuche = Wortsuche(aufgabe)
+            return wortsuche

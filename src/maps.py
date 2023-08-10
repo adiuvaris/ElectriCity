@@ -1,8 +1,9 @@
-
 import os
-import arcade
 from collections import OrderedDict
 from os.path import isfile, join
+
+import arcade
+
 import src.const as const
 from src.data.game import gd
 
@@ -79,7 +80,6 @@ def load_maps():
 
     # Einmal eine Liste von allem Map-Files erstellen, die in der Folge geladen werden.
     if load_maps.map_file_names is None:
-
         # Dictionary für alle Maps
         load_maps.map_list = {}
 

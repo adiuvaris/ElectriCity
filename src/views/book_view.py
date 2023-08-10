@@ -1,21 +1,18 @@
+import json
+
 import arcade
 import arcade.gui
-import json
 
 import src.const as const
 from src.data.game import gd
-
-from src.data.theory import Theory
 from src.data.media import Media
-from src.data.task_createor import create_task
-
-from src.views.image_view import ImageView
-from src.views.audio_view import AudioView
+from src.ui.theory import Theory
+from src.views.quiz_view import create_task
 
 
 class BookView(arcade.View):
     """
-    Klasse für die View mit Theorie oder Aufgabe
+    Klasse für die View mit Theorie und Aufgabe
     """
 
     def __init__(self, room_nr, book_nr):
@@ -23,20 +20,16 @@ class BookView(arcade.View):
         Konstruktor
         """
 
+        # Konstruktor der Basisklasse aufrufen
         super().__init__()
 
-        self.lose_sound = arcade.load_sound(":sounds:lose.wav")
-        self.ok_sound = arcade.load_sound(":sounds:ok.wav")
-
+        # Member definieren
         self.room_nr = room_nr
         self.book_nr = book_nr
-
         self.title = ""
         self.theory = None
         self.tasks = []
         self.cur_task = 0
-        self.correct = False
-        self.msg_active = False
 
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
@@ -61,7 +54,6 @@ class BookView(arcade.View):
 
         self.manager.enable()
         arcade.set_background_color(arcade.color.ALMOND)
-
         arcade.set_viewport(0, self.window.width, 0, self.window.height)
 
     def on_hide_view(self):
@@ -80,31 +72,46 @@ class BookView(arcade.View):
         self.clear()
         self.manager.draw()
 
-    def on_media_click(self, event):
-        for media in self.theory.medias:
-            medium: Media = media
-
-            if event.source.text == medium.description:
-                if medium.typ == "image":
-                    image_view = ImageView(medium, self)
-                    self.window.show_view(image_view)
-                elif media.typ == "audio":
-                    audio_view = AudioView(medium, self)
-                    self.window.show_view(audio_view)
-
     def on_key_press(self, key, modifiers):
-        # Escape geht zurück zum Spiel
+        """
+        Callback, wenn eine Taste gedrückt wurde
+        :param key: Taste
+        :param modifiers: Shift, Alt etc.
+        """
+
+        # Escape geht zurück zur Map
         if key == arcade.key.ESCAPE:
             self.window.show_view(self.window.game_view)
 
+        # Tastendruck zur aktuellen Aufgabe weitergeben
         task = self.tasks[self.cur_task]
         task.on_key_press(key, modifiers)
 
+    def on_end_task(self):
+        """
+        Eine Aufgabe wurde erledigt, also die nächste anzeigen
+        """
+
+        # Ist die Aufgabe gelöst?
+        if self.tasks[self.cur_task].correct:
+
+            # Aufgabe in den Spieler-Daten als gelöst markieren
+            gd.set_task(self.room_nr, self.book_nr, self.cur_task)
+
+            # Nächste Aufgabe anzeigen, wenn es eine hat
+            self.cur_task = self.cur_task + 1
+            self.create_ui()
+
     def read_book(self):
+        """
+        JSON Struktur eines Buches einlesen
+        """
 
         # JSON-File für Buch einlesen
         mypath = gd.get_abs_path("res/data")
         with open(f"{mypath}/book_{self.room_nr}_{self.book_nr}.json", "r", encoding="'utf-8") as ifile:
+
+            # date bekommt die JSON-Struktur des Buchs
             data = json.load(ifile)
 
             # Titel-Element einlesen
@@ -116,6 +123,7 @@ class BookView(arcade.View):
             if "Theorie" in data:
                 self.theory.text = data["Theorie"]
 
+            # Audio Elemente einlesen
             if "Audios" in data:
                 audios = data["Audios"]
                 for audio in audios:
@@ -130,6 +138,7 @@ class BookView(arcade.View):
                         media.illustration = audio["Illustration"]
                     self.theory.medias.append(media)
 
+            # Bild Elemente einlesen
             if "Bilder" in data:
                 bilder = data["Bilder"]
                 for bild in bilder:
@@ -144,24 +153,27 @@ class BookView(arcade.View):
                         image.frames = bild["Frames"]
                     self.theory.medias.append(image)
 
-            # Aufgaben Element einlesen
+            # Aufgaben Elemente einlesen
             if "Aufgaben" in data:
                 aufgaben = data["Aufgaben"]
                 for aufgabe in aufgaben:
                     task = create_task(aufgabe)
                     self.tasks.append(task)
 
+            # Buch in den Spieler-Daten eintragen
             gd.init_book(self.room_nr, self.book_nr, len(self.tasks))
 
     def create_ui(self):
+        """
+        User-Interface erstellen - ein Button pro Memory-Karte
+        """
 
-        self.correct = False
-
+        # Zuerst mal Elemente löschen
         for widget in self.manager.walk_widgets():
             self.manager.remove(widget)
-
         self.manager.clear()
 
+        # Titeltext oben in der Mitte
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
                                    text=self.title,
@@ -170,20 +182,15 @@ class BookView(arcade.View):
                                    align="center",
                                    font_size=gd.scale(const.FONT_SIZE_H1),
                                    multiline=False)
-
         self.manager.add(titel.with_border())
 
-        self.theory.create_ui(self.manager, callback=self.on_media_click)
+        # UI der Theorie anzeigen
+        self.theory.create_ui(self.manager, self)
 
+        # Falls es eine Aufgabe hat, diese anzeigen
         if self.cur_task < len(self.tasks):
             self.tasks[self.cur_task].create_ui(self.manager, self.on_end_task)
         else:
             self.window.show_view(self.window.game_view)
 
         self.manager.trigger_render()
-
-    def on_end_task(self):
-        if self.tasks[self.cur_task].correct:
-            gd.set_task(self.room_nr, self.book_nr, self.cur_task)
-            self.cur_task = self.cur_task + 1
-            self.create_ui()

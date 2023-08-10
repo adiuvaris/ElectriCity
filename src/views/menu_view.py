@@ -1,9 +1,7 @@
-
 import arcade
 import arcade.gui
 
 import src.const as const
-
 from src.data.game import gd
 from src.views.setting_view import SettingView
 
@@ -18,6 +16,7 @@ class MenuView(arcade.View):
         Konstruktor
         """
 
+        # Konstruktor der Basisklasse aufrufen
         super().__init__()
 
         # UIManager braucht es für arcade
@@ -114,11 +113,12 @@ class MenuView(arcade.View):
 
     def create_ui(self):
         """
-        UI Elemente erzeugen
+        User-Interface erstellen - ein Button pro Memory-Karte
         """
+
+        # Zuerst mal Elemente löschen
         for widget in self.manager.walk_widgets():
             self.manager.remove(widget)
-
         self.manager.clear()
 
         # Vertikales Layout für die Schalter erstellen
@@ -151,6 +151,7 @@ class MenuView(arcade.View):
             )
         )
 
+        # Titeltext oben in der Mitte
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
                                    text="Menü",
@@ -159,7 +160,6 @@ class MenuView(arcade.View):
                                    align="center",
                                    font_size=gd.scale(const.FONT_SIZE_H1),
                                    multiline=False)
-
         self.manager.add(titel.with_border())
 
         self.manager.trigger_render()

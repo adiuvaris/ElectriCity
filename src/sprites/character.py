@@ -1,6 +1,7 @@
+from enum import Enum
 
 import arcade
-from enum import Enum
+
 import src.const as const
 from src.data.game import gd
 
@@ -20,7 +21,7 @@ class Character(arcade.Sprite):
     """
     Sprite, mit unterschiedlichen Ansichten je nachdem wie es bewegt wird.
     Die Texturen müssen in einer Bilddatei gespeichert sein.
-    Für jede Bewegungsrichtung muss es drei Texturen (Einzelbilder) geben.
+    Für jede der vier Bewegungsrichtungen muss es drei Texturen (Einzelbilder) geben.
     """
 
     def __init__(self, avatar):
@@ -43,17 +44,8 @@ class Character(arcade.Sprite):
             Direction.Up: [9, 10, 11],
         }
 
-        mypath = gd.get_abs_path("res/avatars")
-        avatar = mypath + "/" + avatar
-
         # Texturen für Charakter Sprite laden
-        self.textures = arcade.load_spritesheet(
-            avatar,
-            sprite_width=const.SPRITE_SIZE,
-            sprite_height=const.SPRITE_SIZE,
-            columns=3,
-            count=12,
-        )
+        self.set_avatar(avatar)
 
         # Erste Textur für die Anzeige definieren
         self.should_update = 0
@@ -61,6 +53,12 @@ class Character(arcade.Sprite):
         self.texture = self.textures[self.cur_texture_index]
 
     def set_avatar(self, avatar):
+        """
+        Avatar neu setzen
+        :param avatar: Name des Files mit den unterschiedlichen Ansichten
+        """
+
+        # Datei einlesen
         mypath = gd.get_abs_path("res/avatars")
         avatar = mypath + "/" + avatar
         self.textures = arcade.load_spritesheet(
@@ -74,7 +72,6 @@ class Character(arcade.Sprite):
     def on_update(self, delta_time: float = 1.0 / 60.0):
         """
         Anzeige des Sprites aktualisieren, je nachdem wie es bewegt wird.
-
         :param delta_time:
         """
 

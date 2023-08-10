@@ -1,6 +1,6 @@
-
 import arcade
 import pyglet.window
+
 import src.const as const
 from src.data.game import gd
 from src.views.start_view import StartView

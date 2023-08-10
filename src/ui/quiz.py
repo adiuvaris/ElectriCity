@@ -11,15 +11,20 @@ class Quiz:
     """
 
     def __init__(self):
+        """
+        Konstruktor
+        """
+
+        # Member definieren
         self.text = ""
 
     def create_ui(self, ui_manager: arcade.gui.UIManager):
+        """
+        User-Interface erstellen
+        :param ui_manager: Arcade UIManager
+        """
 
-        widget = arcade.gui.UIWidget(x=gd.scale(10), y=gd.scale(10), width=gd.scale(420), height=gd.scale(640))
-        border = arcade.gui.UIBorder(child=widget)
-        ui_manager.add(border)
-
+        # Text anzeigen
         text = AttributedText(x=gd.scale(20), y=gd.scale(340),
                               width=gd.scale(400), height=gd.scale(300), text=self.text)
-
         ui_manager.add(text)

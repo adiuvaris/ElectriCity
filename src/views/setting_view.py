@@ -18,6 +18,7 @@ class SettingView(arcade.View):
         Konstruktor
         """
 
+        # Konstruktor der Basisklasse aufrufen
         super().__init__()
 
         # Verzeichnis in dem die Player-Daten liegen
@@ -30,12 +31,13 @@ class SettingView(arcade.View):
             if isfile(join(mypath, f)) and f.endswith(".png")
         ]
 
+        # Member definieren
         self.menu = menu
-
-        # UIManager braucht es für arcade
         self.input_scale = None
         self.input_volume = None
         self.active_input = None
+
+        # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
         self.create_ui()
 
@@ -156,14 +158,20 @@ class SettingView(arcade.View):
         self.create_ui()
 
     def create_ui(self):
+        """
+        User-Interface erstellen - ein Button pro Memory-Karte
+        """
+
+        # Zuerst mal Elemente löschen
+        for widget in self.manager.walk_widgets():
+            self.manager.remove(widget)
+        self.manager.clear()
+
+        # Aktuelle Werte holen
         scale = gd.get_scale()
         volume = gd.get_volume()
 
-        for widget in self.manager.walk_widgets():
-            self.manager.remove(widget)
-
-        self.manager.clear()
-
+        # Titeltext oben in der Mitte
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
                                    text="Einstellungen",

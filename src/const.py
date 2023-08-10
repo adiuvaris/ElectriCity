@@ -1,4 +1,3 @@
-
 import arcade
 
 APP_NAME = "ElectriCity"
@@ -11,7 +10,6 @@ SCREEN_TITLE = APP_NAME
 FONT_SIZE = 12
 FONT_SIZE_H1 = 20
 FONT_SIZE_H2 = 16
-
 
 TILE_SCALING = 1.0
 SPRITE_SIZE = 32
@@ -32,3 +30,7 @@ KEY_RIGHT = [arcade.key.RIGHT, arcade.key.D]
 
 # Geschwindigkeit mit der die Kamera dem Player folgt
 CAMERA_SPEED = 0.1
+
+# Anzahl Zeilen/Spalten im Buchstabengitter
+GRID_SIZE = 20
+

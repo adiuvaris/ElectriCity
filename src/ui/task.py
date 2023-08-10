@@ -10,6 +10,11 @@ class Task:
     """
 
     def __init__(self, aufgabe: dict):
+        """
+        Konstruktor
+        """
+
+        # Member definieren
         self.aufgabe = []
         self.tipp = ""
 
@@ -22,8 +27,6 @@ class Task:
         self.ok_sound = arcade.load_sound(":sounds:ok.wav")
         self.msg_active = False
 
-        self.dauer = 0.0
-
         if "Aufgabe" in aufgabe:
             self.aufgabe = aufgabe["Aufgabe"]
 
@@ -31,22 +34,31 @@ class Task:
             self.tipp = aufgabe["Tipp"]
 
     def create_ui(self, ui_manager: arcade.gui.UIManager, callback):
+        """
+        User-Interface erstellen - nur den Rahmen für die Aufgabe
+        :param ui_manager: Arcade UIManager
+        :param callback: Funktion, die zum Abschluss der Aufgabe aufgerufen werden soll
+        """
 
         self.manager = ui_manager
         self.callback = callback
 
-        # Rahmen für den Aufgabenblock
+        # Rahmen für den Aufgabenblock einfügen
         widget = arcade.gui.UIWidget(x=gd.scale(450), y=gd.scale(10), width=gd.scale(820), height=gd.scale(640))
         border = arcade.gui.UIBorder(child=widget)
         self.manager.add(border)
 
-    def on_update(self, delta_time: float, window: arcade.Window):
-        pass
-
     def on_key_press(self, key, modifiers):
+        """
+        Callback, wenn eine Taste gedrückt wurde
+        :param key: Taste
+        :param modifiers: Shift, Alt etc.
+        """
+
+        # Wenn eine Meldung angezeigt wird, dann den Tasten ignorieren
         if self.msg_active:
             return
 
-        # Escape geht zurück zum Spiel
+        # Escape geht in jedem Fall zurück zum Spiel
         if key == arcade.key.ESCAPE:
             self.callback()

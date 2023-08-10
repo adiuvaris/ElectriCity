@@ -1,12 +1,12 @@
 import os
+
 import arcade
 import arcade.gui
 
 import src.const as const
 from src.data.game import gd
-
-from src.sprites.animation import Animation
 from src.data.media import Media
+from src.sprites.animation import Animation
 
 
 class ImageView(arcade.View):
@@ -19,11 +19,12 @@ class ImageView(arcade.View):
         Konstruktor
         """
 
+        # Konstruktor der Basisklasse aufrufen
         super().__init__()
 
+        # Member definieren
         self.media = media
         self.view = view
-
         self.sprite = None
 
         # UIManager braucht es für arcade
@@ -82,12 +83,16 @@ class ImageView(arcade.View):
             self.sprite.on_update(delta_time)
 
     def create_ui(self):
+        """
+        User-Interface erstellen - ein Button pro Memory-Karte
+        """
 
+        # Zuerst mal Elemente löschen
         for widget in self.manager.walk_widgets():
             self.manager.remove(widget)
-
         self.manager.clear()
 
+        # Titeltext oben in der Mitte
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
                                    text=self.media.title,
@@ -96,7 +101,6 @@ class ImageView(arcade.View):
                                    align="center",
                                    font_size=gd.scale(const.FONT_SIZE_H1),
                                    multiline=False)
-
         self.manager.add(titel.with_border())
 
         # Bild Element erzeugen - falls Datei existiert

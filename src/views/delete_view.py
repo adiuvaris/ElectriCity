@@ -1,8 +1,9 @@
 import os
 from os.path import isfile, join
-from platformdirs import *
+
 import arcade
 import arcade.gui
+from platformdirs import *
 
 import src.const as const
 from src.data.game import gd
@@ -18,17 +19,28 @@ class DeleteView(arcade.View):
         Konstruktor
         """
 
+        # Konstruktor der Basisklasse aufrufen
         super().__init__()
 
+        # Member definieren
         self.manager = arcade.gui.UIManager()
         self.players = None
         self.setup()
 
     def on_draw(self):
+        """
+        Zeichnet die View. Wird von arcade aufgerufen.
+        """
+
         arcade.start_render()
         self.manager.draw()
 
     def setup(self):
+        """
+        View initialisieren.
+        Es wird die Theorie für den Raum und das Buch angezeigt.
+        """
+
         # Verzeichnis in dem die Player-Daten liegen
         mypath = user_data_dir(const.APP_NAME, False, ensure_exists=True)
 
@@ -69,12 +81,30 @@ class DeleteView(arcade.View):
             self.window.start_view.setup()
             self.window.show_view(self.window.start_view)
 
+    def on_click(self, event):
+        """
+        Callback für den Klick auf einen Player
+        :param event: Event von Arcade
+        """
+
+        # Spieler löschen
+        gd.delete_game_data(event.source.text)
+
+        # Zurück zur Start View
+        self.window.start_view.setup()
+        self.window.show_view(self.window.start_view)
+
     def create_ui(self):
+        """
+        User-Interface erstellen - ein Button pro Memory-Karte
+        """
+
+        # Zuerst mal Elemente löschen
         for widget in self.manager.walk_widgets():
             self.manager.remove(widget)
-
         self.manager.clear()
 
+        # Titeltext oben in der Mitte
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
                                    text="Einen Spieler löschen",
@@ -85,6 +115,7 @@ class DeleteView(arcade.View):
                                    multiline=False)
         self.manager.add(titel.with_border())
 
+        # Falls es schon gespeicherte Player-Files hat, dann diese als Buttons anzeigen
         if len(self.players) > 0:
             label = arcade.gui.UILabel(x=gd.scale(20),
                                        y=gd.scale(600),
@@ -95,7 +126,6 @@ class DeleteView(arcade.View):
                                        bold=True,
                                        font_size=gd.scale(const.FONT_SIZE_H2),
                                        multiline=False)
-
             self.manager.add(label)
 
             x = gd.scale(20)
@@ -113,9 +143,3 @@ class DeleteView(arcade.View):
                     i = 0
                     x = gd.scale(20)
                     y = y - gd.scale(50)
-
-    def on_click(self, event):
-        gd.delete_game_data(event.source.text)
-
-        self.window.start_view.setup()
-        self.window.show_view(self.window.start_view)
