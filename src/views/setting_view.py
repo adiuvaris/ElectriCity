@@ -24,7 +24,7 @@ class SettingView(arcade.View):
         # Verzeichnis in dem die Player-Daten liegen
         mypath = gd.get_abs_path("res/avatars")
 
-        # Alle Dateien mit der Endung .png laden
+        # Alle Avatar Dateien mit der Endung .png laden
         self.avatars = [
             f"{f}"
             for f in os.listdir(mypath)
@@ -81,19 +81,10 @@ class SettingView(arcade.View):
         if key == arcade.key.ESCAPE:
             self.window.show_view(self.menu)
 
-    def on_mouse_press(self, x: int, y: int, button: int, modifiers: int):
-        if self.input_scale.rect.collide_with_point(x, y):
-            self.active_input = self.input_scale
-
-        elif self.input_volume.rect.collide_with_point(x, y):
-            self.active_input = self.input_volume
-
-        super().on_mouse_press(x=x, y=y, button=button, modifiers=modifiers)
-
-    def on_text(self, text):
-        # War der eingegebene Text ein Umbruch?
-        if text == '\r':
+        # ENTER startet das Spiel, aber nur wenn der Name des Spielers nicht leer ist
+        if key == arcade.key.ENTER or key == arcade.key.NUM_ENTER:
             input_text = self.active_input.text.strip()
+            input_text.replace('\n', '')
             if input_text.isnumeric():
                 if self.active_input == self.input_scale:
 
@@ -136,17 +127,53 @@ class SettingView(arcade.View):
                     # Nächstes Eingabefeld aktivieren.
                     self.active_input = self.input_scale
 
-                # Event erzeugen, um zu emulieren, dass im aktuellen Eingabefeld geklickt worden sei
+                # Event erzeugen, um zu emulieren, dass im nächsten Eingabefeld geklickt worden sei
                 event = arcade.gui.UIMousePressEvent(
                     x=self.active_input.x + 1, y=self.active_input.y + 1, button=0, modifiers=0, source=self)
-                self.input_scale.on_event(event)
                 self.input_volume.on_event(event)
+                self.input_scale.on_event(event)
 
             else:
                 if self.active_input == self.input_scale:
                     self.active_input.text = str(gd.get_scale())
                 elif self.active_input == self.input_volume:
                     self.active_input.text = str(gd.get_volume())
+
+    def on_click(self, event):
+        """
+        Klick auf Avatar verarbeiten
+
+        :param event: Event von Arcade
+        """
+
+        # Koordinaten umrechnen
+        x = event.x - gd.scale(340)
+        idx = int(x / gd.scale(50))
+        if 0 <= idx < len(self.avatars):
+
+            # Gewählten Avatar in die Spieler-Daten eintragen und UI neu zeichnen
+            gd.set_avatar(self.avatars[idx])
+            self.create_ui()
+
+    def on_mouse_press(self, x: int, y: int, button: int, modifiers: int):
+        """
+        Wird von arcade aufgerufen bei Mausklick.
+        Hier wird das aktuelle Eingabefeld festgelegt, wenn in ein solches geklickt wird
+
+        :param x: x-Koordinate
+        :param y: y-Koordinate
+        :param button: Maustaste
+        :param modifiers: Shift, Alt etc.
+        """
+
+        if self.input_scale.rect.collide_with_point(x, y):
+            self.active_input = self.input_scale
+
+        elif self.input_volume.rect.collide_with_point(x, y):
+            self.active_input = self.input_volume
+
+        # Funktion in der Basisklasse aufrufen
+        super().on_mouse_press(x=x, y=y, button=button, modifiers=modifiers)
 
     def on_resize(self, width, height):
         """
@@ -182,6 +209,7 @@ class SettingView(arcade.View):
                                    multiline=False)
         self.manager.add(titel.with_border())
 
+        # Fenstergrösse
         label = arcade.gui.UILabel(x=gd.scale(20), y=gd.scale(600),
                                    width=gd.scale(290), height=gd.scale(30),
                                    text="Fenstergrösse in Prozent:",
@@ -189,7 +217,6 @@ class SettingView(arcade.View):
                                    bold=True,
                                    font_size=gd.scale(const.FONT_SIZE_H2),
                                    multiline=False)
-
         self.manager.add(label)
 
         label = arcade.gui.UILabel(x=gd.scale(500), y=gd.scale(600),
@@ -199,15 +226,14 @@ class SettingView(arcade.View):
                                    bold=True,
                                    font_size=gd.scale(const.FONT_SIZE_H2),
                                    multiline=False)
-
         self.manager.add(label)
 
         self.input_scale = arcade.gui.UIInputText(x=gd.scale(340), y=gd.scale(600),
                                                   width=gd.scale(90), height=gd.scale(30),
                                                   font_size=gd.scale(const.FONT_SIZE_H2), text=str(scale))
-
         self.manager.add(self.input_scale.with_border())
 
+        # Lautstärke
         label = arcade.gui.UILabel(x=gd.scale(20), y=gd.scale(550),
                                    width=gd.scale(290), height=gd.scale(30),
                                    text="Lautstärke in Prozent:",
@@ -215,7 +241,6 @@ class SettingView(arcade.View):
                                    bold=True,
                                    font_size=gd.scale(const.FONT_SIZE_H2),
                                    multiline=False)
-
         self.manager.add(label)
 
         label = arcade.gui.UILabel(x=gd.scale(500), y=gd.scale(550),
@@ -225,15 +250,14 @@ class SettingView(arcade.View):
                                    bold=True,
                                    font_size=gd.scale(const.FONT_SIZE_H2),
                                    multiline=False)
-
         self.manager.add(label)
 
         self.input_volume = arcade.gui.UIInputText(x=gd.scale(340), y=gd.scale(550),
                                                    width=gd.scale(90), height=gd.scale(30),
                                                    font_size=gd.scale(const.FONT_SIZE_H2), text=str(volume))
-
         self.manager.add(self.input_volume.with_border())
 
+        # Avatar Auswahl
         label = arcade.gui.UILabel(x=gd.scale(20), y=gd.scale(500),
                                    width=gd.scale(290),
                                    height=30,
@@ -242,11 +266,10 @@ class SettingView(arcade.View):
                                    bold=True,
                                    font_size=gd.scale(const.FONT_SIZE_H2),
                                    multiline=False)
-
         self.manager.add(label)
 
+        # Mögliche Avatare anzeigen als Bild
         mypath = gd.get_abs_path("res/avatars")
-
         x = gd.scale(340)
         y = gd.scale(480)
         for avatar in self.avatars:
@@ -260,20 +283,11 @@ class SettingView(arcade.View):
 
             ib.on_click = self.on_click
             self.manager.add(ib)
-
             x = x + gd.scale(50)
 
         # Eingabefeld aktivieren - so tun, als ob in das Feld geklickt wurde
         self.active_input = self.input_scale
-
         event = arcade.gui.UIMousePressEvent(
             x=self.active_input.x + 1, y=self.active_input.y + 1, button=0, modifiers=0, source=self)
-        self.input_scale.on_event(event)
         self.input_volume.on_event(event)
-
-    def on_click(self, event):
-        x = event.x - gd.scale(340)
-        idx = int(x / gd.scale(50))
-        if 0 <= idx < len(self.avatars):
-            gd.set_avatar(self.avatars[idx])
-            self.create_ui()
+        self.input_scale.on_event(event)

@@ -74,9 +74,20 @@ class QuizView(arcade.View):
         self.manager.draw()
 
     def on_key_press(self, key, modifiers):
+        """
+        Wird von arcade aufgerufen, wenn eine Taste gedrückt wurde.
+
+        :param key: Taste
+        :param modifiers: Shift, Alt etc.
+        """
+
+        # Tastendruck an aktuelle Aufgabe weitergeben
         self.tasks[self.cur_task].on_key_press(key, modifiers)
 
     def read_quiz(self):
+        """
+        Quiz JSON Struktur einlesen und interpretieren
+        """
 
         # JSON-File mit Quiz-Fragen einlesen
         mypath = gd.get_abs_path("res/data")
@@ -116,8 +127,10 @@ class QuizView(arcade.View):
                                    multiline=False)
         self.manager.add(titel.with_border())
 
+        # Quiz UI
         self.quiz.create_ui(self.manager)
 
+        # Aufgabe UI
         if self.cur_task < len(self.tasks):
             self.tasks[self.cur_task].create_ui(self.manager, self.on_end_task)
         else:
@@ -126,14 +139,21 @@ class QuizView(arcade.View):
         self.manager.trigger_render()
 
     def on_end_task(self):
+        """
+        Wird von der Aufgabe aufgerufen, wenn sie beendet wird
+        """
+
+        # Wenn die Aufgabe richtig gelöst wurde, dann den Hausschlüssel freischalten
         if self.tasks[self.cur_task].correct:
             gd.set_room_key(self.room_nr)
+
+        # Zurück zur Map
         self.window.show_view(self.window.game_view)
 
 
 def create_task(aufgabe: dict):
     """
-    Aufgab erstellen je nach Art der Aufgabe
+    Aufgabe erstellen je nach Art der Aufgabe
     """
 
     if "Art" in aufgabe:

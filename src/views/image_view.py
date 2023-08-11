@@ -78,7 +78,13 @@ class ImageView(arcade.View):
             self.window.show_view(self.view)
 
     def on_update(self, delta_time: float):
+        """
+        Wird regelmässig von arcade aufgerufen
 
+        :param delta_time: Zeit seit letztem Aufruf
+        """
+
+        # Wenn das Bild aus Teilbildern besteht (Frames), dann den Aufruf an das Medium weitergeben
         if self.media.frames > 0:
             self.sprite.on_update(delta_time)
 
