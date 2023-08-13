@@ -37,7 +37,7 @@ class Wortsuche(Task):
         if "Worte" in aufgabe:
             self.words = aufgabe["Worte"]
 
-            # Zufälliges Raster von const.GRID_SIZExconst.GRID_SIZE Buchstaben erstellen
+            # Zufälliges Raster von const.GRID_SIZE x const.GRID_SIZE Buchstaben erstellen
             grid = [[random.choice(string.ascii_uppercase) for i in range(0, const.GRID_SIZE)] for j in range(0, const.GRID_SIZE)]
             already_taken = []
 
