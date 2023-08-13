@@ -54,4 +54,4 @@ if __name__ == "__main__":
 # Bilden mit folgendem Kommando Python Package PyInstaller muss installiert sein.
 # Die *.player Files in res/data vorher löschen.
 #   WINDOWS: pyinstaller main.py --onefile --add-data "res;res" --windowed --name ElectriCity
-#   MAC:     pyinstaller main.py --onefile --add-data "res:res" --windowed --name ElectriCity
+#   MAC:     pyinstaller main.py --onedir --add-data "res:res" --windowed --name ElectriCity
