@@ -6,6 +6,7 @@
     {
       "Art": "Wortsuche",
       "Worte": ["SERIE", "PARALLEL", "SCHALTUNG"],
+      "Raster": 17,
       "Aufgabe": [
         "Suche im Buchstabengitter nach den unten stehenden Wörtern.",
         "Klicke jeweils auf den ersten und den letzten Buchstaben des Wortes."

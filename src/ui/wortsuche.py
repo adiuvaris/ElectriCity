@@ -28,17 +28,27 @@ class Wortsuche(Task):
         # Member definieren
         self.words = []
         self.karten = []
+        self.raster = 20
 
         self.such_worte = {}
         self.cur_such_wort = None
         self.first_karte = None
         self.aufgabe_text = None
 
+        if "Raster" in aufgabe:
+            self.raster = aufgabe["Raster"]
+
         if "Worte" in aufgabe:
             self.words = aufgabe["Worte"]
 
-            # Zufälliges Raster von const.GRID_SIZE x const.GRID_SIZE Buchstaben erstellen
-            grid = [[random.choice(string.ascii_uppercase) for i in range(0, const.GRID_SIZE)] for j in range(0, const.GRID_SIZE)]
+            # Das Raster muss 1 grösser als das längste Wort sein
+            # sonst können die Wörter nichts zufällig im Grid platziert werden
+            for word in self.words:
+                if self.raster <= len(word):
+                    self.raster = len(word) + 1
+
+            # Zufälliges Raster von Buchstaben erstellen
+            grid = [[random.choice(string.ascii_uppercase) for i in range(0, self.raster)] for j in range(0, self.raster)]
             already_taken = []
 
             # Suchwörter in das Raster eintragen
@@ -52,8 +62,8 @@ class Wortsuche(Task):
                     pass
 
             # Aus dem Raster eine Liste von Karten erzeugen
-            for i in range(const.GRID_SIZE):
-                for j in range(const.GRID_SIZE):
+            for i in range(self.raster):
+                for j in range(self.raster):
                     card = Card()
                     card.key = grid[i][j]
                     card.position = (i, j)
@@ -81,13 +91,13 @@ class Wortsuche(Task):
         for karte in self.karten:
 
             # Position des Buttons für die Karte berechnen
-            w = 30
-            h = 30
-            x = 560 + karte.position[0] * w
-            y = 30 + karte.position[1] * h
+            w = gd.scale(int(620 / self.raster))
+            h = w
+            x = gd.scale(550) + karte.position[0] * w
+            y = gd.scale(20) + karte.position[1] * h
             style = {"font_size": gd.scale(const.FONT_SIZE), "bg_color": (100, 100, 100)}
             karte.button = arcade.gui.UIFlatButton(
-                x=gd.scale(x), y=gd.scale(y), width=gd.scale(w), height=gd.scale(h),
+                x=x, y=y, width=w, height=h,
                 text=karte.key, style=style)
             karte.button.on_click = self.on_wortsuche_click
             self.manager.add(karte.button)
@@ -145,7 +155,7 @@ class Wortsuche(Task):
 
                             # Alle Buchstaben des Worts entfernen
                             for position in such_wort.positionen:
-                                idx = position[0] * const.GRID_SIZE + position[1]
+                                idx = position[0] * self.raster + position[1]
                                 self.karten[idx].button.text = ""
 
                             # Gefundenes Wort aus der Liste der zu Suchenden entfernen
@@ -159,13 +169,7 @@ class Wortsuche(Task):
                             self.manager.remove(self.aufgabe_text)
                             if len(self.words) == 0:
                                 self.correct = True
-
-                                # Aufgabentext anpassen
-                                aufgabe_text = self.aufgabe.copy()
-                                aufgabe_text.append("Mit der Esc-Taste geht es zum Spiel zurück.")
-                                self.aufgabe_text = AttributedText(
-                                    x=gd.scale(20), y=gd.scale(20),
-                                    width=gd.scale(400), height=gd.scale(300), text=aufgabe_text)
+                                self.callback()
 
                             else:
 
@@ -205,8 +209,8 @@ class Wortsuche(Task):
         d = random.choice([[1, 0], [0, 1], [1, 1]])
 
         # Notwendige Grössen abhängig von Richtung berechnen
-        x_size = const.GRID_SIZE if d[0] == 0 else const.GRID_SIZE - len(rand_word)
-        y_size = const.GRID_SIZE if d[1] == 0 else const.GRID_SIZE - len(rand_word)
+        x_size = self.raster if d[0] == 0 else self.raster - len(rand_word)
+        y_size = self.raster if d[1] == 0 else self.raster - len(rand_word)
 
         # Zufällige Startposition
         x = random.randrange(0, x_size)

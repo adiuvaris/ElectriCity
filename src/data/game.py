@@ -7,7 +7,7 @@ import src.const as const
 
 class GameData(object):
     """
-    Klasse für die Speicherung der Spieler- und Einstellungsdaten
+    Klasse für die Speicherung der Spieler- und Einstellungsdaten.
     Es darf nur eine Instanz geben und die wird in diesem Modul erstellt.
     Der Zugriff auf die Funktionen muss immer über die Instanz "gd" passieren
     Z.B.
@@ -246,18 +246,24 @@ class GameData(object):
         books = self.get_books()
         return books[room_nr][book_nr][task_nr]
 
-    def has_all_tasks(self, room_nr: str):
+    def has_all_tasks(self, room_nr: str, book_nr=""):
         """
         Prüfen, ob alle Aufgaben eines Raumes/Hauses gelöst sind
         :param room_nr: Raum z.B. "02"
+        :param book_nr: Buch z.B. "01" oder leer für alle Bücher des Raums
         :return True, wenn alles gelöst, sonst False
         """
         books = self.get_books()
         if room_nr in books:
-            for book_nr in books[room_nr]:
+            if book_nr in books[room_nr]:
                 for task in books[room_nr][book_nr]:
                     if not task:
                         return False
+            else:
+                for book_nr in books[room_nr]:
+                    for task in books[room_nr][book_nr]:
+                        if not task:
+                            return False
         else:
             return False
 

@@ -1,11 +1,12 @@
 {
   "Beschreibung": [
-    "<h2>Hier kannst du den Schlüssel für das vierte Haus bekommen.<h2>"
+    "<h2>Hier kannst du den Schlüssel für das fünfte Haus bekommen.<h2>"
   ],
   "Aufgaben": [
     {
       "Art": "Wortsuche",
       "Worte": ["KIRCHHOFF", "PARALLEL", "SCHALTUNG"],
+      "Raster": 18,
       "Aufgabe": [
         "Suche im Buchstabengitter nach den unten stehenden Wörtern.",
         "Klicke jeweils auf den ersten und den letzten Buchstaben des Wortes."
