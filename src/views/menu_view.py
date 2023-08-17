@@ -121,27 +121,29 @@ class MenuView(arcade.View):
             self.manager.remove(widget)
         self.manager.clear()
 
+        style = {"font_size": gd.scale(const.FONT_SIZE), "bg_color": (100, 100, 100)}
+
         # Vertikales Layout für die Schalter erstellen
         v_box = arcade.gui.UIBoxLayout()
 
         # Button
-        resume_button = arcade.gui.UIFlatButton(text="Zurück zum Spiel", width=gd.scale(290))
-        v_box.add(resume_button.with_space_around(bottom=gd.scale(30)))
+        resume_button = arcade.gui.UIFlatButton(text="Zurück zum Spiel", width=gd.scale(290), height=gd.scale(40), style=style)
+        v_box.add(resume_button.with_space_around(bottom=gd.scale(40)))
         resume_button.on_click = self.on_click_resume
 
         # Button
-        settings_button = arcade.gui.UIFlatButton(text="Einstellungen", width=gd.scale(290))
-        v_box.add(settings_button.with_space_around(bottom=gd.scale(30)))
+        settings_button = arcade.gui.UIFlatButton(text="Einstellungen", width=gd.scale(290), height=gd.scale(40), style=style)
+        v_box.add(settings_button.with_space_around(bottom=gd.scale(40)))
         settings_button.on_click = self.on_click_settings
 
         # Button
-        new_game_button = arcade.gui.UIFlatButton(text="Neues Spiel", width=gd.scale(290))
-        v_box.add(new_game_button.with_space_around(bottom=gd.scale(30)))
+        new_game_button = arcade.gui.UIFlatButton(text="Neues Spiel", width=gd.scale(290), height=gd.scale(40), style=style)
+        v_box.add(new_game_button.with_space_around(bottom=gd.scale(40)))
         new_game_button.on_click = self.on_click_new_game
 
         # Button
-        quit_button = arcade.gui.UIFlatButton(text="Spiel beenden", width=gd.scale(290))
-        v_box.add(quit_button.with_space_around(bottom=gd.scale(30)))
+        quit_button = arcade.gui.UIFlatButton(text="Spiel beenden", width=gd.scale(290), height=gd.scale(40), style=style)
+        v_box.add(quit_button.with_space_around(bottom=gd.scale(40)))
         quit_button.on_click = self.on_click_quit
 
         # Widget, das als Anker für die Buttons dient, damit diese zentriert angezeigt werden.

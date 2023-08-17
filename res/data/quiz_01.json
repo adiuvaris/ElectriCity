@@ -8,6 +8,7 @@
     {
       "Art": "Wortsuche",
       "Worte": ["STROMSTÄRKE", "ELEKTRISCH", "LADUNG"],
+      "Raster": 14,
       "Aufgabe": [
         "Suche im Buchstabengitter nach den unten stehenden Wörtern.",
         "Klicke jeweils auf den ersten und den letzten Buchstaben des Wortes."

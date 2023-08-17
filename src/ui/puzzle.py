@@ -140,14 +140,7 @@ class Puzzle(Task):
                     # Wenn alle Fragen beantwortet sind, dann kann der Spieler die View verlassen
                     if len(self.fragen) == 0:
                         self.correct = True
-
-                        # Aufgabentext auf der linken Seite
-                        aufgabe_text = self.aufgabe.copy()
-                        aufgabe_text.append("Mit der Esc-Taste geht es zum Spiel zurück.")
-                        self.aufgabe_text = AttributedText(
-                            x=gd.scale(20), y=gd.scale(20),
-                            width=gd.scale(400), height=gd.scale(300), text=aufgabe_text)
-                        self.manager.add(self.aufgabe_text)
+                        self.callback()
 
                     else:
                         # Nächste Frage anzeigen

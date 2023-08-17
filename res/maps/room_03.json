@@ -352,6 +352,22 @@
                  "height":32,
                  "id":61,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"next_map",
+                         "type":"string",
+                         "value":"city"
+                        }, 
+                        {
+                         "name":"start_x",
+                         "type":"int",
+                         "value":53
+                        }, 
+                        {
+                         "name":"start_y",
+                         "type":"int",
+                         "value":20
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,

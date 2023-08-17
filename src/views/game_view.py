@@ -63,7 +63,7 @@ class GameView(arcade.View):
 
         # Meldungstext init
         self.message = ""
-        self.title = arcade.Text("", 0, 0, arcade.color.BLACK, gd.scale(const.FONT_SIZE_H1), bold=True)
+        self.title = arcade.Text("", 0, 0, arcade.color.BLACK, gd.scale(const.FONT_SIZE_H2), bold=True, anchor_y="center")
 
         # Cameras
         self.camera_sprites = arcade.Camera(self.window.width, self.window.height)
@@ -154,14 +154,15 @@ class GameView(arcade.View):
 
         if len(self.message) > 0:
             self.title.text = self.message
-            self.title.x = self.player_sprite.center_x
-            self.title.y = self.player_sprite.center_y
 
             w = self.title.content_width
-            h = self.title.content_height
+            h = self.title.content_height * 1.2
 
             arcade.draw_rectangle_filled(
-                self.player_sprite.center_x + w / 2, self.player_sprite.center_y + h / 2, w, h, arcade.color.WHITE)
+                self.player_sprite.center_x + w / 2, self.player_sprite.center_y + h / 2, w, h, arcade.color.ALMOND)
+
+            self.title.x = self.player_sprite.center_x
+            self.title.y = self.player_sprite.center_y + h / 2
 
             self.title.draw()
 
@@ -381,7 +382,7 @@ class GameView(arcade.View):
                         # Es wurde noch nicht alle Aufgaben gelöst, also Meldung anzeigen
                         # und Quiz nicht starten
                         start_quiz = False
-                        self.message = f"Haus {check_room} ist noch nicht gelöst!"
+                        self.message = f"Haus {int(check_room)} ist noch nicht gelöst!"
 
                 if start_quiz:
                     arcade.play_sound(self.laser_sound, volume=gd.get_volume() / 100.0)
@@ -428,34 +429,49 @@ class GameView(arcade.View):
             # Ja - es gibt eine Kollision
             if len(views_hit) > 0:
 
-                arcade.play_sound(self.book_sound, volume=gd.get_volume() / 100.0)
-
                 # Detail holen, damit die View angezeigt werden kann
                 room_nr = views_hit[0].properties["room"]
                 book_nr = views_hit[0].properties["book"]
 
-                # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der Info-View
-                # nicht gleich wieder ein Hit erfolgt
-                if self.up_pressed:
-                    self.up_pressed = False
-                    self.player_sprite.center_y = views_hit[0].center_y - const.SPRITE_SIZE - const.SPRITE_SIZE / 2
+                start_book = True
 
-                if self.down_pressed:
-                    self.down_pressed = False
-                    self.player_sprite.center_y = views_hit[0].center_y + const.SPRITE_SIZE + const.SPRITE_SIZE / 2
+                # Ab Buch zwei prüfen, ob das vorherige Buch fertig gelöst wurde
+                if int(book_nr) > 1:
 
-                if self.left_pressed:
-                    self.left_pressed = False
-                    self.player_sprite.center_x = views_hit[0].center_x + const.SPRITE_SIZE + const.SPRITE_SIZE / 2
+                    # String mit vorherigem Raum basteln und prüfen
+                    check_book = str(int(book_nr) - 1).zfill(2)
+                    if not gd.has_all_tasks(room_nr, check_book):
+                        # Es wurde noch nicht alle Aufgaben gelöst, also Meldung anzeigen
+                        # und Buch nicht starten
+                        start_book = False
+                        self.message = f"Buch {int(check_book)} ist noch nicht gelöst!"
 
-                if self.right_pressed:
-                    self.right_pressed = False
-                    self.player_sprite.center_x = views_hit[0].center_x - const.SPRITE_SIZE - const.SPRITE_SIZE / 2
+                if start_book:
 
-                # Neue view anzeigen
-                v = BookView(room_nr, book_nr)
-                v.setup()
-                self.window.show_view(v)
+                    arcade.play_sound(self.book_sound, volume=gd.get_volume() / 100.0)
+
+                    # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der Info-View
+                    # nicht gleich wieder ein Hit erfolgt
+                    if self.up_pressed:
+                        self.up_pressed = False
+                        self.player_sprite.center_y = views_hit[0].center_y - const.SPRITE_SIZE - const.SPRITE_SIZE / 2
+
+                    if self.down_pressed:
+                        self.down_pressed = False
+                        self.player_sprite.center_y = views_hit[0].center_y + const.SPRITE_SIZE + const.SPRITE_SIZE / 2
+
+                    if self.left_pressed:
+                        self.left_pressed = False
+                        self.player_sprite.center_x = views_hit[0].center_x + const.SPRITE_SIZE + const.SPRITE_SIZE / 2
+
+                    if self.right_pressed:
+                        self.right_pressed = False
+                        self.player_sprite.center_x = views_hit[0].center_x - const.SPRITE_SIZE - const.SPRITE_SIZE / 2
+
+                    # Neue view anzeigen
+                    v = BookView(room_nr, book_nr)
+                    v.setup()
+                    self.window.show_view(v)
 
             else:
 

@@ -176,7 +176,7 @@ class BookView(arcade.View):
         # Titeltext oben in der Mitte
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
-                                   text=self.title,
+                                   text="Buch " + str(int(self.book_nr)) + " - " + self.title,
                                    text_color=[0, 0, 0],
                                    bold=True,
                                    align="center",
