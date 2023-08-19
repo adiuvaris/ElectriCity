@@ -184,7 +184,7 @@ class Memory(Task):
 
                 else:
                     # Die Karten passen nicht, "zur Strafe" muss der Spieler etwas warten
-                    time.sleep(2.0)
+                    time.sleep(1.0)
 
                     # Beide Karten wieder "umdrehen", also auf den Buttons die Rückseite anzeigen
                     mypath = gd.get_abs_path("res/images")
