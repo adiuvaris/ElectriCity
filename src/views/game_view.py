@@ -432,6 +432,11 @@ class GameView(arcade.View):
                 # Detail holen, damit die View angezeigt werden kann
                 room_nr = views_hit[0].properties["room"]
                 book_nr = views_hit[0].properties["book"]
+                if "correct" in views_hit[0].properties:
+                    res2 = eval(views_hit[0].properties["correct"])
+                    pass
+                if "wrong" in views_hit[0].properties:
+                    pass
 
                 start_book = True
 
