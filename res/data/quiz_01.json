@@ -7,7 +7,7 @@
   "Aufgaben": [
     {
       "Art": "Wortsuche",
-      "Worte": ["STROMSTÄRKE", "ELEKTRISCH", "LADUNG"],
+      "Worte": ["STROMSTÄRKE", "ELEKTRON", "LADUNG"],
       "Raster": 14,
       "Aufgabe": [
         "Suche im Buchstabengitter nach den unten stehenden Wörtern.",

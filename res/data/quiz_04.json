@@ -5,7 +5,7 @@
   "Aufgaben": [
     {
       "Art": "Wortsuche",
-      "Worte": ["SERIE", "PARALLEL", "SCHALTUNG"],
+      "Worte": ["SERIE", "AMPEREMETER", "SCHALTUNG"],
       "Raster": 17,
       "Aufgabe": [
         "Suche im Buchstabengitter nach den unten stehenden Wörtern.",
