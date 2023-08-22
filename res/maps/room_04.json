@@ -5,7 +5,7 @@
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJzFVEkKgDAQ04fp\/5\/lSZA42ezBgkjbOElmcdv+Wef+fth5i8P7JydqmM4nrQqH98iJutg5w6X3Tn+qO83TvT+KOiT+knw1fpyPJk6jc7W\/UU+6d34dnuVgtb4Kr\/QqnSmniuXq0\/pX+0bn17mdvmvrkfS5wjX+XL0Rn2CaPmznFbW0Pd\/6a2ZFxXA+GH7iTHPnfDBu5ifpX9WvDWeaKxZL4d2sKF1KW6px+kZxsXfS18jp\/jcOh\/ra1fwjvnKms9HmIfGV3qs5S+KhPubTnStcs46FnlDrAiZ8WFg=",
+         "data":"eJzFVFsOgzAMY4fZMbj\/tfY1CWXxsx+rhBCtcewEc13\/We\/X74X2U9w8f9acGrb9TSvDzfNZc+pC+wjnniv9rm63T9\/nO5iD48\/pV+JH+Uh5FLb9bjff8x3mS2lz8YjjdL7KizNj5qfJxsbtzg35Yc+OfoQ78ctqqryp+W6455mjwVkOTvWwyaGTT1Wz+a43zQrLuJUPpdntGdLo+mjyinQ3NVOfiItxIh3ucnxOPQ4ne4dlf9OV9grlDtVGWtP5pPeNL8mKqsH6wHym\/5cmh41Pto\/4m2zcB3li6wNmxzRL",
          "encoding":"base64",
          "height":29,
          "id":1,
@@ -91,8 +91,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":161.875598086124,
-                 "y":196.352762070465
+                 "x":158.875598086124,
+                 "y":200.102762070465
                 }, 
                 {
                  "gid":167,
@@ -114,8 +114,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":273.333333333333,
-                 "y":242.666666666667
+                 "x":288.583333333333,
+                 "y":260.916666666667
                 }, 
                 {
                  "gid":229,
@@ -137,8 +137,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":389.333333333333,
-                 "y":237.333333333333
+                 "x":415,
+                 "y":255
                 }, 
                 {
                  "gid":757,
@@ -160,8 +160,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":336,
-                 "y":358
+                 "x":352,
+                 "y":384.5
                 }, 
                 {
                  "gid":857,
@@ -183,8 +183,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":450,
-                 "y":241
+                 "x":479,
+                 "y":256
                 }, 
                 {
                  "gid":56,
@@ -206,8 +206,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":572,
-                 "y":689
+                 "x":605,
+                 "y":740
                 }, 
                 {
                  "gid":44,
@@ -229,8 +229,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":330,
-                 "y":472
+                 "x":352.333333333333,
+                 "y":511.333333333333
                 }, 
                 {
                  "gid":58,
@@ -252,8 +252,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":510,
-                 "y":687
+                 "x":542,
+                 "y":739
                 }, 
                 {
                  "gid":60,
@@ -275,36 +275,13 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":478,
-                 "y":778
+                 "x":509.5,
+                 "y":833
                 }, 
                 {
                  "gid":868,
                  "height":32,
                  "id":27,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"book",
-                         "type":"string",
-                         "value":"10"
-                        }, 
-                        {
-                         "name":"room",
-                         "type":"string",
-                         "value":"04"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":241,
-                 "y":721
-                }, 
-                {
-                 "gid":876,
-                 "height":32,
-                 "id":28,
                  "name":"",
                  "properties":[
                         {
@@ -321,8 +298,330 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":145,
-                 "y":780
+                 "x":254,
+                 "y":768
+                }, 
+                {
+                 "gid":876,
+                 "height":32,
+                 "id":28,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"12"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":158.5,
+                 "y":834
+                }, 
+                {
+                 "gid":66,
+                 "height":32,
+                 "id":31,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"10"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":415,
+                 "y":765
+                }, 
+                {
+                 "gid":1056,
+                 "height":32,
+                 "id":45,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"01"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":96.6666666666667,
+                 "y":135.333333333333
+                }, 
+                {
+                 "gid":1056,
+                 "height":32,
+                 "id":46,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"02"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":224,
+                 "y":262.666666666667
+                }, 
+                {
+                 "gid":1056,
+                 "height":32,
+                 "id":47,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"03"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":353.333333333333,
+                 "y":199.333333333333
+                }, 
+                {
+                 "gid":1056,
+                 "height":32,
+                 "id":48,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"04"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":288,
+                 "y":133.333333333333
+                }, 
+                {
+                 "gid":1056,
+                 "height":32,
+                 "id":49,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"05"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":417.333333333333,
+                 "y":326
+                }, 
+                {
+                 "gid":1056,
+                 "height":32,
+                 "id":50,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"06"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":159.333333333333,
+                 "y":553.333333333333
+                }, 
+                {
+                 "gid":1056,
+                 "height":32,
+                 "id":51,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"07"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":736.666666666667,
+                 "y":902.666666666667
+                }, 
+                {
+                 "gid":1056,
+                 "height":32,
+                 "id":52,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"08"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":480.666666666667,
+                 "y":645.333333333333
+                }, 
+                {
+                 "gid":1056,
+                 "height":32,
+                 "id":53,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"09"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":480.666666666667,
+                 "y":902
+                }, 
+                {
+                 "gid":1056,
+                 "height":32,
+                 "id":54,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"10"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":352,
+                 "y":838.666666666667
+                }, 
+                {
+                 "gid":1056,
+                 "height":32,
+                 "id":55,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"11"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":255.333333333333,
+                 "y":744
+                }, 
+                {
+                 "gid":1056,
+                 "height":32,
+                 "id":56,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"12"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":161.333333333333,
+                 "y":743.333333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -332,7 +631,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJzFVNsNhDAMK0LMwga3\/2j3hZQLfgU+DikqpAHbccp5rHX+IdDF8tO6vl8xOweUR1xVXd\/vmJ0Xy7O6dN\/xT3mnfULcnuhy88D8nPjwxu9a\/9l+I9HB+uHqKqbyk+lxfVBzcmFea6InmalEZ9fr5jnFRlG9THU6\/eqZ9faNr4lehdn5pudR1SnM6Xl0\/Uh0Kt3sSvqQYvbeTPQlmD2PvqF0qHOAMF1M\/Fb\/N6YPcXHznHJl33b\/pXSuHWat3dc9nE7FfReYlQ+6R2vlkMwi6zvSo\/QhncjXxJ\/pyvx05y3Ro\/rgdDJ+bL8+o3dRDp1Vp9PlVV3iZ6r\/aXwBpGRfuQ==",
+         "data":"eJzFkzEOxEAIA5O\/7f\/flHaFAI+hyElbHBCMbTjv85wfXvar4m5dzN+YcYYsns3a1cV8xIxzVfGqjubV\/HRuqlM224SX2ofKT8eHjd8uJtVD1akdcv2l9dRj11\/FJeboPlNs8ghPxb\/7P7kv926z7zrMOC+9x67uzrm8qe\/ObpB9rvh2OlDMqIXDj2Bu9lrVdz2yno7fGb7DTWk9wXR5Ur+q2SaP8HT1rDSqMDI9NlpFPh2\/albCV\/UkmJtbcTTNem95K79VzOXZxYmWzk1M76l7HxHHhBM=",
          "encoding":"base64",
          "height":29,
          "id":2,
@@ -345,7 +644,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":31,
+ "nextobjectid":57,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tiledversion":"1.10.1",
