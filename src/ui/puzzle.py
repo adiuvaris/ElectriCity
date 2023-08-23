@@ -96,8 +96,8 @@ class Puzzle(Task):
                 te = arcade.load_texture(path, x=0, y=0, width=400, height=400)
                 style = {"font_size": gd.scale(const.FONT_SIZE), "bg_color": (100, 100, 100)}
                 karte.button = arcade.gui.UITextureButton(
-                    x=gd.scale(x), y=gd.scale(y),
-                    width=gd.scale(w), height=gd.scale(h), texture=te, style=style)
+                    x=gd.scale(x+1), y=gd.scale(y+1),
+                    width=gd.scale(w-2), height=gd.scale(h-2), texture=te, style=style)
                 karte.button.on_click = self.on_puzzle_click
                 self.manager.add(karte.button)
 
@@ -130,9 +130,23 @@ class Puzzle(Task):
                     mypath = gd.get_abs_path("res/images")
                     filename = f"{mypath}/{self.bg_bild}"
                     if os.path.exists(filename):
+                        self.manager.remove(karte.button)
+
+                        # Teil des Hintergrundbildes extrahieren, der von der Karte verdeckt war
+                        w = 266
+                        h = 200
                         te = arcade.load_texture(
-                            filename, x=karte.position[0] * 265, y=(2 - karte.position[1]) * 200, width=265, height=200)
-                        karte.button.texture = te
+                            filename, x=karte.position[0] * w, y=(2 - karte.position[1]) * h, width=w, height=h)
+
+                        x = 460 + karte.position[0] * w
+                        y = 30 + karte.position[1] * h
+
+                        # Antwort-Karte mit Bildteil ersetzen
+                        style = {"font_size": gd.scale(const.FONT_SIZE), "bg_color": (100, 100, 100)}
+                        karte.button = arcade.gui.UITextureButton(
+                            x=gd.scale(x), y=gd.scale(y),
+                            width=gd.scale(w), height=gd.scale(h), texture=te, style=style)
+                        self.manager.add(karte.button)
 
                     # Aufgabentext entfernen, damit die nächste Frage angezeigt werden kann.
                     self.manager.remove(self.aufgabe_text)
@@ -140,7 +154,16 @@ class Puzzle(Task):
                     # Wenn alle Fragen beantwortet sind, dann kann der Spieler die View verlassen
                     if len(self.fragen) == 0:
                         self.correct = True
-                        self.callback()
+
+                        # Aufgabentext auf der linken Seite
+                        aufgabe_text = self.aufgabe.copy()
+                        aufgabe_text.append("Mit der Esc-Taste geht es zum Spiel zurück.")
+                        self.aufgabe_text = AttributedText(
+                            x=gd.scale(20), y=gd.scale(20),
+                            width=gd.scale(400), height=gd.scale(300), text=aufgabe_text)
+                        self.manager.add(self.aufgabe_text)
+
+                        # self.callback()
 
                     else:
                         # Nächste Frage anzeigen
@@ -159,7 +182,7 @@ class Puzzle(Task):
                     arcade.play_sound(self.lose_sound, volume=gd.get_volume() / 100.0)
 
                     # "Zur Strafe" muss der Spieler etwas warten
-                    time.sleep(2.0)
+                    time.sleep(1.0)
 
                 # Die Karte wurde gefunden, also können wir die Schleife verlassen
                 self.manager.trigger_render()
