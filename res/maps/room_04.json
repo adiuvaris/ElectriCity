@@ -359,6 +359,11 @@
                          "value":"01"
                         }, 
                         {
+                         "name":"help",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"04"
@@ -380,6 +385,11 @@
                          "name":"book",
                          "type":"string",
                          "value":"02"
+                        }, 
+                        {
+                         "name":"help",
+                         "type":"bool",
+                         "value":true
                         }, 
                         {
                          "name":"room",
@@ -405,6 +415,11 @@
                          "value":"03"
                         }, 
                         {
+                         "name":"help",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"04"
@@ -426,6 +441,11 @@
                          "name":"book",
                          "type":"string",
                          "value":"04"
+                        }, 
+                        {
+                         "name":"help",
+                         "type":"bool",
+                         "value":true
                         }, 
                         {
                          "name":"room",
@@ -451,6 +471,11 @@
                          "value":"05"
                         }, 
                         {
+                         "name":"help",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"04"
@@ -472,6 +497,11 @@
                          "name":"book",
                          "type":"string",
                          "value":"06"
+                        }, 
+                        {
+                         "name":"help",
+                         "type":"bool",
+                         "value":true
                         }, 
                         {
                          "name":"room",
@@ -497,6 +527,11 @@
                          "value":"07"
                         }, 
                         {
+                         "name":"help",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"04"
@@ -518,6 +553,11 @@
                          "name":"book",
                          "type":"string",
                          "value":"08"
+                        }, 
+                        {
+                         "name":"help",
+                         "type":"bool",
+                         "value":true
                         }, 
                         {
                          "name":"room",
@@ -543,6 +583,11 @@
                          "value":"09"
                         }, 
                         {
+                         "name":"help",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"04"
@@ -566,6 +611,11 @@
                          "value":"10"
                         }, 
                         {
+                         "name":"help",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"04"
@@ -587,6 +637,11 @@
                          "name":"book",
                          "type":"string",
                          "value":"11"
+                        }, 
+                        {
+                         "name":"help",
+                         "type":"bool",
+                         "value":true
                         }, 
                         {
                          "name":"room",
