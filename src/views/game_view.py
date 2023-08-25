@@ -502,6 +502,24 @@ class GameView(arcade.View):
                     # Wenn das Buch gesperrt ist, dann Meldung anzeigen und Buch nicht öffnen
                     if gd.is_book_locked(room_nr, book_nr):
 
+                        # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der View
+                        # nicht gleich wieder ein Hit erfolgt
+                        if self.up_pressed:
+                            self.up_pressed = False
+                            self.player_sprite.center_y = views_hit[0].center_y - const.SPRITE_SIZE
+
+                        if self.down_pressed:
+                            self.down_pressed = False
+                            self.player_sprite.center_y = views_hit[0].center_y + const.SPRITE_SIZE
+
+                        if self.left_pressed:
+                            self.left_pressed = False
+                            self.player_sprite.center_x = views_hit[0].center_x + const.SPRITE_SIZE
+
+                        if self.right_pressed:
+                            self.right_pressed = False
+                            self.player_sprite.center_x = views_hit[0].center_x - const.SPRITE_SIZE
+
                         # Hint-Meldung für 4 Tastendrücke lang anzeigen
                         self.hint_message = "Suche nach Hilfe."
                         self.hint_show = 4
@@ -519,25 +537,25 @@ class GameView(arcade.View):
                                 start_book = False
                                 self.message = f"Buch {int(check_book)} ist noch nicht gelöst!"
 
-                # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der View
-                # nicht gleich wieder ein Hit erfolgt
-                if self.up_pressed:
-                    self.up_pressed = False
-                    self.player_sprite.center_y = views_hit[0].center_y - const.SPRITE_SIZE
-
-                if self.down_pressed:
-                    self.down_pressed = False
-                    self.player_sprite.center_y = views_hit[0].center_y + const.SPRITE_SIZE
-
-                if self.left_pressed:
-                    self.left_pressed = False
-                    self.player_sprite.center_x = views_hit[0].center_x + const.SPRITE_SIZE
-
-                if self.right_pressed:
-                    self.right_pressed = False
-                    self.player_sprite.center_x = views_hit[0].center_x - const.SPRITE_SIZE
-
                 if start_book:
+
+                    # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der View
+                    # nicht gleich wieder ein Hit erfolgt
+                    if self.up_pressed:
+                        self.up_pressed = False
+                        self.player_sprite.center_y = views_hit[0].center_y - const.SPRITE_SIZE
+
+                    if self.down_pressed:
+                        self.down_pressed = False
+                        self.player_sprite.center_y = views_hit[0].center_y + const.SPRITE_SIZE
+
+                    if self.left_pressed:
+                        self.left_pressed = False
+                        self.player_sprite.center_x = views_hit[0].center_x + const.SPRITE_SIZE
+
+                    if self.right_pressed:
+                        self.right_pressed = False
+                        self.player_sprite.center_x = views_hit[0].center_x - const.SPRITE_SIZE
 
                     arcade.play_sound(self.book_sound, volume=gd.get_volume() / 100.0)
 
