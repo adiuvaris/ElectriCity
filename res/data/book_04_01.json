@@ -1,0 +1,25 @@
+{
+  "Titel": "Serienschaltung",
+  "Theorie": [
+    "Wiederholungsfrage zum Einstieg."
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Exit" : true,
+      "Aufgabe": [
+        "Wie heisst die Einheit eines elektrischen Widerstands?",
+        "Klicke auf die richtige Antwort."
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Ampère",
+        "B" : "Ohm",
+        "C" : "Volt",
+        "D" : "Watt"
+      },
+      "Richtig" : "B",
+      "Tipp" : "Suche nach der Erklärung."
+    }
+  ]
+}

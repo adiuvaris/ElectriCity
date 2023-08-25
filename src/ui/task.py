@@ -17,6 +17,7 @@ class Task:
         # Member definieren
         self.aufgabe = []
         self.tipp = ""
+        self.exit_task = False
 
         self.input_answer = None
         self.manager = None
@@ -32,6 +33,9 @@ class Task:
 
         if "Tipp" in aufgabe:
             self.tipp = aufgabe["Tipp"]
+
+        if "Exit" in aufgabe:
+            self.exit_task = aufgabe["Exit"]
 
     def create_ui(self, ui_manager: arcade.gui.UIManager, callback):
         """

@@ -1,3 +1,4 @@
+import os
 import json
 
 import arcade
@@ -89,18 +90,35 @@ class BookView(arcade.View):
 
     def on_end_task(self):
         """
-        Eine Aufgabe wurde erledigt, also die nächste anzeigen
+        Eine Aufgabe wurde erledigt, also die nächste anzeigen oder View verlassen bei Exit
         """
 
-        # Ist die Aufgabe gelöst?
-        if self.tasks[self.cur_task].correct:
+        if self.tasks[self.cur_task].exit_task:
 
-            # Aufgabe in den Spieler-Daten als gelöst markieren
-            gd.set_task(self.room_nr, self.book_nr, self.cur_task)
+            if self.tasks[self.cur_task].correct:
 
-            # Nächste Aufgabe anzeigen, wenn es eine hat
-            self.cur_task = self.cur_task + 1
-            self.create_ui()
+                # Aufgabe in den Spieler-Daten als gelöst markieren
+                gd.set_task(self.room_nr, self.book_nr, self.cur_task)
+                gd.unlock_book(self.room_nr, self.book_nr)
+
+            else:
+
+                # Aufgabe in den Spieler-Daten als ungelöst markieren und das Buck sperren
+                gd.reset_task(self.room_nr, self.book_nr, self.cur_task)
+                gd.lock_book(self.room_nr, self.book_nr)
+
+            self.window.show_view(self.window.game_view)
+
+        else:
+            # Ist die Aufgabe gelöst?
+            if self.tasks[self.cur_task].correct:
+
+                # Aufgabe in den Spieler-Daten als gelöst markieren
+                gd.set_task(self.room_nr, self.book_nr, self.cur_task)
+
+                # Nächste Aufgabe anzeigen, wenn es eine hat
+                self.cur_task = self.cur_task + 1
+                self.create_ui()
 
     def read_book(self):
         """
@@ -109,59 +127,62 @@ class BookView(arcade.View):
 
         # JSON-File für Buch einlesen
         mypath = gd.get_abs_path("res/data")
-        with open(f"{mypath}/book_{self.room_nr}_{self.book_nr}.json", "r", encoding="'utf-8") as ifile:
+        filename = f"{mypath}/book_{self.room_nr}_{self.book_nr}.json"
+        if os.path.exists(filename):
 
-            # date bekommt die JSON-Struktur des Buchs
-            data = json.load(ifile)
+            with open(filename, "r", encoding="'utf-8") as ifile:
 
-            # Titel-Element einlesen
-            if "Titel" in data:
-                self.title = data["Titel"]
+                # date bekommt die JSON-Struktur des Buchs
+                data = json.load(ifile)
 
-            # Theorie-Text Element einlesen
-            self.theory = Theory()
-            if "Theorie" in data:
-                self.theory.text = data["Theorie"]
+                # Titel-Element einlesen
+                if "Titel" in data:
+                    self.title = data["Titel"]
 
-            # Audio Elemente einlesen
-            if "Audios" in data:
-                audios = data["Audios"]
-                for audio in audios:
-                    media = Media("audio")
-                    if "Datei" in audio:
-                        media.filename = audio["Datei"]
-                    if "Titel" in audio:
-                        media.title = audio["Titel"]
-                    if "Beschreibung" in audio:
-                        media.description = audio["Beschreibung"]
-                    if "Illustration" in audio:
-                        media.illustration = audio["Illustration"]
-                    self.theory.medias.append(media)
+                # Theorie-Text Element einlesen
+                self.theory = Theory()
+                if "Theorie" in data:
+                    self.theory.text = data["Theorie"]
 
-            # Bild Elemente einlesen
-            if "Bilder" in data:
-                bilder = data["Bilder"]
-                for bild in bilder:
-                    image = Media("image")
-                    if "Datei" in bild:
-                        image.filename = bild["Datei"]
-                    if "Titel" in bild:
-                        image.title = bild["Titel"]
-                    if "Beschreibung" in bild:
-                        image.description = bild["Beschreibung"]
-                    if "Frames" in bild:
-                        image.frames = bild["Frames"]
-                    self.theory.medias.append(image)
+                # Audio Elemente einlesen
+                if "Audios" in data:
+                    audios = data["Audios"]
+                    for audio in audios:
+                        media = Media("audio")
+                        if "Datei" in audio:
+                            media.filename = audio["Datei"]
+                        if "Titel" in audio:
+                            media.title = audio["Titel"]
+                        if "Beschreibung" in audio:
+                            media.description = audio["Beschreibung"]
+                        if "Illustration" in audio:
+                            media.illustration = audio["Illustration"]
+                        self.theory.medias.append(media)
 
-            # Aufgaben Elemente einlesen
-            if "Aufgaben" in data:
-                aufgaben = data["Aufgaben"]
-                for aufgabe in aufgaben:
-                    task = create_task(aufgabe)
-                    self.tasks.append(task)
+                # Bild Elemente einlesen
+                if "Bilder" in data:
+                    bilder = data["Bilder"]
+                    for bild in bilder:
+                        image = Media("image")
+                        if "Datei" in bild:
+                            image.filename = bild["Datei"]
+                        if "Titel" in bild:
+                            image.title = bild["Titel"]
+                        if "Beschreibung" in bild:
+                            image.description = bild["Beschreibung"]
+                        if "Frames" in bild:
+                            image.frames = bild["Frames"]
+                        self.theory.medias.append(image)
 
-            # Buch in den Spieler-Daten eintragen
-            gd.init_book(self.room_nr, self.book_nr, len(self.tasks))
+                # Aufgaben Elemente einlesen
+                if "Aufgaben" in data:
+                    aufgaben = data["Aufgaben"]
+                    for aufgabe in aufgaben:
+                        task = create_task(aufgabe)
+                        self.tasks.append(task)
+
+                # Buch in den Spieler-Daten eintragen
+                gd.init_book(self.room_nr, self.book_nr, len(self.tasks))
 
     def create_ui(self):
         """

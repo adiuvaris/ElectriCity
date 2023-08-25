@@ -6,6 +6,7 @@ from pyglet.math import Vec2
 
 import src.const as const
 from src.data.game import gd
+from src.data.labyrinth import Labyrinth
 from src.sprites.player import Player
 from src.views.book_view import BookView
 from src.views.help_view import HelpView
@@ -62,12 +63,17 @@ class GameView(arcade.View):
         self.my_map = None
 
         # Meldungstext init
+        self.hint_message = ""
+        self.hint_show = 0
         self.message = ""
         self.title = arcade.Text("", 0, 0, arcade.color.BLACK, gd.scale(const.FONT_SIZE_H2), bold=True, anchor_y="center")
 
         # Cameras
         self.camera_sprites = arcade.Camera(self.window.width, self.window.height)
         self.camera_gui = arcade.Camera(self.window.width, self.window.height)
+
+        # Infos bei Labyrinth Aufgabe
+        self.labyrinth = None
 
     def switch_map(self, map_name, start_x, start_y):
         """
@@ -166,6 +172,21 @@ class GameView(arcade.View):
 
             self.title.draw()
 
+        # Soll ein Hint angezeigt werden
+        if len(self.hint_message) > 0 and self.hint_show > 0:
+            self.title.text = self.hint_message
+
+            w = self.title.content_width
+            h = self.title.content_height * 1.2
+
+            arcade.draw_rectangle_filled(
+                self.player_sprite.center_x + w / 2, self.player_sprite.center_y + h / 2, w, h, arcade.color.ALMOND)
+
+            self.title.x = self.player_sprite.center_x
+            self.title.y = self.player_sprite.center_y + h / 2
+
+            self.title.draw()
+
         # Kameraposition anpassen
         self.camera_gui.use()
 
@@ -199,6 +220,22 @@ class GameView(arcade.View):
 
         # Player Avatar setzen
         self.player_sprite.set_avatar(gd.get_avatar())
+
+        # War eine Labyrinth-Aufgabe aktiv
+        if self.labyrinth is not None:
+
+            # Wurde die Aufgabe gelöst oder nicht?
+            if gd.has_all_tasks(self.labyrinth.book_nr, self.labyrinth.room_nr):
+                start_x = self.labyrinth.correct[0]
+                start_y = self.labyrinth.correct[1]
+            else:
+                start_x = self.labyrinth.wrong[0]
+                start_y = self.labyrinth.wrong[1]
+
+            # Den Avatar platzieren bei Labyrinth-Aufgabe
+            map_height = self.my_map.map_size[1]
+            self.player_sprite.center_x = (start_x * const.SPRITE_SIZE + const.SPRITE_SIZE / 2)
+            self.player_sprite.center_y = (map_height - start_y) * const.SPRITE_SIZE - const.SPRITE_SIZE / 2
 
     def on_hide_view(self):
         """
@@ -429,63 +466,101 @@ class GameView(arcade.View):
             # Ja - es gibt eine Kollision
             if len(views_hit) > 0:
 
-                # Detail holen, damit die View angezeigt werden kann
-                room_nr = views_hit[0].properties["room"]
-                book_nr = views_hit[0].properties["book"]
-                if "correct" in views_hit[0].properties:
-                    res2 = eval(views_hit[0].properties["correct"])
-                    pass
-                if "wrong" in views_hit[0].properties:
-                    pass
-
+                # Steuer-Flags
                 start_book = True
+                help_view = False
+                self.labyrinth = None
 
-                # Ab Buch zwei prüfen, ob das vorherige Buch fertig gelöst wurde
-                if int(book_nr) > 1:
+                # Detail holen, damit die View angezeigt werden kann - room und book müssen vorhanden sein.
+                if "room" in views_hit[0].properties:
+                    room_nr = views_hit[0].properties["room"]
+                else:
+                    return
 
-                    # String mit vorherigem Raum basteln und prüfen
-                    check_book = str(int(book_nr) - 1).zfill(2)
-                    if not gd.has_all_tasks(room_nr, check_book):
-                        # Es wurde noch nicht alle Aufgaben gelöst, also Meldung anzeigen
-                        # und Buch nicht starten
+                if "book" in views_hit[0].properties:
+                    book_nr = views_hit[0].properties["book"]
+                else:
+                    return
+
+                # handelt es sich un eine View mit Erklärungen
+                if "help" in views_hit[0].properties:
+                    help_view = True
+
+                # Hat es Attribute für ein Buch im Labyrinth
+                if "correct" in views_hit[0].properties and "wrong" in views_hit[0].properties:
+                    correct = eval(views_hit[0].properties["correct"])
+                    wrong = eval(views_hit[0].properties["wrong"])
+                    self.labyrinth = Labyrinth(room_nr, book_nr, correct, wrong)
+
+                # Sind wir bei einer Erklärung
+                if help_view:
+                    # Wenn die Hilfe angezeigt wurde, dann ist das entsprechende Buch wieder frei.
+                    self.hint_message = ""
+                    gd.unlock_book(room_nr, book_nr)
+
+                else:
+                    # Wenn das Buch gesperrt ist, dann Meldung anzeigen und Buch nicht öffnen
+                    if gd.is_book_locked(room_nr, book_nr):
+
+                        # Hint-Meldung für 4 Tastendrücke lang anzeigen
+                        self.hint_message = "Suche nach Hilfe."
+                        self.hint_show = 4
                         start_book = False
-                        self.message = f"Buch {int(check_book)} ist noch nicht gelöst!"
+
+                    else:
+                        # Ab Buch zwei prüfen, ob das vorherige Buch fertig gelöst wurde - nicht bei help_view
+                        if int(book_nr) > 1:
+
+                            # String mit vorherigem Raum basteln und prüfen
+                            check_book = str(int(book_nr) - 1).zfill(2)
+                            if not gd.has_all_tasks(room_nr, check_book):
+                                # Es wurde noch nicht alle Aufgaben gelöst, also Meldung anzeigen
+                                # und Buch nicht starten
+                                start_book = False
+                                self.message = f"Buch {int(check_book)} ist noch nicht gelöst!"
+
+                # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der View
+                # nicht gleich wieder ein Hit erfolgt
+                if self.up_pressed:
+                    self.up_pressed = False
+                    self.player_sprite.center_y = views_hit[0].center_y - const.SPRITE_SIZE
+
+                if self.down_pressed:
+                    self.down_pressed = False
+                    self.player_sprite.center_y = views_hit[0].center_y + const.SPRITE_SIZE
+
+                if self.left_pressed:
+                    self.left_pressed = False
+                    self.player_sprite.center_x = views_hit[0].center_x + const.SPRITE_SIZE
+
+                if self.right_pressed:
+                    self.right_pressed = False
+                    self.player_sprite.center_x = views_hit[0].center_x - const.SPRITE_SIZE
 
                 if start_book:
 
                     arcade.play_sound(self.book_sound, volume=gd.get_volume() / 100.0)
 
-                    # Player positionieren und Bewegung stoppen, damit nach dem Schliessen der Info-View
-                    # nicht gleich wieder ein Hit erfolgt
-                    if self.up_pressed:
-                        self.up_pressed = False
-                        self.player_sprite.center_y = views_hit[0].center_y - const.SPRITE_SIZE - const.SPRITE_SIZE / 2
+                    # Neue view anzeigen - Buch oder Hilfe
+                    if help_view:
+                        help_file = f"help_{room_nr}_{book_nr}.json"
+                        v = HelpView(help_file, self)
+                        v.setup()
+                        self.window.show_view(v)
 
-                    if self.down_pressed:
-                        self.down_pressed = False
-                        self.player_sprite.center_y = views_hit[0].center_y + const.SPRITE_SIZE + const.SPRITE_SIZE / 2
-
-                    if self.left_pressed:
-                        self.left_pressed = False
-                        self.player_sprite.center_x = views_hit[0].center_x + const.SPRITE_SIZE + const.SPRITE_SIZE / 2
-
-                    if self.right_pressed:
-                        self.right_pressed = False
-                        self.player_sprite.center_x = views_hit[0].center_x - const.SPRITE_SIZE - const.SPRITE_SIZE / 2
-
-                    # Neue view anzeigen
-                    v = BookView(room_nr, book_nr)
-                    v.setup()
-                    self.window.show_view(v)
+                    else:
+                        v = BookView(room_nr, book_nr)
+                        v.setup()
+                        self.window.show_view(v)
 
             else:
 
-                # Keine Türe getroffen, also normal scrollen, damit Player Sprite
+                # Keine View getroffen, also normal scrollen, damit Player Sprite
                 # etwa in der Mitte des Fensters bleibt.
                 self.scroll_to_player()
         else:
 
-            # Keine Türe, also normal scrollen
+            # Keine View, also normal scrollen
             self.scroll_to_player()
 
     def on_key_press(self, key, modifiers):
@@ -536,6 +611,10 @@ class GameView(arcade.View):
             self.left_pressed = False
         elif key in const.KEY_RIGHT:
             self.right_pressed = False
+
+        # Tastendrücke für Hint-Text-Anzeige reduzieren.
+        if self.hint_show > 0:
+            self.hint_show = self.hint_show - 1
 
     def on_resize(self, width, height):
         """

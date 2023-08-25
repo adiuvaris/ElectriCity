@@ -25,6 +25,7 @@ class GameData(object):
         # Member definieren
         self.player_name = ""
         self.game_data = {}
+        self.buch_lock = ""
 
     def get_scale(self):
         """
@@ -230,6 +231,24 @@ class GameData(object):
         # Aktuelle Struktur speichern
         self.save_game_data()
 
+    def reset_task(self, room_nr: str, book_nr: str, task_nr: int):
+        """
+        Aufgabe als nicht erledigt eintragen
+        :param room_nr: Raum z.B. "02"
+        :param book_nr: Buch z.B. "03"
+        :param task_nr: Gelöste Aufgabe
+        """
+
+        # Sicherstellen, dass die Aufgabe in der Struktur vorhanden ist
+        self.init_book(room_nr, book_nr, task_nr)
+
+        # Und dann als erledigt kennzeichnen
+        books = self.get_books()
+        books[room_nr][book_nr][task_nr] = False
+
+        # Aktuelle Struktur speichern
+        self.save_game_data()
+
     def get_task(self, room_nr: str, book_nr: str, task_nr: int):
         """
         Liefert zurück, ob eine Aufgabe gelöst wurde
@@ -301,6 +320,33 @@ class GameData(object):
 
         # Aktuelle Struktur speichern
         self.save_game_data()
+
+    def lock_book(self, room_nr: str, book_nr: str):
+        """
+        Buch sperren
+        :param room_nr: Raum z.B. "02"
+        :param book_nr: Buch z.B. "03"
+        """
+        self.buch_lock = room_nr + book_nr
+
+    def unlock_book(self, room_nr: str, book_nr: str):
+        """
+        Sperrung auf Buch aufheben
+        :param room_nr: Raum z.B. "02"
+        :param book_nr: Buch z.B. "03"
+        """
+        self.buch_lock = ""
+
+    def is_book_locked(self, room_nr: str, book_nr: str):
+        """
+        Ist ein Buch gesperrt?
+        :param room_nr: Raum z.B. "02"
+        :param book_nr: Buch z.B. "03"
+        """
+        if self.buch_lock == room_nr + book_nr:
+            return True
+
+        return False
 
     @staticmethod
     def delete_game_data(player_name):

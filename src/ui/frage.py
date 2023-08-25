@@ -265,6 +265,6 @@ class Frage(Task):
         # Von nun an sind Eingaben wieder möglich
         self.msg_active = False
 
-        # Wenn die Aufgabe gelöst wurde, dann die View informieren
-        if self.correct:
+        # Wenn die Aufgabe gelöst wurde, dann die View informieren oder wenn exit_task aktiv ist.
+        if self.correct or self.exit_task:
             self.callback()
