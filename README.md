@@ -3,7 +3,10 @@
 *Python Programm - Lernspiel*
 
 * **Kategorie** Lernspiel
-* **Autorinnen** Lea Hodel <lea.hodel@students.ksba.ch>, Sarah Mehl <sarah.mehl@students.ksba.ch>, Gülbahar Kaya <guelbahar.kaya@students.ksba.ch>
+* **Autorinnen** 
+   * Lea Hodel <lea.hodel@students.ksba.ch> 
+   * Sarah Mehl <sarah.mehl@students.ksba.ch> 
+   * Gülbahar Kaya <guelbahar.kaya@students.ksba.ch>
 * **Copyright**    2023 Lea Hodel, Sarah Mehl, Gülbahar Kaya
 * **Lizenz**       http://www.gnu.org/copyleft/lesser.html GNU-LGPL v3 (see LICENSE.TXT)
 * **Source**       https://github.com/adiuvaris/ElectriCity
@@ -15,16 +18,14 @@ Ein Lernspiel für das Physik-Thema Elektrizität.
 
 
 ### Features:
-* Theorie
+* Welt mit Häusern und Räumen
+* Theorie und Aufgaben
+* Verschiedene Aufgabentypen (Fragen, Memory, Puzzle, Wortsuche, Labyrinth)
 
 
 ## Installation
 
-Es gibt (noch) keine Installation für dieses Programm. 
-Mit folgenden Schritten kann das Spiel ausgeführt werden:
-1. Python installieren. (eine Version >=3.11)
-2. Source herunter laden und in das Verzeichnis wechseln
-3. pip install --user -r requirements.txt && python main.py
+Auf der Seite https://electricity.adiuvaris.ch gibt es Downloads für Windows und Mac 
 
 
 

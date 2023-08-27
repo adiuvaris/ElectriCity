@@ -7,6 +7,9 @@ import arcade.gui
 import src.const as const
 from src.data.game import gd
 from src.ui.attributed_text import AttributedText
+from src.data.media import Media
+from src.views.image_view import ImageView
+from src.views.audio_view import AudioView
 
 
 class HelpView(arcade.View):
@@ -26,6 +29,7 @@ class HelpView(arcade.View):
         self.parent = parent
         self.text = []
         self.titel = ""
+        self.medias = []
 
         # JSON-File für Text einlesen
         mypath = gd.get_abs_path("res/data")
@@ -37,6 +41,36 @@ class HelpView(arcade.View):
                     self.titel = data["Titel"]
                 if "Text" in data:
                     self.text = data["Text"]
+
+                # Audio Elemente einlesen
+                if "Audios" in data:
+                    audios = data["Audios"]
+                    for audio in audios:
+                        media = Media("audio")
+                        if "Datei" in audio:
+                            media.filename = audio["Datei"]
+                        if "Titel" in audio:
+                            media.title = audio["Titel"]
+                        if "Beschreibung" in audio:
+                            media.description = audio["Beschreibung"]
+                        if "Illustration" in audio:
+                            media.illustration = audio["Illustration"]
+                        self.medias.append(media)
+
+                # Bild Elemente einlesen
+                if "Bilder" in data:
+                    bilder = data["Bilder"]
+                    for bild in bilder:
+                        image = Media("image")
+                        if "Datei" in bild:
+                            image.filename = bild["Datei"]
+                        if "Titel" in bild:
+                            image.title = bild["Titel"]
+                        if "Beschreibung" in bild:
+                            image.description = bild["Beschreibung"]
+                        if "Frames" in bild:
+                            image.frames = bild["Frames"]
+                        self.medias.append(image)
 
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
@@ -109,7 +143,47 @@ class HelpView(arcade.View):
                                    multiline=False)
         self.manager.add(titel.with_border())
 
+        b = gd.scale(5)
+
         text = AttributedText(x=gd.scale(240), y=gd.scale(120),
-                              width=gd.scale(800), height=gd.scale(520), text=self.text)
+                              width=gd.scale(800),
+                              height=gd.scale(520),
+                              text=self.text).with_space_around(b, b, b, b).with_border()
 
         self.manager.add(text)
+
+        # Buttons für Medien erzeugen
+        w = gd.scale(190)
+        h = gd.scale(30)
+        y = gd.scale(610)
+        x = gd.scale(1060)
+        for medium in self.medias:
+            medium: Media = medium
+
+            style = {"font_size": gd.scale(const.FONT_SIZE), "bg_color": (100, 100, 100)}
+            ib = arcade.gui.UIFlatButton(x=x, y=y, width=w, height=h, text=medium.description, style=style)
+            ib.on_click = self.on_media_click
+            self.manager.add(ib)
+            y = y - gd.scale(50)
+
+    def on_media_click(self, event):
+        """
+        Callback für die Ausgabe eines Mediums (Bild, Audio etc.)
+        :param event: Event von Arcade
+        """
+
+        # Medium suchen auf das geklickt wurde
+        for media in self.medias:
+            medium: Media = media
+
+            if event.source.text == medium.description:
+                if medium.typ == "image":
+
+                    # Bild anzeigen
+                    image_view = ImageView(medium, self)
+                    self.parent.window.show_view(image_view)
+                elif media.typ == "audio":
+
+                    # Sound ausgeben
+                    audio_view = AudioView(medium, self)
+                    self.parent.window.show_view(audio_view)
