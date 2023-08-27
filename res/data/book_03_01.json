@@ -1,99 +1,52 @@
 {
-  "Titel": "Strom Spannung und Widerstand",
+  "Titel": "Ohmsches Gesetz",
   "Theorie": [
-    "Hier sollst du die Zusammenhänge von Strom, Widerstand, Spannung und Leistung besser kennen lernen. Du brauchst dazu die beiden Formeln <i>U = R · I</i> und <i>P = U · I</i>."
+    "Das Ohm’sche Gesetz besagt, dass die Spannung proportional zur Stromstärke zunimmt. Die Proportionalitätskonstante ist der elektrische Widerstand <i>R</i>. Dabei ist wichtig: Das Ohm’sche Gesetz gilt <b>nur</b> für Ohm’sche Widerstände. Alle anderen Bauteile/elektrischen Geräte müssen keine Ohm’sche Widerstände sein.",
+    "Damit ergibt sich die Formel für den Zusammenhang von Strom, Spannung und Widerstand: <i>U = R · I</i>"
   ],
-    "Bilder": [
+  "Bilder": [
     {
       "Datei": "pic_03_01_1.png",
-      "Titel": "Das Bild zeigt zwei Vögel auf einer Stromleitung",
-      "Beschreibung": "Vögel"
+      "Titel": "Kennlinien",
+      "Beschreibung": "Kennlinien"
+    },
+    {
+      "Datei": "pic_03_01_2.png",
+      "Titel": "Stromkreis mit Widerstand",
+      "Beschreibung": "Stromkreis"
     }
   ],
-
   "Aufgaben": [
-        {
-      "Art": "Puzzle",
-      "Bild": "puz_01_bg.png",
-      "Fragen": [
-        {
-          "Key" : "k1",
-          "Text": "Vögel auf der Leitung (Bild <i><b>Vögel</b></i>: Durch beide Leitungen fliesst der gleiche Strom. Ist der linke Vogel empfindlicher?"
-        },
-        {
-          "Key" : "k2",
-          "Text": "Der Widerstand nimmt mit wachsender Stromstärke unter der Voraussetzung, dass sich die Spannung nicht ändert …?"
-        },
-        {
-          "Key" : "k3",
-          "Text": "Der Widerstand nimmt mit abnehmender Spannung unter der Voraussetzung, dass sich die Stromstärke nicht ändert …?"
-        },
-        {
-          "Key" : "k4",
-          "Text": "Wenn R gleich bleibt und U halbiert wird, dann … sich I."
-        },
-        {
-          "Key" : "k5",
-          "Text": "Wenn I gleich bleibt und R verdoppelt wird, dann … sich die Spannung, die über dem Widerstand abfällt."
-        },
-        {
-          "Key" : "k6",
-          "Text": "Formel für die Leistung aus Strom und Widerstand"
-        },
-        {
-          "Key" : "k7",
-          "Text": "Formel für die Leistung aus Spannung und Widerstand"
-        },
-        {
-          "Key" : "k8",
-          "Text": "Wenn R gleich bleibt und I halbiert wird, dann … sich P."
-        },
-        {
-          "Key" : "k9",
-          "Text": "Wenn R gleich bleibt und I verdoppelt wird, dann … sich P."
-        }
-      ],
-      "Karten": [
-        {
-          "Key" : "k1",
-          "Bild": "puz_k1.png"
-        },
-        {
-          "Key" : "k2",
-          "Bild": "puz_k2.png"
-        },
-        {
-          "Key" : "k3",
-          "Bild": "puz_k3.png"
-        },
-        {
-          "Key" : "k4",
-          "Bild": "puz_k4.png"
-        },
-        {
-          "Key" : "k5",
-          "Bild": "puz_k5.png"
-        },
-        {
-          "Key" : "k6",
-          "Bild": "puz_k6.png"
-        },
-        {
-          "Key" : "k7",
-          "Bild": "puz_k7.png"
-        },
-        {
-          "Key" : "k8",
-          "Bild": "puz_k8.png"
-        },
-        {
-          "Key" : "k9",
-          "Bild": "puz_k9.png"
-        }
-      ],
+    {
+      "Art": "Frage",
       "Aufgabe": [
-        "Klicke rechts auf die Antwort, die zur untenstehenden Frage passt."
-      ]
+        "Welche Abbildung im Bild <i><b>Kennlinien</b></i> stellt ein Ohmsches Gesetz dar?"
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Diagramm a",
+        "B" : "Diagramm b",
+        "C" : "Diagramm c",
+        "D" : "Diagramm d"
+      },
+      "Richtig" : "B",
+      "Tipp" : "Die Formel stellt eine einfach Proportionalität dar."
+    },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Abbildung <i><b>Stromkreis</b></i> zeigt einen Stromkreis mit einem Widerstand.",
+        "Wie gross ist die Stromstärke I in Ampère, wenn die Spannungsquelle <V1> Volt liefert und der Widerstand R = <V2> Ohm hat?",
+        "Gib das Ergebnis mit zwei Nachkommastellen ein."
+      ],
+      "Variablen": {
+        "V1": [20, 50, 100, 230, 380],
+        "V2": [100, 200, 300, 400, 500]
+      },
+      "Typ": "Zahl",
+      "Richtig": "V1 / V2",
+      "Nachkommastellen": 2,
+      "Tipp" : "Du musst die Formel U=R·I nach I auflösen und dann die Werte einsetzen."
     }
   ]
 }
