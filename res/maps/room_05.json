@@ -5,7 +5,7 @@
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJy1UlsOwCAMclfx\/odc9rGfhvKo0cQ4p1CK7GetfTi\/4dxJR8I\/1VxrdfVS3XVN\/GLnVTfaq5qoX4Z1NSuO1FMXz3hdjxFm6kXHr3yq\/6sWhb2RM+Xz5G1ZHlmPTm2E7b7dbCZvzfQrDzss69XB\/vvUE1cP2qP7nS\/Ke6ceWt13Q0PpUZhp7tycp7ljZ2ntysP6VPyOrim\/8ukWv3vO+j\/hVz12dzsdSt9Jvt055X8BPM0\/Tg==",
+         "data":"eJy1k1EOwCAIQ91VvP8hl\/0tBNoHRhLjmFJKwf2stQ\/XZ+RO1zr4U84xV5WvyzvuHb3UeeSd+S5nVq+KpZwdRldTGq9wqcZZzFSLCt\/pFP9HLi72xpw5nelMudrcHGW+mynC09XsNKT8SY9U7dO8f7+rCeWT+dn9ShfXQ5Iv22nfMnN8KqPvgy6FEc8If6Wdwif9Jb1SvAhmB1\/VeILfvaO+Xe2Vf4JJTOVzc3pjTfFf5d89QQ==",
          "encoding":"base64",
          "height":29,
          "id":1,
@@ -19,7 +19,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJy1llEKgDAMQ\/Vg\/nj\/Q\/klSGmal6kFkdkljS4tbtv7OHa\/59zz64kl\/Enc+2stxZXqrvdE65Svuru1q9m974Slmh1Hp4Ocv6v5VkfFqT3uueN3+pSHOhz1bKJR5YinuhzpD1UrPb8Or\/hJpD7scOkZpfOPYsk3V\/xEj\/JxzdNvOnllWk8zV9Wp9Whfknm14ruJw\/ET\/cSTLpf0VzIjFG6VX+G\/0k\/wU35l1n05QxIfk579M8g\/ZhcXU6k9uw==",
+         "data":"eJytltEKhTAMQ\/XDfLn\/\/1E+CVKa5LTegshcm2RbOjyO73GdOed3zp93LcGfxJNfuRTWVHd9T7S6+aq7GyfObr2ulmpOGJ0Ocv6J86uOWqdy0veEn\/QpD3V11LMTjWruH55Ka1N1SoM7G5e78WYKol9x07VveemeK3yiR519nad76rzixirf8VQ+2pfkzqK+Ixo7jInvkkbq1y534g2ni2BO8GvOphfIvTq5Gzf9TvuLYjr\/Ov+42PqbBvnH7OIGdmJBqA==",
          "encoding":"base64",
          "height":29,
          "id":2,
@@ -568,8 +568,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":478,
-                 "y":869.333333333333
+                 "x":417.5,
+                 "y":805.833333333333
                 }, 
                 {
                  "gid":1056,
@@ -596,8 +596,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":575.333333333333,
-                 "y":743.333333333333
+                 "x":638.833333333333,
+                 "y":773.333333333333
                 }, 
                 {
                  "gid":1056,
@@ -624,8 +624,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":350.666666666667,
-                 "y":484.666666666667
+                 "x":320.166666666667,
+                 "y":391.666666666667
                 },
             
                 {
@@ -653,8 +653,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":319.333333333333,
-                 "y":645.333333333333
+                 "x":318.833333333333,
+                 "y":708.833333333333
                 }, 
                 {
                  "gid":1056,
