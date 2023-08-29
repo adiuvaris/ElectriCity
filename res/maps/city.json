@@ -190,12 +190,12 @@
                         {
                          "name":"start_x",
                          "type":"int",
-                         "value":2
+                         "value":17
                         }, 
                         {
                          "name":"start_y",
                          "type":"int",
-                         "value":6
+                         "value":0
                         }],
                  "rotation":0,
                  "type":"",
