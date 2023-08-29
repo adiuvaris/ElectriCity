@@ -1,0 +1,43 @@
+{
+  "Titel" : "Parallelschaltung",
+  "Text" : [
+    "<h1>Widerstände nebeneinander</h1>",
+    "Wenn die Widerstände nicht in einer Reihe geschaltet sind, dann nennt man dies Parallelschaltung. Die Abbildung <i>Parallel</i> zeigt so eine Schaltung.",
+    "Im Beispiel der Abbildung fällt also über alle Widerstände dieselbe Spannung ab. Deshalb gilt für jeden Widerstand :",
+    "<np>I = U / R, also z.B. I1 = U / R1</np>",
+    "Der Strom, der durch die Widerstände fliesst, hängt von den Widerständen ab. Der Gesamtstrom ist deshalb:",
+    "<np>I = I1 + I2 + I3</np>",
+    "Wenn man einsetzt ergibt sich:",
+    "<np>I = U / R1 + U / R2 + U / R3</np>",
+    "Hier kannst du die Spannung ausklammern",
+    "<np>I = U · (1 / R1 + 1 / R2 + 1 / R3)</np>",
+    "Bei einer Parallelschaltung ist der Kehrwert des Gesamtwiderstands gleich der Summe der Kehrwerte der Einzelwiderstände.",
+    "<h2>Beispiel</h2>",
+    "Als Beispiel sollen die drei Widerstände wieder je den Wert von 100 Ω haben. Der Kehrwert des Gesamtwiderstands ist also:",
+    "<np>1 / R = 1 / 100 + 1 / 100 + 1 / 100 = 3 / 100</np>",
+    "Der Gesamtwiderstand ist deshalb:",
+    "<np>R = 100 / 3 = 33.3 Ω</np>",
+    "<h2>Beispiel mit Serien- und Parallelschaltung</h2>",
+    "Wenn du für einen Stromkreis mit mehreren Widerständen den Gesamtwiderstand berechnen sollst, dann musst du immer zuerst die Abschnitte mit in Serie geschalteten Widerständen berechnen und dann zum Schluss die parallel geschalteten. Schau dir dazu die Abbildung <i>Gesamtwiderstand</i> an.",
+    "Das Beispiel zeigt zwei parallel geschaltete Teile, die je mehrere Widerstände aufweisen. Im oberen Teil ist der Widerstand gemäss Regel für Serienschaltung:",
+    "<np>R(oben) = 140 + 280 + 300 = 720 Ω</np>",
+    "Unten ist analog dazu:",
+    "<np>R(unten) = 280 + 560 = 840 Ω</np>",
+    "Fasst man nun die beiden Teile als Parallelschaltung zusammen, dann ergibt sich:",
+    "<np>1 / R = 1 / 720 Ohm + 1 / 840 Ω = 0.0109 / Ω</np>",
+    "Davon der Kehrwert ergibt den Gesamtwiderstand:",
+    "<np>R(gesamt) = 1 / 0.0109 = 91.64 Ω</np>"
+  ],
+    "Bilder": [
+    {
+      "Datei": "pic_05_01_1.png",
+      "Titel": "Parallelschaltung",
+      "Beschreibung": "Parallel"
+    },
+    {
+      "Datei": "pic_05_01_2.png",
+      "Titel": "Serien- und Parallelschaltung kombiniert",
+      "Beschreibung": "Gesamtwiderstand"
+    }
+  ]
+}

@@ -349,6 +349,19 @@ class GameView(arcade.View):
             self.player_sprite.change_y = -const.MOVEMENT_SPEED / 1.5
             self.player_sprite.change_x = const.MOVEMENT_SPEED / 1.5
 
+        # Verhindern, dass der Avatar das Spielfeld verlassen kann
+        if self.player_sprite.center_x < 0:
+            self.player_sprite.center_x = 0
+
+        if self.player_sprite.center_x > self.my_map.map_size[0] * const.SPRITE_SIZE:
+            self.player_sprite.center_x = self.my_map.map_size[0] * const.SPRITE_SIZE
+
+        if self.player_sprite.center_y < 0:
+            self.player_sprite.center_y = 0
+
+        if self.player_sprite.center_y > self.my_map.map_size[1] * const.SPRITE_SIZE:
+            self.player_sprite.center_y = self.my_map.map_size[1] * const.SPRITE_SIZE
+
         # Player bewegen
         self.physics_engine.update()
 

@@ -1,0 +1,16 @@
+{
+  "Titel" : "Spannung, Strom, Widerstand und Leistung",
+  "Text" : [
+    "<h1>Leistung und Widerstand</h1>",
+    "Wenn du dir die Formeln für die Stromstärke und die Leistung in einem elektrischen Stromkreis anschaust, dann siehst du, dass in beiden Gleichungen Strom und Spannung vorkommen. Es gibt also auch einen Zusammenhang zwischen Leistung und Widerstand.",
+    "<np>U = R · I</np>",
+    "<np>P = U · I</np>",
+    "Man kann zum Beispiel die erste Gleichung in die zweite einsetzen und dort <np>U</np> durch <np>R · I</np> ersetzen. Das ergibt:",
+    "<np>P = R · I · I oder P = R · I²</np>",
+    "Man kann auch die erste Formel nach <np>I</np> auflösen:",
+    "<np>I = U / R</np>",
+    "und dann in die zweite Gleichung einsetzen:",
+    "<np>P = U · U / R oder P = U² / R</np>",
+    "Mit diesen Formeln kann man die Leistung direkt aus der Spannung und dem Widerstand oder aus dem Strom und dem Widerstand berechnen."
+  ]
+}

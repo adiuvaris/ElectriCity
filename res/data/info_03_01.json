@@ -1,0 +1,27 @@
+{
+  "Titel" : "Das Ohm`sche Gesetz",
+  "Text" : [
+    "<h1>Widerstand</h1>",
+    "In einem Stromkreis sind Strom und Spannung nicht unabhängig voneinander. Der Zusammenhang wird durch das Ohm’sche Gesetz hergestellt. Dieses Gesetz wird dir in diesem Abschnitt erklärt.",
+    "In der Abbildung <i>Stromkreis</i> wird ein einfacher Gleichstromkreis dargestellt. Es hat links eine Spannungsquelle und rechts einen Widerstand. Der Widerstand könnte eine Glühbirne, eine Heizung oder irgendein anderer Verbraucher sein.",
+    "Wenn man in so einem Stromkreis die Spannung erhöht und gleichzeitig den Strom misst, dann wird man feststellen, dass der Strom und die Spannung zueinander proportional sind. Der Proportionalitätsfaktor ist der Widerstand. Damit ergibt sich die Formel:",
+    "<np>U = R · I</np>",
+    "Die Einheit des Widerstands wird Ohm genannt (nach dem Physiker Georg Simon Ohm). Es wird mit dem griechischen Buchstaben Omega Ω abgekürzt.",
+    "<np>[V] = [Ω] · [A]</np>",
+    "<h2>Spannungsabfall</h2>",
+    "In der Abbildung <i>Spannungsabfall</i> ist ein elektrischer Widerstand gezeichnet, durch den ein Strom I fliesst. Wegen der Formel <np>U = R · I</np> ergibt sich eine Potentialdifferenz an den beiden Enden des Widerstands. Das Potential am Plus-Ende ist also um <np>U</np> höher als am Minus-Ende.",
+    "Man sagt deshalb, dass über einem Widerstand, durch den ein Strom fliesst, die Spannung U abfällt."
+  ],
+    "Bilder": [
+    {
+      "Datei": "pic_03_01_2.png",
+      "Titel": "Stromkreis mit Widerstand",
+      "Beschreibung": "Stromkreis"
+    },
+    {
+      "Datei": "pic_03_01_3.png",
+      "Titel": "Spannungsabfall",
+      "Beschreibung": "Spannungsabfall"
+    }
+  ]
+}

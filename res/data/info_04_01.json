@@ -1,0 +1,28 @@
+{
+  "Titel" : "Serienschaltung",
+  "Text" : [
+    "<h1>Widerstände hintereinander</h1>",
+    "In vielen Gleichstromkreisen gibt es mehr als einen Widerstand. Oft möchte man den Gesamtwiderstand aller Verbraucher wissen. Dieser Gesamtwiderstand hängt davon ab, wie die Verbraucher im Stromkreis miteinander verbunden sind. Man sagt auch, wie sie geschaltet sind.",
+    "Der einfachere Fall liegt vor, wenn die Widerstände hintereinander geschaltet sind (siehe Bild <i>Serie</i>). Das nennt man Serienschaltung oder Reihenschaltung. Es gibt also keine Verzweigungen im Stromkreis. Das bedeutet, dass überall die gleiche Stromstärke fliessen muss. Für jeden der Widerstände gilt also:",
+    "<np>U = R · I</np>",
+    "Für jeden Widerstand einzeln betrachtet ergibt sich:",
+    "<np>U1 = R1  · I, U2 = R2  · I und U3 = R3  · I</np>",
+    "Der gesamte Spannungsabfall über alle drei Widerständet ist deshalb:",
+    "<np>U = U1 + U2 + U3</np>",
+    "Daraus folgt:",
+    "<np>U = R1  · I + R2  · I + R3  · I</np>",
+    "Jetzt kannst du I ausklammern",
+    "<np>U = (R1 + R2 + R3)  · I</np>",
+    "Der Gesamtwiderstand ist in diesem Fall also einfach die Summe der Einzelwiderstände.",
+    "<np>R(gesamt) = R1 + R2 + R3</np>",
+    "<h2>Beispiel</h2>",
+    "Wenn die drei Widerstände in der Abbildung alle den Wert 100Ω haben, so ist der Gesamtwiderstand 300Ω."
+  ],
+    "Bilder": [
+    {
+      "Datei": "pic_04_01_1.png",
+      "Titel": "Serienschaltung",
+      "Beschreibung": "Serie"
+    }
+  ]
+}

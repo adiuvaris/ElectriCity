@@ -1,0 +1,24 @@
+{
+  "Titel" : "Die Spannung",
+  "Text" : [
+    "<h1>Vergleich mit Wasserkraft</h1>",
+    "Damit sich die Elektronen in einem metallischen Leiter in eine Richtung bewegen, braucht es eine Potentialdifferenz, also eine Spannung.",
+    "Das kannst du dir so ähnlich wie bei einem Wasserkraftwerk vorstellen (siehe Bild <i>Wasserkraft</i>). Das höher gelegene Wasser hat potentielle Energie. Es fliesst nach unten und treibt dabei eine Turbine an. Damit ein Kreislauf entstehen kann, muss man das Wasser immer wieder in die Höhe pumpen, also auf ein höheres Potential bringen. Das benötigt Energie, die durch die Pumpe ans Wasser abgegeben wird.",
+    "Eine Spannungsquelle tut etwas ähnliches (siehe Bild <i>Stromkreis</i>). Eine Batterie zum Beispiel trennt mit Hilfe eines chemischen Prozesses die Elektronen und gibt sie auf einem höheren Potential in den Stromkreis ab. Dadurch entsteht eine Potentialdifferenz, die man Spannung nennt. Wegen der Spannung fliesst dann ein Strom durch die Leitung und kann die Glühbirne zum Leuchten bringen. ",
+    "In Spannungsquellen werden übrigens keine Elektronen erzeugt, sie werden nur auf ein höheres Potential angehoben. Wenn eine Spannungsquelle eine Spannung U liefert, dann haben die Ladungen am positiven Pol eine höhere potentielle Energie als am negativen Pol.",
+    "<h2>Einheit der Spannung</h2>",
+    "Die Einheit der elektrischen Spannung heisst Volt, was mit <np>[V]</np> abgekürzt wird. Das Formelzeichen für die Spannung ist <np>U</np>"
+  ],
+    "Bilder": [
+    {
+      "Datei": "pic_02_01_1.png",
+      "Titel": "Schema Wasserkraftwerk",
+      "Beschreibung": "Wasserkraft"
+    },
+    {
+      "Datei": "pic_02_01_2.png",
+      "Titel": "Schema Stromkreis mit Batterie",
+      "Beschreibung": "Stromkreis"
+    }
+  ]
+}

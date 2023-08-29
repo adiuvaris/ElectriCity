@@ -1,0 +1,33 @@
+{
+  "Titel" : "Elektrischer Strom",
+  "Text" : [
+    "<h1>Die Stromstärke</h1>",
+    "Im Alltag wird oft von Strom gesprochen, wenn es um Elektrizität und die Stromversorgung geht. Der Begriff der Spannung wird weniger oft erwähnt. In einem Stromkreis gehören aber Spannung und Strom eng zusammen. Du wirst bald sehen, dass die Begriffe eigentlich nicht getrennt voneinander betrachtet werden können.",
+    "In diesem Abschnitt geht es zunächst mal um eine Definition von Strom und was dabei vor sich geht. In den nächsten Abschnitten geht es dann um die Spannung und den Zusammenhang der beiden Grössen.",
+    "<h2>Strom ist Ladung pro Zeit</h2>",
+    "Ein Strom bezeichnet im Allgemeinen die Bewegung von vielen Teilen, die sich in dieselbe Richtung bewegen. Beim elektrischen Gleichstrom handelt es sich dabei um elektrische Ladungen, die gemeinsam in eine Richtung bewegt werden. Die Menge an elektrischen Ladungen, die bewegt werden, bezeichnet man als Stromstärke.",
+    "Die Stromstärke ist deshalb definiert als bewegte Ladung pro Zeit und die Einheit heisst Ampère. Als Formel sieht das so aus:",
+    "<np>I = Q / t</np>",
+    "Ein Ampère ist also dasselbe wie ein Coulomb pro Sekunde.",
+    "<np>[A] = [C] / [s]</np>",
+    "<h2>Elektronen als bewegte Ladung</h2>",
+    "Ein elektrischer Gleichstrom fliesst, wenn sich in einem Material Ladungen gemeinsam in eine Richtung bewegen. Ein wichtiges Beispiel für elektrische Leiter sind Metalle (siehe Bild <i>Elektronen</i>). Sie bestehen aus einem Gitter von positiv geladenen Atomrümpfen, die negativ geladene Elektronen freigegeben haben. Die freien Elektronen können sich im Material bewegen.",
+    "Die Elektronen bewegen sich allerdings erst in eine Richtung, wenn eine Spannung angelegt wird. Der Begriff der Spannung wird im nächsten Abschnitt erklärt.",
+    "Die Geschwindigkeit der Elektronen ist relativ klein. Abhängig von der Stromstärke ist sie in der Grössenordnung von einem Millimeter pro Sekunde. Wieso geht dann das Licht sofort an, wenn man es einschaltet? Dazu musst du dir ein Rohr, das mit Murmeln gefüllt ist, vorstellen. Sobald du an einem Ende eine Murmel hineindrückst, wird auf der anderen Seite eine Murmel herausfallen. In einem elektrischen Leiter passiert mit den frei beweglichen Elektronen etwas Analoges, wenn man eine Spannungsquelle anschliesst. Nur sind es hier eben die freien Elektronen, die bewegt werden.",
+    "<h2>Stromrichtung</h2>",
+    "In einem Stromkreis bewegen sich positive Ladungen zum negativen Pol und negative Ladungen zum positiven Pol (siehe Bild <i>Stromrichtung</i>).",
+    "In einem metallischen Leiter bewegen sich deshalb die negativ geladenen freien Elektronen vom negativen Pol zum positiven Pol. Weil das bei der Definition der Stromrichtung noch nicht bekannt war, gilt für die technische Stromrichtung, dass der Strom vom positiven zum negativen Pol fliesst. Das ist allerdings nur wichtig, wenn das Vorzeichen des Stroms eine Rolle spielt."
+  ],
+    "Bilder": [
+    {
+      "Datei": "pic_01_01_1.png",
+      "Titel": "Bewegte Elektronen",
+      "Beschreibung": "Elektronen"
+    },
+    {
+      "Datei": "pic_01_01_2.png",
+      "Titel": "Richtung von bewegten Ladungen",
+      "Beschreibung": "Stromrichtung"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "Titel": "Spannung und Leistung",
+  "Text": [
+    "<h1>Leistung</h1>",
+    "Weil in Spannungsquellen Arbeit verrichtet wird (z.B. Wärme bei Glühlampen), müssen Strom und Spannung mit den Grössen der Energie und der Leistung zusammenhängen. Die Leistung in einem Gleichstromkreis ist das Produkt aus Strom und Spannung.",
+    "<np>P = U · I</np>",
+    "Die Einheit der Leistung ist Watt. Ein Watt ist also ein Ampère mal ein Volt.",
+    "<np>[W] = [V] · [A]</np>",
+    "In der Mechanik wird ein Watt auch mit diesen Einheiten ausgedrückt:",
+    "<np>[W] = [kg] · [m²] / [s³]</np>",
+    "Es gibt also einen Zusammenhang zwischen den beiden elektrischen Einheiten Volt und Ampère und den mechanischen Einheiten Kilogramm, Meter und Sekunden."
+  ]
+}

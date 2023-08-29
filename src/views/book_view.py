@@ -9,6 +9,7 @@ from src.data.game import gd
 from src.data.media import Media
 from src.ui.theory import Theory
 from src.views.quiz_view import create_task
+from src.views.help_view import HelpView
 
 
 class BookView(arcade.View):
@@ -83,6 +84,15 @@ class BookView(arcade.View):
         # Escape geht zurück zur Map
         if key == arcade.key.ESCAPE:
             self.window.show_view(self.window.game_view)
+
+        # Info Text anzeigen, falls vorhanden
+        if key == arcade.key.F1 or key == arcade.key.NUM_F1:
+            mypath = gd.get_abs_path("res/data")
+            info_file = f"info_{self.room_nr}_{self.book_nr}.json"
+            filename = f"{mypath}/{info_file}"
+            if os.path.exists(filename):
+                hint = HelpView(info_file, self)
+                self.window.show_view(hint)
 
         # Tastendruck zur aktuellen Aufgabe weitergeben
         task = self.tasks[self.cur_task]
