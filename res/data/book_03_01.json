@@ -1,5 +1,5 @@
 {
-  "Titel": "Ohmsches Gesetz",
+  "Titel": "Das Ohm’sche Gesetz",
   "Theorie": [
     "Das Ohm’sche Gesetz besagt, dass die Spannung proportional zur Stromstärke zunimmt. Die Proportionalitätskonstante ist der elektrische Widerstand <i>R</i>. Dabei ist wichtig: Das Ohm’sche Gesetz gilt <b>nur</b> für Ohm’sche Widerstände. Alle anderen Bauteile/elektrischen Geräte müssen keine Ohm’sche Widerstände sein.",
     "Damit ergibt sich die Formel für den Zusammenhang von Strom, Spannung und Widerstand: <i>U = R · I</i>"

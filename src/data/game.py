@@ -142,7 +142,9 @@ class GameData(object):
 
     def adjust_game_data(self):
         """
-        Spieler-Daten aktualisieren
+        Spieler-Daten aktualisieren basierend auf den vorhandenen json-Files.
+        Damit wird sichergestellt, dass in den Spieler-Daten alle Bücher mit allen Aufgaben
+        enthalten sind und gelöschte Daten entfernt werden.
         """
 
         # Gelöschte Räume, Bücher und Aufgaben aus den game-daten entfernen
