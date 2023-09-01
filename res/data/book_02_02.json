@@ -1,7 +1,7 @@
 {
   "Titel": "Spannung und Stromstärke",
   "Theorie": [
-    "Stefanie und Jan Luca haben ihr Gespräch über die Spannung aufgenommen. Anschliessend haben sie es in kleinere Abschnitte geschnitten. In diesen kurzen Wortwechseln sagt immer nur einer der beiden die Wahrheit. Wer hat jeweils recht, Stefanie oder Jan Luca?"
+    "Stefanie und Domenik haben ihr Gespräch über die Spannung aufgenommen. Anschliessend haben sie es in kleinere Abschnitte geschnitten. In diesen kurzen Wortwechseln sagt immer nur einer der beiden die Wahrheit. Wer hat jeweils recht, Stefanie oder Domenik?"
   ],
   "Audios": [
     {
@@ -28,12 +28,12 @@
       "Art": "Frage",
       "Aufgabe": [
         "Hör dir das Gespräch <i><b>Gespräch 1</b></i> an.",
-        "Wer hat recht, Jan Luca oder Stefanie?",
+        "Wer hat recht, Domenik oder Stefanie?",
         "Klicke auf den Namen der Person, die deiner Meinung nach das Richtige gesagt hat."
       ],
       "Typ": "Multi",
       "Antworten" :{
-        "A" : "Jan Luca",
+        "A" : "Domenik",
         "B" : "Stefanie"
       },
       "Richtig" : "A"
@@ -42,12 +42,12 @@
       "Art": "Frage",
       "Aufgabe": [
         "Hör dir das Gespräch <i><b>Gespräch 2</b></i> an.",
-        "Wer hat recht, Jan Luca oder Stefanie?",
+        "Wer hat recht, Domenik oder Stefanie?",
         "Klicke auf den Namen der Person, die deiner Meinung nach das Richtige gesagt hat."
       ],
       "Typ": "Multi",
       "Antworten" :{
-        "A" : "Jan Luca",
+        "A" : "Domenik",
         "B" : "Stefanie"
       },
       "Richtig" : "A"
@@ -56,12 +56,12 @@
       "Art": "Frage",
       "Aufgabe": [
         "Hör dir das Gespräch <i><b>Gespräch 3</b></i> an. Das Bild <i><b>Stromkreis</b></i> gehört zu dieser Aufgabe.",
-        "Wer hat recht, Jan Luca oder Stefanie?",
+        "Wer hat recht, Domenik oder Stefanie?",
         "Klicke auf den Namen der Person, die deiner Meinung nach das Richtige gesagt hat."
       ],
       "Typ": "Multi",
       "Antworten" :{
-        "A" : "Jan Luca",
+        "A" : "Domenik",
         "B" : "Stefanie"
       },
       "Richtig" : "B"
