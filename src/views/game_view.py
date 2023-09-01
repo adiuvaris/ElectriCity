@@ -623,6 +623,20 @@ class GameView(arcade.View):
             menu = MenuView()
             self.window.show_view(menu)
 
+        elif arcade.key.KEY_1 <= key <= arcade.key.KEY_9 and modifiers & arcade.key.MOD_CTRL:
+
+            room = key - arcade.key.KEY_0
+            check_room = "room_" + str(room).zfill(2)
+
+            map_layers = self.map_list[self.cur_map_name].map_layers
+            if "doors" in map_layers:
+                for d in map_layers["doors"]:
+                    if "next_map" in d.properties:
+                        map_name = d.properties["next_map"]
+                        if map_name == check_room:
+                            self.player_sprite.center_x = d.center_x
+                            self.player_sprite.center_y = d.center_y - 2 * const.SPRITE_SIZE
+
     def on_key_release(self, key, modifiers):
         """
         Wird von arcade aufgerufen, wenn eine Taste losgelassen wird.
