@@ -1,0 +1,7 @@
+{
+  "Titel" : "Stromstärke",
+  "Text" : [
+    "<h1>Hilfe</h1>",
+    "Allgemeine Formel für die Berechnung des Widerstands lautet : R=U/I, es wird nach der Stromstärke gefragt, also löst man nach I auf:  I=U/R_Gesamt."
+  ]
+}

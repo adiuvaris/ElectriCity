@@ -1,0 +1,32 @@
+{
+  "Titel": "Regeln",
+  "Theorie": [
+    "Versuche dich an den Rateaufgaben in diesem Labyrinth"
+  ],
+   "Bilder": [
+    {
+      "Datei": "pic_04_07_1.png",
+      "Titel": "Stromkreis mit zwei Maschen",
+      "Beschreibung": "Stromkreis"
+    }
+   ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Exit" : true,
+      "Aufgabe": [
+        "Welche Regel trifft zu? Schaue das Bild an.",
+        "Antwort 1: Maschenregel: Die Summe aller Spannungen in einer Masche ist null.",
+        "Antwort 2: Summenregel: Die Summe aller Spannungen in einer Masche ist nicht null.",
+        "Klicke auf die richtige Antwort."
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Antwort 1",
+        "B" : "Antwort 2"
+      },
+      "Richtig" : "A",
+      "Tipp" : "Suche nach der Erklärung."
+    }
+  ]
+}

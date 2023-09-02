@@ -1,0 +1,37 @@
+{
+  "Titel": "Serienschaltung",
+  "Theorie": [
+    "Versuche dich an den Rateaufgaben in diesem Labyrinth"
+  ],
+  "Bilder": [
+    {
+      "Datei": "pic_04_02_1.png",
+      "Titel": "Widerstände nebeneinander",
+      "Beschreibung": "Bild 1"
+    },
+    {
+      "Datei": "pic_04_02_2.png",
+      "Titel": "Widerstände hintereinander",
+      "Beschreibung": "Bild 2"
+    }
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Exit" : true,
+      "Aufgabe": [
+        "Was versteht man unter dem Begriff Serieschaltung?",
+        "Antwort 1: Bei einer Serieschaltung sind die Widerstände nebeneinander eingebaut und bilden so eine Serie, wie in Bild 1.",
+        "Antwort 2: Bei einer Serieschaltung ist nur ein «Weg» vorhanden. Die Widerstände sind hintereinandergeschaltet und bilden einen unverzweigten Stromkreis, wie in Bild 2.",
+        "Klicke auf die richtige Antwort."
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Antwort 1",
+        "B" : "Antwort 2"
+      },
+      "Richtig" : "B",
+      "Tipp" : "Schau die Bilder genau an."
+    }
+  ]
+}

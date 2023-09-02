@@ -1,0 +1,35 @@
+{
+  "Titel": "Stromkreis mit Serienschaltung",
+  "Theorie": [
+    "Versuche dich an den Rateaufgaben in diesem Labyrinth"
+  ],
+  "Bilder": [
+    {
+      "Datei": "pic_04_03_1.png",
+      "Titel": "Links",
+      "Beschreibung": "Links"
+    },
+    {
+      "Datei": "pic_04_03_2.png",
+      "Titel": "Rechts",
+      "Beschreibung": "Rechts"
+    }
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Exit" : true,
+      "Aufgabe": [
+        "Wie kann ein Stromkreis mit einer Serieschaltung aussehen?",
+        "Schau die beiden Bilder an und klicke auf die richtige Antwort."
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Rechts",
+        "B" : "Links"
+      },
+      "Richtig" : "A",
+      "Tipp" : "Schau die Bilder genau an."
+    }
+  ]
+}

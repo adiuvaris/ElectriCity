@@ -1,0 +1,7 @@
+{
+  "Titel" : "Stromstärke",
+  "Text" : [
+    "<h1>Hilfe</h1>",
+    "U=R⋅I ⇒I=U/R  ⇒x⋅I=U/(2⋅R)⇒x=1/2. Da U gleich bleibt, während sich R verdoppelt, muss sich I halbieren. Sonst würde das Gesetz (U=R⋅I) nicht mehr zutreffen. "
+  ]
+}

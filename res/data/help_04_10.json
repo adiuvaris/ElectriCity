@@ -1,0 +1,7 @@
+{
+  "Titel" : "Widerstand",
+  "Text" : [
+    "<h1>Hilfe</h1>",
+    "Da sich der Ersatzwiderstand aus der Summe aller Widerständen berechnet, muss mit folgender Formel gerechnet werden:R Gesamt= R1+R2+ … +Ri."
+  ]
+}

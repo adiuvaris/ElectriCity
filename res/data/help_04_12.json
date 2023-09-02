@@ -1,0 +1,7 @@
+{
+  "Titel" : "Widerstand",
+  "Text" : [
+    "<h1>Hilfe</h1>",
+    "Da der Ersatzwiderstand berechnet wird, indem die einzelnen Widerstände addiert werden, wird der Gesamtwiderstand nur verdoppelt: R_Gesamt= R_1  +R_2  ⇒2〖 R〗_1+ 〖2 R〗_2=2 (R_1+ R_2 )=2⋅ R_Gesamt"
+  ]
+}

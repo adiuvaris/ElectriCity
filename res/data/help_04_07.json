@@ -1,0 +1,7 @@
+{
+  "Titel" : "Regeln",
+  "Text" : [
+    "<h1>Hilfe</h1>",
+    "Die Maschenregel, auch als 2. Kirchhoffsches Gesetz bekannt, besagt, dass die Summe aller Spannungen in einer Masche null sein muss. Denn die Spannung kann eine Richtung haben. Das kommt daher, dass z.B. vor einer Lampe das Potential grösser ist als im Kabel dahinter, während bei einer Batterie das Potential im Kabel danach grösser ist, weil eine Batterie Strom liefert. Somit haben die Spannungen über diese beiden unterschiedlichen Bauteile eine unterschiedliche Richtung."
+  ]
+}

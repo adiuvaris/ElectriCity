@@ -5,7 +5,7 @@
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJzFllEKwzAMQ5NrDdr7H2sfo+AJSZazjxlGltZx9WrXyVr\/sWuvde\/vUV1nfs4H7z9W\/9d5jcvsLtoUCxuRB30Ud\/VTPGp0+h2\/4ryIJsad5BPXIKfKI+NPODteZS6fie9p3TJujOm40Lp8KhYVY5JfV6cppzLF39VYYpO+pHi6PoR6unplGqe8GCvJX\/c9Or8aW2lIv0fU7Exx4vyXfQafo\/JZ513vYuuY5s5XmatrpUXlU+WbxWBzVxNOk7rveojak53WhDM5LyBn+u5ZPJeLGovFnDzHrUn25El9oO6TcwPTmu4fpyNjwH2r6ytudO\/BcU77S5pvvDbldNcZU3IGYHayxtlrf35vVDpWoA==",
+         "data":"eJzFllEKwzAMQ5NrDdr7H6sfY+AKSZbzM8HImjrGr46drPUfXXute79HNc\/snA2+\/6n+r8\/VL9NdYlMsbEQetFHc1U7xqNHF7\/gV50ViYtxJPnENcqo8Mv6Es+NVcvlMbE\/3LeNGn44L1eVTsSgfk\/y6fZpyKin+bo8lmvQlxdP1IYyn268sxikv+kry19Wjs6u+VQxpPU6kOPE5OWdcHWNNuRiS3sXW4bz7lp0SDmXvfCT9eMqR9mdm3503bD1733Em9wXk7Pq486dqK6n9tP+5HlXfu9422R8Y98m9gcWanh+nI2NIayXp3e47OM5pf0nzjXNTTjfPmJI7ANPJGqfP\/v4ePUZWoQ==",
          "encoding":"base64",
          "height":29,
          "id":1,
@@ -106,9 +106,19 @@
                          "value":"02"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(10,7)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"04"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(9,6)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -129,9 +139,19 @@
                          "value":"03"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(14,7)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"04"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(13,6)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -152,9 +172,19 @@
                          "value":"05"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(11,12)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"04"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(11,10)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -175,9 +205,19 @@
                          "value":"04"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(15,8)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"04"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(15,6)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -195,12 +235,22 @@
                         {
                          "name":"book",
                          "type":"string",
-                         "value":"07"
+                         "value":"08"
+                        }, 
+                        {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(18,22)"
                         }, 
                         {
                          "name":"room",
                          "type":"string",
                          "value":"04"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(19,23)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -221,9 +271,19 @@
                          "value":"06"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(12,15)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"04"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(11,16)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -241,12 +301,22 @@
                         {
                          "name":"book",
                          "type":"string",
-                         "value":"08"
+                         "value":"09"
+                        }, 
+                        {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(17,23)"
                         }, 
                         {
                          "name":"room",
                          "type":"string",
                          "value":"04"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(17,21)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -264,12 +334,22 @@
                         {
                          "name":"book",
                          "type":"string",
-                         "value":"09"
+                         "value":"10"
+                        }, 
+                        {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(15,25)"
                         }, 
                         {
                          "name":"room",
                          "type":"string",
                          "value":"04"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(16,26)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -287,12 +367,22 @@
                         {
                          "name":"book",
                          "type":"string",
-                         "value":"11"
+                         "value":"12"
+                        }, 
+                        {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(7,23)"
                         }, 
                         {
                          "name":"room",
                          "type":"string",
                          "value":"04"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(8,22)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -310,12 +400,22 @@
                         {
                          "name":"book",
                          "type":"string",
-                         "value":"12"
+                         "value":"13"
+                        }, 
+                        {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(4,25)"
                         }, 
                         {
                          "name":"room",
                          "type":"string",
                          "value":"04"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(5,24)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -333,12 +433,22 @@
                         {
                          "name":"book",
                          "type":"string",
-                         "value":"10"
+                         "value":"11"
+                        }, 
+                        {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(13,24)"
                         }, 
                         {
                          "name":"room",
                          "type":"string",
                          "value":"04"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(12,23)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -524,7 +634,7 @@
                         {
                          "name":"book",
                          "type":"string",
-                         "value":"07"
+                         "value":"08"
                         }, 
                         {
                          "name":"help",
@@ -568,8 +678,64 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":480.666666666667,
-                 "y":645.333333333333
+                 "x":482.006610389031,
+                 "y":646.673277055697
+                }, 
+                {
+                 "gid":1056,
+                 "height":32,
+                 "id":59,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"09"
+                        }, 
+                        {
+                         "name":"help",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":482.006610389031,
+                 "y":646.673277055697
+                }, 
+                {
+                 "gid":1056,
+                 "height":32,
+                 "id":60,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"07"
+                        }, 
+                        {
+                         "name":"help",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":865.230514985038,
+                 "y":678.831926392425
                 }, 
                 {
                  "gid":1056,
@@ -580,7 +746,7 @@
                         {
                          "name":"book",
                          "type":"string",
-                         "value":"09"
+                         "value":"10"
                         }, 
                         {
                          "name":"help",
@@ -608,7 +774,7 @@
                         {
                          "name":"book",
                          "type":"string",
-                         "value":"10"
+                         "value":"11"
                         }, 
                         {
                          "name":"help",
@@ -636,7 +802,7 @@
                         {
                          "name":"book",
                          "type":"string",
-                         "value":"11"
+                         "value":"12"
                         }, 
                         {
                          "name":"help",
@@ -664,7 +830,12 @@
                         {
                          "name":"book",
                          "type":"string",
-                         "value":"12"
+                         "value":"13"
+                        }, 
+                        {
+                         "name":"help",
+                         "type":"bool",
+                         "value":true
                         }, 
                         {
                          "name":"room",
@@ -677,6 +848,39 @@
                  "width":32,
                  "x":161.333333333333,
                  "y":743.333333333333
+                }, 
+                {
+                 "gid":1028,
+                 "height":32,
+                 "id":57,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"07"
+                        }, 
+                        {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(19,16)"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"04"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(20,15)"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":609.217391304348,
+                 "y":512.521739130435
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -686,7 +890,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJzFk0sOxDAIQzvX6v0P1m1kgXkmi6kURQ0k\/gDv73neP6zq687TPI2fmMqhOq+4ujyNK6by6s67PBqf+FPe1KeK20bX1A9dPZM63NQ7xaR+THlTD6X1pfm0xml9Jy0ao\/1MsckiOif97n8zX+ncVvccpvKl8+jyzliqm9Y96Q3Sz51e5wPFVC8SfQTzpq+nfPeG49H5MulIfeo4bjGJTqLbvZn2vXIgOtNeoR6du+NV+ebeVD1On+OaYG72m1khGM4HOgebuSF9s9HpzomXdG3ukPUBWDlxZQ==",
+         "data":"eJzFk0sOxDAIQzvX6v0P1m2EwH4mi6mEqgZSf4D39zzvH6J7pvO0ruZPzMqhO++4qrqar5iV13Q+1dG84095U586bhtdbh6mfiZ9uOl3ikn9cHVuhtL+0nra47S\/TkvN0Xmm2CSITqdffW\/2K93b7p7CrHzpPqq6M5fqvgnnoeJNn25uHWb1gu7f5FPqGdHhOCs\/kl44HalPE8ctJtFJdKt\/Jj3sOBCd6axQj8634tX5pv5Z9Sh9imuCuXnf7ArBUD7QPdjsDZmbjU51TryksblD4gNyCXFl",
          "encoding":"base64",
          "height":29,
          "id":2,
@@ -699,7 +903,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":57,
+ "nextobjectid":61,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tiledversion":"1.10.1",

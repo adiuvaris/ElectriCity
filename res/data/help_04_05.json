@@ -1,0 +1,7 @@
+{
+  "Titel" : "Spannung bei Serieschaltung",
+  "Text" : [
+    "<h1>Hilfe</h1>",
+    "Die Spannung U ändert sich im Gegensatz zur Stromstärke I. Die Gesamtspannung einer Serieschaltung bildet sich, indem alle Spannungen an den einzelnen Widerständen addiert werden: U Gesamt= U1+U2+U3 "
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "Titel": "Widerstand",
+  "Theorie": [
+    "Versuche dich an den Rateaufgaben in diesem Labyrinth"
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Exit" : true,
+      "Aufgabe": [
+        "Werden R1 und R2 (in Serieschaltung) verdoppelt, so verdoppelt/ vervierfacht sich auch der Gesamtwiderstand.",
+        "Klicke auf die richtige Antwort."
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Verdoppelt",
+        "B" : "Vervierfacht"
+      },
+      "Richtig" : "A",
+      "Tipp" : "Suche nach der Erklärung."
+    }
+  ]
+}

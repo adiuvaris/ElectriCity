@@ -5,7 +5,7 @@
  "layers":[
         {
          "compression":"zlib",
-         "data":"eJy1k1EOwCAIQ91VvP8hl\/0tBNoHRhLjmFJKwf2stQ\/XZ+RO1zr4U84xV5WvyzvuHb3UeeSd+S5nVq+KpZwdRldTGq9wqcZZzFSLCt\/pFP9HLi72xpw5nelMudrcHGW+mynC09XsNKT8SY9U7dO8f7+rCeWT+dn9ShfXQ5Iv22nfMnN8KqPvgy6FEc8If6Wdwif9Jb1SvAhmB1\/VeILfvaO+Xe2Vf4JJTOVzc3pjTfFf5d89QQ==",
+         "data":"eJy1k1EOhTAIBPUqvf8hjX+mgd3ZEkkaH7FvGVhc93Wt4XmD3Ekj1T9h3mt1Win3\/kxY1fudu8pdzapf9V\/K7DQqDjdHUnPKUc1T9UzZnG+Owc2K7Ox0z7o5pzvlenP+VbnbQ8JJdjPxuuMnHqneT+t+83QmlKfKq\/vdXJyHpF71pL5V4Xi6oN8HPUpjf0f41eyUPvGXeKW4iGair3qc6Kd31G\/Xe5dPNEmoem5P\/zin+g9C7TzY",
          "encoding":"base64",
          "height":29,
          "id":1,
@@ -26,7 +26,7 @@
          "name":"background",
          "opacity":1,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":24,
          "x":0,
          "y":0
