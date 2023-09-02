@@ -1,0 +1,25 @@
+{
+  "Titel": "Verzweigte Stromkreise",
+  "Theorie": [
+    "Versuche dich an den Rateaufgaben in diesem Labyrinth"
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Exit" : true,
+      "Aufgabe": [
+        "Wieso nennt man Stromkreise mit Parallelschaltung auch verzweigte Stromkreise?",
+        "Antwort 1: Der Strom will durch alle Widerstände durchfliessen, daher muss sich der Pfad/die Kabel verzweigen.",
+        "Antwort 2: Weil solche Stromkreise mehrere Zweige besitzen, d.h. ein Weg teilt sich in mind. zwei weitere auf.",
+        "Klicke auf die richtige Antwort."
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Antwort 1",
+        "B" : "Antwort 2"
+      },
+      "Richtig" : "B",
+      "Tipp" : "Suche die Erklärung"
+    }
+  ]
+}

@@ -26,8 +26,47 @@
          "name":"background",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":24,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":5,
+         "name":"doors",
+         "objects":[
+                {
+                 "gid":527,
+                 "height":32,
+                 "id":37,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"next_map",
+                         "type":"string",
+                         "value":"city"
+                        }, 
+                        {
+                         "name":"start_x",
+                         "type":"int",
+                         "value":106
+                        }, 
+                        {
+                         "name":"start_y",
+                         "type":"int",
+                         "value":21
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":319.102947168274,
+                 "y":927.313323373625
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -48,9 +87,19 @@
                          "value":"01"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(6,3)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"05"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(5,4)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -71,9 +120,19 @@
                          "value":"02"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(12,6)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"05"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(11,5)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -94,9 +153,19 @@
                          "value":"03"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(14,7)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"05"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(13,8)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -117,9 +186,19 @@
                          "value":"04"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(19,6)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"05"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(18,5)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -140,9 +219,19 @@
                          "value":"06"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(14,11)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"05"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(15,10)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -163,9 +252,19 @@
                          "value":"11"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(6,9)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"05"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(7,8)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -186,9 +285,19 @@
                          "value":"12"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(8,20)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"05"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(9,19)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -209,9 +318,19 @@
                          "value":"13"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(9,25)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"05"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(7,25)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -232,9 +351,19 @@
                          "value":"07"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(18,19)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"05"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(19,18)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -255,9 +384,19 @@
                          "value":"09"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(16,22)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"05"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(18,22)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -278,9 +417,19 @@
                          "value":"08"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(17,25)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"05"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(16,26)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -313,9 +462,19 @@
                          "value":"10"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(10,15)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"05"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(11,14)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -336,9 +495,19 @@
                          "value":"05"
                         }, 
                         {
+                         "name":"correct",
+                         "type":"string",
+                         "value":"(22,10)"
+                        }, 
+                        {
                          "name":"room",
                          "type":"string",
                          "value":"05"
+                        }, 
+                        {
+                         "name":"wrong",
+                         "type":"string",
+                         "value":"(21,9)"
                         }],
                  "rotation":0,
                  "type":"",
@@ -718,8 +887,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":5,
- "nextobjectid":37,
+ "nextlayerid":6,
+ "nextobjectid":38,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tiledversion":"1.10.1",

@@ -1,0 +1,25 @@
+{
+  "Titel": "Parallelschaltung",
+  "Theorie": [
+    "Versuche dich an den Rateaufgaben in diesem Labyrinth"
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Exit" : true,
+      "Aufgabe": [
+        "Was denkst du, was versteht man unter dem Begriff Parallelschaltung?",
+        "Antwort 1: Die Widerstände sind hintereinander angeordnet, damit das Ende des vorherigen parallel zum Anfang des darauffolgenden Widerstandes ist.",
+        "Antwort 2: Die Widerstände sind in einem Stromkreis parallel zueinander angeordnet.",
+        "Klicke auf die richtige Antwort."
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Antwort 1",
+        "B" : "Antwort 2"
+      },
+      "Richtig" : "B",
+      "Tipp" : "Suche die Erklärung"
+    }
+  ]
+}

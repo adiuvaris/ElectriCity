@@ -1,0 +1,7 @@
+{
+  "Titel" : "Stromstärke bei Parallelschaltung",
+  "Text" : [
+    "<h1>Hilfe</h1>",
+    "Da das Gesetz  U=R⋅I (für ohmsche Widerstände) gilt und daher I1=U/R1 ,I2=U/R2  usw. ebenfalls zutrifft, müssen sich die Ströme voneinander unterscheiden. Da aber auch in dieser Schaltung kein Strom hinzukommt oder verbraucht wird, muss der Strom sich an den Verzweigungen von den Widerständen aufteilen und hinterher wieder zusammenkommen.Dabei addiert man die Stromstärken in den Zweigen und erhält die Gesamtstromstärke: I Gesamt=I1+I2+I3+...+Ii"
+  ]
+}
