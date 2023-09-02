@@ -20,7 +20,7 @@
       "Art": "Frage",
       "Exit" : true,
       "Aufgabe": [
-        "Wie kann ein Stromkreis mit einer Serieschaltung aussehen?",
+        "Wie kann ein Stromkreis mit einer Serienschaltung aussehen?",
         "Schau die beiden Bilder an und klicke auf die richtige Antwort."
       ],
       "Typ": "Multi",

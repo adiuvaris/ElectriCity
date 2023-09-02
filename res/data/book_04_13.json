@@ -8,7 +8,7 @@
       "Art": "Frage",
       "Exit" : true,
       "Aufgabe": [
-        "Werden R1 und R2 (in Serieschaltung) und somit auch der Gesamtwiderstand verdoppelt, während die Spannung U gleichbleibt, verdoppelt/halbiert sich auch die Stromstärke I.",
+        "Werden R1 und R2 (in Serienschaltung) und somit auch der Gesamtwiderstand verdoppelt, während die Spannung U gleich bleibt, verdoppelt/halbiert sich auch die Stromstärke I.",
         "Klicke auf die richtige Antwort."
       ],
       "Typ": "Multi",

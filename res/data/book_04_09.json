@@ -1,12 +1,12 @@
 {
-  "Titel": "Widerstand bei Serieschaltung",
+  "Titel": "Widerstand bei Serienschaltung",
   "Theorie": [
     "Versuche dich an den Rateaufgaben in diesem Labyrinth"
   ],
   "Bilder": [
     {
       "Datei": "pic_04_08_1.png",
-      "Titel": "Stromkreis mit seriegeschalteten Widerständen",
+      "Titel": "Stromkreis mit seriengeschalteten Widerständen",
       "Beschreibung": "Stromkreis"
     }
    ],

@@ -1,7 +1,7 @@
 {
-  "Titel" : "Widerstand bei Serieschaltung",
+  "Titel" : "Widerstand bei Serienschaltung",
   "Text" : [
     "<h1>Hilfe</h1>",
-    "Der Wert eines Ersatzwiderstands der seriegeschalteten Widerstände ist grösser als die einzelnen Widerstände. Der Ersatzwiderstand (in Serieschaltungen) entspricht der Summe aller verwendeten Widerständen."
+    "Der Wert eines Ersatzwiderstands der seriengeschalteten Widerstände ist grösser als die einzelnen Widerstände. Der Ersatzwiderstand (in Serienschaltungen) entspricht der Summe aller verwendeten Widerständen."
   ]
 }

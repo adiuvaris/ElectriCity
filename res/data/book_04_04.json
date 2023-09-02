@@ -8,7 +8,7 @@
       "Art": "Frage",
       "Exit" : true,
       "Aufgabe": [
-        "Bleibt die Anzahl der bewegten Ladung und somit die Stromstärke bei einer Serieschaltung gleich?",
+        "Bleibt die Anzahl der bewegten Ladung und somit die Stromstärke bei einer Serienschaltung gleich?",
         "Antwort 1: Ja, da bei jeder Lampe weder Ladung erzeugt noch verbraucht wird. I Gesamt= I1=I2=I3",
         "Antwort 2: Nein, denn die Lampen brauchen Strom und daher wird die Stromstärke auch weniger. I Gesamt= I1+I2+I3",
         "Klicke auf die richtige Antwort."

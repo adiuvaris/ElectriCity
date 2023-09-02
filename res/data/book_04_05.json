@@ -8,7 +8,7 @@
       "Art": "Frage",
       "Exit" : true,
       "Aufgabe": [
-        "Wie ändert sich die Gesamtspannung einer Serieschaltung?",
+        "Wie ändert sich die Gesamtspannung einer Serienschaltung?",
         "Antwort 1: Alle Spannungen an den einzelnen Widerständen werden addiert U Gesamt = U1 + U2 + U3",
         "Antwort 2: Alle Spannungen an den einzelnen Widerständen werden multipliziert U Gesamt = U1⋅U2⋅U3",
         "Klicke auf die richtige Antwort."

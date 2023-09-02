@@ -1,5 +1,5 @@
 {
-  "Titel" : "Stromstärke bei Serieschaltung",
+  "Titel" : "Stromstärke bei Serienschaltung",
   "Text" : [
     "<h1>Hilfe</h1>",
     "Da bei keiner Lampe Elektronen aus dem Stromkreis “genommen” noch hinzugefügt können, bleibt die Anzahl der bewegten Ladung gleich. Somit ändert sich die Stromstärke auch nicht: I_Gesamt= I_1=I_2=I_3. Das gilt nicht nur für Lampen in einer Schaltung, sondern auch für Widerstände."
