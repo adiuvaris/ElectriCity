@@ -1,0 +1,30 @@
+{
+  "Titel": "Gesamtwiderstand bei Parallelschaltung",
+  "Theorie": [
+    "Versuche dich an den Rateaufgaben in diesem Labyrinth"
+  ],
+  "Bilder" : [
+    {"Datei": "pic_05_13_1.png",
+      "Titel": "Stromkreis",
+      "Beschreibung": "Stromkreis"
+    }
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Exit" : true,
+      "Aufgabe": [
+        "Wie gross ist der Gesamtwiderstand dieser Schaltung für R1 = 12 Ohm, R2 = 38 Ohm und R3 = 60 Ohm?"
+        ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "38 Ω",
+        "B" : "50 Ω",
+        "C" : "27.3 Ω",
+        "D" : "110 Ω"
+      },
+      "Richtig" : "C",
+      "Tipp" : "Suche die Erklärung"
+    }
+  ]
+}

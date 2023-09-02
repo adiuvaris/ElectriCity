@@ -1,0 +1,7 @@
+{
+  "Titel" : "Gesamtwiderstand",
+  "Text" : [
+    "<h1>Hilfe</h1>",
+    "Nimmt man die Berechnung der Gesamtstromstärke I Gesamt= I1+I2+ ...+ Ii und dividiert die Gesamtstromstärke durch U, so ergibt sich:  I Gesamt/U=1/R Gesamt . Genau das gleiche mit den einzelnen Stromstärken I1/U=  1/R1  und  I2/U=  1/R2 . Nimmt man den Kehrwert von 1/R Gesamt, erhält man den Wert für den Gesamtwiderstand R Gesamt."
+  ]
+}

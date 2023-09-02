@@ -1,0 +1,30 @@
+{
+  "Titel": "Gesamtwiderstand bei Parallelschaltung",
+  "Theorie": [
+    "Versuche dich an den Rateaufgaben in diesem Labyrinth"
+  ],
+  "Bilder": [
+    {"Datei": "pic_05_09_1.png",
+      "Titel": "Stromkreis",
+      "Beschreibung": "Stromkreis"
+    }
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Exit" : true,
+      "Aufgabe": [
+        "Wie berechnet man den Gesamtwiderstand, wenn mehrere Widerstände parallelgeschalten sind?",
+        "Antwort 1: Der Strom fliesst durch alle Widerstände hindurch, und jeder einzelne hemmt den Stromfluss. Daher ist der Gesamtwiderstand so gross wie die Summe aller Widerstände. Demnach werden die einzelnen Widerstände addiert also: R Gesamt= R1+R2=30 Ω+90 Ω=120 Ω.",
+        "Antwort 2: Nimmt man U= R⋅I  und ersetzt I durch die Gesamtstromstärke einer Parallelschaltung  I Gesamt=I1+I2+ ...+ Ii, so erhält umgeformt man:  I Gesamt/U=1/R Gesamt =  I1/U+  I2/U+ ..+Ii/U=  1/R1 +1/R2 +...+1/Ri . Man muss die Kehrwerte der einzelnen Widerstände addieren, um den Kehrwert der Gesamtwiderstandes zu erhalten. Somit erhält man: 1/RGesamt =1/R1  +1/R2 +⋯+1/Ri."
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Antwort 1",
+        "B" : "Antwort 2"
+      },
+      "Richtig" : "B",
+      "Tipp" : "Suche die Erklärung"
+    }
+  ]
+}

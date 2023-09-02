@@ -1,0 +1,7 @@
+{
+  "Titel" : "Gesamtwiderstand",
+  "Text" : [
+    "<h1>Hilfe</h1>",
+    "Man kann die Berechnung auch aufteilen: R1 & R2 sind in Serie:  R (Ges,Ser)=12 Ω+38 Ω=50 Ω",
+    "R(Ges,Ser) & R3 sind parallel: 1/R Ges =1/(50 Ω)+1/(60 Ω)=1/(27.3 Ω)⇒ R_Ges=27.3 Ω"]
+}

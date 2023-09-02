@@ -1,0 +1,31 @@
+{
+  "Titel": "Potentiale",
+  "Theorie": [
+    "Versuche dich an den Rateaufgaben in diesem Labyrinth"
+  ],
+  "Bilder": [
+    {"Datei": "pic_05_08_1.png",
+      "Titel": "Bild 1",
+      "Beschreibung": "Bild 1"
+    },
+    {"Datei":  "pic_05_08_2.png",
+    "Titel": "Bild 2",
+    "Beschreibung": "Bild 2"}
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Exit" : true,
+      "Aufgabe": [
+        "Wo wurden die elektrischen Potentiale richtig eingezeichnet?"
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Bild 1",
+        "B" : "Bild 2"
+      },
+      "Richtig" : "B",
+      "Tipp" : "Suche die Erklärung"
+    }
+  ]
+}

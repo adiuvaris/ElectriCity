@@ -1,0 +1,30 @@
+{
+  "Titel": "Regel",
+  "Theorie": [
+    "Versuche dich an den Rateaufgaben in diesem Labyrinth"
+  ],
+  "Bilder": [
+    {"Datei": "pic_05_07_1.png",
+      "Titel": "Knotenpunkt",
+      "Beschreibung": "Bild 1"
+    }
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Exit" : true,
+      "Aufgabe": [
+        "Betrachte das Bild und überlege dabei, welche Regel zutreffen muss?",
+        "Antwort 1: Die Konstantenregel: Multipliziert man alle Ströme, die zum Knoten hin oder davonwegfliessen, so kommt man auf die Stromstärkenkonstante. Sie ist bei allen Knoten innerhalb einer Parallelschaltung gleich.",
+        "Antwort 2: Die Knotenregel: Die Summe aller Ströme an einem Knoten ist null. Ströme, die zum Knoten hinfliessen, werden als positiv definiert. Die Ströme, die vom Knoten wegfliessen, werden als negativ bezeichnet."
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Antwort 1",
+        "B" : "Antwort 2"
+      },
+      "Richtig" : "B",
+      "Tipp" : "Suche die Erklärung"
+    }
+  ]
+}

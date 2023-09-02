@@ -1,0 +1,30 @@
+{
+  "Titel": "Gesamtwiderstand bei Parallelschaltung",
+  "Theorie": [
+    "Versuche dich an den Rateaufgaben in diesem Labyrinth"
+  ],
+  "Bilder" : [
+    {"Datei": "pic_05_12_1.png",
+      "Titel": "Stromkreis",
+      "Beschreibung": "Stromkreis"
+    }
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Exit" : true,
+      "Aufgabe": [
+        "Wie gross ist der Gesamtwiderstand dieser Schaltung für R1 = 38 Ohm, R2 = 20 Ohm und R3 = 30 Ohm?"
+        ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "38 Ω",
+        "B" : "50 Ω",
+        "C" : "88 Ω",
+        "D" : "60 Ω"
+      },
+      "Richtig" : "B",
+      "Tipp" : "Suche die Erklärung"
+    }
+  ]
+}

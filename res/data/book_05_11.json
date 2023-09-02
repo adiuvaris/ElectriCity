@@ -1,0 +1,24 @@
+{
+  "Titel": "Gesamtwiderstand bei Parallelschaltung",
+  "Theorie": [
+    "Versuche dich an den Rateaufgaben in diesem Labyrinth"
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Exit" : true,
+      "Aufgabe": [
+        "Wie gross ist der Ersatzwiderstand der Parallelschaltung von R1 = 20 Ω und R2 = 30 Ω?"
+        ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "12 Ω",
+        "B" : "0.08333 Ω",
+        "C" : "50 Ω",
+        "D" : "60 Ω"
+      },
+      "Richtig" : "A",
+      "Tipp" : "Suche die Erklärung"
+    }
+  ]
+}

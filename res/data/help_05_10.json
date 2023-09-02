@@ -1,0 +1,7 @@
+{
+  "Titel" : "Gesamtwiderstand",
+  "Text" : [
+    "<h1>Hilfe</h1>",
+    "Dadurch, dass der Gesamtwiderstand folgendermassen: 1/R Gesamt =1/R1+1/R2 +⋯+1/Ri  berechnet wird, ist dieser schlussendlich kleiner als die einzelnen Widerstände."
+  ]
+}

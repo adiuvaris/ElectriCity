@@ -1,0 +1,22 @@
+{
+  "Titel": "Gesamtwiderstand bei Parallelschaltung",
+  "Theorie": [
+    "Versuche dich an den Rateaufgaben in diesem Labyrinth"
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Exit" : true,
+      "Aufgabe": [
+        "Der Gesamtwiderstand einer Parallelschaltung ist kleiner als die einzelnen Widerstände."
+        ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Wahr",
+        "B" : "Falsch"
+      },
+      "Richtig" : "A",
+      "Tipp" : "Suche die Erklärung"
+    }
+  ]
+}

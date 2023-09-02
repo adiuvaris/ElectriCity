@@ -1,0 +1,7 @@
+{
+  "Titel" : "Regeln",
+  "Text" : [
+    "<h1>Hilfe</h1>",
+    "Die Knotenregel trifft zu, denn Ströme, die zum   Knoten hinfliessen, werden als positiv, diejenigen die vom Knoten wegfliessen, werden als negativ definiert. Daraus resultierend ist die Summe aller Ströme bei einem Knoten null."
+  ]
+}

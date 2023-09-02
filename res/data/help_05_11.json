@@ -1,0 +1,7 @@
+{
+  "Titel" : "Gesamtwiderstand",
+  "Text" : [
+    "<h1>Hilfe</h1>",
+    "Formel für den Ersatzwiderstand einer Parallelschaltung lautet: 1/R Gesamt =1/R1  +1/R2 +⋯+1/Ri. Um den Gesamtwiderstand zu bekommen, darf man nicht vergessen zuletzt den Kehrwert des Bruchs zu nehmen."
+  ]
+}

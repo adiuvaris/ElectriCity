@@ -1,0 +1,30 @@
+{
+  "Titel": "Spannung bei Parallelschaltung",
+  "Theorie": [
+    "Versuche dich an den Rateaufgaben in diesem Labyrinth"
+  ],
+  "Bilder": [
+    {"Datei": "pic_05_08_1.png",
+      "Titel": "Stromkreis",
+      "Beschreibung": "Stromkreis"
+    }
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Exit" : true,
+      "Aufgabe": [
+        "Da sich die Spannung an den Knoten nicht ändert, muss die Gesamtspannung bei Parallelschaltungen folgendermassen berechnet werden: ",
+        "Antwort 1: Über den parallelen Widerständen fällt die gleiche Spannung ab, d.h. U Gesamt= U1=U2=...=Ui.",
+        "Antwort 2: Da die Widerstände parallel sind, fällt die Spannung nicht ab. Alle Spannungen an den einzelnen Widerständen werden addiert, d.h. U Gesamt= U1+U2+U3."
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Antwort 1",
+        "B" : "Antwort 2"
+      },
+      "Richtig" : "A",
+      "Tipp" : "Suche die Erklärung"
+    }
+  ]
+}
