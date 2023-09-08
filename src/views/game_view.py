@@ -74,6 +74,7 @@ class GameView(arcade.View):
 
         # Infos bei Labyrinth Aufgabe
         self.labyrinth = None
+        self.count = 0
 
     def switch_map(self, map_name, start_x, start_y):
         """
@@ -680,6 +681,14 @@ class GameView(arcade.View):
         # Tastendrücke für Hint-Text-Anzeige reduzieren.
         if self.hint_show > 0:
             self.hint_show = self.hint_show - 1
+
+        if key == arcade.key.BACKSPACE and modifiers & arcade.key.MOD_CTRL:
+            self.count = self.count + 1
+
+            if self.count >= 3:
+                arcade.play_sound(self.laser_sound, volume=gd.get_volume() / 100.0)
+                quiz = QuizView("00")
+                self.window.show_view(quiz)
 
     def on_resize(self, width, height):
         """

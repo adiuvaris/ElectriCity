@@ -1,0 +1,16 @@
+{
+  "Beschreibung": [
+    "<h2>Du hast es gefunden.</h2>",
+    "Das ist ein Simon-Says Spiel"
+  ],
+  "Bilder": [
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Simon",
+      "Aufgabe": [
+        "Starte mit der Leertaste."
+      ]
+    }
+  ]
+}

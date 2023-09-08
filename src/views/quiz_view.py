@@ -11,6 +11,7 @@ from src.ui.frage import Frage
 from src.ui.memory import Memory
 from src.ui.puzzle import Puzzle
 from src.ui.wortsuche import Wortsuche
+from src.ui.simon import Simon
 
 
 class QuizView(arcade.View):
@@ -64,6 +65,15 @@ class QuizView(arcade.View):
 
         # Der UI-Manager muss deaktiviert werden
         self.manager.disable()
+
+    def on_update(self, delta_time: float):
+        """
+        Wird regelmässig von arcade aufgerufen
+
+        :param delta_time: Zeit seit letztem Aufruf
+        """
+
+        self.tasks[self.cur_task].on_update(delta_time)
 
     def on_draw(self):
         """
@@ -174,3 +184,7 @@ def create_task(aufgabe: dict):
         if art == "Wortsuche":
             wortsuche = Wortsuche(aufgabe)
             return wortsuche
+
+        if art == "Simon":
+            simon = Simon(aufgabe)
+            return simon

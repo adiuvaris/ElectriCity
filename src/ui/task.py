@@ -37,6 +37,9 @@ class Task:
         if "Exit" in aufgabe:
             self.exit_task = aufgabe["Exit"]
 
+    def on_update(self, delta_time: float):
+        pass
+
     def create_ui(self, ui_manager: arcade.gui.UIManager, callback):
         """
         User-Interface erstellen - nur den Rahmen für die Aufgabe
