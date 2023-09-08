@@ -108,12 +108,29 @@ class GameView(arcade.View):
         self.left_pressed = False
         self.right_pressed = False
 
+        # Start-Info pro Haus anzeigen, falls eine vorhanden ist
         mypath = gd.get_abs_path("res/data")
         filename = f"{mypath}/{map_name}.json"
         if os.path.exists(filename):
             hint_file = f"{map_name}.json"
             hint = HelpView(hint_file, self)
             self.window.show_view(hint)
+
+        # In der city Map prüfen, ob alle Aufgaben erledigt sind
+        if map_name == "city" and gd.has_all_tasks():
+
+            # Nur weiter prüfen, wenn es nicht der Start des Programms ist
+            if start_x != const.STARTING_X and start_y != const.STARTING_Y:
+
+                # Den Hinweis auf die Abschlussprüfung nur einmal anzeigen
+                if not gd.get_final():
+                    mypath = gd.get_abs_path("res/data")
+                    filename = f"{mypath}/room_00.json"
+                    if os.path.exists(filename):
+                        gd.set_final(True)
+                        hint_file = "room_00.json"
+                        final = HelpView(hint_file, self)
+                        self.window.show_view(final)
 
     def setup_physics(self):
         """
@@ -387,10 +404,13 @@ class GameView(arcade.View):
                 start_x = doors_hit[0].properties["start_x"]
                 start_y = doors_hit[0].properties["start_y"]
 
+                # Darf die Map betreten werden? City geht immer, aber für Häuser braucht es einen Schlüssel
                 if map_name == "city" or gd.has_room_key(map_name[5:]):
                     if map_name == "city":
+                        # Geräusch für Ausgang aus einem Haus
                         arcade.play_sound(self.door_close_sound, volume=gd.get_volume() / 100.0)
                     else:
+                        # Geräusch für Eintritt in ein Haus
                         arcade.play_sound(self.door_open_sound, volume=gd.get_volume() / 100.0)
 
                     # Neue Map anzeigen

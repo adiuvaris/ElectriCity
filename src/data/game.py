@@ -27,6 +27,25 @@ class GameData(object):
         self.game_data = {}
         self.buch_lock = ""
 
+    def get_final(self):
+        """
+        Liefert zurück, ob der Hinweis für die Abschlussprüfung schon gezeigt wurde
+        :return True oder False
+        """
+
+        if "final" not in self.game_data:
+            self.game_data["final"] = False
+        return self.game_data["final"]
+
+    def set_final(self, final=False):
+        """
+        Speichert, ob der Hinweis für die Abschlussprüfung schon gezeigt wurde
+        :param final: True oder False
+        """
+
+        self.game_data["final"] = final
+        self.save_game_data()
+
     def get_scale(self):
         """
         Liefert die eingestellte Skalierung - Default 100 %.
@@ -267,10 +286,10 @@ class GameData(object):
         books = self.get_books()
         return books[room_nr][book_nr][task_nr]
 
-    def has_all_tasks(self, room_nr: str, book_nr=""):
+    def has_all_tasks(self, room_nr="", book_nr=""):
         """
         Prüfen, ob alle Aufgaben eines Raumes/Hauses gelöst sind
-        :param room_nr: Raum z.B. "02"
+        :param room_nr: Raum z.B. "02" oder leer für alle Bücher in allen Räumen
         :param book_nr: Buch z.B. "01" oder leer für alle Bücher des Raums
         :return True, wenn alles gelöst, sonst False
         """
@@ -286,7 +305,11 @@ class GameData(object):
                         if not task:
                             return False
         else:
-            return False
+            for room_nr in books:
+                for book_nr in books[room_nr]:
+                    for task in books[room_nr][book_nr]:
+                        if not task:
+                            return False
 
         return True
 

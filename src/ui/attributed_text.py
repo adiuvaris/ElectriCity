@@ -73,6 +73,7 @@ class AttributedText(arcade.gui.UIWidget):
         self.text = fs + self.text
 
         # Attribute für pyglet umsetzen
+        self.text = self.text.replace("<player>", gd.player_name)
         self.text = self.text.replace("<h1>", h1)
         self.text = self.text.replace("</h1>", fs)
         self.text = self.text.replace("<h2>", h2)
@@ -83,6 +84,8 @@ class AttributedText(arcade.gui.UIWidget):
         self.text = self.text.replace("</i>", "{italic False}")
         self.text = self.text.replace("<np>", "{font_name 'Courier New'}")
         self.text = self.text.replace("</np>", "{font_name 'Arial'}")
+        self.text = self.text.replace("<center>", "{.align 'center'}")
+        self.text = self.text.replace("</center>", "{.align 'left'}")
 
         # Variablen-Werte eintragen
         for k, v in self.variables.items():

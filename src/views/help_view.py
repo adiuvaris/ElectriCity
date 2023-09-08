@@ -17,7 +17,7 @@ class HelpView(arcade.View):
     Klasse für die View mit einem Text
     """
 
-    def __init__(self, filename, parent):
+    def __init__(self, filename, parent, exit_program=False):
         """
         Konstruktor
         """
@@ -27,6 +27,7 @@ class HelpView(arcade.View):
 
         # Member definieren
         self.parent = parent
+        self.exit_program = exit_program
         self.text = []
         self.titel = ""
         self.medias = []
@@ -120,7 +121,12 @@ class HelpView(arcade.View):
 
         # Escape geht zurück zum Aufrufer
         if key == arcade.key.ESCAPE:
-            self.window.show_view(self.parent)
+
+            # Falls gewünscht das Programm verlassen
+            if self.exit_program:
+                self.window.close()
+            else:
+                self.window.show_view(self.parent)
 
     def create_ui(self):
         """

@@ -1,0 +1,18 @@
+{
+  "Titel": "Abschlussprüfung",
+  "Theorie": [
+    "Löse alle Aufgaben, um das Diplom zu bekommen. Das Diplom wird nur angezeigt, wenn alle Aufgaben in einem Zug richtig gelöst werden."
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "..."
+      ],
+      "Typ": "Zahl",
+      "Richtig": "1",
+      "Nachkommastellen": 0,
+      "Tipp" : "Du musst 1 eingeben."
+    }
+  ]
+}

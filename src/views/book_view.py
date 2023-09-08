@@ -33,6 +33,10 @@ class BookView(arcade.View):
         self.tasks = []
         self.cur_task = 0
 
+        self.final = False
+        if int(room_nr) == 0:
+            self.final = True
+
         # UIManager braucht es für arcade
         self.manager = arcade.gui.UIManager()
 
@@ -103,6 +107,7 @@ class BookView(arcade.View):
         Eine Aufgabe wurde erledigt, also die nächste anzeigen oder View verlassen bei Exit
         """
 
+        # Aufgaben im Labyrinth haben das Flag exit
         if self.tasks[self.cur_task].exit_task:
 
             if self.tasks[self.cur_task].correct:
@@ -113,10 +118,11 @@ class BookView(arcade.View):
 
             else:
 
-                # Aufgabe in den Spieler-Daten als ungelöst markieren und das Buck sperren
+                # Aufgabe in den Spieler-Daten als ungelöst markieren und das Buch sperren
                 gd.reset_task(self.room_nr, self.book_nr, self.cur_task)
                 gd.lock_book(self.room_nr, self.book_nr)
 
+            # Zurück zum Labyrinth - dort wird entschieden wie es weiter geht
             self.window.show_view(self.window.game_view)
 
         else:
@@ -124,7 +130,8 @@ class BookView(arcade.View):
             if self.tasks[self.cur_task].correct:
 
                 # Aufgabe in den Spieler-Daten als gelöst markieren
-                gd.set_task(self.room_nr, self.book_nr, self.cur_task)
+                if not self.final:
+                    gd.set_task(self.room_nr, self.book_nr, self.cur_task)
 
                 # Nächste Aufgabe anzeigen, wenn es eine hat
                 self.cur_task = self.cur_task + 1
@@ -192,7 +199,8 @@ class BookView(arcade.View):
                         self.tasks.append(task)
 
                 # Buch in den Spieler-Daten eintragen
-                gd.init_book(self.room_nr, self.book_nr, len(self.tasks))
+                if not self.final:
+                    gd.init_book(self.room_nr, self.book_nr, len(self.tasks))
 
     def create_ui(self):
         """
@@ -204,10 +212,15 @@ class BookView(arcade.View):
             self.manager.remove(widget)
         self.manager.clear()
 
+        # Titel zusammenstellen. Bei der Abschlussprüfung (Raum 0), das Buch nicht ausgeben
+        titel = "Buch " + str(int(self.book_nr)) + " - " + self.title
+        if self.final:
+            titel = self.title
+
         # Titeltext oben in der Mitte
         titel = arcade.gui.UILabel(x=0, y=gd.scale(670),
                                    width=self.window.width, height=gd.scale(30),
-                                   text="Buch " + str(int(self.book_nr)) + " - " + self.title,
+                                   text=titel,
                                    text_color=[0, 0, 0],
                                    bold=True,
                                    align="center",
@@ -218,10 +231,23 @@ class BookView(arcade.View):
         # UI der Theorie anzeigen
         self.theory.create_ui(self.manager, self)
 
-        # Falls es eine Aufgabe hat, diese anzeigen
+        # Falls es die Aufgabe gibt, diese anzeigen
         if self.cur_task < len(self.tasks):
             self.tasks[self.cur_task].create_ui(self.manager, self.on_end_task)
         else:
-            self.window.show_view(self.window.game_view)
+            if self.final:
+
+                # Diplom anzeigen und dann das Programm verlassen
+                mypath = gd.get_abs_path("res/data")
+                info_file = "diplom.json"
+                filename = f"{mypath}/{info_file}"
+                if os.path.exists(filename):
+                    hint = HelpView(info_file, self, True)
+                    self.window.show_view(hint)
+
+            else:
+
+                # Zurück zum Raum
+                self.window.show_view(self.window.game_view)
 
         self.manager.trigger_render()

@@ -4,6 +4,7 @@ import arcade.gui
 import src.const as const
 from src.data.game import gd
 from src.views.setting_view import SettingView
+from src.views.book_view import BookView
 
 
 class MenuView(arcade.View):
@@ -72,6 +73,13 @@ class MenuView(arcade.View):
         settings = SettingView(self)
         self.window.show_view(settings)
 
+    def on_click_final(self, event):
+        v = BookView("00", "00")
+        v.setup()
+        self.window.show_view(v)
+
+        pass
+
     def on_click_new_game(self, event):
         """
         Klick-handler, wenn "Neues Spiel" angeklickt wurde
@@ -135,6 +143,14 @@ class MenuView(arcade.View):
         settings_button = arcade.gui.UIFlatButton(text="Einstellungen", width=gd.scale(290), height=gd.scale(40), style=style)
         v_box.add(settings_button.with_space_around(bottom=gd.scale(40)))
         settings_button.on_click = self.on_click_settings
+
+        # Der Hinweis für die Abschlussprüfung wurde angezeigt, also auch den entsprechenden Button anzeigen
+        if gd.get_final():
+
+            # Button
+            quit_button = arcade.gui.UIFlatButton(text="Abschlussprüfung", width=gd.scale(290), height=gd.scale(40), style=style)
+            v_box.add(quit_button.with_space_around(bottom=gd.scale(40)))
+            quit_button.on_click = self.on_click_final
 
         # Button
         new_game_button = arcade.gui.UIFlatButton(text="Neues Spiel", width=gd.scale(290), height=gd.scale(40), style=style)
