@@ -1,3 +1,4 @@
+import datetime
 import os
 
 import arcade
@@ -72,9 +73,12 @@ class GameView(arcade.View):
         self.camera_sprites = arcade.Camera(self.window.width, self.window.height)
         self.camera_gui = arcade.Camera(self.window.width, self.window.height)
 
-        # Infos bei Labyrinth Aufgabe
+        # Info's bei Labyrinth Aufgabe
         self.labyrinth = None
         self.count = 0
+        self.dauer = 0.0
+        self.input = ""
+        self.egg = "117114105" + str(arcade.key.KEY_0 + datetime.date.today().isoweekday())
 
     def switch_map(self, map_name, start_x, start_y):
         """
@@ -274,6 +278,12 @@ class GameView(arcade.View):
 
         if self.physics_engine is None:
             return
+
+        # Nach drei Sekunden die Eingabe für das Easter-Egg zurücksetzen.
+        self.dauer = self.dauer + delta_time
+        if self.dauer > 3.0:
+            self.input = ""
+            self.dauer = 0.0
 
         # Richtung des Player Sprites berechnen, wenn entsprechende Tasten gedrückt sind.
         # Dazu werden alle aktuellen Tastendrücke beachtet und dann die
@@ -670,25 +680,27 @@ class GameView(arcade.View):
         """
 
         if key in const.KEY_UP:
+            self.input = ""
             self.up_pressed = False
         elif key in const.KEY_DOWN:
+            self.input = ""
             self.down_pressed = False
         elif key in const.KEY_LEFT:
+            self.input = ""
             self.left_pressed = False
         elif key in const.KEY_RIGHT:
+            self.input = ""
             self.right_pressed = False
+        elif arcade.key.KEY_0 <= key <= arcade.key.Z:
+            self.dauer = 0.0
+            self.input = self.input + str(key)
+            if self.input == self.egg:
+                quiz = QuizView("00")
+                self.window.show_view(quiz)
 
         # Tastendrücke für Hint-Text-Anzeige reduzieren.
         if self.hint_show > 0:
             self.hint_show = self.hint_show - 1
-
-        if key == arcade.key.BACKSPACE and modifiers & arcade.key.MOD_CTRL:
-            self.count = self.count + 1
-
-            if self.count >= 3:
-                arcade.play_sound(self.laser_sound, volume=gd.get_volume() / 100.0)
-                quiz = QuizView("00")
-                self.window.show_view(quiz)
 
     def on_resize(self, width, height):
         """

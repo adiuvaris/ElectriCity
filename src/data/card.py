@@ -13,3 +13,4 @@ class Card:
         self.key = ""
         self.button = None
         self.position = ()
+        self.sound = None

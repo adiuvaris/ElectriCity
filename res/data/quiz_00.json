@@ -1,7 +1,7 @@
 {
   "Beschreibung": [
-    "<h2>Du hast es gefunden.</h2>",
-    "Das ist ein Simon-Says Spiel"
+    "<h2>Du hast das Osterei gefunden.</h2>",
+    "Das ist ein Simon-Says Spiel. Zeige was du drauf hast."
   ],
   "Bilder": [
   ],
@@ -9,7 +9,7 @@
     {
       "Art": "Simon",
       "Aufgabe": [
-        "Starte mit der Leertaste."
+        "Starte ein neues Spiel mit der Leertaste."
       ]
     }
   ]

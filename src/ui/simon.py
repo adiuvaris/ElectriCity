@@ -28,21 +28,20 @@ class Simon(Task):
         # Member definieren
         self.karten = []
         self.aufgabe_text = None
-        self.raster = 2
-        self.count = 0
-        self.number = 0
-        self.running = False
-        self.show_number = False
-        self.hide_number = False
+        self.state = "start"
+        self.level = 4
+        self.cur_card = 0
         self.dauer = 0.0
+        self.timer = 0
         self.spiel = []
+        self.player = None
 
-        # Aus dem Raster eine Liste von Karten erzeugen
-        for i in range(self.raster):
-            for j in range(self.raster):
+        # Die vier Karten für das Spiel erzeugen
+        for i in range(2):
+            for j in range(2):
                 card = Card()
-                card.key = str(j * self.raster + i + 1).zfill(2)
                 card.position = (i, j)
+                card.sound = arcade.load_sound(f":sounds:simon_{i}{j}.wav")
                 self.karten.append(card)
 
     def create_ui(self, ui_manager: arcade.gui.UIManager, callback):
@@ -67,18 +66,18 @@ class Simon(Task):
 
             # Breite und Höhe der Karten auf dem Bildschirm festlegen
             # Position des Buttons für die Karte berechnen
-            w = gd.scale(int(620 / self.raster))
+            w = gd.scale(int(620 / 2))
             h = w
             x = gd.scale(550) + karte.position[0] * w
             y = gd.scale(20) + karte.position[1] * h
 
-            style = {"font_size": 3 * gd.scale(const.FONT_SIZE_H1), "bg_color": (100, 0, 0)}
+            style = {"font_size": 4 * gd.scale(const.FONT_SIZE_H1), "bg_color": (100, 0, 0), "bg_color_pressed": (200, 0, 0)}
             if i == 1:
-                style = {"font_size": 3 * gd.scale(const.FONT_SIZE_H1), "bg_color": (0, 100, 0)}
+                style = {"font_size": 4 * gd.scale(const.FONT_SIZE_H1), "bg_color": (0, 100, 0), "bg_color_pressed": (0, 200, 0)}
             elif i == 2:
-                style = {"font_size": 3 * gd.scale(const.FONT_SIZE_H1), "bg_color": (0, 0, 100)}
+                style = {"font_size": 4 * gd.scale(const.FONT_SIZE_H1), "bg_color": (0, 0, 100), "bg_color_pressed": (0, 0, 200)}
             elif i == 3:
-                style = {"font_size": 3 * gd.scale(const.FONT_SIZE_H1), "bg_color": (0, 100, 100)}
+                style = {"font_size": 4 * gd.scale(const.FONT_SIZE_H1), "bg_color": (0, 100, 100), "bg_color_pressed": (0, 200, 200)}
 
             i = i + 1
 
@@ -91,70 +90,93 @@ class Simon(Task):
     def on_update(self, delta_time: float):
 
         self.dauer = self.dauer + delta_time
-        if self.dauer > 1.0:
+
+        if self.state == "start":
+            return
+
+        elif self.state == "game":
             self.dauer = 0.0
+            self.show_aufgaben_text()
+            while len(self.spiel) < self.level:
+                r = random.randint(0, 3)
+                self.spiel.append(r)
 
-            if self.show_number:
-                karte = self.karten[self.spiel[self.number]]
-                karte.button.text = str(self.number + 1)
-                self.show_number = False
-                self.hide_number = True
+            self.cur_card = 0
+            self.timer = 2 * self.level
+            self.state = "show"
+            self.show_aufgaben_text()
 
-            elif self.hide_number:
-                karte = self.karten[self.spiel[self.number]]
-                karte.button.text = ""
+        elif self.state == "error":
+            if self.dauer > 1.0:
+                self.dauer = 0.0
+                arcade.play_sound(self.lose_sound, volume=gd.get_volume() / 100.0)
+                self.state = "start"
+                self.show_aufgaben_text()
 
-                self.number = self.number + 1
-                self.show_number = True
-                self.hide_number = False
+        elif self.state == "nextlevel":
+            if self.dauer > 1.0:
+                self.dauer = 0.0
+                arcade.play_sound(self.ok_sound, volume=gd.get_volume() / 100.0)
+                if self.level > gd.get_max_level():
+                    gd.set_max_level(self.level)
+                self.level = self.level + 1
+                self.state = "game"
 
-                if self.number == self.count:
-                    self.number = 0
-                    self.show_number = False
-                    self.hide_number = False
-                    self.running = True
+        elif self.state == "show":
+            if self.dauer > 1.0:
+                self.dauer = 0.0
+                if self.cur_card > 0:
+                    karte = self.karten[self.spiel[self.cur_card - 1]]
+                    karte.button.text = ""
 
-                    self.manager.remove(self.aufgabe_text)
-                    text = ["Wiederhole die Sequenz durch Klicks auf die farbigen Flächen"]
-                    self.aufgabe_text = AttributedText(
-                        x=gd.scale(20), y=gd.scale(20),
-                        width=gd.scale(400), height=gd.scale(300), text=text)
-                    self.manager.add(self.aufgabe_text)
-                    self.manager.trigger_render()
+                if self.cur_card == len(self.spiel):
+                    self.cur_card = 0
+                    self.state = "play"
+                    self.show_aufgaben_text()
+                else:
+                    karte = self.karten[self.spiel[self.cur_card]]
+                    karte.button.text = str(self.cur_card + 1)
+                    arcade.play_sound(karte.sound, volume=gd.get_volume() / 100.0)
+                    self.cur_card = self.cur_card + 1
+
+        elif self.state == "play":
+            if self.dauer > 1.0:
+                self.dauer = 0.0
+                self.timer = self.timer - 1
+                self.show_aufgaben_text()
+                if self.timer == 0:
+                    arcade.play_sound(self.lose_sound, volume=gd.get_volume() / 100.0)
+                    self.state = "start"
+                    self.show_aufgaben_text()
 
     def on_simon_click(self, event):
         """
         Callback für den Klick auf eine Karte
         :param event: Event von Arcade
         """
-        if not self.running:
+
+        # Nur auf Klicks reagieren, wenn der Spieler dran ist
+        if self.state != "play":
             return
+
+        if self.player is not None:
+            self.player.pause()
 
         # Angeklickte Karte suchen
         for karte in self.karten:
             if karte.button == event.source:
-
-                self.manager.remove(self.aufgabe_text)
-                text = self.aufgabe
-
-                ref_karte = self.karten[self.spiel[self.number]]
+                self.player = arcade.play_sound(karte.sound, volume=gd.get_volume() / 100.0)
+                ref_karte = self.karten[self.spiel[self.cur_card]]
                 if karte == ref_karte:
-                    self.number = self.number + 1
-                    if self.number == self.count:
-                        arcade.play_sound(self.ok_sound, volume=gd.get_volume() / 100.0)
-                        self.running = False
-                        self.number = 0
-                    else:
-                        text = ["Wiederhole die Sequenz durch Klicks auf die farbigen Flächen"]
-
+                    self.cur_card = self.cur_card + 1
+                    if self.cur_card == len(self.spiel):
+                        self.dauer = 0.0
+                        self.state = "nextlevel"
                 else:
-                    arcade.play_sound(self.lose_sound, volume=gd.get_volume() / 100.0)
-                    self.running = False
+                    self.dauer = 0.0
+                    self.state = "error"
 
-                self.aufgabe_text = AttributedText(
-                    x=gd.scale(20), y=gd.scale(20),
-                    width=gd.scale(400), height=gd.scale(300), text=text)
-                self.manager.add(self.aufgabe_text)
+                break
 
     def on_key_press(self, key, modifiers):
         """
@@ -166,25 +188,38 @@ class Simon(Task):
         # Taste auch an Basisklasse melden
         super().on_key_press(key, modifiers)
 
-        # Leertaste gedrückt?
-        if key == arcade.key.SPACE or key == arcade.key.NUM_SPACE:
+        # Nur im Zustand start auf Tasten reagieren
+        if self.state == "start":
 
-            self.manager.remove(self.aufgabe_text)
-            text = ["Merke dir die Sequenz"]
-            self.aufgabe_text = AttributedText(
-                x=gd.scale(20), y=gd.scale(20),
-                width=gd.scale(400), height=gd.scale(300), text=text)
-            self.manager.add(self.aufgabe_text)
-            self.manager.trigger_render()
+            # Leertaste gedrückt?
+            if key == arcade.key.SPACE or key == arcade.key.NUM_SPACE:
 
-            self.count = 4
-            self.spiel.clear()
-            for i in range(self.count):
-                r = random.randint(0, 3)
-                self.spiel.append(r)
+                # Neues Spiel init
+                self.spiel.clear()
+                self.level = 4
+                self.cur_card = 0
+                self.state = "game"
 
-            self.number = 0
-            self.running = False
-            self.show_number = True
-            self.hide_number = True
+    def show_aufgaben_text(self):
 
+        max_level = gd.get_max_level()
+        text_liste = []
+        if self.state == "start":
+            text_liste.append("Starte ein neues Spiel mit der Leertaste.")
+        elif self.state == "game":
+            text_liste.append(f"Merke dir die Sequenz von {self.level} Karten.")
+        elif self.state == "show":
+            text_liste.append(f"Merke dir die Sequenz von {self.level} Karten.")
+        elif self.state == "play":
+            text_liste.append(f"Wiederhole die Sequenz von {self.level} Karten.")
+            text_liste.append(f"Du hast noch {self.timer} Sekunden zeit.")
+
+        text_liste.append("")
+        text_liste.append(f"Maximale Anzahl wiederholter Karten <b>{max_level}</b>")
+
+        self.manager.remove(self.aufgabe_text)
+        self.aufgabe_text = AttributedText(
+            x=gd.scale(20), y=gd.scale(20),
+            width=gd.scale(400), height=gd.scale(300), text=text_liste)
+        self.manager.add(self.aufgabe_text)
+        self.manager.trigger_render()

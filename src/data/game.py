@@ -27,6 +27,26 @@ class GameData(object):
         self.game_data = {}
         self.buch_lock = ""
 
+    def get_max_level(self):
+        """
+        Liefert den max Level von Simon zurück
+        :return int
+        """
+
+        if "max_level" not in self.game_data:
+            self.game_data["max_level"] = 0
+        return self.game_data["max_level"]
+
+    def set_max_level(self, max_level):
+        """
+        Speichert den max Level von Simon
+        :param final: max level
+        """
+
+        self.game_data["max_level"] = max_level
+        self.save_game_data()
+
+
     def get_final(self):
         """
         Liefert zurück, ob der Hinweis für die Abschlussprüfung schon gezeigt wurde
