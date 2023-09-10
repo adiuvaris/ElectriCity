@@ -117,6 +117,17 @@
     {
       "Art": "Frage",
       "Aufgabe": [
+        "Wenn drei ohmsche Widerstände seriegeschaltet sind und der Gesamtwiderstand=60 Ω, die Gesamtspannung=300 V und die Gesamtstromstärke=5 A beträgt, wie gross sind dann die Widerstände?",
+        "Gib die drei Widerstände in aufsteigender Reihenfolge ohne Abstand/Kommas an."
+      ],
+      "Typ": "Zahl",
+      "Richtig": "102030",
+      "Nachkommastellen": 2,
+      "Tipp" : "Du musst die Formel U=R*I verwenden."
+   },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
         "Können wir zwei Batterien mit unterschiedlicher Quellenspannung parallelschalten, so dass der Stromkreis auch \"funktioniert\"?"
       ],
       "Typ": "Multi",
@@ -125,6 +136,17 @@
         "B" : "Nein"
       },
       "Richtig" : "B"
-    }
+    },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Wenn drei ohmsche Widerstände parallelgeschaltet sind und der Gesamtwiderstand=2.73 Ω, die Gesamtspannung=15 V und dir Gesamtstromstärke=5.5 A beträgt, wie gross sind dann die einzelnen Widerstände?",
+        "Gib die drei Widerstände in aufsteigender Reihenfolge ohne Abstände/Kommas an."
+      ],
+      "Typ": "Zahl",
+      "Richtig": "51015",
+      "Nachkommastellen": 2,
+      "Tipp" : "Du musst die Formel U=R*I verwenden."
+   }
   ]
 }
