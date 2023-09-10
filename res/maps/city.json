@@ -304,6 +304,24 @@
                  "width":32,
                  "x":3456.36363636364,
                  "y":640.090909090909
+                }, 
+                {
+                 "gid":5766,
+                 "height":32,
+                 "id":22,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"00"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1343.4622739752,
+                 "y":1118.90637129603
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -312,7 +330,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":22,
+ "nextobjectid":23,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tiledversion":"1.10.1",
