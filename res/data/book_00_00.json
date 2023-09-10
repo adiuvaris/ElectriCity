@@ -3,16 +3,128 @@
   "Theorie": [
     "Bevor du endgültig mit dem Spiel fertig bist, musst du noch diesen Test lösen. Zu jedem Haus gibt es zwei Aufgaben. Schaffst du es alle Aufgaben in einem Zug richtig zu lösen, erhältst du ein Diplom. Da du aber alle bisherigen Aufgaben gelöst und die Theorien gelesen hast, sollte das kein Problem für dich sein ;)"
   ],
+  "Bilder": [
+    {
+      "Datei": "pic_00_00_1.png",
+      "Titel": "Das Bild zeigt eine Lampe, die am Minuspol einer Batterie angeschlossen ist.",
+      "Beschreibung": "Batterie mit Lampe"
+    },
+    {
+      "Datei": "pic_00_00_2.png",
+      "Titel": "Stromkreis mit zwei Lampen.",
+      "Beschreibung": "Stromkreis"
+    }
+    ],
   "Aufgaben": [
     {
       "Art": "Frage",
       "Aufgabe": [
-        "..."
+        "Leuchtet die Lampe, die im Bild zu sehen ist?",
+        "Antwort 1: Nein, der Stromkreis ist nicht geschlossen, daher fliesse keine Elektronen.",
+        "Antwort 2: Ja, da die Lampe den Minuspol der Batterie berührt, können Elektronen in die Lampe fliessen."
       ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Antwort 1",
+        "B" : "Antwort 2"
+      },
+      "Richtig" : "A"
+    },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Die Batterie einer Taschenlampe kann insgesamt eine Ladung <V1> mAh abgeben, bevor sie leer ist. Wenn die Lampe eingeschaltet ist, fliesst ein Strom von <V2> mA. Wie lange brennt die Taschenlampe, bis ihre Batterie leer ist?",
+        "Gib die Antwort auf zwei Nachkommastellen genau an, ohne Einheit."
+      ],
+      "Variablen": {
+        "V1": [1700, 3000, 1400, 650, 2700],
+        "V2": [500, 120, 240, 200, 720]
+      },
       "Typ": "Zahl",
-      "Richtig": "1",
-      "Nachkommastellen": 0,
-      "Tipp" : "Du musst 1 eingeben."
+      "Richtig": "V1/V2",
+      "Nachkommastellen": 2,
+      "Tipp" : "Du musst die Formel I=Q/t nach t auflösen und dann die Werte einsetzen."
+   },
+     {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Die Spannung ist ein Maß für die Zahl der Ladungen, die pro Zeiteinheit einen bestimmten Leiterquerschnitt passieren."
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Wahr",
+        "B" : "Falsch"
+      },
+      "Richtig" : "B"
+    },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Ein Heizgerät für <V1> V nimmt im Betrieb <V2> A auf. Wie groß ist die aufgenommene elektrische Leistung?",
+        "Gib die Antwort ohne Einheit auf zwei Nachkommastellen genau an."
+      ],
+      "Variablen": {
+        "V1": [230, 250, 300, 650, 150],
+        "V2": [8.65, 9.35, 7.5, 6.8, 5.9]
+      },
+      "Typ": "Zahl",
+      "Richtig": "V1*V2",
+      "Nachkommastellen": 2,
+      "Tipp" : "Du musst die Formel P=U*I verwenden."
+   },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Was machst du, wenn du siehst, dass jemand eine Stromquelle berührt und seine Hand nicht mehr wegziehen kann?",
+        "Antwort 1: Du ziehst die Person von der Stromquelle weg.",
+        "Antwort 2: Du schaltest die Stromquelle ab oder du trennst sie vom Stromnetz. Am besten benutzt du dafür die Sicherung oder einen Not-Ausschalter."
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Antwort 1",
+        "B" : "Antwort 2"
+      },
+      "Richtig" : "B"
+    },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Du möchtest ein selbstgebautes elektronisches Gerät an die Steckdose anschließen (230 V Netzspannung). Dein Gerät kann aber maximal einen Strom von <V1> A verkraften. Du willst diesen Strom also auf gar keinen Fall überschreiten, damit das Gerät nicht zerstört wird. Wie groß musst du dafür der Widerstand des Geräts mindestens wählen?",
+        "Gib die Antwort ohne Einheit auf zwei Nachkommastellen genau an."
+      ],
+      "Variablen": {
+        "V1": [0.1,0.2,0.3,0.4,0.5]
+      },
+      "Typ": "Zahl",
+      "Richtig": "230/V1",
+      "Nachkommastellen": 2,
+      "Tipp" : "Du musst die Formel U=R*I verwenden."
+   },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Wir bauen einen geschlossenen Stromkreis aus Spannungsquelle und zwei Lampen (L1, L2) auf. Was passiert, wenn die Lampe 1 \"durchbrennt\", also ausfällt? (Bild Stromkreis)",
+        "Antwort 1: Die Lampe L2 fällt auch aus.",
+        "Antwort 2: Die Lampe L2 leuchtet mit höherer Helligkeit weiter."
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Antwort 1",
+        "B" : "Antwort 2"
+      },
+      "Richtig" : "A"
+    },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Können wir zwei Batterien mit unterschiedlicher Quellenspannung parallelschalten, so dass der Stromkreis auch \"funktioniert\"?"
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Ja",
+        "B" : "Nein"
+      },
+      "Richtig" : "B"
     }
   ]
 }
