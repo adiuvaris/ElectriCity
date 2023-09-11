@@ -656,34 +656,6 @@
                 {
                  "gid":1056,
                  "height":32,
-                 "id":52,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"book",
-                         "type":"string",
-                         "value":"08"
-                        }, 
-                        {
-                         "name":"help",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
-                         "name":"room",
-                         "type":"string",
-                         "value":"04"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":482.006610389031,
-                 "y":646.673277055697
-                }, 
-                {
-                 "gid":1056,
-                 "height":32,
                  "id":59,
                  "name":"",
                  "properties":[
