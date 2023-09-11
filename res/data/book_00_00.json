@@ -117,13 +117,17 @@
     {
       "Art": "Frage",
       "Aufgabe": [
-        "Wenn drei ohmsche Widerstände seriegeschaltet sind und der Gesamtwiderstand=60 Ω, die Gesamtspannung=300 V und die Gesamtstromstärke=5 A beträgt, wie gross sind dann die Widerstände?",
-        "Gib die drei Widerstände in aufsteigender Reihenfolge ohne Abstand/Kommas an."
+        "Wenn drei ohmsche Widerstände seriegeschaltet sind und die Widerstände <V1> Ω,<V2> Ω,<V3> Ω betragen, was ist dann der Gesamtwiderstand? ",
+        "Gib den Widerstand auf zwei Stellen genau an."
       ],
+      "Variablen": {
+        "V1": [10,20,30,40,50],
+        "V2": [5,15,25,35,45,55],
+        "V3": [3,16,27,34,49]
+      },
       "Typ": "Zahl",
-      "Richtig": "102030",
-      "Nachkommastellen": 2,
-      "Tipp" : "Du musst die Formel U=R*I verwenden."
+      "Richtig": "V1+V2+V3",
+      "Nachkommastellen": 2
    },
     {
       "Art": "Frage",
@@ -137,16 +141,20 @@
       },
       "Richtig" : "B"
     },
-    {
+     {
       "Art": "Frage",
       "Aufgabe": [
-        "Wenn drei ohmsche Widerstände parallelgeschaltet sind und der Gesamtwiderstand=2.73 Ω, die Gesamtspannung=15 V und dir Gesamtstromstärke=5.5 A beträgt, wie gross sind dann die einzelnen Widerstände?",
-        "Gib die drei Widerstände in aufsteigender Reihenfolge ohne Abstände/Kommas an."
+        "Wenn drei ohmsche Widerstände parallelgeschaltet sind und die Widerstände <V1> Ω, <V2> Ω und <V3> Ω betragen, wie gross ist der Gesamtwiderstand.",
+        "Gib den Widerstand auf zwei Stellen genau an."
       ],
+      "Variablen": {
+        "V1": [10,20,30,40,50],
+        "V2": [5,15,25,35,45,55],
+        "V3": [3,16,27,34,49]
+      },
       "Typ": "Zahl",
-      "Richtig": "51015",
-      "Nachkommastellen": 2,
-      "Tipp" : "Du musst die Formel U=R*I verwenden."
+      "Richtig": "((1/V1)+(1/V2)+(1/V3))**-1",
+      "Nachkommastellen": 2
    }
   ]
 }
