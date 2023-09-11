@@ -78,7 +78,7 @@ class GameView(arcade.View):
         self.count = 0
         self.dauer = 0.0
         self.input = ""
-        self.egg = "117114105" + str(arcade.key.KEY_0 + datetime.date.today().isoweekday())
+        self.egg = "117114105"
 
     def switch_map(self, map_name, start_x, start_y):
         """
@@ -472,19 +472,19 @@ class GameView(arcade.View):
                     # nicht gleich wieder ein Hit erfolgt
                     if self.up_pressed:
                         self.up_pressed = False
-                        self.player_sprite.center_y = quiz_hit[0].center_y - const.SPRITE_SIZE
+                        self.player_sprite.center_y = quiz_hit[0].center_y - 1.1 * const.SPRITE_SIZE
 
                     if self.down_pressed:
                         self.down_pressed = False
-                        self.player_sprite.center_y = quiz_hit[0].center_y + const.SPRITE_SIZE
+                        self.player_sprite.center_y = quiz_hit[0].center_y + 1.1 * const.SPRITE_SIZE
 
                     if self.left_pressed:
                         self.left_pressed = False
-                        self.player_sprite.center_x = quiz_hit[0].center_x + const.SPRITE_SIZE
+                        self.player_sprite.center_x = quiz_hit[0].center_x + 1.1 * const.SPRITE_SIZE
 
                     if self.right_pressed:
                         self.right_pressed = False
-                        self.player_sprite.center_x = quiz_hit[0].center_x - const.SPRITE_SIZE
+                        self.player_sprite.center_x = quiz_hit[0].center_x - 1.1 * const.SPRITE_SIZE
 
                     quiz = QuizView(room)
                     self.window.show_view(quiz)
