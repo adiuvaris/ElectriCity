@@ -259,6 +259,8 @@ class GameView(arcade.View):
             self.player_sprite.center_x = (start_x * const.SPRITE_SIZE + const.SPRITE_SIZE / 2)
             self.player_sprite.center_y = (map_height - start_y) * const.SPRITE_SIZE - const.SPRITE_SIZE / 2
 
+            self.labyrinth = None
+
     def on_hide_view(self):
         """
         Wird von arcade aufgerufen, wenn eine andere View sichtbar wird

@@ -40,12 +40,11 @@ class GameData(object):
     def set_max_level(self, max_level):
         """
         Speichert den max Level von Simon
-        :param final: max level
+        :param max_level: max level
         """
 
         self.game_data["max_level"] = max_level
         self.save_game_data()
-
 
     def get_final(self):
         """
@@ -380,7 +379,8 @@ class GameData(object):
         :param room_nr: Raum z.B. "02"
         :param book_nr: Buch z.B. "03"
         """
-        self.buch_lock = ""
+        if self.buch_lock == room_nr + book_nr:
+            self.buch_lock = ""
 
     def is_book_locked(self, room_nr: str, book_nr: str):
         """
