@@ -19,7 +19,7 @@
         }, 
         {
          "compression":"zlib",
-         "data":"eJxjYBh4MIcZQnOyQOi5zJhqtLCIwcASqJwgVP9SNLWGQL4REBsDsRQLaW6LA+qxBGIrILYGYiUS9RMDDJgZEuyYGRSQxVYwEq9fH6jfHk3\/BhL06wH1O6DpxweAah8A3fyAeBtQAdCtD\/Qp0A8Mqwd6ePSzI8WRCAuDA4g2ZYbQ2EAv0P9TgRjG50fSzwPVr4tHPzIgJd4GAwAA3eMT6g==",
+         "data":"eJxjYBh4MIcZlT+XGVONFhYxGFgClFvGxMCwHIhXAPFSNLWGQL4REBsDsRQLaW6LA+qxBGIrILYGYiUS9RMDDJgZEuyYGRSQxVYwEq9fH6jfHk3\/BhL06wH1O6DpxweAah8A3fyAeBtQAdCtD\/Qp0A8Mqwd6ePSzI8WRCAuDA4g2ZYbQ2EAv0P9TgRjG50fSzwPVr4tHPzIgJd4GAwAAxgsVww==",
          "encoding":"base64",
          "height":16,
          "id":12,
@@ -98,7 +98,7 @@
                         {
                          "name":"book",
                          "type":"string",
-                         "value":"02"
+                         "value":"03"
                         }, 
                         {
                          "name":"room",
@@ -109,8 +109,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":301,
-                 "y":135.333333333333
+                 "x":301.25,
+                 "y":135.083333333333
                 }, 
                 {
                  "gid":635,
@@ -157,6 +157,29 @@
                  "width":32,
                  "x":23.7272727272727,
                  "y":196.181818181818
+                }, 
+                {
+                 "gid":1047,
+                 "height":32,
+                 "id":46,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"book",
+                         "type":"string",
+                         "value":"02"
+                        }, 
+                        {
+                         "name":"room",
+                         "type":"string",
+                         "value":"01"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":96.5,
+                 "y":115
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -235,7 +258,7 @@
          "y":0
         }],
  "nextlayerid":18,
- "nextobjectid":39,
+ "nextobjectid":47,
  "orientation":"orthogonal",
  "properties":[
         {
