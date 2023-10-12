@@ -1,80 +1,81 @@
 {
-  "Titel" : "Elektrischer Strom",
-  "Theorie" : [
-    "Beachte genau was die passenden Memory-Bilder aussagen. Sie zeigen was Strom ist und wie die Stromstärke definiert ist."
+  "Titel": "Strom und Ladung",
+  "Theorie": [
+    "Hier sollst du lernen, was Strom ist."
   ],
-  "Aufgaben" : [
-        {
-      "Art": "Memory",
-      "Karten": [
-        {
-          "Key" : "k01",
-          "Bild": "mem_k01_b1.png"
-        },
-        {
-          "Key" : "k01",
-          "Bild": "mem_k01_b2.png"
-        },
-        {
-          "Key" : "k02",
-          "Bild": "mem_k02_b1.png"
-        },
-        {
-          "Key" : "k02",
-          "Bild": "mem_k02_b2.png"
-        },
-        {
-          "Key" : "k03",
-          "Bild": "mem_k03_b1.png"
-        },
-        {
-          "Key" : "k03",
-          "Bild": "mem_k03_b2.png"
-        },
-        {
-          "Key" : "k04",
-          "Bild": "mem_k04_b1.png"
-        },
-        {
-          "Key" : "k04",
-          "Bild": "mem_k04_b2.png"
-        },
-        {
-          "Key" : "k05",
-          "Bild": "mem_k05_b1.png"
-        },
-        {
-          "Key" : "k05",
-          "Bild": "mem_k05_b2.png"
-        },
-        {
-          "Key" : "k06",
-          "Bild": "mem_k06_b1.png"
-        },
-        {
-          "Key" : "k06",
-          "Bild": "mem_k06_b2.png"
-        },
-        {
-          "Key" : "k07",
-          "Bild": "mem_k07_b1.png"
-        },
-        {
-          "Key" : "k07",
-          "Bild": "mem_k07_b2.png"
-        },
-        {
-          "Key" : "k08",
-          "Bild": "mem_k08_b1.png"
-        },
-        {
-          "Key" : "k08",
-          "Bild": "mem_k08_b2.png"
-        }
-      ],
+  "Bilder": [
+    {
+      "Datei": "pic_01_02_3.png",
+      "Titel": "Das Bild zeigt einen einfachen Stromkreis",
+      "Beschreibung": "Stromkreis"
+    }
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
       "Aufgabe": [
-        "Löse das Memory auf der rechten Seite. Klicke die zusammengehörenden Begriffe an."
-      ]
+        "Was ist Strom?",
+        "Antwort 1: Bewegte Ladungen: Elektronen, die frei beweglich sind",
+        "Antwort 2: Atome",
+        "Antwort 3: Eine Art von Energie/Die Spannung in einem elektrische System"
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Antwort 1",
+        "B" : "Antwort 2",
+        "C" : "Antwort 3"
+      },
+      "Richtig": "A",
+      "Tipp" : "Schau dir die Animation an."
+    },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Was gibt das Verhältnis der dort vorbeifliessenden Ladungsmenge Q und der Zeitspanne t, in der beobachtet wurde, an?",
+        "Antwort 1: Elektronenstärke",
+        "Antwort 2: mittlere Stromstärke",
+        "Antwort 3: Spannung"
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Antwort 1",
+        "B" : "Antwort 2",
+        "C" : "Antwort 3"
+      },
+      "Richtig": "B"
+    },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Messung des ____ in einem Stromkreis, wobei die Batterie den Strom liefert. Die Elektronen fliessen vom Minus- zum Pluspol durch das Amperemeter (dieses Gerät kann die ____ messen), durch die Lampe und zurück zur ______.",
+        "Antwort 1: Stroms, Stromstärke, Batterie",
+        "Antwort 2: Stroms, Elektronenstärke, positiven Batterie",
+        "Antwort 3: Widerstands, Geschwindigkeit der Elektronen, positiven Batterie"
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Antwort 1",
+        "B" : "Antwort 2",
+        "C" : "Antwort 3"
+      },
+      "Richtig": "A"
+    },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Wenn nun an einer Stelle in einer Sekunde (s) eine Ladungsmenge von einem Coulomb (C) vorbeiströmt, entspricht das einem Ampere: 1 A = 1 C/s  ",
+        "Antwort 1: Einheit der Spannung U",
+        "Antwort 2: Einheit der Stromstärke I",
+        "Antwort 3: Einheit de Energie E"
+      ],
+      "Typ": "Multi",
+      "Antworten" :{
+        "A" : "Antwort 1",
+        "B" : "Antwort 2",
+        "C" : "Antwort 3"
+      },
+      "Richtig": "B",
+      "Tipp" : "Wie wurde der Strom definiert."
     }
   ]
 }

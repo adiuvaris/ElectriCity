@@ -1,0 +1,50 @@
+{
+  "Titel": "Strom und Ladung",
+  "Theorie": [
+    "Hier sollst du das Gelernte aus Buch 1 anwenden.",
+    "Hinweis: Strom ist bewegte Ladung pro Zeit (<i>I = Q / t</i>)."
+  ],
+  "Bilder": [
+    {
+      "Datei": "pic_01_02_1.png",
+      "Titel": "Das Bild zeigt einen einfachen Stromkreis",
+      "Beschreibung": "Stromkreis"
+    }
+  ],
+  "Aufgaben": [
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "Das Bild <i><b>Stromkreis</b></i> zeigt ein Modell eines elektrischen Stromkreises. Die Lampe wird <V2>h lang mit einer Stromstärke von <V3>A beliefert.",
+        "Welche Ladung (in Coulomb) fliesst durch die Lampe?",
+        "Gib dein Resultat in das Eingabefeld ein (nur die Zahl)."
+      ],
+      "Variablen": {
+        "V1": [25, 30, 40, 60, 70],
+        "V2": [5, 12, 24, 48, 72],
+        "V3": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      },
+      "Typ": "Zahl",
+      "Richtig": "V2 * V3 * 3600.0",
+      "Nachkommastellen": 0,
+      "Tipp" : "Du musst die Formel I=Q/t nach Q auflösen und dann die Werte einsetzen. Beachte, die Einheit der Zeit sind Sekunden."
+    },
+    {
+      "Art": "Frage",
+      "Aufgabe": [
+        "In der Garage steht ein <V1>V-Akku. Er wird <V2>h lang mit der Ladestromstärke von <V3>A geladen.",
+        "Welche Ladung (in Ah) hat der Akku beim Ladevorgang aufgenommen?",
+        "Gib dein Resultat in das Eingabefeld ein (nur die Zahl)."
+      ],
+      "Variablen": {
+        "V1": [18, 24, 36],
+        "V2": [5, 12, 24, 48, 72],
+        "V3": [2, 5, 10]
+      },
+      "Typ": "Zahl",
+      "Richtig": "V2 * V3",
+      "Nachkommastellen": 0,
+      "Tipp" : "Du musst die Formel I=Q/t nach Q auflösen und dann die Werte einsetzen."
+    }
+  ]
+}
