@@ -85,11 +85,7 @@ class BookView(arcade.View):
         :param modifiers: Shift, Alt etc.
         """
 
-        # Escape geht zurück zur Map
-        if key == arcade.key.ESCAPE:
-            self.window.show_view(self.window.game_view)
-
-        # Info Text anzeigen, falls vorhanden
+        # Info-Text anzeigen, falls vorhanden
         if key == arcade.key.F1 or key == arcade.key.NUM_F1:
             mypath = gd.get_abs_path("res/data")
             info_file = f"info_{self.room_nr}_{self.book_nr}.json"
@@ -101,6 +97,10 @@ class BookView(arcade.View):
         # Tastendruck zur aktuellen Aufgabe weitergeben
         task = self.tasks[self.cur_task]
         task.on_key_press(key, modifiers)
+
+        # Escape geht zurück zur Map
+        if key == arcade.key.ESCAPE:
+            self.window.show_view(self.window.game_view)
 
     def on_end_task(self):
         """
