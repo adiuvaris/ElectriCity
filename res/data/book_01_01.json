@@ -8,6 +8,12 @@
       "Datei": "pic_01_02_3.png",
       "Titel": "Das Bild zeigt einen einfachen Stromkreis",
       "Beschreibung": "Stromkreis"
+    },
+    {
+      "Datei": "ani_01_01.png",
+      "Titel": "Animation",
+      "Beschreibung": "Strom",
+      "Frames": 4
     }
   ],
   "Aufgaben": [
